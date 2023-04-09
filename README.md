@@ -5,3 +5,4 @@ A WIP client for Fabric 1.19.4
 ## Contributors
 - stormcph
 - qweru
+- CorruptionHades
