@@ -1,0 +1,26 @@
+{
+  "mappings": {
+    "me/stormcph/lumina/mixins/KeyboardMixin": {
+      "onKey": "Lnet/minecraft/class_309;method_1466(JIIII)V"
+    },
+    "me/stormcph/lumina/mixins/MinecraftClientMixin": {
+      "tick": "Lnet/minecraft/class_310;method_1574()V"
+    },
+    "me/stormcph/lumina/mixins/inGameHudMixin": {
+      "render": "Lnet/minecraft/class_329;method_1753(Lnet/minecraft/class_4587;F)V"
+    }
+  },
+  "data": {
+    "named:intermediary": {
+      "me/stormcph/lumina/mixins/KeyboardMixin": {
+        "onKey": "Lnet/minecraft/class_309;method_1466(JIIII)V"
+      },
+      "me/stormcph/lumina/mixins/MinecraftClientMixin": {
+        "tick": "Lnet/minecraft/class_310;method_1574()V"
+      },
+      "me/stormcph/lumina/mixins/inGameHudMixin": {
+        "render": "Lnet/minecraft/class_329;method_1753(Lnet/minecraft/class_4587;F)V"
+      }
+    }
+  }
+}
