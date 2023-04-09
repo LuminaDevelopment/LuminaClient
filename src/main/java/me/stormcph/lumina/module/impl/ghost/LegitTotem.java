@@ -26,7 +26,7 @@ public class LegitTotem extends Module implements ClientTickEvents.StartTick {
     private boolean wasInventoryOpen;
 
     public LegitTotem(Item itemToCheck) {
-        super("Legit Totem", "when you go into inventory it automatically puts totem in offhand", Category.GHOST);
+        super("Legit Totem", "When you go into inventory it automatically puts totem in offhand", Category.GHOST);
 
         this.itemToCheck = itemToCheck;
         this.random = new Random();
