@@ -3,7 +3,11 @@
     <option name="MAIN_CLASS_NAME" value="net.fabricmc.devlaunchinjector.Main" />
     <module name="LuminaClient.main" />
     <option name="PROGRAM_PARAMETERS" value="" />
+<<<<<<< HEAD
     <option name="VM_PARAMETERS" value="-Dfabric.dli.config=/Users/stormbirch-hansen/Documents/GitHub/LuminaClient/.gradle/loom-cache/launch.cfg -Dfabric.dli.env=client -XstartOnFirstThread -Dfabric.dli.main=net.fabricmc.loader.impl.launch.knot.KnotClient" />
+=======
+    <option name="VM_PARAMETERS" value="-Dfabric.dli.config=C:\Users\gusta\DATA\group2\LuminaClient\.gradle\loom-cache\launch.cfg -Dfabric.dli.env=client -Dfabric.dli.main=net.fabricmc.loader.impl.launch.knot.KnotClient" />
+>>>>>>> 80e223fd708607331b2468da429aa8dd5303b9f0
     <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/run/" />
     <method v="2">
       <option name="Make" enabled="true" />
