@@ -2,6 +2,7 @@ package me.stormcph.lumina.ui.screens.clickgui.setting;
 
 import me.stormcph.lumina.setting.Setting;
 import me.stormcph.lumina.ui.screens.clickgui.ModuleButton;
+import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.util.math.MatrixStack;
 
 import java.util.Set;
@@ -11,6 +12,8 @@ public class Component {
     public Setting setting;
     public ModuleButton parent;
     public int offset;
+
+    protected MinecraftClient mc = MinecraftClient.getInstance();
 
     public Component(Setting setting, ModuleButton parent, int offset) {
         this.setting = setting;
@@ -22,6 +25,10 @@ public class Component {
     }
 
     public void mouseClicked(double mouseX, double mouseY, int button) {
+    }
+
+    public void mouseReleased(double mouseX, double mouseY, int button) {
+
     }
 
     public boolean isHovered(double mouseX, double mouseY) {

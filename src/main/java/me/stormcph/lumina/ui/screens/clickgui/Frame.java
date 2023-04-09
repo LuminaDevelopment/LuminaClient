@@ -3,6 +3,7 @@ package me.stormcph.lumina.ui.screens.clickgui;
 import me.stormcph.lumina.module.Category;
 import me.stormcph.lumina.module.Module;
 import me.stormcph.lumina.module.ModuleManager;
+import me.stormcph.lumina.ui.screens.clickgui.setting.Component;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.DrawableHelper;
 import net.minecraft.client.util.math.MatrixStack;
@@ -114,6 +115,10 @@ public class Frame {
 
     public void mouseReleased(double mouseX, double mouseY, int button) {
         if (button == 0 && dragging == true) dragging = false;
+
+        for (ModuleButton mc : buttons) {
+            mc.mouseReleased(mouseX, mouseY, button);
+        }
     }
 
     public boolean isHovered(double mouseX, double mouseY) {
@@ -124,6 +129,21 @@ public class Frame {
         if (dragging) {
             x = (int) (mouseX - dragX);
             y = (int) (mouseY - dragY);
+        }
+    }
+
+    public void updateButtons() {
+        int offset = height;
+
+        for (ModuleButton button : buttons) {
+            button.offset = offset;
+            offset += height;
+
+            if (button.extended) {
+                for (Component component : button.components) {
+                    if (component.setting.isVisible()) offset += height;
+                }
+            }
         }
     }
 }

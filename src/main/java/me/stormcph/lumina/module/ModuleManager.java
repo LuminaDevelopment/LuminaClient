@@ -1,6 +1,6 @@
 package me.stormcph.lumina.module;
 
-import me.stormcph.lumina.module.impl.ghost.*;
+//import me.stormcph.lumina.module.impl.ghost.*;
 import me.stormcph.lumina.module.impl.movement.*;
 import me.stormcph.lumina.module.impl.render.*;
 import net.minecraft.item.Items;
@@ -24,8 +24,6 @@ public class ModuleManager {
         add(new Sprint());
 
         // Ghost
-        add(new LegitTotem(Items.TOTEM_OF_UNDYING));
-        add(new TotemAutoOffhand());
 
         // Render
         add(new Arraylist());
