@@ -1,8 +1,8 @@
 package me.stormcph.lumina.module;
 
-import me.stormcph.lumina.module.ghost.LegitTotem;
-import me.stormcph.lumina.module.ghost.TotemAutoOffhand;
-import me.stormcph.lumina.module.movement.*;
+import me.stormcph.lumina.module.impl.ghost.*;
+import me.stormcph.lumina.module.impl.movement.*;
+import me.stormcph.lumina.module.impl.render.*;
 import net.minecraft.item.Items;
 
 import java.util.ArrayList;
@@ -10,41 +10,75 @@ import java.util.List;
 
 public class ModuleManager {
 
-    public static final ModuleManager ISTANCE = new ModuleManager();
-    public List<Mod> modules = new ArrayList<>();
+    private final List<Module> modules = new ArrayList<>();
+
+    public static final ModuleManager INSTANCE = new ModuleManager();
 
     public ModuleManager() {
-        addModules();
+        init();
     }
 
-    public List<Mod> getModules() {
+    public void init() {
+        // Movement
+        add(new Flight());
+        add(new Sprint());
+
+        // Ghost
+        add(new LegitTotem(Items.TOTEM_OF_UNDYING));
+        add(new TotemAutoOffhand());
+
+        // Render
+        add(new Arraylist());
+    }
+
+    public void add(Module m) {
+        modules.add(m);
+    }
+
+    public void remove(Module m) {
+        modules.remove(m);
+    }
+
+    public List<Module> getModules() {
         return modules;
     }
 
-    public List<Mod> getEnabledModules() {
-        List<Mod> enabled = new ArrayList<>();
-        for (Mod module : modules) {
-            if (module.isEnabled()) enabled.add(module);
+    public Module getModuleByName(String name){
+        for(Module module : modules) {
+            if(module.getName().equalsIgnoreCase(name)) return module;
+        }
+
+        return null;
+    }
+
+    public ArrayList<Module> getModulesByCategory(Category category) {
+        ArrayList<Module> modules = new ArrayList<>();
+        for(Module m : this.modules){
+            if(m.getCategory().equals(category)){
+                modules.add(m);
+            }
+        }
+        return modules;
+    }
+
+    public Module getModuleByClass(Class<? extends Module> cls) {
+        for (Module m : modules) {
+            if (m.getClass() != cls) {
+                continue;
+            }
+            return m;
+        }
+        return null;
+    }
+
+    public List<Module> getEnabledModules() {
+        List<Module> enabled = new ArrayList<>();
+        for(Module m : getModules()) {
+            if(m.isEnabled()) {
+                enabled.add(m);
+            }
         }
 
         return enabled;
-    }
-
-    public List<Mod> getModulesInCategory(Mod.Category category) {
-        List<Mod> categoryModules = new ArrayList<>();
-
-        for (Mod mod : modules) {
-            if (mod.getCategory() == category) {
-                categoryModules.add(mod);
-            }
-        }
-        return categoryModules;
-    }
-
-    private void addModules() {
-        modules.add(new Flight());
-        modules.add(new Sprint());
-        modules.add(new LegitTotem(Items.TOTEM_OF_UNDYING));
-        modules.add(new TotemAutoOffhand());
     }
 }

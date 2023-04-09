@@ -1,6 +1,6 @@
 package me.stormcph.lumina.ui.screens.clickgui.setting;
 
-import me.stormcph.lumina.module.settings.Setting;
+import me.stormcph.lumina.setting.Setting;
 import me.stormcph.lumina.ui.screens.clickgui.ModuleButton;
 import net.minecraft.client.util.math.MatrixStack;
 

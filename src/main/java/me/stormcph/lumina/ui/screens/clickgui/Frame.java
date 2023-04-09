@@ -1,9 +1,9 @@
 package me.stormcph.lumina.ui.screens.clickgui;
 
-import me.stormcph.lumina.module.Mod;
+import me.stormcph.lumina.module.Category;
+import me.stormcph.lumina.module.Module;
 import me.stormcph.lumina.module.ModuleManager;
 import net.minecraft.client.MinecraftClient;
-import net.minecraft.client.gui.Drawable;
 import net.minecraft.client.gui.DrawableHelper;
 import net.minecraft.client.util.math.MatrixStack;
 import com.mojang.blaze3d.systems.RenderSystem;
@@ -23,7 +23,7 @@ import java.util.List;
 public class Frame {
 
     public int x, y, width, height, dragX, dragY;
-    public Mod.Category category;
+    public Category category;
 
     public boolean dragging, extended;
 
@@ -33,7 +33,7 @@ public class Frame {
 
     private BufferedImage gradientImage;
 
-    public Frame(Mod.Category category, int x, int y, int width, int height) {
+    public Frame(Category category, int x, int y, int width, int height) {
         this.category = category;
         this.x = x;
         this.y = y;
@@ -44,7 +44,7 @@ public class Frame {
         buttons = new ArrayList<>();
 
         int offset = height;
-        for (Mod mod : ModuleManager.ISTANCE.getModulesInCategory(category)) {
+        for (Module mod : ModuleManager.INSTANCE.getModulesByCategory(category)) {
             buttons.add(new ModuleButton(mod, this, offset));
             offset += height;
         }

@@ -1,6 +1,6 @@
 version:3337
 autoJump:false
-operatorItemsTab:false
+operatorItemsTab:true
 autoSuggestions:true
 chatColors:true
 chatLinks:true
@@ -22,7 +22,7 @@ toggleSprint:false
 darkMojangStudiosBackground:false
 hideLightningFlashes:false
 mouseSensitivity:0.4153813966563051
-fov:1.0
+fov:0.125
 screenEffectScale:1.0
 fovEffectScale:0.0
 darknessEffectScale:1.0
@@ -36,12 +36,12 @@ simulationDistance:7
 entityDistanceScaling:1.0
 guiScale:3
 particles:1
-maxFps:150
+maxFps:260
 graphicsMode:0
 ao:true
 prioritizeChunkUpdates:0
 biomeBlendRadius:2
-renderClouds:"true"
+renderClouds:"false"
 resourcePacks:["fabric"]
 incompatibleResourcePacks:[]
 lastServer:
@@ -92,7 +92,7 @@ key_key.back:key.keyboard.s
 key_key.right:key.keyboard.d
 key_key.jump:key.keyboard.space
 key_key.sneak:key.keyboard.left.shift
-key_key.sprint:key.keyboard.left.alt
+key_key.sprint:key.keyboard.left.control
 key_key.drop:key.keyboard.q
 key_key.inventory:key.keyboard.e
 key_key.chat:key.keyboard.t

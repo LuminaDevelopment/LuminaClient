@@ -1,6 +1,6 @@
 package me.stormcph.lumina.ui.screens.clickgui;
 
-import me.stormcph.lumina.module.Mod;
+import me.stormcph.lumina.module.Module;
 import net.minecraft.client.gui.DrawableHelper;
 import net.minecraft.client.util.math.MatrixStack;
 
@@ -8,11 +8,11 @@ import java.awt.*;
 
 public class ModuleButton {
 
-    public Mod module;
+    public Module module;
     public Frame parent;
     public int offset;
 
-    public ModuleButton(Mod module, Frame parent, int offset) {
+    public ModuleButton(Module module, Frame parent, int offset) {
         this.module = module;
         this.parent = parent;
         this.offset = offset;

@@ -1,6 +1,6 @@
 package me.stormcph.lumina.ui.screens.clickgui;
 
-import me.stormcph.lumina.module.Mod;
+import me.stormcph.lumina.module.Category;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.text.Text;
@@ -20,7 +20,7 @@ public class ClickGui extends Screen {
         frames = new ArrayList<>();
 
         int offset = 20;
-        for (Mod.Category category :Mod.Category.values()) {
+        for (Category category : Category.values()) {
             frames.add(new Frame(category, offset, 5, 84, 15));
             offset += 100;
         }

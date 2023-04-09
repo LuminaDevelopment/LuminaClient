@@ -1,8 +1,13 @@
 package me.stormcph.lumina;
 
-import ca.weblite.objc.Client;
-import me.stormcph.lumina.module.Mod;
+import me.stormcph.lumina.event.EventManager;
+import me.stormcph.lumina.event.EventTarget;
+import me.stormcph.lumina.event.impl.KeyEvent;
+import me.stormcph.lumina.event.impl.Render2DEvent;
+import me.stormcph.lumina.module.HudModule;
+import me.stormcph.lumina.module.Module;
 import me.stormcph.lumina.module.ModuleManager;
+import me.stormcph.lumina.ui.HudConfigScreen;
 import me.stormcph.lumina.ui.screens.clickgui.ClickGui;
 import net.fabricmc.api.ModInitializer;
 import net.minecraft.client.MinecraftClient;
@@ -12,33 +17,45 @@ import org.lwjgl.glfw.GLFW;
 
 public class Lumina implements ModInitializer {
 
-    public static final Lumina INSTANCE = new Lumina();
-    public Logger logger = LogManager.getLogger(Lumina.class);
+    private static final Lumina INSTANCE = new Lumina();
+    private final Logger logger = LogManager.getLogger(Lumina.class);
 
-    private MinecraftClient mc = MinecraftClient.getInstance();
+    private final MinecraftClient mc = MinecraftClient.getInstance();
 
     @Override
     public void onInitialize() {
+        EventManager.register(this);
     }
 
-    public void onKeyPress(int key, int action) {
-        if (action == GLFW.GLFW_PRESS) {
-            for (Mod module : ModuleManager.ISTANCE.getModules()) {
-                if (key == module.getKey()) module.toggle();
+
+    @EventTarget
+    public void onKeyPress(KeyEvent event) {
+        if (event.getAction() == GLFW.GLFW_PRESS) {
+            for (Module module : ModuleManager.INSTANCE.getModules()) {
+                if (event.getKey() == module.getKey()) module.toggle();
             }
 
-            if (key == GLFW.GLFW_KEY_RIGHT_ALT) mc.setScreen(ClickGui.INSTANCE);
+            if (event.getKey() == GLFW.GLFW_KEY_RIGHT_ALT) mc.setScreen(ClickGui.INSTANCE);
+            if (event.getKey() == GLFW.GLFW_KEY_H) mc.setScreen(new HudConfigScreen());
         }
     }
 
-
-    public void onTick() {
-        if (mc.player != null) {
-            for (Mod module : ModuleManager.ISTANCE.getEnabledModules()) {
-                module.onTick();
+    @EventTarget
+    public void onRender2D(Render2DEvent e) {
+        if(mc.player != null) {
+            for(Module module : ModuleManager.INSTANCE.getEnabledModules()) {
+                if(module instanceof HudModule hudModule) {
+                    hudModule.draw(e.getMatrices());
+                }
             }
-
         }
     }
 
+    public static Lumina getInstance() {
+        return INSTANCE;
+    }
+
+    public Logger getLogger() {
+        return logger;
+    }
 }
