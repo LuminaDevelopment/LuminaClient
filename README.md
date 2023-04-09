@@ -6,3 +6,5 @@ A WIP client for Fabric 1.19.4
 - stormcph
 - qweru
 - CorruptionHades
+
+https://github.com/LuminaDevelopment/LuminaClient
