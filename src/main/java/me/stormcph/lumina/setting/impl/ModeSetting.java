@@ -41,20 +41,14 @@ public class ModeSetting extends Setting {
         this.mode = modes.get(index);
     }
 
-    public void cycle(boolean forwards) {
-        if (forwards) {
-            if (this.index < this.modes.size() - 1) {
-                setIndex(index++);
-            } else {
-                setIndex(0);
-            }
+    public void cycle() {
+        if(index < modes.size() - 1) {
+            index++;
+            mode = modes.get(index);
         }
-        if (!forwards) {
-            if (this.index > 0) {
-                setIndex(index--);
-            } else {
-                setIndex(this.modes.size() - 1);
-            }
+        else if(index >= modes.size() -1) {
+            index = 0;
+            mode = modes.get(0);
         }
     }
 
