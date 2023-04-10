@@ -1,6 +1,7 @@
 package me.stormcph.lumina.ui.screens.clickgui;
 
 import me.stormcph.lumina.module.Category;
+import me.stormcph.lumina.utils.ChatUtils;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.text.Text;
@@ -22,13 +23,14 @@ public class ClickGui extends Screen {
         int offset = 20;
         for (Category category : Category.values()) {
             frames.add(new Frame(category, offset, 5, 84, 15));
-            offset += 100;
+            offset+=20;
         }
     }
 
     @Override
     public void render(MatrixStack matrices, int mouseX, int mouseY, float delta) {
         for (Frame frame : frames) {
+            if(frame.category.isHidden) continue;
             frame.render(matrices, mouseX, mouseY, delta);
             frame.updatePosition(mouseX, mouseY);
         }

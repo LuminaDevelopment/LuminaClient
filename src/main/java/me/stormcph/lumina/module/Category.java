@@ -22,5 +22,10 @@ public enum Category {
         this.name = name;
         this.isHidden = true;
         categories.add(this);
+        if(this.name=="Category") setHidden(false);
+    }
+
+    public void setHidden(boolean isHidden){
+        this.isHidden = isHidden;
     }
 }
