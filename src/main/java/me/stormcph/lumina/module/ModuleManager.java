@@ -1,10 +1,11 @@
 package me.stormcph.lumina.module;
 
-//import me.stormcph.lumina.module.impl.ghost.*;
+import me.stormcph.lumina.module.impl.ghost.*;
 import me.stormcph.lumina.module.impl.category_mng.impl.*;
+import me.stormcph.lumina.module.impl.combat.*;
+import me.stormcph.lumina.module.impl.misc.*;
 import me.stormcph.lumina.module.impl.movement.*;
 import me.stormcph.lumina.module.impl.render.*;
-import net.minecraft.item.Items;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,8 +24,16 @@ public class ModuleManager {
         // Movement
         add(new Flight());
         add(new Sprint());
+        add(new FakeLag());
 
-        // GhostCategory
+        // Combat
+        add(new Killaura());
+        add(new Criticals());
+
+        // Misc
+        add(new PacketLogger());
+
+        // Ghost
 
         // Render
         add(new Arraylist());
