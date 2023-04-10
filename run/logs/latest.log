@@ -1,14 +1,7 @@
-<<<<<<< HEAD
-[22:37:05] [main/INFO] (FabricLoader/GameProvider) Loading Minecraft 1.19.4 with Fabric Loader 0.14.17
-[22:37:05] [ForkJoinPool-1-worker-1/WARN] (FabricLoader/Metadata) The mod "lumina" contains invalid entries in its mod json:
+[10:32:37] [main/INFO] (FabricLoader/GameProvider) Loading Minecraft 1.19.4 with Fabric Loader 0.14.17
+[10:32:37] [ForkJoinPool-1-worker-1/WARN] (FabricLoader/Metadata) The mod "lumina" contains invalid entries in its mod json:
 - Unsupported root entry "credits" at line 9 column 12
-[22:37:05] [main/INFO] (FabricLoader) Loading 46 mods:
-=======
-[19:21:41] [main/INFO] (FabricLoader/GameProvider) Loading Minecraft 1.19.4 with Fabric Loader 0.14.17
-[19:21:42] [ForkJoinPool-1-worker-1/WARN] (FabricLoader/Metadata) The mod "lumina" contains invalid entries in its mod json:
-- Unsupported root entry "credits" at line 9 column 12
-[19:21:42] [main/INFO] (FabricLoader) Loading 46 mods:
->>>>>>> 80e223fd708607331b2468da429aa8dd5303b9f0
+[10:32:37] [main/INFO] (FabricLoader) Loading 46 mods:
 	- fabric-api 0.75.3+1.19.4
 	- fabric-api-base 0.4.23+9ff28bced8
 	- fabric-api-lookup-api-v1 1.6.24+49abcf7ed8
@@ -55,31 +48,21 @@
 	- java 17
 	- lumina 1.0.0
 	- minecraft 1.19.4
-<<<<<<< HEAD
-[22:37:05] [main/INFO] (FabricLoader/Mixin) SpongePowered MIXIN Subsystem Version=0.8.5 Source=file:/Users/stormbirch-hansen/.gradle/caches/modules-2/files-2.1/net.fabricmc/sponge-mixin/0.12.4+mixin.0.8.5/e13b4069fe3555969811d4474f78576c707bbe1c/sponge-mixin-0.12.4+mixin.0.8.5.jar Service=Knot/Fabric Env=CLIENT
-[22:37:05] [main/INFO] (FabricLoader/Mixin) Loaded Fabric development mappings for mixin remapper!
-[22:37:05] [main/INFO] (FabricLoader/Mixin) Compatibility level set to JAVA_16
-[22:37:05] [main/INFO] (FabricLoader/Mixin) Compatibility level set to JAVA_17
-[22:37:08] [Datafixer Bootstrap/INFO] (Minecraft) 180 Datafixer optimizations took 61 milliseconds
-[22:37:09] [Render thread/INFO] (Minecraft) Environment: authHost='https://authserver.mojang.com', accountsHost='https://api.mojang.com', sessionHost='https://sessionserver.mojang.com', servicesHost='https://api.minecraftservices.com', name='PROD'
-[22:37:10] [Render thread/ERROR] (Minecraft) Failed to verify authentication
-=======
-[19:21:43] [main/INFO] (FabricLoader/Mixin) SpongePowered MIXIN Subsystem Version=0.8.5 Source=file:/C:/Users/gusta/.gradle/caches/modules-2/files-2.1/net.fabricmc/sponge-mixin/0.12.4+mixin.0.8.5/e13b4069fe3555969811d4474f78576c707bbe1c/sponge-mixin-0.12.4+mixin.0.8.5.jar Service=Knot/Fabric Env=CLIENT
-[19:21:43] [main/INFO] (FabricLoader/Mixin) Loaded Fabric development mappings for mixin remapper!
-[19:21:43] [main/INFO] (FabricLoader/Mixin) Compatibility level set to JAVA_16
-[19:21:43] [main/INFO] (FabricLoader/Mixin) Compatibility level set to JAVA_17
-[19:22:00] [Datafixer Bootstrap/INFO] (Minecraft) 180 Datafixer optimizations took 296 milliseconds
-[19:22:07] [Render thread/INFO] (Minecraft) Environment: authHost='https://authserver.mojang.com', accountsHost='https://api.mojang.com', sessionHost='https://sessionserver.mojang.com', servicesHost='https://api.minecraftservices.com', name='PROD'
-[19:22:08] [Render thread/ERROR] (Minecraft) Failed to verify authentication
->>>>>>> 80e223fd708607331b2468da429aa8dd5303b9f0
+[10:32:38] [main/INFO] (FabricLoader/Mixin) SpongePowered MIXIN Subsystem Version=0.8.5 Source=file:/C:/Users/gusta/.gradle/caches/modules-2/files-2.1/net.fabricmc/sponge-mixin/0.12.4+mixin.0.8.5/e13b4069fe3555969811d4474f78576c707bbe1c/sponge-mixin-0.12.4+mixin.0.8.5.jar Service=Knot/Fabric Env=CLIENT
+[10:32:38] [main/INFO] (FabricLoader/Mixin) Loaded Fabric development mappings for mixin remapper!
+[10:32:38] [main/INFO] (FabricLoader/Mixin) Compatibility level set to JAVA_16
+[10:32:38] [main/INFO] (FabricLoader/Mixin) Compatibility level set to JAVA_17
+[10:32:49] [Datafixer Bootstrap/INFO] (Minecraft) 180 Datafixer optimizations took 213 milliseconds
+[10:32:52] [Render thread/INFO] (Minecraft) Environment: authHost='https://authserver.mojang.com', accountsHost='https://api.mojang.com', sessionHost='https://sessionserver.mojang.com', servicesHost='https://api.minecraftservices.com', name='PROD'
+[10:32:53] [Render thread/ERROR] (Minecraft) Failed to verify authentication
 com.mojang.authlib.exceptions.InvalidCredentialsException: Status: 401
 	at com.mojang.authlib.exceptions.MinecraftClientHttpException.toAuthenticationException(MinecraftClientHttpException.java:56) ~[authlib-3.18.38.jar:?]
 	at com.mojang.authlib.yggdrasil.YggdrasilUserApiService.fetchProperties(YggdrasilUserApiService.java:156) ~[authlib-3.18.38.jar:?]
 	at com.mojang.authlib.yggdrasil.YggdrasilUserApiService.<init>(YggdrasilUserApiService.java:55) ~[authlib-3.18.38.jar:?]
 	at com.mojang.authlib.yggdrasil.YggdrasilAuthenticationService.createUserApiService(YggdrasilAuthenticationService.java:161) ~[authlib-3.18.38.jar:?]
-	at net.minecraft.client.MinecraftClient.createUserApiService(MinecraftClient.java:732) ~[minecraft-merged-project-root-1.19.4-net.fabricmc.yarn.1_19_4.1.19.4+build.1-v2.jar:?]
-	at net.minecraft.client.MinecraftClient.<init>(MinecraftClient.java:440) ~[minecraft-merged-project-root-1.19.4-net.fabricmc.yarn.1_19_4.1.19.4+build.1-v2.jar:?]
-	at net.minecraft.client.main.Main.main(Main.java:198) ~[minecraft-merged-project-root-1.19.4-net.fabricmc.yarn.1_19_4.1.19.4+build.1-v2.jar:?]
+	at net.minecraft.client.MinecraftClient.createUserApiService(MinecraftClient.java:712) ~[minecraft-merged-project-root-1.19.4-net.fabricmc.yarn.1_19_4.1.19.4+build.1-v2.jar:?]
+	at net.minecraft.client.MinecraftClient.<init>(MinecraftClient.java:506) ~[minecraft-merged-project-root-1.19.4-net.fabricmc.yarn.1_19_4.1.19.4+build.1-v2.jar:?]
+	at net.minecraft.client.main.Main.main(Main.java:178) ~[minecraft-merged-project-root-1.19.4-net.fabricmc.yarn.1_19_4.1.19.4+build.1-v2.jar:?]
 	at net.fabricmc.loader.impl.game.minecraft.MinecraftGameProvider.launch(MinecraftGameProvider.java:462) ~[fabric-loader-0.14.17.jar:?]
 	at net.fabricmc.loader.impl.launch.knot.Knot.launch(Knot.java:74) ~[fabric-loader-0.14.17.jar:?]
 	at net.fabricmc.loader.impl.launch.knot.KnotClient.main(KnotClient.java:23) ~[fabric-loader-0.14.17.jar:?]
@@ -89,552 +72,93 @@ Caused by: com.mojang.authlib.exceptions.MinecraftClientHttpException: Status: 4
 	at com.mojang.authlib.minecraft.client.MinecraftClient.get(MinecraftClient.java:48) ~[authlib-3.18.38.jar:?]
 	at com.mojang.authlib.yggdrasil.YggdrasilUserApiService.fetchProperties(YggdrasilUserApiService.java:129) ~[authlib-3.18.38.jar:?]
 	... 9 more
-<<<<<<< HEAD
-[22:37:10] [Render thread/INFO] (Minecraft) Setting user: Player150
-[22:37:10] [Render thread/INFO] (Indigo) [Indigo] Registering Indigo renderer!
-[22:37:10] [Render thread/INFO] (Minecraft) Backend library: LWJGL version 3.3.1 SNAPSHOT
-[22:37:11] [Render thread/INFO] (Minecraft) Reloading ResourceManager: vanilla, Fabric Mods (Fabric Renderer - Indigo, Fabric Networking API (v1), Lumina, Fabric Game Rule API (v1), Fabric Dimensions API (v1), Fabric Renderer API (v1), Fabric Rendering Data Attachment (v1), Fabric API, Fabric Mining Level API (v1), Fabric Particles (v1), Fabric API Lookup API (v1), Fabric Key Binding API (v1), Fabric API Base, Fabric Recipe API (v1), Fabric Models (v0), Fabric Crash Report Info (v1), Fabric Screen Handler API (v1), Fabric Entity Events (v1), Fabric Transitive Access Wideners (v1), Fabric Content Registries (v0), Fabric Events Interaction (v0), Fabric Screen API (v1), Fabric Resource Loader (v0), Fabric Loot API (v2), Fabric Transfer API (v1), Fabric Item API (v1), Fabric Loader, Fabric Message API (v1), Fabric BlockRenderLayer Registration (v1), Fabric Game Test API (v1), Fabric Object Builder API (v1), Fabric Command API (v2), Fabric Rendering (v1), Fabric Data Generation API (v1), Fabric Item Group API (v1), Fabric Client Tags, Fabric Convention Tags, Fabric Rendering Fluids (v1), Fabric Biome API (v1), Fabric Registry Sync (v0), Fabric Block API (v1), Fabric Sound API (v1), Fabric Resource Conditions API (v1), Fabric Lifecycle Events (v1))
-[22:37:12] [Realms Notification Availability checker #1/INFO] (Minecraft) Could not authorize you against Realms server: Invalid session id
-[22:37:13] [Render thread/WARN] (Minecraft) Missing sound for event: minecraft:item.brush.brushing
-[22:37:13] [Render thread/WARN] (Minecraft) Missing sound for event: minecraft:item.brush.brush_sand_completed
-[22:37:13] [Render thread/WARN] (Minecraft) Missing sound for event: minecraft:item.goat_horn.play
-[22:37:13] [Render thread/WARN] (Minecraft) Missing sound for event: minecraft:entity.goat.screaming.horn_break
-[22:37:13] [Render thread/WARN] (Minecraft) Missing sound for event: minecraft:music.overworld.cherry_grove
-[22:37:13] [Render thread/INFO] (Minecraft) OpenAL initialized on device CoreAudio Default
-[22:37:13] [Render thread/INFO] (Minecraft) Sound engine started
-[22:37:13] [Render thread/INFO] (Minecraft) Created: 1024x512x4 minecraft:textures/atlas/blocks.png-atlas
-[22:37:13] [Render thread/INFO] (Minecraft) Created: 256x256x4 minecraft:textures/atlas/signs.png-atlas
-[22:37:13] [Render thread/INFO] (Minecraft) Created: 512x512x4 minecraft:textures/atlas/banner_patterns.png-atlas
-[22:37:13] [Render thread/INFO] (Minecraft) Created: 512x512x4 minecraft:textures/atlas/shield_patterns.png-atlas
-[22:37:13] [Render thread/INFO] (Minecraft) Created: 1024x1024x4 minecraft:textures/atlas/armor_trims.png-atlas
-[22:37:13] [Render thread/INFO] (Minecraft) Created: 256x256x4 minecraft:textures/atlas/chest.png-atlas
-[22:37:13] [Render thread/INFO] (Minecraft) Created: 64x64x4 minecraft:textures/atlas/decorated_pot.png-atlas
-[22:37:13] [Render thread/INFO] (Minecraft) Created: 512x256x4 minecraft:textures/atlas/shulker_boxes.png-atlas
-[22:37:13] [Render thread/INFO] (Minecraft) Created: 512x256x4 minecraft:textures/atlas/beds.png-atlas
-[22:37:14] [Render thread/WARN] (Minecraft) Shader rendertype_entity_translucent_emissive could not find sampler named Sampler2 in the specified shader program.
-[22:37:14] [Render thread/INFO] (Minecraft) Created: 256x256x0 minecraft:textures/atlas/particles.png-atlas
-[22:37:14] [Render thread/INFO] (Minecraft) Created: 256x256x0 minecraft:textures/atlas/paintings.png-atlas
-[22:37:14] [Render thread/INFO] (Minecraft) Created: 128x128x0 minecraft:textures/atlas/mob_effects.png-atlas
-[22:37:22] [Render thread/INFO] (Minecraft) Loaded 7 recipes
-[22:37:22] [Render thread/INFO] (Minecraft) Loaded 1179 advancements
-[22:37:23] [Render thread/INFO] (BiomeModificationImpl) Applied 0 biome modifications to 0 of 63 new biomes in 1.083 ms
-[22:37:23] [Server thread/INFO] (Minecraft) Starting integrated minecraft server version 1.19.4
-[22:37:23] [Server thread/INFO] (Minecraft) Generating keypair
-[22:37:24] [Server thread/INFO] (Minecraft) Preparing start region for dimension minecraft:overworld
-[22:37:27] [Render thread/INFO] (Minecraft) Preparing spawn area: 0%
-[22:37:27] [Render thread/INFO] (Minecraft) Preparing spawn area: 0%
-[22:37:27] [Render thread/INFO] (Minecraft) Preparing spawn area: 0%
-[22:37:27] [Render thread/INFO] (Minecraft) Preparing spawn area: 0%
-[22:37:27] [Render thread/INFO] (Minecraft) Preparing spawn area: 0%
-[22:37:27] [Render thread/INFO] (Minecraft) Preparing spawn area: 0%
-[22:37:27] [Render thread/INFO] (Minecraft) Preparing spawn area: 12%
-[22:37:28] [Render thread/INFO] (Minecraft) Preparing spawn area: 93%
-[22:37:28] [Render thread/INFO] (Minecraft) Time elapsed: 3550 ms
-[22:37:28] [Server thread/INFO] (Minecraft) Changing view distance to 8, from 10
-[22:37:28] [Server thread/INFO] (Minecraft) Changing simulation distance to 7, from 0
-[22:37:28] [Server thread/INFO] (Minecraft) Player150[local:E:fdebb47b] logged in with entity id 156 at (278.68063783464055, 210.4935284852303, 234.18406034524006)
-[22:37:28] [Server thread/INFO] (Minecraft) Player150 joined the game
-[22:37:29] [Render thread/INFO] (Minecraft) Loaded 2 advancements
-[22:37:32] [Render thread/INFO] (Minecraft) Loaded 9 advancements
-[22:37:35] [Server thread/INFO] (Minecraft) Saving and pausing game...
-[22:37:35] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[stormcph world]'/minecraft:overworld
-[22:37:35] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[stormcph world]'/minecraft:the_end
-[22:37:35] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[stormcph world]'/minecraft:the_nether
-[22:37:40] [Server thread/INFO] (Minecraft) Saving and pausing game...
-[22:37:40] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[stormcph world]'/minecraft:overworld
-[22:37:40] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[stormcph world]'/minecraft:the_end
-[22:37:40] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[stormcph world]'/minecraft:the_nether
-[22:37:49] [Server thread/INFO] (Minecraft) Saving and pausing game...
-[22:37:49] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[stormcph world]'/minecraft:overworld
-[22:37:49] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[stormcph world]'/minecraft:the_end
-[22:37:49] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[stormcph world]'/minecraft:the_nether
-[22:37:56] [Server thread/INFO] (Minecraft) Saving and pausing game...
-[22:37:56] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[stormcph world]'/minecraft:overworld
-[22:37:56] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[stormcph world]'/minecraft:the_end
-[22:37:56] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[stormcph world]'/minecraft:the_nether
-[22:38:08] [Server thread/INFO] (Minecraft) Saving and pausing game...
-[22:38:08] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[stormcph world]'/minecraft:overworld
-[22:38:08] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[stormcph world]'/minecraft:the_end
-[22:38:08] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[stormcph world]'/minecraft:the_nether
-[22:38:11] [Render thread/INFO] (Minecraft) Stopping!
-[22:38:11] [Server thread/INFO] (Minecraft) Player150 lost connection: Disconnected
-[22:38:11] [Server thread/INFO] (Minecraft) Player150 left the game
-[22:38:11] [Server thread/INFO] (Minecraft) Stopping singleplayer server as player logged out
-[22:38:11] [Server thread/INFO] (Minecraft) Stopping server
-[22:38:11] [Server thread/INFO] (Minecraft) Saving players
-[22:38:11] [Server thread/INFO] (Minecraft) Saving worlds
-[22:38:14] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[stormcph world]'/minecraft:overworld
-[22:38:15] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[stormcph world]'/minecraft:the_end
-[22:38:15] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[stormcph world]'/minecraft:the_nether
-[22:38:15] [Server thread/INFO] (Minecraft) ThreadedAnvilChunkStorage (stormcph world): All chunks are saved
-[22:38:15] [Server thread/INFO] (Minecraft) ThreadedAnvilChunkStorage (DIM1): All chunks are saved
-[22:38:15] [Server thread/INFO] (Minecraft) ThreadedAnvilChunkStorage (DIM-1): All chunks are saved
-[22:38:15] [Server thread/INFO] (Minecraft) ThreadedAnvilChunkStorage: All dimensions are saved
-=======
-[19:22:08] [Render thread/INFO] (Minecraft) Setting user: Player667
-[19:22:08] [Render thread/INFO] (Indigo) [Indigo] Registering Indigo renderer!
-[19:22:09] [Render thread/INFO] (Minecraft) Backend library: LWJGL version 3.3.1 SNAPSHOT
-[19:22:12] [Render thread/INFO] (Minecraft) Narrator library for x64 successfully loaded
-[19:22:12] [Render thread/INFO] (Minecraft) Reloading ResourceManager: vanilla, Fabric Mods (Fabric Registry Sync (v0), Fabric Rendering Data Attachment (v1), Fabric Game Rule API (v1), Fabric Block API (v1), Fabric Content Registries (v0), Fabric Screen API (v1), Fabric Key Binding API (v1), Fabric Data Generation API (v1), Fabric Entity Events (v1), Fabric Models (v0), Fabric Transfer API (v1), Fabric Renderer - Indigo, Fabric Item Group API (v1), Fabric Recipe API (v1), Fabric API Base, Fabric Renderer API (v1), Fabric Convention Tags, Fabric Game Test API (v1), Fabric Message API (v1), Fabric Rendering Fluids (v1), Fabric BlockRenderLayer Registration (v1), Fabric API Lookup API (v1), Fabric Dimensions API (v1), Fabric Events Interaction (v0), Fabric Rendering (v1), Fabric Item API (v1), Fabric Lifecycle Events (v1), Fabric Sound API (v1), Fabric Crash Report Info (v1), Fabric Mining Level API (v1), Fabric Object Builder API (v1), Fabric Particles (v1), Fabric Transitive Access Wideners (v1), Fabric Biome API (v1), Fabric Loader, Lumina, Fabric API, Fabric Loot API (v2), Fabric Screen Handler API (v1), Fabric Resource Loader (v0), Fabric Resource Conditions API (v1), Fabric Client Tags, Fabric Command API (v2), Fabric Networking API (v1))
-[19:22:14] [Realms Notification Availability checker #1/INFO] (Minecraft) Could not authorize you against Realms server: Invalid session id
-[19:22:16] [Render thread/WARN] (Minecraft) Missing sound for event: minecraft:item.brush.brushing
-[19:22:16] [Render thread/WARN] (Minecraft) Missing sound for event: minecraft:item.brush.brush_sand_completed
-[19:22:16] [Render thread/WARN] (Minecraft) Missing sound for event: minecraft:item.goat_horn.play
-[19:22:16] [Render thread/WARN] (Minecraft) Missing sound for event: minecraft:entity.goat.screaming.horn_break
-[19:22:16] [Render thread/WARN] (Minecraft) Missing sound for event: minecraft:music.overworld.cherry_grove
-[19:22:17] [Render thread/INFO] (Minecraft) OpenAL initialized on device OpenAL Soft on Headphones (Realtek(R) Audio)
-[19:22:17] [Render thread/INFO] (Minecraft) Sound engine started
-[19:22:17] [Render thread/INFO] (Minecraft) Created: 1024x512x4 minecraft:textures/atlas/blocks.png-atlas
-[19:22:17] [Render thread/INFO] (Minecraft) Created: 256x256x4 minecraft:textures/atlas/signs.png-atlas
-[19:22:17] [Render thread/INFO] (Minecraft) Created: 512x512x4 minecraft:textures/atlas/shield_patterns.png-atlas
-[19:22:17] [Render thread/INFO] (Minecraft) Created: 512x512x4 minecraft:textures/atlas/banner_patterns.png-atlas
-[19:22:17] [Render thread/INFO] (Minecraft) Created: 1024x1024x4 minecraft:textures/atlas/armor_trims.png-atlas
-[19:22:17] [Render thread/INFO] (Minecraft) Created: 64x64x4 minecraft:textures/atlas/decorated_pot.png-atlas
-[19:22:17] [Render thread/INFO] (Minecraft) Created: 256x256x4 minecraft:textures/atlas/chest.png-atlas
-[19:22:17] [Render thread/INFO] (Minecraft) Created: 512x256x4 minecraft:textures/atlas/shulker_boxes.png-atlas
-[19:22:17] [Render thread/INFO] (Minecraft) Created: 512x256x4 minecraft:textures/atlas/beds.png-atlas
-[19:22:19] [Render thread/WARN] (Minecraft) Shader rendertype_entity_translucent_emissive could not find sampler named Sampler2 in the specified shader program.
-[19:22:19] [Render thread/INFO] (Minecraft) Created: 256x256x0 minecraft:textures/atlas/particles.png-atlas
-[19:22:19] [Render thread/INFO] (Minecraft) Created: 256x256x0 minecraft:textures/atlas/paintings.png-atlas
-[19:22:19] [Render thread/INFO] (Minecraft) Created: 128x128x0 minecraft:textures/atlas/mob_effects.png-atlas
-[19:22:55] [Render thread/INFO] (Minecraft) Loaded 7 recipes
-[19:22:56] [Render thread/INFO] (Minecraft) Loaded 1179 advancements
-[19:22:57] [Render thread/INFO] (BiomeModificationImpl) Applied 0 biome modifications to 0 of 63 new biomes in 3.030 ms
-[19:22:57] [Server thread/INFO] (Minecraft) Starting integrated minecraft server version 1.19.4
-[19:22:57] [Server thread/INFO] (Minecraft) Generating keypair
-[19:22:59] [Server thread/INFO] (Minecraft) Preparing start region for dimension minecraft:overworld
-[19:23:07] [Render thread/INFO] (Minecraft) Preparing spawn area: 0%
-[19:23:07] [Render thread/INFO] (Minecraft) Preparing spawn area: 0%
-[19:23:07] [Render thread/INFO] (Minecraft) Preparing spawn area: 0%
-[19:23:07] [Render thread/INFO] (Minecraft) Preparing spawn area: 0%
-[19:23:07] [Render thread/INFO] (Minecraft) Preparing spawn area: 0%
-[19:23:07] [Render thread/INFO] (Minecraft) Preparing spawn area: 0%
-[19:23:07] [Render thread/INFO] (Minecraft) Preparing spawn area: 0%
-[19:23:07] [Render thread/INFO] (Minecraft) Preparing spawn area: 0%
-[19:23:07] [Render thread/INFO] (Minecraft) Preparing spawn area: 0%
-[19:23:07] [Render thread/INFO] (Minecraft) Preparing spawn area: 0%
-[19:23:07] [Render thread/INFO] (Minecraft) Preparing spawn area: 0%
-[19:23:07] [Render thread/INFO] (Minecraft) Preparing spawn area: 0%
-[19:23:07] [Render thread/INFO] (Minecraft) Preparing spawn area: 0%
-[19:23:07] [Render thread/INFO] (Minecraft) Preparing spawn area: 0%
-[19:23:07] [Render thread/INFO] (Minecraft) Preparing spawn area: 0%
-[19:23:07] [Render thread/INFO] (Minecraft) Preparing spawn area: 0%
-[19:23:07] [Render thread/INFO] (Minecraft) Preparing spawn area: 0%
-[19:23:07] [Render thread/INFO] (Minecraft) Preparing spawn area: 10%
-[19:23:08] [Render thread/INFO] (Minecraft) Preparing spawn area: 37%
-[19:23:08] [Render thread/INFO] (Minecraft) Preparing spawn area: 69%
-[19:23:09] [Render thread/INFO] (Minecraft) Preparing spawn area: 88%
-[19:23:09] [Render thread/INFO] (Minecraft) Time elapsed: 10184 ms
-[19:23:10] [Server thread/INFO] (Minecraft) Changing view distance to 8, from 10
-[19:23:10] [Server thread/INFO] (Minecraft) Changing simulation distance to 7, from 0
-[19:23:12] [Server thread/INFO] (Minecraft) Player667[local:E:6da7e3a4] logged in with entity id 78 at (304.28691426846916, 133.0, -107.2190698333534)
-[19:23:12] [Server thread/INFO] (Minecraft) Player667 joined the game
-[19:23:12] [Server thread/INFO] (Minecraft) Player667 has made the advancement [Ice Bucket Challenge]
-[19:23:13] [Render thread/INFO] (Minecraft) [System] [CHAT] Player667 has made the advancement [Ice Bucket Challenge]
-[19:23:13] [Render thread/INFO] (Minecraft) Loaded 13 advancements
-[19:23:14] [Server thread/INFO] (Minecraft) Saving and pausing game...
-[19:23:14] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[New World]'/minecraft:overworld
-[19:23:15] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[New World]'/minecraft:the_nether
-[19:23:15] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[New World]'/minecraft:the_end
-[19:23:32] [Server thread/INFO] (Minecraft) [Player667: Set own game mode to Creative Mode]
-[19:23:32] [Render thread/INFO] (Minecraft) [System] [CHAT] Set own game mode to Creative Mode
-[19:23:42] [Server thread/INFO] (Minecraft) Saving and pausing game...
-[19:23:42] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[New World]'/minecraft:overworld
-[19:23:42] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[New World]'/minecraft:the_nether
-[19:23:42] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[New World]'/minecraft:the_end
-[19:23:44] [Server thread/INFO] (Minecraft) Saving and pausing game...
-[19:23:44] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[New World]'/minecraft:overworld
-[19:23:44] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[New World]'/minecraft:the_nether
-[19:23:44] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[New World]'/minecraft:the_end
-[19:23:50] [Server thread/INFO] (Minecraft) Saving and pausing game...
-[19:23:50] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[New World]'/minecraft:overworld
-[19:23:50] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[New World]'/minecraft:the_nether
-[19:23:50] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[New World]'/minecraft:the_end
-[19:24:05] [Server thread/INFO] (Minecraft) Saving and pausing game...
-[19:24:05] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[New World]'/minecraft:overworld
-[19:24:05] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[New World]'/minecraft:the_nether
-[19:24:05] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[New World]'/minecraft:the_end
-[19:24:34] [Server thread/INFO] (Minecraft) Saving and pausing game...
-[19:24:34] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[New World]'/minecraft:overworld
-[19:24:34] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[New World]'/minecraft:the_nether
-[19:24:34] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[New World]'/minecraft:the_end
-[19:24:43] [Server thread/INFO] (Minecraft) Saving and pausing game...
-[19:24:43] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[New World]'/minecraft:overworld
-[19:24:43] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[New World]'/minecraft:the_nether
-[19:24:43] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[New World]'/minecraft:the_end
-[19:24:56] [Server thread/INFO] (Minecraft) Saving and pausing game...
-[19:24:56] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[New World]'/minecraft:overworld
-[19:24:56] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[New World]'/minecraft:the_nether
-[19:24:56] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[New World]'/minecraft:the_end
-[19:25:02] [Server thread/INFO] (Minecraft) Saving and pausing game...
-[19:25:02] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[New World]'/minecraft:overworld
-[19:25:02] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[New World]'/minecraft:the_nether
-[19:25:02] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[New World]'/minecraft:the_end
-[19:25:04] [Server thread/INFO] (Minecraft) Saving and pausing game...
-[19:25:04] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[New World]'/minecraft:overworld
-[19:25:04] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[New World]'/minecraft:the_nether
-[19:25:04] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[New World]'/minecraft:the_end
-[19:25:50] [Server thread/INFO] (Minecraft) Saving and pausing game...
-[19:25:50] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[New World]'/minecraft:overworld
-[19:25:50] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[New World]'/minecraft:the_nether
-[19:25:50] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[New World]'/minecraft:the_end
-[19:25:51] [Server thread/INFO] (Minecraft) Saving and pausing game...
-[19:25:51] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[New World]'/minecraft:overworld
-[19:25:51] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[New World]'/minecraft:the_nether
-[19:25:51] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[New World]'/minecraft:the_end
-[19:26:44] [Server thread/INFO] (Minecraft) Saving and pausing game...
-[19:26:44] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[New World]'/minecraft:overworld
-[19:26:44] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[New World]'/minecraft:the_nether
-[19:26:44] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[New World]'/minecraft:the_end
-[19:27:16] [Server thread/INFO] (Minecraft) Saving and pausing game...
-[19:27:16] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[New World]'/minecraft:overworld
-[19:27:16] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[New World]'/minecraft:the_nether
-[19:27:16] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[New World]'/minecraft:the_end
-[19:27:31] [Server thread/INFO] (Minecraft) Saving and pausing game...
-[19:27:31] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[New World]'/minecraft:overworld
-[19:27:31] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[New World]'/minecraft:the_nether
-[19:27:31] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[New World]'/minecraft:the_end
-[19:27:36] [Server thread/INFO] (Minecraft) Saving and pausing game...
-[19:27:36] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[New World]'/minecraft:overworld
-[19:27:36] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[New World]'/minecraft:the_nether
-[19:27:36] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[New World]'/minecraft:the_end
-[19:27:41] [Server thread/INFO] (Minecraft) Saving and pausing game...
-[19:27:41] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[New World]'/minecraft:overworld
-[19:27:41] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[New World]'/minecraft:the_nether
-[19:27:41] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[New World]'/minecraft:the_end
-[19:27:47] [Server thread/INFO] (Minecraft) Saving and pausing game...
-[19:27:47] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[New World]'/minecraft:overworld
-[19:27:47] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[New World]'/minecraft:the_nether
-[19:27:47] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[New World]'/minecraft:the_end
-[19:27:59] [Server thread/INFO] (Minecraft) Saving and pausing game...
-[19:27:59] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[New World]'/minecraft:overworld
-[19:27:59] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[New World]'/minecraft:the_nether
-[19:27:59] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[New World]'/minecraft:the_end
-[19:28:06] [Server thread/INFO] (Minecraft) Saving and pausing game...
-[19:28:06] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[New World]'/minecraft:overworld
-[19:28:06] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[New World]'/minecraft:the_nether
-[19:28:06] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[New World]'/minecraft:the_end
-[19:28:59] [Server thread/INFO] (Minecraft) Saving and pausing game...
-[19:28:59] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[New World]'/minecraft:overworld
-[19:28:59] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[New World]'/minecraft:the_nether
-[19:28:59] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[New World]'/minecraft:the_end
-[19:29:05] [Server thread/INFO] (Minecraft) Saving and pausing game...
-[19:29:05] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[New World]'/minecraft:overworld
-[19:29:05] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[New World]'/minecraft:the_nether
-[19:29:05] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[New World]'/minecraft:the_end
-[19:29:22] [Server thread/INFO] (Minecraft) Saving and pausing game...
-[19:29:22] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[New World]'/minecraft:overworld
-[19:29:22] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[New World]'/minecraft:the_nether
-[19:29:22] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[New World]'/minecraft:the_end
-[19:29:33] [Server thread/INFO] (Minecraft) Saving and pausing game...
-[19:29:33] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[New World]'/minecraft:overworld
-[19:29:33] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[New World]'/minecraft:the_nether
-[19:29:33] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[New World]'/minecraft:the_end
-[19:29:38] [Server thread/INFO] (Minecraft) Saving and pausing game...
-[19:29:38] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[New World]'/minecraft:overworld
-[19:29:39] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[New World]'/minecraft:the_nether
-[19:29:39] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[New World]'/minecraft:the_end
-[19:30:07] [Render thread/INFO] (Minecraft) [System] [CHAT] Command set: /summon minecraft:wither ~ ~10 ~
-[19:30:14] [Server thread/INFO] (Minecraft) [@: Summoned new Wither]
-[19:30:14] [Render thread/INFO] (Minecraft) [System] [CHAT] [@: Summoned new Wither]
-[19:30:14] [Server thread/INFO] (Minecraft) [@: Summoned new Wither]
-[19:30:14] [Render thread/INFO] (Minecraft) [System] [CHAT] [@: Summoned new Wither]
-[19:30:14] [Server thread/INFO] (Minecraft) [@: Summoned new Wither]
-[19:30:14] [Render thread/INFO] (Minecraft) [System] [CHAT] [@: Summoned new Wither]
-[19:30:14] [Server thread/INFO] (Minecraft) [@: Summoned new Wither]
-[19:30:14] [Render thread/INFO] (Minecraft) [System] [CHAT] [@: Summoned new Wither]
-[19:30:14] [Server thread/INFO] (Minecraft) [@: Summoned new Wither]
-[19:30:14] [Render thread/INFO] (Minecraft) [System] [CHAT] [@: Summoned new Wither]
-[19:30:14] [Server thread/INFO] (Minecraft) [@: Summoned new Wither]
-[19:30:14] [Render thread/INFO] (Minecraft) [System] [CHAT] [@: Summoned new Wither]
-[19:30:14] [Server thread/INFO] (Minecraft) [@: Summoned new Wither]
-[19:30:14] [Render thread/INFO] (Minecraft) [System] [CHAT] [@: Summoned new Wither]
-[19:30:14] [Server thread/INFO] (Minecraft) [@: Summoned new Wither]
-[19:30:14] [Render thread/INFO] (Minecraft) [System] [CHAT] [@: Summoned new Wither]
-[19:30:14] [Server thread/INFO] (Minecraft) [@: Summoned new Wither]
-[19:30:14] [Render thread/INFO] (Minecraft) [System] [CHAT] [@: Summoned new Wither]
-[19:30:14] [Server thread/INFO] (Minecraft) [@: Summoned new Wither]
-[19:30:14] [Render thread/INFO] (Minecraft) [System] [CHAT] [@: Summoned new Wither]
-[19:30:14] [Server thread/INFO] (Minecraft) [@: Summoned new Wither]
-[19:30:14] [Render thread/INFO] (Minecraft) [System] [CHAT] [@: Summoned new Wither]
-[19:30:14] [Server thread/INFO] (Minecraft) [@: Summoned new Wither]
-[19:30:14] [Render thread/INFO] (Minecraft) [System] [CHAT] [@: Summoned new Wither]
-[19:30:15] [Server thread/INFO] (Minecraft) [@: Summoned new Wither]
-[19:30:15] [Render thread/INFO] (Minecraft) [System] [CHAT] [@: Summoned new Wither]
-[19:30:15] [Server thread/INFO] (Minecraft) [@: Summoned new Wither]
-[19:30:15] [Render thread/INFO] (Minecraft) [System] [CHAT] [@: Summoned new Wither]
-[19:30:15] [Server thread/INFO] (Minecraft) [@: Summoned new Wither]
-[19:30:15] [Render thread/INFO] (Minecraft) [System] [CHAT] [@: Summoned new Wither]
-[19:30:15] [Server thread/INFO] (Minecraft) [@: Summoned new Wither]
-[19:30:15] [Render thread/INFO] (Minecraft) [System] [CHAT] [@: Summoned new Wither]
-[19:30:15] [Server thread/INFO] (Minecraft) [@: Summoned new Wither]
-[19:30:15] [Render thread/INFO] (Minecraft) [System] [CHAT] [@: Summoned new Wither]
-[19:30:15] [Server thread/INFO] (Minecraft) [@: Summoned new Wither]
-[19:30:15] [Render thread/INFO] (Minecraft) [System] [CHAT] [@: Summoned new Wither]
-[19:30:15] [Server thread/INFO] (Minecraft) [@: Summoned new Wither]
-[19:30:15] [Render thread/INFO] (Minecraft) [System] [CHAT] [@: Summoned new Wither]
-[19:30:15] [Server thread/INFO] (Minecraft) [@: Summoned new Wither]
-[19:30:15] [Render thread/INFO] (Minecraft) [System] [CHAT] [@: Summoned new Wither]
-[19:30:15] [Server thread/INFO] (Minecraft) [@: Summoned new Wither]
-[19:30:15] [Render thread/INFO] (Minecraft) [System] [CHAT] [@: Summoned new Wither]
-[19:30:15] [Server thread/INFO] (Minecraft) [@: Summoned new Wither]
-[19:30:15] [Render thread/INFO] (Minecraft) [System] [CHAT] [@: Summoned new Wither]
-[19:30:15] [Server thread/INFO] (Minecraft) [@: Summoned new Wither]
-[19:30:15] [Render thread/INFO] (Minecraft) [System] [CHAT] [@: Summoned new Wither]
-[19:30:15] [Server thread/INFO] (Minecraft) [@: Summoned new Wither]
-[19:30:15] [Render thread/INFO] (Minecraft) [System] [CHAT] [@: Summoned new Wither]
-[19:30:15] [Server thread/INFO] (Minecraft) [@: Summoned new Wither]
-[19:30:15] [Render thread/INFO] (Minecraft) [System] [CHAT] [@: Summoned new Wither]
-[19:30:15] [Server thread/INFO] (Minecraft) [@: Summoned new Wither]
-[19:30:15] [Render thread/INFO] (Minecraft) [System] [CHAT] [@: Summoned new Wither]
-[19:30:15] [Server thread/INFO] (Minecraft) [@: Summoned new Wither]
-[19:30:15] [Render thread/INFO] (Minecraft) [System] [CHAT] [@: Summoned new Wither]
-[19:30:15] [Server thread/INFO] (Minecraft) [@: Summoned new Wither]
-[19:30:15] [Render thread/INFO] (Minecraft) [System] [CHAT] [@: Summoned new Wither]
-[19:30:15] [Server thread/INFO] (Minecraft) [@: Summoned new Wither]
-[19:30:15] [Render thread/INFO] (Minecraft) [System] [CHAT] [@: Summoned new Wither]
-[19:30:15] [Server thread/INFO] (Minecraft) [@: Summoned new Wither]
-[19:30:15] [Render thread/INFO] (Minecraft) [System] [CHAT] [@: Summoned new Wither]
-[19:30:16] [Server thread/INFO] (Minecraft) [@: Summoned new Wither]
-[19:30:16] [Render thread/INFO] (Minecraft) [System] [CHAT] [@: Summoned new Wither]
-[19:30:16] [Server thread/INFO] (Minecraft) [@: Summoned new Wither]
-[19:30:16] [Render thread/INFO] (Minecraft) [System] [CHAT] [@: Summoned new Wither]
-[19:30:16] [Server thread/INFO] (Minecraft) [@: Summoned new Wither]
-[19:30:16] [Render thread/INFO] (Minecraft) [System] [CHAT] [@: Summoned new Wither]
-[19:30:16] [Server thread/INFO] (Minecraft) [@: Summoned new Wither]
-[19:30:16] [Render thread/INFO] (Minecraft) [System] [CHAT] [@: Summoned new Wither]
-[19:30:16] [Server thread/INFO] (Minecraft) [@: Summoned new Wither]
-[19:30:16] [Render thread/INFO] (Minecraft) [System] [CHAT] [@: Summoned new Wither]
-[19:30:16] [Server thread/INFO] (Minecraft) [@: Summoned new Wither]
-[19:30:16] [Render thread/INFO] (Minecraft) [System] [CHAT] [@: Summoned new Wither]
-[19:30:16] [Server thread/INFO] (Minecraft) [@: Summoned new Wither]
-[19:30:16] [Render thread/INFO] (Minecraft) [System] [CHAT] [@: Summoned new Wither]
-[19:30:16] [Server thread/INFO] (Minecraft) [@: Summoned new Wither]
-[19:30:16] [Render thread/INFO] (Minecraft) [System] [CHAT] [@: Summoned new Wither]
-[19:30:16] [Server thread/INFO] (Minecraft) [@: Summoned new Wither]
-[19:30:16] [Render thread/INFO] (Minecraft) [System] [CHAT] [@: Summoned new Wither]
-[19:30:16] [Server thread/INFO] (Minecraft) [@: Summoned new Wither]
-[19:30:16] [Render thread/INFO] (Minecraft) [System] [CHAT] [@: Summoned new Wither]
-[19:30:16] [Server thread/INFO] (Minecraft) [@: Summoned new Wither]
-[19:30:16] [Render thread/INFO] (Minecraft) [System] [CHAT] [@: Summoned new Wither]
-[19:30:16] [Server thread/INFO] (Minecraft) [@: Summoned new Wither]
-[19:30:16] [Render thread/INFO] (Minecraft) [System] [CHAT] [@: Summoned new Wither]
-[19:30:16] [Server thread/INFO] (Minecraft) [@: Summoned new Wither]
-[19:30:16] [Render thread/INFO] (Minecraft) [System] [CHAT] [@: Summoned new Wither]
-[19:30:16] [Server thread/INFO] (Minecraft) [@: Summoned new Wither]
-[19:30:16] [Render thread/INFO] (Minecraft) [System] [CHAT] [@: Summoned new Wither]
-[19:30:16] [Server thread/INFO] (Minecraft) [@: Summoned new Wither]
-[19:30:16] [Render thread/INFO] (Minecraft) [System] [CHAT] [@: Summoned new Wither]
-[19:30:16] [Server thread/INFO] (Minecraft) [@: Summoned new Wither]
-[19:30:16] [Render thread/INFO] (Minecraft) [System] [CHAT] [@: Summoned new Wither]
-[19:30:16] [Server thread/INFO] (Minecraft) [@: Summoned new Wither]
-[19:30:16] [Render thread/INFO] (Minecraft) [System] [CHAT] [@: Summoned new Wither]
-[19:30:16] [Server thread/INFO] (Minecraft) [@: Summoned new Wither]
-[19:30:16] [Render thread/INFO] (Minecraft) [System] [CHAT] [@: Summoned new Wither]
-[19:30:16] [Server thread/INFO] (Minecraft) [@: Summoned new Wither]
-[19:30:16] [Render thread/INFO] (Minecraft) [System] [CHAT] [@: Summoned new Wither]
-[19:30:16] [Server thread/INFO] (Minecraft) [@: Summoned new Wither]
-[19:30:16] [Render thread/INFO] (Minecraft) [System] [CHAT] [@: Summoned new Wither]
-[19:30:17] [Server thread/INFO] (Minecraft) [@: Summoned new Wither]
-[19:30:17] [Render thread/INFO] (Minecraft) [System] [CHAT] [@: Summoned new Wither]
-[19:30:17] [Server thread/INFO] (Minecraft) [@: Summoned new Wither]
-[19:30:17] [Render thread/INFO] (Minecraft) [System] [CHAT] [@: Summoned new Wither]
-[19:30:17] [Server thread/INFO] (Minecraft) [@: Summoned new Wither]
-[19:30:17] [Render thread/INFO] (Minecraft) [System] [CHAT] [@: Summoned new Wither]
-[19:30:17] [Server thread/INFO] (Minecraft) [@: Summoned new Wither]
-[19:30:17] [Render thread/INFO] (Minecraft) [System] [CHAT] [@: Summoned new Wither]
-[19:30:17] [Server thread/INFO] (Minecraft) [@: Summoned new Wither]
-[19:30:17] [Render thread/INFO] (Minecraft) [System] [CHAT] [@: Summoned new Wither]
-[19:30:17] [Server thread/INFO] (Minecraft) [@: Summoned new Wither]
-[19:30:17] [Render thread/INFO] (Minecraft) [System] [CHAT] [@: Summoned new Wither]
-[19:30:17] [Server thread/INFO] (Minecraft) [@: Summoned new Wither]
-[19:30:17] [Render thread/INFO] (Minecraft) [System] [CHAT] [@: Summoned new Wither]
-[19:30:17] [Server thread/INFO] (Minecraft) [@: Summoned new Wither]
-[19:30:17] [Render thread/INFO] (Minecraft) [System] [CHAT] [@: Summoned new Wither]
-[19:30:17] [Server thread/INFO] (Minecraft) [@: Summoned new Wither]
-[19:30:17] [Render thread/INFO] (Minecraft) [System] [CHAT] [@: Summoned new Wither]
-[19:30:17] [Server thread/INFO] (Minecraft) [@: Summoned new Wither]
-[19:30:17] [Render thread/INFO] (Minecraft) [System] [CHAT] [@: Summoned new Wither]
-[19:30:17] [Server thread/INFO] (Minecraft) [@: Summoned new Wither]
-[19:30:17] [Render thread/INFO] (Minecraft) [System] [CHAT] [@: Summoned new Wither]
-[19:30:17] [Server thread/INFO] (Minecraft) [@: Summoned new Wither]
-[19:30:17] [Render thread/INFO] (Minecraft) [System] [CHAT] [@: Summoned new Wither]
-[19:30:17] [Server thread/INFO] (Minecraft) [@: Summoned new Wither]
-[19:30:17] [Render thread/INFO] (Minecraft) [System] [CHAT] [@: Summoned new Wither]
-[19:30:17] [Server thread/INFO] (Minecraft) [@: Summoned new Wither]
-[19:30:17] [Render thread/INFO] (Minecraft) [System] [CHAT] [@: Summoned new Wither]
-[19:30:17] [Server thread/INFO] (Minecraft) [@: Summoned new Wither]
-[19:30:17] [Render thread/INFO] (Minecraft) [System] [CHAT] [@: Summoned new Wither]
-[19:30:20] [Server thread/INFO] (Minecraft) [@: Summoned new Wither]
-[19:30:20] [Render thread/INFO] (Minecraft) [System] [CHAT] [@: Summoned new Wither]
-[19:30:20] [Server thread/INFO] (Minecraft) [@: Summoned new Wither]
-[19:30:20] [Render thread/INFO] (Minecraft) [System] [CHAT] [@: Summoned new Wither]
-[19:30:20] [Server thread/INFO] (Minecraft) [@: Summoned new Wither]
-[19:30:20] [Render thread/INFO] (Minecraft) [System] [CHAT] [@: Summoned new Wither]
-[19:30:20] [Server thread/INFO] (Minecraft) [@: Summoned new Wither]
-[19:30:20] [Render thread/INFO] (Minecraft) [System] [CHAT] [@: Summoned new Wither]
-[19:30:20] [Server thread/INFO] (Minecraft) [@: Summoned new Wither]
-[19:30:20] [Render thread/INFO] (Minecraft) [System] [CHAT] [@: Summoned new Wither]
-[19:30:20] [Server thread/INFO] (Minecraft) [@: Summoned new Wither]
-[19:30:20] [Render thread/INFO] (Minecraft) [System] [CHAT] [@: Summoned new Wither]
-[19:30:20] [Server thread/INFO] (Minecraft) [@: Summoned new Wither]
-[19:30:20] [Render thread/INFO] (Minecraft) [System] [CHAT] [@: Summoned new Wither]
-[19:30:20] [Server thread/INFO] (Minecraft) [@: Summoned new Wither]
-[19:30:20] [Render thread/INFO] (Minecraft) [System] [CHAT] [@: Summoned new Wither]
-[19:30:20] [Server thread/INFO] (Minecraft) [@: Summoned new Wither]
-[19:30:20] [Render thread/INFO] (Minecraft) [System] [CHAT] [@: Summoned new Wither]
-[19:30:20] [Server thread/INFO] (Minecraft) [@: Summoned new Wither]
-[19:30:20] [Render thread/INFO] (Minecraft) [System] [CHAT] [@: Summoned new Wither]
-[19:30:20] [Server thread/INFO] (Minecraft) [@: Summoned new Wither]
-[19:30:20] [Render thread/INFO] (Minecraft) [System] [CHAT] [@: Summoned new Wither]
-[19:30:20] [Server thread/INFO] (Minecraft) [@: Summoned new Wither]
-[19:30:20] [Render thread/INFO] (Minecraft) [System] [CHAT] [@: Summoned new Wither]
-[19:30:20] [Server thread/INFO] (Minecraft) [@: Summoned new Wither]
-[19:30:20] [Render thread/INFO] (Minecraft) [System] [CHAT] [@: Summoned new Wither]
-[19:30:20] [Server thread/INFO] (Minecraft) [@: Summoned new Wither]
-[19:30:20] [Render thread/INFO] (Minecraft) [System] [CHAT] [@: Summoned new Wither]
-[19:30:20] [Server thread/INFO] (Minecraft) [@: Summoned new Wither]
-[19:30:20] [Render thread/INFO] (Minecraft) [System] [CHAT] [@: Summoned new Wither]
-[19:30:20] [Server thread/INFO] (Minecraft) [@: Summoned new Wither]
-[19:30:20] [Render thread/INFO] (Minecraft) [System] [CHAT] [@: Summoned new Wither]
-[19:30:20] [Server thread/INFO] (Minecraft) [@: Summoned new Wither]
-[19:30:21] [Render thread/INFO] (Minecraft) [System] [CHAT] [@: Summoned new Wither]
-[19:30:21] [Server thread/INFO] (Minecraft) [@: Summoned new Wither]
-[19:30:21] [Render thread/INFO] (Minecraft) [System] [CHAT] [@: Summoned new Wither]
-[19:30:21] [Server thread/INFO] (Minecraft) [@: Summoned new Wither]
-[19:30:21] [Render thread/INFO] (Minecraft) [System] [CHAT] [@: Summoned new Wither]
-[19:30:21] [Server thread/INFO] (Minecraft) [@: Summoned new Wither]
-[19:30:21] [Render thread/INFO] (Minecraft) [System] [CHAT] [@: Summoned new Wither]
-[19:30:21] [Server thread/INFO] (Minecraft) [@: Summoned new Wither]
-[19:30:21] [Render thread/INFO] (Minecraft) [System] [CHAT] [@: Summoned new Wither]
-[19:30:21] [Server thread/INFO] (Minecraft) [@: Summoned new Wither]
-[19:30:21] [Render thread/INFO] (Minecraft) [System] [CHAT] [@: Summoned new Wither]
-[19:30:21] [Server thread/INFO] (Minecraft) [@: Summoned new Wither]
-[19:30:21] [Render thread/INFO] (Minecraft) [System] [CHAT] [@: Summoned new Wither]
-[19:30:21] [Server thread/INFO] (Minecraft) [@: Summoned new Wither]
-[19:30:21] [Render thread/INFO] (Minecraft) [System] [CHAT] [@: Summoned new Wither]
-[19:30:21] [Server thread/INFO] (Minecraft) [@: Summoned new Wither]
-[19:30:21] [Render thread/INFO] (Minecraft) [System] [CHAT] [@: Summoned new Wither]
-[19:30:21] [Server thread/INFO] (Minecraft) [@: Summoned new Wither]
-[19:30:21] [Render thread/INFO] (Minecraft) [System] [CHAT] [@: Summoned new Wither]
-[19:30:21] [Server thread/INFO] (Minecraft) [@: Summoned new Wither]
-[19:30:21] [Render thread/INFO] (Minecraft) [System] [CHAT] [@: Summoned new Wither]
-[19:30:21] [Server thread/INFO] (Minecraft) [@: Summoned new Wither]
-[19:30:21] [Render thread/INFO] (Minecraft) [System] [CHAT] [@: Summoned new Wither]
-[19:30:21] [Server thread/INFO] (Minecraft) [@: Summoned new Wither]
-[19:30:21] [Render thread/INFO] (Minecraft) [System] [CHAT] [@: Summoned new Wither]
-[19:30:21] [Server thread/INFO] (Minecraft) [@: Summoned new Wither]
-[19:30:21] [Render thread/INFO] (Minecraft) [System] [CHAT] [@: Summoned new Wither]
-[19:30:21] [Server thread/INFO] (Minecraft) [@: Summoned new Wither]
-[19:30:21] [Render thread/INFO] (Minecraft) [System] [CHAT] [@: Summoned new Wither]
-[19:30:21] [Server thread/INFO] (Minecraft) [@: Summoned new Wither]
-[19:30:21] [Render thread/INFO] (Minecraft) [System] [CHAT] [@: Summoned new Wither]
-[19:30:21] [Server thread/INFO] (Minecraft) [@: Summoned new Wither]
-[19:30:21] [Render thread/INFO] (Minecraft) [System] [CHAT] [@: Summoned new Wither]
-[19:30:21] [Server thread/INFO] (Minecraft) [@: Summoned new Wither]
-[19:30:21] [Render thread/INFO] (Minecraft) [System] [CHAT] [@: Summoned new Wither]
-[19:30:21] [Server thread/INFO] (Minecraft) [@: Summoned new Wither]
-[19:30:21] [Render thread/INFO] (Minecraft) [System] [CHAT] [@: Summoned new Wither]
-[19:30:21] [Server thread/INFO] (Minecraft) [@: Summoned new Wither]
-[19:30:21] [Render thread/INFO] (Minecraft) [System] [CHAT] [@: Summoned new Wither]
-[19:30:21] [Server thread/INFO] (Minecraft) [@: Summoned new Wither]
-[19:30:21] [Render thread/INFO] (Minecraft) [System] [CHAT] [@: Summoned new Wither]
-[19:30:22] [Server thread/INFO] (Minecraft) [@: Summoned new Wither]
-[19:30:22] [Render thread/INFO] (Minecraft) [System] [CHAT] [@: Summoned new Wither]
-[19:30:22] [Server thread/INFO] (Minecraft) [@: Summoned new Wither]
-[19:30:22] [Render thread/INFO] (Minecraft) [System] [CHAT] [@: Summoned new Wither]
-[19:30:22] [Server thread/INFO] (Minecraft) [@: Summoned new Wither]
-[19:30:22] [Render thread/INFO] (Minecraft) [System] [CHAT] [@: Summoned new Wither]
-[19:30:22] [Server thread/INFO] (Minecraft) [@: Summoned new Wither]
-[19:30:22] [Render thread/INFO] (Minecraft) [System] [CHAT] [@: Summoned new Wither]
-[19:30:22] [Server thread/INFO] (Minecraft) [@: Summoned new Wither]
-[19:30:22] [Render thread/INFO] (Minecraft) [System] [CHAT] [@: Summoned new Wither]
-[19:30:22] [Server thread/INFO] (Minecraft) [@: Summoned new Wither]
-[19:30:22] [Render thread/INFO] (Minecraft) [System] [CHAT] [@: Summoned new Wither]
-[19:30:22] [Server thread/INFO] (Minecraft) [@: Summoned new Wither]
-[19:30:22] [Render thread/INFO] (Minecraft) [System] [CHAT] [@: Summoned new Wither]
-[19:30:22] [Server thread/INFO] (Minecraft) [@: Summoned new Wither]
-[19:30:22] [Render thread/INFO] (Minecraft) [System] [CHAT] [@: Summoned new Wither]
-[19:30:22] [Server thread/INFO] (Minecraft) [@: Summoned new Wither]
-[19:30:22] [Render thread/INFO] (Minecraft) [System] [CHAT] [@: Summoned new Wither]
-[19:30:22] [Server thread/INFO] (Minecraft) [@: Summoned new Wither]
-[19:30:22] [Render thread/INFO] (Minecraft) [System] [CHAT] [@: Summoned new Wither]
-[19:30:22] [Server thread/INFO] (Minecraft) [@: Summoned new Wither]
-[19:30:22] [Render thread/INFO] (Minecraft) [System] [CHAT] [@: Summoned new Wither]
-[19:30:22] [Server thread/INFO] (Minecraft) [@: Summoned new Wither]
-[19:30:22] [Render thread/INFO] (Minecraft) [System] [CHAT] [@: Summoned new Wither]
-[19:30:22] [Server thread/INFO] (Minecraft) [@: Summoned new Wither]
-[19:30:22] [Server thread/INFO] (Minecraft) [@: Summoned new Wither]
-[19:30:22] [Render thread/INFO] (Minecraft) [System] [CHAT] [@: Summoned new Wither]
-[19:30:22] [Render thread/INFO] (Minecraft) [System] [CHAT] [@: Summoned new Wither]
-[19:30:22] [Server thread/INFO] (Minecraft) [@: Summoned new Wither]
-[19:30:22] [Render thread/INFO] (Minecraft) [System] [CHAT] [@: Summoned new Wither]
-[19:30:22] [Server thread/INFO] (Minecraft) [@: Summoned new Wither]
-[19:30:22] [Render thread/INFO] (Minecraft) [System] [CHAT] [@: Summoned new Wither]
-[19:30:22] [Server thread/INFO] (Minecraft) [@: Summoned new Wither]
-[19:30:22] [Render thread/INFO] (Minecraft) [System] [CHAT] [@: Summoned new Wither]
-[19:30:22] [Server thread/INFO] (Minecraft) [@: Summoned new Wither]
-[19:30:22] [Render thread/INFO] (Minecraft) [System] [CHAT] [@: Summoned new Wither]
-[19:30:22] [Server thread/INFO] (Minecraft) [@: Summoned new Wither]
-[19:30:22] [Render thread/INFO] (Minecraft) [System] [CHAT] [@: Summoned new Wither]
-[19:30:22] [Server thread/INFO] (Minecraft) [@: Summoned new Wither]
-[19:30:23] [Render thread/INFO] (Minecraft) [System] [CHAT] [@: Summoned new Wither]
-[19:30:23] [Server thread/INFO] (Minecraft) [@: Summoned new Wither]
-[19:30:23] [Render thread/INFO] (Minecraft) [System] [CHAT] [@: Summoned new Wither]
-[19:30:23] [Server thread/INFO] (Minecraft) [@: Summoned new Wither]
-[19:30:23] [Render thread/INFO] (Minecraft) [System] [CHAT] [@: Summoned new Wither]
-[19:30:23] [Server thread/INFO] (Minecraft) [@: Summoned new Wither]
-[19:30:23] [Render thread/INFO] (Minecraft) [System] [CHAT] [@: Summoned new Wither]
-[19:30:23] [Server thread/INFO] (Minecraft) [@: Summoned new Wither]
-[19:30:23] [Render thread/INFO] (Minecraft) [System] [CHAT] [@: Summoned new Wither]
-[19:30:23] [Server thread/INFO] (Minecraft) [@: Summoned new Wither]
-[19:30:23] [Render thread/INFO] (Minecraft) [System] [CHAT] [@: Summoned new Wither]
-[19:30:23] [Server thread/INFO] (Minecraft) [@: Summoned new Wither]
-[19:30:23] [Render thread/INFO] (Minecraft) [System] [CHAT] [@: Summoned new Wither]
-[19:30:23] [Server thread/INFO] (Minecraft) [@: Summoned new Wither]
-[19:30:23] [Render thread/INFO] (Minecraft) [System] [CHAT] [@: Summoned new Wither]
-[19:30:23] [Server thread/INFO] (Minecraft) [@: Summoned new Wither]
-[19:30:23] [Render thread/INFO] (Minecraft) [System] [CHAT] [@: Summoned new Wither]
-[19:30:23] [Server thread/INFO] (Minecraft) [@: Summoned new Wither]
-[19:30:23] [Render thread/INFO] (Minecraft) [System] [CHAT] [@: Summoned new Wither]
-[19:30:23] [Server thread/INFO] (Minecraft) [@: Summoned new Wither]
-[19:30:23] [Render thread/INFO] (Minecraft) [System] [CHAT] [@: Summoned new Wither]
-[19:30:23] [Server thread/INFO] (Minecraft) [@: Summoned new Wither]
-[19:30:23] [Render thread/INFO] (Minecraft) [System] [CHAT] [@: Summoned new Wither]
-[19:30:23] [Server thread/INFO] (Minecraft) [@: Summoned new Wither]
-[19:30:23] [Render thread/INFO] (Minecraft) [System] [CHAT] [@: Summoned new Wither]
-[19:30:23] [Server thread/INFO] (Minecraft) [@: Summoned new Wither]
-[19:30:23] [Render thread/INFO] (Minecraft) [System] [CHAT] [@: Summoned new Wither]
-[19:30:23] [Server thread/INFO] (Minecraft) [@: Summoned new Wither]
-[19:30:23] [Render thread/INFO] (Minecraft) [System] [CHAT] [@: Summoned new Wither]
-[19:30:23] [Server thread/INFO] (Minecraft) [@: Summoned new Wither]
-[19:30:23] [Render thread/INFO] (Minecraft) [System] [CHAT] [@: Summoned new Wither]
-[19:30:23] [Server thread/INFO] (Minecraft) [@: Summoned new Wither]
-[19:30:23] [Render thread/INFO] (Minecraft) [System] [CHAT] [@: Summoned new Wither]
-[19:30:23] [Server thread/INFO] (Minecraft) [@: Summoned new Wither]
-[19:30:23] [Render thread/INFO] (Minecraft) [System] [CHAT] [@: Summoned new Wither]
-[19:30:23] [Server thread/INFO] (Minecraft) [@: Summoned new Wither]
-[19:30:23] [Render thread/INFO] (Minecraft) [System] [CHAT] [@: Summoned new Wither]
-[19:30:23] [Server thread/INFO] (Minecraft) [@: Summoned new Wither]
-[19:30:23] [Render thread/INFO] (Minecraft) [System] [CHAT] [@: Summoned new Wither]
-[19:30:23] [Server thread/INFO] (Minecraft) [@: Summoned new Wither]
-[19:30:23] [Render thread/INFO] (Minecraft) [System] [CHAT] [@: Summoned new Wither]
-[19:30:25] [Server thread/INFO] (Minecraft) Saving and pausing game...
-[19:30:25] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[New World]'/minecraft:overworld
-[19:30:25] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[New World]'/minecraft:the_nether
-[19:30:25] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[New World]'/minecraft:the_end
-[19:30:25] [Server thread/INFO] (Minecraft) Player667 lost connection: Disconnected
-[19:30:25] [Server thread/INFO] (Minecraft) Player667 left the game
-[19:30:25] [Server thread/INFO] (Minecraft) Stopping singleplayer server as player logged out
-[19:30:26] [Server thread/INFO] (Minecraft) Stopping server
-[19:30:26] [Server thread/INFO] (Minecraft) Saving players
-[19:30:26] [Server thread/INFO] (Minecraft) Saving worlds
-[19:30:28] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[New World]'/minecraft:overworld
-[19:30:28] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[New World]'/minecraft:the_nether
-[19:30:28] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[New World]'/minecraft:the_end
-[19:30:28] [Server thread/INFO] (Minecraft) ThreadedAnvilChunkStorage (New World): All chunks are saved
-[19:30:28] [Server thread/INFO] (Minecraft) ThreadedAnvilChunkStorage (DIM-1): All chunks are saved
-[19:30:28] [Server thread/INFO] (Minecraft) ThreadedAnvilChunkStorage (DIM1): All chunks are saved
-[19:30:28] [Server thread/INFO] (Minecraft) ThreadedAnvilChunkStorage: All dimensions are saved
-[19:30:29] [Render thread/INFO] (Minecraft) Stopping!
->>>>>>> 80e223fd708607331b2468da429aa8dd5303b9f0
+[10:32:53] [Render thread/INFO] (Minecraft) Setting user: Player221
+[10:32:54] [Render thread/INFO] (Indigo) [Indigo] Registering Indigo renderer!
+[10:32:54] [Render thread/INFO] (Minecraft) Backend library: LWJGL version 3.3.1 SNAPSHOT
+[10:32:56] [Render thread/INFO] (Minecraft) Narrator library for x64 successfully loaded
+[10:32:56] [Render thread/INFO] (Minecraft) Reloading ResourceManager: vanilla, Fabric Mods (Fabric Item API (v1), Fabric Screen Handler API (v1), Fabric Data Generation API (v1), Fabric Transfer API (v1), Fabric Dimensions API (v1), Fabric Entity Events (v1), Fabric Screen API (v1), Fabric Recipe API (v1), Fabric Game Rule API (v1), Fabric Resource Loader (v0), Fabric Loader, Fabric Events Interaction (v0), Fabric Command API (v2), Fabric Biome API (v1), Fabric Rendering Data Attachment (v1), Fabric Key Binding API (v1), Fabric Convention Tags, Fabric Object Builder API (v1), Fabric Particles (v1), Fabric API, Fabric Crash Report Info (v1), Fabric Game Test API (v1), Fabric Message API (v1), Fabric Sound API (v1), Fabric Rendering (v1), Fabric Renderer API (v1), Lumina, Fabric Networking API (v1), Fabric API Lookup API (v1), Fabric Resource Conditions API (v1), Fabric Mining Level API (v1), Fabric Loot API (v2), Fabric API Base, Fabric Transitive Access Wideners (v1), Fabric Models (v0), Fabric Lifecycle Events (v1), Fabric Item Group API (v1), Fabric Client Tags, Fabric Block API (v1), Fabric Content Registries (v0), Fabric BlockRenderLayer Registration (v1), Fabric Registry Sync (v0), Fabric Rendering Fluids (v1), Fabric Renderer - Indigo)
+[10:32:59] [Render thread/WARN] (Minecraft) Missing sound for event: minecraft:item.brush.brushing
+[10:32:59] [Render thread/WARN] (Minecraft) Missing sound for event: minecraft:item.brush.brush_sand_completed
+[10:32:59] [Render thread/WARN] (Minecraft) Missing sound for event: minecraft:item.goat_horn.play
+[10:32:59] [Render thread/WARN] (Minecraft) Missing sound for event: minecraft:entity.goat.screaming.horn_break
+[10:32:59] [Render thread/WARN] (Minecraft) Missing sound for event: minecraft:music.overworld.cherry_grove
+[10:32:59] [Realms Notification Availability checker #1/INFO] (Minecraft) Could not authorize you against Realms server: Invalid session id
+[10:33:00] [Render thread/INFO] (Minecraft) OpenAL initialized on device OpenAL Soft on Headphones (Realtek(R) Audio)
+[10:33:00] [Render thread/INFO] (Minecraft) Sound engine started
+[10:33:00] [Render thread/INFO] (Minecraft) Created: 1024x512x4 minecraft:textures/atlas/blocks.png-atlas
+[10:33:00] [Render thread/INFO] (Minecraft) Created: 256x256x4 minecraft:textures/atlas/signs.png-atlas
+[10:33:00] [Render thread/INFO] (Minecraft) Created: 512x512x4 minecraft:textures/atlas/shield_patterns.png-atlas
+[10:33:00] [Render thread/INFO] (Minecraft) Created: 512x512x4 minecraft:textures/atlas/banner_patterns.png-atlas
+[10:33:00] [Render thread/INFO] (Minecraft) Created: 1024x1024x4 minecraft:textures/atlas/armor_trims.png-atlas
+[10:33:00] [Render thread/INFO] (Minecraft) Created: 64x64x4 minecraft:textures/atlas/decorated_pot.png-atlas
+[10:33:00] [Render thread/INFO] (Minecraft) Created: 256x256x4 minecraft:textures/atlas/chest.png-atlas
+[10:33:00] [Render thread/INFO] (Minecraft) Created: 512x256x4 minecraft:textures/atlas/beds.png-atlas
+[10:33:00] [Render thread/INFO] (Minecraft) Created: 512x256x4 minecraft:textures/atlas/shulker_boxes.png-atlas
+[10:33:00] [Render thread/WARN] (Minecraft) Shader rendertype_entity_translucent_emissive could not find sampler named Sampler2 in the specified shader program.
+[10:33:00] [Render thread/INFO] (Minecraft) Created: 256x256x0 minecraft:textures/atlas/particles.png-atlas
+[10:33:00] [Render thread/INFO] (Minecraft) Created: 256x256x0 minecraft:textures/atlas/paintings.png-atlas
+[10:33:00] [Render thread/INFO] (Minecraft) Created: 128x128x0 minecraft:textures/atlas/mob_effects.png-atlas
+[10:33:08] [Render thread/INFO] (Minecraft) Loaded 7 recipes
+[10:33:08] [Render thread/INFO] (Minecraft) Loaded 1179 advancements
+[10:33:09] [Render thread/INFO] (BiomeModificationImpl) Applied 0 biome modifications to 0 of 63 new biomes in 3.223 ms
+[10:33:09] [Server thread/INFO] (Minecraft) Starting integrated minecraft server version 1.19.4
+[10:33:09] [Server thread/INFO] (Minecraft) Generating keypair
+[10:33:10] [Server thread/INFO] (Minecraft) Preparing start region for dimension minecraft:overworld
+[10:33:15] [Render thread/INFO] (Minecraft) Preparing spawn area: 0%
+[10:33:15] [Render thread/INFO] (Minecraft) Preparing spawn area: 0%
+[10:33:15] [Render thread/INFO] (Minecraft) Preparing spawn area: 0%
+[10:33:15] [Render thread/INFO] (Minecraft) Preparing spawn area: 0%
+[10:33:15] [Render thread/INFO] (Minecraft) Preparing spawn area: 0%
+[10:33:15] [Render thread/INFO] (Minecraft) Preparing spawn area: 0%
+[10:33:15] [Render thread/INFO] (Minecraft) Preparing spawn area: 0%
+[10:33:15] [Render thread/INFO] (Minecraft) Preparing spawn area: 0%
+[10:33:15] [Render thread/INFO] (Minecraft) Preparing spawn area: 0%
+[10:33:15] [Render thread/INFO] (Minecraft) Preparing spawn area: 0%
+[10:33:15] [Render thread/INFO] (Minecraft) Preparing spawn area: 0%
+[10:33:16] [Render thread/INFO] (Minecraft) Preparing spawn area: 0%
+[10:33:16] [Render thread/INFO] (Minecraft) Preparing spawn area: 5%
+[10:33:17] [Render thread/INFO] (Minecraft) Preparing spawn area: 33%
+[10:33:17] [Render thread/INFO] (Minecraft) Preparing spawn area: 70%
+[10:33:18] [Render thread/INFO] (Minecraft) Time elapsed: 7399 ms
+[10:33:18] [Server thread/INFO] (Minecraft) Changing view distance to 8, from 10
+[10:33:18] [Server thread/INFO] (Minecraft) Changing simulation distance to 7, from 0
+[10:33:19] [Server thread/INFO] (Minecraft) Player221[local:E:85e8a1d5] logged in with entity id 186 at (38.42431066318975, 63.0, 23.60651763542962)
+[10:33:20] [Server thread/INFO] (Minecraft) Player221 joined the game
+[10:33:20] [Render thread/INFO] (Minecraft) Loaded 2 advancements
+[10:33:23] [Server thread/INFO] (Minecraft) Saving and pausing game...
+[10:33:23] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[New World]'/minecraft:overworld
+[10:33:23] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[New World]'/minecraft:the_nether
+[10:33:23] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[New World]'/minecraft:the_end
+[10:33:25] [Render thread/INFO] (Minecraft) [System] [CHAT] CATEGORY FOUND!!! name: Combat, isHidden: false
+[10:33:26] [Render thread/INFO] (Minecraft) [System] [CHAT] CATEGORY FOUND!!! name: Ghost, isHidden: false
+[10:33:30] [Render thread/INFO] (Minecraft) [System] [CHAT] CATEGORY FOUND!!! name: Misc, isHidden: false
+[10:33:31] [Render thread/INFO] (Minecraft) [System] [CHAT] CATEGORY FOUND!!! name: Misc, isHidden: false
+[10:33:31] [Render thread/INFO] (Minecraft) [System] [CHAT] CATEGORY FOUND!!! name: Movement, isHidden: false
+[10:33:32] [Render thread/INFO] (Minecraft) [System] [CHAT] CATEGORY FOUND!!! name: Player, isHidden: false
+[10:33:32] [Render thread/INFO] (Minecraft) [System] [CHAT] CATEGORY FOUND!!! name: Render, isHidden: false
+[10:33:40] [Render thread/INFO] (Minecraft) [System] [CHAT] CATEGORY FOUND!!! name: Misc, isHidden: false
+[10:33:41] [Render thread/INFO] (Minecraft) [System] [CHAT] CATEGORY FOUND!!! name: Ghost, isHidden: false
+[10:33:41] [Render thread/INFO] (Minecraft) [System] [CHAT] CATEGORY FOUND!!! name: Combat, isHidden: false
+[10:34:09] [Render thread/INFO] (Minecraft) [System] [CHAT] CATEGORY FOUND!!! name: Combat, isHidden: false
+[10:34:09] [Render thread/INFO] (Minecraft) [System] [CHAT] CATEGORY FOUND!!! name: Combat, isHidden: false
+[10:34:10] [Render thread/INFO] (Minecraft) [System] [CHAT] CATEGORY FOUND!!! name: Combat, isHidden: false
+[10:34:22] [Render thread/INFO] (Minecraft) [System] [CHAT] CATEGORY FOUND!!! name: Combat, isHidden: false
+[10:34:23] [Render thread/INFO] (Minecraft) [System] [CHAT] CATEGORY FOUND!!! name: Movement, isHidden: false
+[10:34:25] [Server thread/INFO] (Minecraft) Saving and pausing game...
+[10:34:25] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[New World]'/minecraft:overworld
+[10:34:25] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[New World]'/minecraft:the_nether
+[10:34:25] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[New World]'/minecraft:the_end
+[10:34:28] [Render thread/INFO] (Minecraft) Stopping!
+[10:34:28] [Server thread/INFO] (Minecraft) Player221 lost connection: Disconnected
+[10:34:28] [Server thread/INFO] (Minecraft) Player221 left the game
+[10:34:28] [Server thread/INFO] (Minecraft) Stopping singleplayer server as player logged out
+[10:34:28] [Server thread/INFO] (Minecraft) Stopping server
+[10:34:28] [Server thread/INFO] (Minecraft) Saving players
+[10:34:28] [Server thread/INFO] (Minecraft) Saving worlds
+[10:34:30] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[New World]'/minecraft:overworld
+[10:34:30] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[New World]'/minecraft:the_nether
+[10:34:30] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[New World]'/minecraft:the_end
+[10:34:30] [Server thread/INFO] (Minecraft) ThreadedAnvilChunkStorage (New World): All chunks are saved
+[10:34:30] [Server thread/INFO] (Minecraft) ThreadedAnvilChunkStorage (DIM-1): All chunks are saved
+[10:34:30] [Server thread/INFO] (Minecraft) ThreadedAnvilChunkStorage (DIM1): All chunks are saved
+[10:34:30] [Server thread/INFO] (Minecraft) ThreadedAnvilChunkStorage: All dimensions are saved

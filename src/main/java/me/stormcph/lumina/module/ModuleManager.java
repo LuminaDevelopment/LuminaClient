@@ -1,6 +1,7 @@
 package me.stormcph.lumina.module;
 
 //import me.stormcph.lumina.module.impl.ghost.*;
+import me.stormcph.lumina.module.impl.category_mng.impl.*;
 import me.stormcph.lumina.module.impl.movement.*;
 import me.stormcph.lumina.module.impl.render.*;
 import net.minecraft.item.Items;
@@ -23,10 +24,18 @@ public class ModuleManager {
         add(new Flight());
         add(new Sprint());
 
-        // Ghost
+        // GhostCategory
 
         // Render
         add(new Arraylist());
+
+        // Hide / show categories
+        add(new CombatCata());
+        add(new GhostCategory());
+        add(new MiscCategory());
+        add(new MovementCategory());
+        add(new PlayerCategory());
+        add(new RenderCategory());
     }
 
     public void add(Module m) {

@@ -79,6 +79,10 @@ public class Frame {
         g2d.dispose();
     }
 
+    public void setX(int x){
+        this.x = x;
+    }
+
     public void render(MatrixStack matrices, int mouseX, int mouseY, float delta) {
         Identifier gradientTexture = bufferedImageToTexture(gradientImage);
         RenderSystem.setShaderTexture(0, gradientTexture);

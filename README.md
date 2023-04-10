@@ -30,36 +30,36 @@
 
 1. **Install the Fabric Loader**:
 
-    - Visit the Fabric Loader website at [https://fabricmc.net/use](https://fabricmc.net/use).
-    - Select your Minecraft version from the dropdown menu.
-    - Click the "Download Installer" button for the corresponding operating system (Windows, macOS, or Linux).
-    - Run the installer and follow the on-screen instructions to install the Fabric Loader.
+   - Visit the Fabric Loader website at [https://fabricmc.net/use](https://fabricmc.net/use).
+   - Select your Minecraft version from the dropdown menu.
+   - Click the "Download Installer" button for the corresponding operating system (Windows, macOS, or Linux).
+   - Run the installer and follow the on-screen instructions to install the Fabric Loader.
 
 2. **Install the Fabric API**:
 
-    - Download the Fabric API mod from [CurseForge](https://www.curseforge.com/minecraft/mc-mods/fabric-api) or [Modrinth](https://modrinth.com/mod/fabric-api).
-    - Make sure to choose the correct version of the API that matches Minecraft version 1.19.4
-    - Save the Fabric API `.jar` file to your computer.
+   - Download the Fabric API mod from [CurseForge](https://www.curseforge.com/minecraft/mc-mods/fabric-api) or [Modrinth](https://modrinth.com/mod/fabric-api).
+   - Make sure to choose the correct version of the API that matches Minecraft version 1.19.4
+   - Save the Fabric API `.jar` file to your computer.
 
 3. **Download the Mod**:
 
-    - Find and download, the desired version of the Lumina Client From Here: [Releases](https://github.com/LuminaDevelopment/LuminaClient)
-    - Ensure the mod version you download is compatible with your Minecraft and Fabric Loader versions.
-    - Save the mod `.jar` file to your computer.
+   - Find and download, the desired version of the Lumina Client From Here: [Releases](https://github.com/LuminaDevelopment/LuminaClient)
+   - Ensure the mod version you download is compatible with your Minecraft and Fabric Loader versions.
+   - Save the mod `.jar` file to your computer.
 
 4. **Install the Fabric API and Lumina Client**:
 
-    - Locate your Minecraft installation folder:
-        - Windows: `%appdata%\.minecraft`
-        - macOS: `~/Library/Application Support/minecraft`
-        - Linux: `~/.minecraft`
-    - Create a new folder named `mods` inside your Minecraft installation folder if it doesn't already exist.
-    - Move the Fabric API `.jar` file and the mod `.jar` file you downloaded earlier into the `mods` folder.
+   - Locate your Minecraft installation folder:
+      - Windows: `%appdata%\.minecraft`
+      - macOS: `~/Library/Application Support/minecraft`
+      - Linux: `~/.minecraft`
+   - Create a new folder named `mods` inside your Minecraft installation folder if it doesn't already exist.
+   - Move the Fabric API `.jar` file and the mod `.jar` file you downloaded earlier into the `mods` folder.
 
 5. **Launch Minecraft with Fabric**:
 
-    - Open the Minecraft Launcher.
-    - In the bottom-left corner, click the dropdown menu next to the "Play" button.
-    - Select the "fabric-loader" profile.
-    - Click "Play" to launch Minecraft with Fabric and your installed mods.
+   - Open the Minecraft Launcher.
+   - In the bottom-left corner, click the dropdown menu next to the "Play" button.
+   - Select the "fabric-loader" profile.
+   - Click "Play" to launch Minecraft with Fabric and your installed mods.
 

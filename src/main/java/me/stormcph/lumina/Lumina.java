@@ -32,6 +32,7 @@ public class Lumina implements ModInitializer {
     public void onKeyPress(KeyEvent event) {
         if (event.getAction() == GLFW.GLFW_PRESS) {
             for (Module module : ModuleManager.INSTANCE.getModules()) {
+                if(MinecraftClient.getInstance().currentScreen!=null) return;
                 if (event.getKey() == module.getKey()) module.toggle();
             }
 
