@@ -18,8 +18,6 @@ public class Arraylist extends HudModule {
     @Override
     public void draw(MatrixStack matrices) {
 
-        // TODO: coordinate usage & set width/height
-
         boolean topLeft = getX() < (mc.getWindow().getScaledWidth() / 2) && getY() < (mc.getWindow().getScaledHeight() / 2);
         boolean topRight = getX() > (mc.getWindow().getScaledWidth() / 2) && getY() < (mc.getWindow().getScaledHeight() / 2);
         boolean bottomLeft = getX() < (mc.getWindow().getScaledWidth() / 2) && getY() > (mc.getWindow().getScaledHeight() / 2);
