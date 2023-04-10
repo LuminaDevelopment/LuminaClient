@@ -66,6 +66,8 @@ public abstract class Module {
         }
     }
 
+    public static List<Category> categories = new ArrayList<>();
+
     public String getName() {
         return name;
     }
