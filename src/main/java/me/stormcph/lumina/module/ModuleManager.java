@@ -6,6 +6,7 @@ import me.stormcph.lumina.module.impl.combat.*;
 import me.stormcph.lumina.module.impl.misc.*;
 import me.stormcph.lumina.module.impl.movement.*;
 import me.stormcph.lumina.module.impl.render.*;
+import net.minecraft.item.Items;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,6 +26,7 @@ public class ModuleManager {
         add(new Flight());
         add(new Sprint());
         add(new FakeLag());
+        add(new Speed());
 
         // Combat
         add(new Killaura());
@@ -34,6 +36,7 @@ public class ModuleManager {
         add(new PacketLogger());
 
         // Ghost
+        add(new LegitTotem());
 
         // Render
         add(new Arraylist());

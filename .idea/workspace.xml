@@ -4,38 +4,23 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bc6f333a-f33c-4e21-b91a-57f0b39fdeee" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/me/stormcph/lumina/module/impl/combat/Criticals.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/me/stormcph/lumina/module/impl/combat/Killaura.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/me/stormcph/lumina/module/impl/misc/PacketLogger.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/me/stormcph/lumina/module/impl/movement/FakeLag.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/me/stormcph/lumina/utils/PacketUtil.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/me/stormcph/lumina/utils/RotationUtil.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/me/stormcph/lumina/utils/TimerUtil.java" afterDir="false" />
+    <list default="true" id="bc6f333a-f33c-4e21-b91a-57f0b39fdeee" name="Changes" comment="[+] Killaura&#10;[+] Fakelag">
+      <change afterPath="$PROJECT_DIR$/src/main/java/me/stormcph/lumina/event/impl/PlayerMoveEvent.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/me/stormcph/lumina/mixins/EntityMixin.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/me/stormcph/lumina/module/impl/movement/Speed.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.0.1/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.0.1/checksums/checksums.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.0.1/checksums/md5-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.0.1/checksums/md5-checksums.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.0.1/checksums/sha1-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.0.1/checksums/sha1-checksums.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.0.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.0.1/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.0.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.0.1/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.0.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.0.1/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.0.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.0.1/fileHashes/fileHashes.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.0.1/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.0.1/fileHashes/resourceHashesCache.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/loom-cache/launch.cfg" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/loom-cache/launch.cfg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/loom-cache/log4j.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/loom-cache/log4j.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/loom-cache/remapClasspath.txt" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/loom-cache/remapClasspath.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/jarRepositories.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/LuminaClient.main.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/LuminaClient.main.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/LuminaClient.test.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/LuminaClient.test.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/me/stormcph/lumina/event/impl/ChatMessageReceivedEvent.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/me/stormcph/lumina/event/impl/ChatMessageReceivedEvent.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/me/stormcph/lumina/module/ModuleManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/me/stormcph/lumina/module/ModuleManager.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/me/stormcph/lumina/module/impl/ghost/TotemAutoOffhand.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/me/stormcph/lumina/module/impl/render/Arraylist.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/me/stormcph/lumina/module/impl/render/Arraylist.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/me/stormcph/lumina/ui/screens/clickgui/ClickGui.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/me/stormcph/lumina/ui/screens/clickgui/ClickGui.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/fabric.mod.json" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/fabric.mod.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/me/stormcph/lumina/module/impl/ghost/LegitTotem.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/me/stormcph/lumina/module/impl/ghost/LegitTotem.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/lumina.mixin.json" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/lumina.mixin.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/run/config/fabric/indigo-renderer.properties" beforeDir="false" afterPath="$PROJECT_DIR$/run/config/fabric/indigo-renderer.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/run/logs/debug-1.log.gz" beforeDir="false" afterPath="$PROJECT_DIR$/run/logs/debug-1.log.gz" afterDir="false" />
@@ -45,7 +30,6 @@
       <change beforePath="$PROJECT_DIR$/run/logs/debug-5.log.gz" beforeDir="false" afterPath="$PROJECT_DIR$/run/logs/debug-5.log.gz" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/run/logs/debug.log" beforeDir="false" afterPath="$PROJECT_DIR$/run/logs/debug.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/run/logs/latest.log" beforeDir="false" afterPath="$PROJECT_DIR$/run/logs/latest.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/run/options.txt" beforeDir="false" afterPath="$PROJECT_DIR$/run/options.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/run/saves/New World/DIM-1/data/raids.dat" beforeDir="false" afterPath="$PROJECT_DIR$/run/saves/New World/DIM-1/data/raids.dat" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/run/saves/New World/DIM1/data/raids_end.dat" beforeDir="false" afterPath="$PROJECT_DIR$/run/saves/New World/DIM1/data/raids_end.dat" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/run/saves/New World/data/raids.dat" beforeDir="false" afterPath="$PROJECT_DIR$/run/saves/New World/data/raids.dat" afterDir="false" />
@@ -53,24 +37,20 @@
       <change beforePath="$PROJECT_DIR$/run/saves/New World/entities/r.-1.0.mca" beforeDir="false" afterPath="$PROJECT_DIR$/run/saves/New World/entities/r.-1.0.mca" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/run/saves/New World/entities/r.0.-1.mca" beforeDir="false" afterPath="$PROJECT_DIR$/run/saves/New World/entities/r.0.-1.mca" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/run/saves/New World/entities/r.0.0.mca" beforeDir="false" afterPath="$PROJECT_DIR$/run/saves/New World/entities/r.0.0.mca" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/run/saves/New World/entities/r.1.-1.mca" beforeDir="false" afterPath="$PROJECT_DIR$/run/saves/New World/entities/r.1.-1.mca" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/run/saves/New World/level.dat" beforeDir="false" afterPath="$PROJECT_DIR$/run/saves/New World/level.dat" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/run/saves/New World/level.dat_old" beforeDir="false" afterPath="$PROJECT_DIR$/run/saves/New World/level.dat_old" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/run/saves/New World/region/r.-1.-1.mca" beforeDir="false" afterPath="$PROJECT_DIR$/run/saves/New World/region/r.-1.-1.mca" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/run/saves/New World/region/r.-1.-2.mca" beforeDir="false" afterPath="$PROJECT_DIR$/run/saves/New World/region/r.-1.-2.mca" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/run/saves/New World/region/r.-1.0.mca" beforeDir="false" afterPath="$PROJECT_DIR$/run/saves/New World/region/r.-1.0.mca" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/run/saves/New World/region/r.-1.1.mca" beforeDir="false" afterPath="$PROJECT_DIR$/run/saves/New World/region/r.-1.1.mca" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/run/saves/New World/region/r.0.-1.mca" beforeDir="false" afterPath="$PROJECT_DIR$/run/saves/New World/region/r.0.-1.mca" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/run/saves/New World/region/r.0.-2.mca" beforeDir="false" afterPath="$PROJECT_DIR$/run/saves/New World/region/r.0.-2.mca" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/run/saves/New World/region/r.0.0.mca" beforeDir="false" afterPath="$PROJECT_DIR$/run/saves/New World/region/r.0.0.mca" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/run/saves/New World/region/r.0.1.mca" beforeDir="false" afterPath="$PROJECT_DIR$/run/saves/New World/region/r.0.1.mca" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/run/saves/New World/region/r.1.-1.mca" beforeDir="false" afterPath="$PROJECT_DIR$/run/saves/New World/region/r.1.-1.mca" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/run/saves/New World/region/r.1.-2.mca" beforeDir="false" afterPath="$PROJECT_DIR$/run/saves/New World/region/r.1.-2.mca" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/run/saves/New World/session.lock" beforeDir="false" afterPath="$PROJECT_DIR$/run/saves/New World/session.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/run/servers.dat" beforeDir="false" afterPath="$PROJECT_DIR$/run/servers.dat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/run/servers.dat_old" beforeDir="false" afterPath="$PROJECT_DIR$/run/servers.dat_old" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/run/usercache.json" beforeDir="false" afterPath="$PROJECT_DIR$/run/usercache.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/stormcph/lumina/event/impl/ChatMessageReceivedEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/stormcph/lumina/event/impl/ChatMessageReceivedEvent.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/me/stormcph/lumina/module/ModuleManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/stormcph/lumina/module/ModuleManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/stormcph/lumina/module/impl/category_mng/CategoryModule.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/stormcph/lumina/module/impl/category_mng/CategoryModule.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/stormcph/lumina/module/impl/ghost/LegitTotem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/stormcph/lumina/module/impl/ghost/LegitTotem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/stormcph/lumina/module/impl/misc/PacketLogger.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/stormcph/lumina/module/impl/misc/PacketLogger.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/lumina.mixin.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/lumina.mixin.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -210,6 +190,14 @@
       <option name="presentableId" value="Default" />
       <updated>1681037318205</updated>
     </task>
+    <task id="LOCAL-00001" summary="[+] Killaura&#10;[+] Fakelag">
+      <created>1681151935796</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1681151935796</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -223,5 +211,9 @@
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="[+] Killaura&#10;[+] Fakelag" />
+    <option name="LAST_COMMIT_MESSAGE" value="[+] Killaura&#10;[+] Fakelag" />
   </component>
 </project>

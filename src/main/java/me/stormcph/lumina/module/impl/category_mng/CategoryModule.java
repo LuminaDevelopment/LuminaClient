@@ -1,7 +1,5 @@
 package me.stormcph.lumina.module.impl.category_mng;
 
-import me.stormcph.lumina.event.EventTarget;
-import me.stormcph.lumina.event.impl.EventUpdate;
 import me.stormcph.lumina.module.Category;
 import me.stormcph.lumina.module.Module;
 import me.stormcph.lumina.utils.ChatUtils;
@@ -27,7 +25,7 @@ public class CategoryModule extends Module {
     @Override
     public void onDisable() {
         super.onDisable();
-        for(Category c : Category.values()){
+        for(Category c : Category.values()) {
             if(c.name==this.getName()){
                 c.setHidden(true);
             }
