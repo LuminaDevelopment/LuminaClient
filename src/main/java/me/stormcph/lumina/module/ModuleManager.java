@@ -2,15 +2,11 @@ package me.stormcph.lumina.module;
 
 import me.stormcph.lumina.module.impl.ghost.*;
 import me.stormcph.lumina.module.impl.category_mng.impl.*;
-<<<<<<< HEAD
 import me.stormcph.lumina.module.impl.misc.ChatHandler;
-=======
 import me.stormcph.lumina.module.impl.combat.*;
 import me.stormcph.lumina.module.impl.misc.*;
->>>>>>> a13f97a43fadff2131dc869966109f3ffacad2aa
 import me.stormcph.lumina.module.impl.movement.*;
 import me.stormcph.lumina.module.impl.render.*;
-import net.minecraft.item.Items;
 
 import java.util.ArrayList;
 import java.util.List;
