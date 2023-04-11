@@ -1,1 +1,8 @@
 v1	named	intermediary
+FIELD	me/stormcph/lumina/mixins/HeldItemRendererMixin	F	equipProgressMainHand	field_4043
+FIELD	me/stormcph/lumina/mixins/HeldItemRendererMixin	F	prevEquipProgressMainHand	field_4053
+FIELD	me/stormcph/lumina/mixins/HeldItemRendererMixin	F	prevEquipProgressOffHand	field_4051
+FIELD	me/stormcph/lumina/mixins/HeldItemRendererMixin	F	equipProgressOffHand	field_4052
+FIELD	me/stormcph/lumina/mixins/HeldItemRendererMixin	Lnet/minecraft/item/ItemStack;	mainHand	field_4047
+FIELD	me/stormcph/lumina/mixins/HeldItemRendererMixin	Lnet/minecraft/item/ItemStack;	offHand	field_4048
+FIELD	me/stormcph/lumina/mixins/HeldItemRendererMixin	Lnet/minecraft/client/MinecraftClient;	client	field_4050

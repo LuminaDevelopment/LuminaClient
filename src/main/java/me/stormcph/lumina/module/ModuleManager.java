@@ -40,6 +40,7 @@ public class ModuleManager {
 
         // Render
         add(new Arraylist());
+        add(new Animations());
 
         // Hide / show categories
         add(new CombatCata());

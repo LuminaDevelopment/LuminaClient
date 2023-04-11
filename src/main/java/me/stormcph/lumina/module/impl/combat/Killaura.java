@@ -4,6 +4,8 @@ import me.stormcph.lumina.event.EventTarget;
 import me.stormcph.lumina.event.impl.EventUpdate;
 import me.stormcph.lumina.module.Category;
 import me.stormcph.lumina.module.Module;
+import me.stormcph.lumina.module.ModuleManager;
+import me.stormcph.lumina.module.impl.render.Animations;
 import me.stormcph.lumina.setting.impl.BooleanSetting;
 import me.stormcph.lumina.setting.impl.NumberSetting;
 import me.stormcph.lumina.utils.PacketUtil;
@@ -20,6 +22,7 @@ import net.minecraft.entity.projectile.ArrowEntity;
 import net.minecraft.entity.projectile.TridentEntity;
 import net.minecraft.entity.projectile.thrown.ExperienceBottleEntity;
 import net.minecraft.item.*;
+import net.minecraft.network.packet.c2s.play.HandSwingC2SPacket;
 import net.minecraft.network.packet.c2s.play.PlayerMoveC2SPacket;
 
 public class Killaura extends Module {
@@ -29,12 +32,13 @@ public class Killaura extends Module {
     private final BooleanSetting players = new BooleanSetting("Players", true);
     private final BooleanSetting mobs = new BooleanSetting("Mobs", true);
     private final BooleanSetting passive = new BooleanSetting("Passive", true);
+    private final BooleanSetting autoblock = new BooleanSetting("Autoblock", true);
 
     private TimerUtil timer;
 
     public Killaura() {
         super("Killaura", "Attacks nearby enemies", Category.COMBAT);
-        addSettings(range, players, mobs, passive);
+        addSettings(range, players, mobs, passive, autoblock);
     }
 
     @Override
@@ -50,9 +54,16 @@ public class Killaura extends Module {
 
         rotate(target);
 
+
+        // Todo: Add autoblock
+
         if(timer.hasReached(getTime())) {
             mc.interactionManager.attackEntity(mc.player, target);
-            mc.player.swingHand(mc.player.preferredHand);
+            if(mc.options.useKey.isPressed()) {
+                ((Animations) ModuleManager.INSTANCE.getModuleByClass(Animations.class)).swing();
+                PacketUtil.sendPacket(new HandSwingC2SPacket(mc.player.preferredHand));
+            }
+            else mc.player.swingHand(mc.player.preferredHand);
             timer.reset();
         }
     }

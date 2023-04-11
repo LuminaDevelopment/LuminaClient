@@ -7,8 +7,10 @@
     "EntityMixin"
   ],
   "client": [
+    "LivingEntityMixin",
     "ClientPlayNetworkHandlerMixin",
     "EntityRendererMixin",
+    "HeldItemRendererMixin",
     "InGameHudMixin",
     "KeyboardMixin",
     "MinecraftClientMixin",
