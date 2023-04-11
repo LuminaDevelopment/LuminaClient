@@ -4,6 +4,7 @@ import me.stormcph.lumina.event.EventTarget;
 import me.stormcph.lumina.event.impl.EventUpdate;
 import me.stormcph.lumina.module.Category;
 import me.stormcph.lumina.module.Module;
+import me.stormcph.lumina.setting.impl.NumberSetting;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.SwordItem;
@@ -13,8 +14,15 @@ public class Animations extends Module {
 
     private float start, end, current;
 
+    private NumberSetting xSetting, ySetting, zSetting;
+
     public Animations() {
         super("Animations", "Old 1.7 sword swing", Category.RENDER);
+
+        xSetting = new NumberSetting("X", 0.1, 3, 0.2, 0.1);
+        ySetting = new NumberSetting("Y", 0.1, 1, 0.2, 0.1);
+        zSetting = new NumberSetting("Z", 0.1, 1, 0.4, 0.1);
+        addSettings(xSetting, ySetting, zSetting);
     }
 
     @Override
@@ -47,7 +55,7 @@ public class Animations extends Module {
                     }
                 }
                 else if(current == end) {
-                    if(end == -160) {
+                    if(end == -130) {
                         end = start;
                     }
                 }
@@ -56,13 +64,18 @@ public class Animations extends Module {
                 matrices.translate(xo, yo, zo);
                 matrices.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(82));
                 matrices.multiply(RotationAxis.POSITIVE_X.rotationDegrees(current));
-                //                      z     x         y
-                matrices.translate(0, 0.2 + xo, 0.4 - yo);
+
+                // Use the setting values
+                float x = (float) xSetting.getValue();
+                float y = (float) (ySetting.getValue() + xo);
+                float z = (float) (zSetting.getValue() - yo);
+
+                matrices.translate(x, y, z);
             }
         }
     }
 
     public void swing() {
-        end = -160;
+        end = -130;
     }
 }
