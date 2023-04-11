@@ -2,6 +2,7 @@ package me.stormcph.lumina.module;
 
 //import me.stormcph.lumina.module.impl.ghost.*;
 import me.stormcph.lumina.module.impl.category_mng.impl.*;
+import me.stormcph.lumina.module.impl.misc.ChatHandler;
 import me.stormcph.lumina.module.impl.movement.*;
 import me.stormcph.lumina.module.impl.render.*;
 import net.minecraft.item.Items;
@@ -36,6 +37,9 @@ public class ModuleManager {
         add(new MovementCategory());
         add(new PlayerCategory());
         add(new RenderCategory());
+
+        // Misc
+        add(new ChatHandler());
     }
 
     public void add(Module m) {
