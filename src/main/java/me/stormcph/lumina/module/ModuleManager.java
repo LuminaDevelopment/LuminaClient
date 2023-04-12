@@ -31,6 +31,7 @@ public class ModuleManager {
         // Combat
         add(new Killaura());
         add(new Criticals());
+        add(new PvpHubExploit());
 
         // Misc
         add(new PacketLogger());
