@@ -1,6 +1,4 @@
-package dev.tenacity.utils.tuples;
-
-import dev.tenacity.utils.tuples.immutable.ImmutablePair;
+package me.stormcph.lumina.utils;
 
 import java.io.Serializable;
 import java.util.Objects;
