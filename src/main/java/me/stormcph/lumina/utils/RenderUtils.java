@@ -46,4 +46,10 @@ public class RenderUtils {
         fill(matrixStack, x, y, x + width, y - thickness, color);
         fill(matrixStack, x, y + height, x + width, y + height + thickness, color);
     }
+
+    public static void scale(MatrixStack matrices, float x, float y, float scale) {
+        matrices.translate(x, y, 0);
+        matrices.scale(scale, scale, 1);
+        matrices.translate(-x, -y, 0);
+    }
 }
