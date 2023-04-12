@@ -54,16 +54,15 @@ public class Killaura extends Module {
 
         rotate(target);
 
-
         // Todo: Add autoblock
 
         if(timer.hasReached(getTime())) {
             mc.interactionManager.attackEntity(mc.player, target);
-            if(mc.options.useKey.isPressed()) {
+            if(mc.options.useKey.isPressed() && ModuleManager.INSTANCE.getModuleByClass(Animations.class).isEnabled()) {
                 ((Animations) ModuleManager.INSTANCE.getModuleByClass(Animations.class)).swing();
-                PacketUtil.sendPacket(new HandSwingC2SPacket(mc.player.preferredHand));
+                PacketUtil.sendPacket(new HandSwingC2SPacket(mc.player.getActiveHand()));
             }
-            else mc.player.swingHand(mc.player.preferredHand);
+            else mc.player.swingHand(mc.player.getActiveHand());
             timer.reset();
         }
     }
