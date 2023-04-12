@@ -16,6 +16,7 @@ public abstract class Module {
     private boolean enabled;
     private Category category;
 
+    private final Animation animation = new DecelerateAnimation(250, 1).setDirection(Direction.BACKWARDS);
     private boolean expanded;
 
     protected MinecraftClient mc = MinecraftClient.getInstance();
