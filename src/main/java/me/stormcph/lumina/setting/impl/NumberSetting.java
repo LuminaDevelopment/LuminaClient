@@ -24,6 +24,10 @@ public class NumberSetting extends Setting {
     public double getValue() {
         return value;
     }
+    
+    public int getIntValue() {
+        return (int) value;
+    }
 
     public float getFloatValue() {
         return (float) value;
