@@ -1,6 +1,4 @@
-package dev.tenacity.utils.tuples.immutable;
-
-import dev.tenacity.utils.tuples.Pair;
+package me.stormcph.lumina.utils;
 
 import java.util.function.BiConsumer;
 import java.util.function.BiFunction;
