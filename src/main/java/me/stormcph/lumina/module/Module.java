@@ -124,4 +124,8 @@ public abstract class Module {
     protected void sendMsg(String message) {
         ChatUtils.sendMsg(message);
     }
+    
+    public Animation getAnimation() {
+        return animation;
+    }
 }
