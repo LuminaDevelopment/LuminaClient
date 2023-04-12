@@ -12,10 +12,18 @@ public class ChatCommandManager {
 
     private static final List<ChatCommand> commandList = new ArrayList<>();
 
+    /**
+     * Registers a chat command
+     * @param c The command object
+     */
     public static void addCommand(ChatCommand c){
         commandList.add(c);
     }
 
+    /**
+     * The initializer of this class.
+     * Optimally, this only has to be run only once.
+     */
     public static void init(){ // Add commands here
         addCommand(new HelpCommand());
 
@@ -23,16 +31,21 @@ public class ChatCommandManager {
         cachedName = "null";
     }
 
-    public static ChatCommand findCommand(String name){
+    /**
+     *
+     * @param command The command name to search for.
+     * @return Returns the found command. If a command isn't found with the given arguments, an "invalid command" message is returned.
+     */
+    public static ChatCommand findCommand(String command){
         for(ChatCommand c : commandList){
-            if(c.name.equals(name)) return c;
+            if(c.name.startsWith(command)) return c;
         }
-        cachedName = name;
+        cachedName = command;
 
         return new ChatCommand("invalid"){
             @Override
             public void execute(List<String> args) {
-                ChatUtils.sendMsg("Invalid command!");
+                ChatUtils.sendMsg("&4Invalid command!");
             }
         };
     }

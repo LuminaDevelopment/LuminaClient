@@ -13,11 +13,13 @@ public class HelpCommand extends ChatCommand {
     @Override
     public void execute(List<String> args) {
         if(args.size()==1){
-            ChatUtils.sendMsg("&dLuminaClient &bPrototype");
-            ChatUtils.sendMsg("&5Help utility");
-            ChatUtils.sendMsg("&aTo open ClickGUI, press RALT or RCTRL");
-            ChatUtils.sendMsg("&aTo view all commands, type &6.help <coming soon>");
-            ChatUtils.sendMsg("&aTo view all modules in chat (and what they do), type &6.help <coming soon>");
+
+            new ChatUtils.Message("Help utility",
+                    "To open ClickGUI, press RALT or RCTRL",
+                    "To view all commands, type "+ ChatUtils.Message.annotate(".help <coming soon>"),
+                    "To view all modules in chat (and what they do), type "+ ChatUtils.Message.annotate(".help <coming soon>")
+            ).send();
+
         } else {
             ChatUtils.sendMsg("&bAn &4error&b occurred! &6(&cunknown argument size&6)");
         }
