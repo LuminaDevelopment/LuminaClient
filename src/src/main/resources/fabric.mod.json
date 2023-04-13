@@ -1,0 +1,46 @@
+{
+  "schemaVersion": 1,
+  "id": "lumina",
+  "version": "${version}",
+
+  "name": "Lumina",
+  "description": "Light Utilization Management Integrating Notable Acceleration",
+
+  "credits" : [
+  "take every first letter of the description sentence"
+  ],
+
+  "authors": [
+    "Stormcph, Qwery, CorruptionHades"
+  ],
+  "contact": {
+    "homepage": "",
+    "sources": ""
+  },
+
+  "license": "Apache-2.0",
+  "icon": "assets/lumina/icon.png",
+
+  "environment": "*",
+  "entrypoints": {
+    "client": [
+      "me.stormcph.lumina.client.LuminaClient"
+    ],
+    "main": [
+      "me.stormcph.lumina.Lumina"
+    ]
+  },
+  "mixins": [
+    "lumina.mixin.json"
+  ],
+
+  "depends": {
+    "fabricloader": ">=0.14.17",
+    "fabric-api": "*",
+    "minecraft": "~1.19.4",
+    "java": ">=17"
+  },
+  "suggests": {
+    "another-mod": "*"
+  }
+}
