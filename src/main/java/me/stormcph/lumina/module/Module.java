@@ -3,7 +3,10 @@ package me.stormcph.lumina.module;
 import me.stormcph.lumina.event.EventManager;
 import me.stormcph.lumina.setting.Setting;
 import me.stormcph.lumina.utils.ChatUtils;
+import me.stormcph.lumina.utils.animations.Direction;
+import me.stormcph.lumina.utils.animations.impl.DecelerateAnimation;
 import net.minecraft.client.MinecraftClient;
+import me.stormcph.lumina.utils.animations.Animation;
 
 import java.util.ArrayList;
 import java.util.Arrays;

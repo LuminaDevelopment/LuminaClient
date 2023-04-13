@@ -1,4 +1,4 @@
-package dev.tenacity.utils.time;
+package me.stormcph.lumina.utils.time;
 
 public class TimerUtil {
 

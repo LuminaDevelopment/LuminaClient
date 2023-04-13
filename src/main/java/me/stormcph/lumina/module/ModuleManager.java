@@ -37,7 +37,7 @@ public class ModuleManager {
         add(new PacketLogger());
 
         // Ghost
-        add(new LegitTotem());
+        add(new CrystalPop());
 
         // Render
         add(new Arraylist());

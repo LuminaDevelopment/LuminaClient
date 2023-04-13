@@ -20,7 +20,7 @@ import java.util.List;
 public class Arraylist extends HudModule {
 
     private final NumberSetting colorSpeed = new NumberSetting("Color Speed", 2, 30, 15, 1);
-    private final NumberSetting colorSpread = new NumberSetting("Color Spread", 5, 40, 20, 1);
+    private final NumberSetting colorSpread = new NumberSetting("Color Spread", 5, 100, 20, 1);
 
     public Arraylist() {
         super("Arraylist", "Show enabled mods", Category.RENDER, 20, 20, 10, 10);
