@@ -4,6 +4,8 @@ import me.stormcph.lumina.event.EventTarget;
 import me.stormcph.lumina.event.impl.EventUpdate;
 import me.stormcph.lumina.module.Category;
 import me.stormcph.lumina.module.Module;
+import me.stormcph.lumina.setting.impl.NumberSetting;
+import me.stormcph.lumina.utils.TimerUtil;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.entity.Entity;
@@ -17,8 +19,13 @@ import net.minecraft.world.RaycastContext;
 
 public class CrystalPop extends Module {
 
+    private final TimerUtil timerUtil = new TimerUtil();
+
+    private final NumberSetting cooldown = new NumberSetting("cooldown-ms", 0.0, 1000.0, 0.0, 0.01);
+
     public CrystalPop() {
         super("CrystalPop", "Automatically pops end crystal when placed", Category.GHOST);
+        addSettings(cooldown);
     }
 
     @Override
@@ -36,7 +43,6 @@ public class CrystalPop extends Module {
     public void onUpdate(EventUpdate event) {
 
     }
-
     private void endCrystalTrigger() {
         HitResult hit = mc.crosshairTarget;
         if (hit.getType() != HitResult.Type.ENTITY)
@@ -44,7 +50,10 @@ public class CrystalPop extends Module {
         Entity target = ((EntityHitResult) hit).getEntity();
         if (!(target instanceof EndCrystalEntity))
             return;
-        mc.interactionManager.attackEntity(mc.player, target);
-        mc.player.swingHand(Hand.MAIN_HAND);
+        if (timerUtil.hasReached((int) cooldown.getValue())) {
+            mc.interactionManager.attackEntity(mc.player, target);
+            mc.player.swingHand(Hand.MAIN_HAND);
+            timerUtil.reset();
+        }
     }
 }
