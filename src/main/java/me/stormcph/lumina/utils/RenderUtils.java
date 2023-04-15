@@ -6,6 +6,8 @@ import net.minecraft.client.util.math.MatrixStack;
 import org.jetbrains.annotations.NotNull;
 import org.joml.Matrix4f;
 
+import java.awt.*;
+
 public class RenderUtils {
 
     // Stolen from DrawableHelper
@@ -51,5 +53,9 @@ public class RenderUtils {
         matrices.translate(x, y, 0);
         matrices.scale(scale, scale, 1);
         matrices.translate(-x, -y, 0);
+    }
+
+    public static Color getMcColor(int r, int g, int b){
+        return new Color(b, g, r);
     }
 }
