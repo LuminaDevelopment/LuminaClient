@@ -55,5 +55,6 @@ public class CrystalPop extends Module {
             mc.player.swingHand(Hand.MAIN_HAND);
             timerUtil.reset();
         }
+
     }
 }

@@ -23,7 +23,7 @@ public class Arraylist extends HudModule {
     private final NumberSetting colorSpread = new NumberSetting("Color Spread", 5, 100, 20, 1);
 
     public Arraylist() {
-        super("Arraylist", "Show enabled mods", Category.RENDER, 20, 20, 10, 10);
+        super("Arraylist", "Show enabled mods", Category.RENDER, 10, 10, 10, 10);
         addSettings(colorSpeed, colorSpread);
     }
 
