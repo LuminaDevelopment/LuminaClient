@@ -67,7 +67,8 @@ public class Arraylist extends HudModule {
             moduleAnimation.setDirection(module.isEnabled() ? Direction.FORWARDS : Direction.BACKWARDS);
 
             // If the module is disabled and the animation is finished, skip it
-            if (!module.isEnabled() && moduleAnimation.finished(Direction.BACKWARDS)) continue;
+            // 15/04/2023 added check for category toggling modules
+            if (!module.isEnabled() && moduleAnimation.finished(Direction.BACKWARDS) || module.getCategory().equals(Category.CATEGORY_MNG)) continue;
 
             String displayText = module.getDisplayName();
             float textWidth = mc.textRenderer.getWidth(displayText);

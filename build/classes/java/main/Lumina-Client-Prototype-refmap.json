@@ -27,6 +27,9 @@
     "me/stormcph/lumina/mixins/MinecraftClientMixin": {
       "tick": "Lnet/minecraft/class_310;method_1574()V"
     },
+    "me/stormcph/lumina/mixins/TitleScreenMixin": {
+      "tick": "Lnet/minecraft/class_442;method_25393()V"
+    },
     "me/stormcph/lumina/mixins/WorldRendererMixin": {
       "render": "Lnet/minecraft/class_761;method_22710(Lnet/minecraft/class_4587;FJZLnet/minecraft/class_4184;Lnet/minecraft/class_757;Lnet/minecraft/class_765;Lorg/joml/Matrix4f;)V"
     }
@@ -59,6 +62,9 @@
       },
       "me/stormcph/lumina/mixins/MinecraftClientMixin": {
         "tick": "Lnet/minecraft/class_310;method_1574()V"
+      },
+      "me/stormcph/lumina/mixins/TitleScreenMixin": {
+        "tick": "Lnet/minecraft/class_442;method_25393()V"
       },
       "me/stormcph/lumina/mixins/WorldRendererMixin": {
         "render": "Lnet/minecraft/class_761;method_22710(Lnet/minecraft/class_4587;FJZLnet/minecraft/class_4184;Lnet/minecraft/class_757;Lnet/minecraft/class_765;Lorg/joml/Matrix4f;)V"

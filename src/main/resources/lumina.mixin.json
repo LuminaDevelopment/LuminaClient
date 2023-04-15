@@ -7,13 +7,14 @@
     "EntityMixin"
   ],
   "client": [
-    "LivingEntityMixin",
     "ClientPlayNetworkHandlerMixin",
     "EntityRendererMixin",
     "HeldItemRendererMixin",
     "InGameHudMixin",
     "KeyboardMixin",
+    "LivingEntityMixin",
     "MinecraftClientMixin",
+    "TitleScreenMixin",
     "WorldRendererMixin"
   ],
   "injectors": {

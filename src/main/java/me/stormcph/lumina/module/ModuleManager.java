@@ -43,6 +43,7 @@ public class ModuleManager {
         // Render
         add(new Arraylist());
         add(new Animations());
+        add(new BetterHome());
 
         // Hide / show categories
         add(new CombatCata());

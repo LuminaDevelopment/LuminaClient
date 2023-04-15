@@ -21,10 +21,10 @@
 
 ## 🌟 Key Features
 
-- **Feature 1**: description
-- **Feature 2**: description
-- **Feature 3**: description
-- **Feature 4**: description
+- **Modules**: Powerful modules
+- **HUD & GUI**: Hud editor + nice GUI
+- **Exploits**: Never-before seen exploits
+- **Usability**: Easy to use
 
 ## ⚙️ Installation
 

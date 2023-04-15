@@ -6,3 +6,5 @@ FIELD	me/stormcph/lumina/mixins/HeldItemRendererMixin	F	equipProgressOffHand	fie
 FIELD	me/stormcph/lumina/mixins/HeldItemRendererMixin	Lnet/minecraft/item/ItemStack;	mainHand	field_4047
 FIELD	me/stormcph/lumina/mixins/HeldItemRendererMixin	Lnet/minecraft/item/ItemStack;	offHand	field_4048
 FIELD	me/stormcph/lumina/mixins/HeldItemRendererMixin	Lnet/minecraft/client/MinecraftClient;	client	field_4050
+FIELD	me/stormcph/lumina/mixins/TitleScreenMixin	Ljava/lang/String;	splashText	field_2586
+FIELD	me/stormcph/lumina/mixins/TitleScreenMixin	Lnet/minecraft/text/Text;	COPYRIGHT	field_32271
