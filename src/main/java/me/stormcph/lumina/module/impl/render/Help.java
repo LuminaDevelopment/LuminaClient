@@ -10,7 +10,8 @@ import net.minecraft.client.util.math.MatrixStack;
 import java.awt.*;
 
 public class Help extends HudModule {
-    private boolean firstRender = false;
+    private boolean firstRender = true;
+
     public Help() {
         super(
                 "Watermark",
@@ -25,9 +26,14 @@ public class Help extends HudModule {
     }
     @Override
     public void draw(MatrixStack matrices) {
-        if(!firstRender){ // prevents it from being rendered in the middle of the screen and on the edge instead
-            setX(MinecraftClient.getInstance().getWindow().getScaledWidth()-30);
-            setY(MinecraftClient.getInstance().textRenderer.fontHeight*2+4);
+        TextRenderer renderer = mc.textRenderer;
+        if(firstRender) {
+            setX(MinecraftClient.getInstance().getWindow().getScaledWidth()-30);// }
+            setY(MinecraftClient.getInstance().textRenderer.fontHeight*2+4); // } prevents it from being rendered in the middle of the screen and on the edge instead
+
+
+
+            firstRender=false;
         }
 
         // TODO: add multiple hud modules, such as fps, etc.
@@ -35,9 +41,10 @@ public class Help extends HudModule {
 
 
 
-        TextRenderer renderer = mc.textRenderer;
+
         Color titleColor = RenderUtils.getMcColor(161, 3, 252);
         renderer.drawWithShadow(matrices, "LuminaClient", getX()-renderer.getWidth("LuminaClient"), getY()-renderer.fontHeight*2-2, titleColor.getRGB());
         renderer.drawWithShadow(matrices, "To open ClickGUI, press RALT", getX()-renderer.getWidth("To open ClickGUI, press RALT"), getY()-renderer.fontHeight, -1);
+
     }
 }
