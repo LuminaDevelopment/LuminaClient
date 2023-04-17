@@ -17,6 +17,22 @@
   <a href="#license">License</a>
 </p>
 
+<p align="center">
+<a href="https://discord.gg/K8g9hmza">
+  <img alt="Discord" src="https://img.shields.io/discord/1093790829673467914?label=Discord&logo=discord&style=flat-square">
+</a>
+  <a href="https://github.com/LuminaDevelopment/LuminaClient/graphs/contributors">
+    <img alt="Contributors" src="https://img.shields.io/github/contributors/LuminaDevelopment/LuminaClient?style=flat-square">
+  </a>
+  <a href="https://github.com/LuminaDevelopment/LuminaClient">
+    <img alt="Code size" src="https://img.shields.io/github/languages/code-size/LuminaDevelopment/LuminaClient?style=flat-square">
+  </a>
+  <a href="https://github.com/LuminaDevelopment/LuminaClient">
+    <img alt="Lines of Code" src="https://tokei.rs/b1/github/LuminaDevelopment/LuminaClient?style=flat-square">
+  </a>
+</p>
+
+
 ---
 
 ## 🌟 Key Features
