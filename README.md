@@ -18,14 +18,6 @@
 </p>
 
 <p align="center">
-  <a href="#key-features">Key Features</a> •
-  <a href="#installation">Installation</a> •
-  <a href="#usage">Usage</a> •
-  <a href="#contributing">Contributing</a> •
-  <a href="#license">License</a>
-</p>
-
-<p align="center">
   <a href="https://discord.gg/YOUR_INVITE_CODE">
     <img alt="Discord" src="https://img.shields.io/discord/K8g9hmza?label=Discord&logo=discord&style=flat-square">
   </a>
