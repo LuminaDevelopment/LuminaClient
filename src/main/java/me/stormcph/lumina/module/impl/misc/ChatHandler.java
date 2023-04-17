@@ -23,7 +23,7 @@ public class ChatHandler extends Module {
                 ChatCommandManager.findCommand(
                         cmp.chatMessage().replace(
                                 ".",
-                                "")
+                                "").split(" ")[0]
                 ).execute(
                         List.of(
                                 cmp.chatMessage()
