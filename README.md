@@ -7,12 +7,6 @@
   <strong>Powerfull Cheat Client *Lumina Client*</strong>
   <br>
   (we dont have a description yet)
-  <br>
-    [![Discord](https://img.shields.io/discord/K8g9hmza?label=Discord&logo=discord&style=flat-square)](https://discord.gg/YOUR_INVITE_CODE)
-[![Contributors](https://img.shields.io/github/contributors/LuminaDevelopment/LuminaClient?style=flat-square)](https://github.com/LuminaDevelopment/LuminaClient/graphs/contributors)
-[![Code size](https://img.shields.io/github/languages/code-size/LuminaDevelopment/LuminaClient?style=flat-square)](https://github.com/LuminaDevelopment/LuminaClient)
-[![Lines of Code](https://tokei.rs/b1/github/LuminaDevelopment/LuminaClient?style=flat-square)](https://github.com/LuminaDevelopment/LuminaClient)
-
 </p>
 
 <p align="center">
@@ -22,6 +16,30 @@
   <a href="#contributing">Contributing</a> •
   <a href="#license">License</a>
 </p>
+
+<p align="center">
+  <a href="#key-features">Key Features</a> •
+  <a href="#installation">Installation</a> •
+  <a href="#usage">Usage</a> •
+  <a href="#contributing">Contributing</a> •
+  <a href="#license">License</a>
+</p>
+
+<p align="center">
+  <a href="https://discord.gg/YOUR_INVITE_CODE">
+    <img alt="Discord" src="https://img.shields.io/discord/K8g9hmza?label=Discord&logo=discord&style=flat-square">
+  </a>
+  <a href="https://github.com/LuminaDevelopment/LuminaClient/graphs/contributors">
+    <img alt="Contributors" src="https://img.shields.io/github/contributors/LuminaDevelopment/LuminaClient?style=flat-square">
+  </a>
+  <a href="https://github.com/LuminaDevelopment/LuminaClient">
+    <img alt="Code size" src="https://img.shields.io/github/languages/code-size/LuminaDevelopment/LuminaClient?style=flat-square">
+  </a>
+  <a href="https://github.com/LuminaDevelopment/LuminaClient">
+    <img alt="Lines of Code" src="https://tokei.rs/b1/github/LuminaDevelopment/LuminaClient?style=flat-square">
+  </a>
+</p>
+
 
 ---
 
