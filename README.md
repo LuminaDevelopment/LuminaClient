@@ -19,7 +19,7 @@
 
 <p align="center">
   <a href="https://discord.gg/K8g9hmza">
-    <img alt="Discord" src="https://img.shields.io/discord/K8g9hmza?label=Discord&logo=discord&style=flat-square">
+    <img alt="Discord" src="https://img.shields.io/discord/YOUR_SERVER_ID?label=Discord&logo=discord&style=flat-square">
   </a>
   <a href="https://github.com/LuminaDevelopment/LuminaClient/graphs/contributors">
     <img alt="Contributors" src="https://img.shields.io/github/contributors/LuminaDevelopment/LuminaClient?style=flat-square">
