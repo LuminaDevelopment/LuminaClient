@@ -2,6 +2,7 @@ package me.stormcph.lumina.module.impl.movement;
 
 import me.stormcph.lumina.event.EventTarget;
 import me.stormcph.lumina.event.impl.PlayerMoveEvent;
+import me.stormcph.lumina.mixinterface.IVec3d;
 import me.stormcph.lumina.module.Category;
 import me.stormcph.lumina.module.Module;
 import me.stormcph.lumina.setting.impl.NumberSetting;
@@ -74,17 +75,8 @@ public class Speed extends Module {
             velZ *= diagonal;
         }
 
-        try {
-            Field xField = horizontalVelocity.getClass().getField("x");
-            xField.setAccessible(true);
-            xField.set(horizontalVelocity, velX);
-
-            Field zField = horizontalVelocity.getClass().getField("z");
-            zField.setAccessible(true);
-            zField.set(horizontalVelocity, velZ);
-        } catch (NoSuchFieldException | IllegalAccessException e) {
-            e.printStackTrace();
-        }
+        ((IVec3d) horizontalVelocity).setX(velX);
+        ((IVec3d) horizontalVelocity).setZ(velZ);
 
         return horizontalVelocity;
     }

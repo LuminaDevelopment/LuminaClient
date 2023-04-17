@@ -1,6 +1,6 @@
 package me.stormcph.lumina.module.impl.chat;
 
-import me.stormcph.lumina.module.impl.chat.impl.HelpCommand;
+import me.stormcph.lumina.module.impl.chat.impl.*;
 import me.stormcph.lumina.utils.ChatUtils;
 
 import java.util.ArrayList;
@@ -26,6 +26,7 @@ public class ChatCommandManager {
      */
     public static void init(){ // Add commands here
         addCommand(new HelpCommand());
+        addCommand(new BindCommand());
 
 
         cachedName = "null";

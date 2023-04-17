@@ -1,10 +1,16 @@
 package me.stormcph.lumina.utils;
 
 import com.mojang.blaze3d.systems.RenderSystem;
+import net.minecraft.client.gui.DrawableHelper;
 import net.minecraft.client.render.*;
 import net.minecraft.client.util.math.MatrixStack;
+import net.minecraft.util.Identifier;
 import org.jetbrains.annotations.NotNull;
 import org.joml.Matrix4f;
+
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.net.URL;
 
 public class RenderUtils {
 
@@ -51,5 +57,45 @@ public class RenderUtils {
         matrices.translate(x, y, 0);
         matrices.scale(scale, scale, 1);
         matrices.translate(-x, -y, 0);
+    }
+
+    public static void drawScaledTexturedRect(MatrixStack matrices, float x, float y, float scale, String path) {
+        // Scale
+        matrices.push();
+        matrices.scale(scale, scale, 0);
+        // Bind the texture
+        RenderSystem.setShaderTexture(0, new Identifier("lumina", path));
+        try {
+            URL url = RenderUtils.class.getResource("assets/lumina/" + path);
+
+            if(url == null) return;
+            // Get dimensions of image
+            BufferedImage image = ImageIO.read(url);
+            // Draw the image
+            DrawableHelper.drawTexture(matrices, (int) (x / scale), (int) (y / scale), 0.0f, 0.0f, image.getWidth(), image.getHeight(), image.getWidth(), image.getHeight());
+            matrices.pop();
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     *  Draws an image at specified coords
+     * @param matrices The gl context to draw with
+     * @param x X pos
+     * @param y y pos
+     * @param path Path to the image
+     */
+    public static void drawTexturedRectangle(MatrixStack matrices, float x, float y, String path) {
+        // Bind the texture
+        RenderSystem.setShaderTexture(0, new Identifier("lumina", path));
+        try {
+            URL url = RenderUtils.class.getResource("/assets/lumina/" + path);
+            BufferedImage image = ImageIO.read(url);
+            DrawableHelper.drawTexture(matrices, (int) x, (int) y, 0.0f, 0.0f, image.getWidth(), image.getHeight(), image.getWidth(), image.getHeight());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

@@ -10,6 +10,9 @@ import net.minecraft.network.packet.c2s.play.ChatMessageC2SPacket;
 import java.util.List;
 
 public class ChatHandler extends Module {
+
+    private final String prefix = "$";
+
     public ChatHandler() {
         super("ChatCommands", "// TODO", Category.MISC);
         ChatCommandManager.init();
@@ -17,18 +20,18 @@ public class ChatHandler extends Module {
 
     @EventTarget
     public void onPacketSend(PacketSendEvent e){
-        if(e.getPacket() instanceof ChatMessageC2SPacket cmp){
-            if(cmp.chatMessage().startsWith(".")){
+        if(e.getPacket() instanceof ChatMessageC2SPacket cmp) {
+            if(cmp.chatMessage().startsWith(prefix)){
                 e.setCancelled(true);
                 ChatCommandManager.findCommand(
                         cmp.chatMessage().replace(
-                                ".",
+                                prefix,
                                 "")
                 ).execute(
                         List.of(
                                 cmp.chatMessage()
                                         .replace(
-                                                ".",
+                                                prefix,
                                                 "")
                                         .split(" ")
                         )

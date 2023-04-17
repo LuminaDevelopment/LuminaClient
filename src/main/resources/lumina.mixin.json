@@ -4,7 +4,9 @@
   "package": "me.stormcph.lumina.mixins",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
-    "EntityMixin"
+    "EntityMixin",
+    "PlayerMoveC2SPacketMixin",
+    "Vec3dMixin"
   ],
   "client": [
     "ClientPlayNetworkHandlerMixin",

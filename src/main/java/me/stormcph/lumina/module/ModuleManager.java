@@ -2,10 +2,11 @@ package me.stormcph.lumina.module;
 
 import me.stormcph.lumina.module.impl.ghost.*;
 import me.stormcph.lumina.module.impl.category_mng.impl.*;
-import me.stormcph.lumina.module.impl.misc.ChatHandler;
 import me.stormcph.lumina.module.impl.combat.*;
 import me.stormcph.lumina.module.impl.misc.*;
 import me.stormcph.lumina.module.impl.movement.*;
+import me.stormcph.lumina.module.impl.movement.scaffold.Scaffold;
+import me.stormcph.lumina.module.impl.player.*;
 import me.stormcph.lumina.module.impl.render.*;
 
 import java.util.ArrayList;
@@ -27,6 +28,7 @@ public class ModuleManager {
         add(new Sprint());
         add(new FakeLag());
         add(new Speed());
+        add(new Scaffold());
 
         // Combat
         add(new Killaura());
@@ -35,6 +37,10 @@ public class ModuleManager {
 
         // Misc
         add(new PacketLogger());
+        add(new ChatHandler());
+
+        // Player
+        add(new AutoArmor());
 
         // Ghost
         add(new CrystalPop());
@@ -44,6 +50,7 @@ public class ModuleManager {
         add(new Arraylist());
         add(new Animations());
         add(new BetterHome());
+        add(new EveryoneWantsThis());
 
         // Hide / show categories
         add(new CombatCata());
@@ -52,9 +59,6 @@ public class ModuleManager {
         add(new MovementCategory());
         add(new PlayerCategory());
         add(new RenderCategory());
-
-        // Misc
-        add(new ChatHandler());
     }
 
     public void add(Module m) {
