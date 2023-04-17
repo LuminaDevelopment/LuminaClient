@@ -15,6 +15,12 @@
   <a href="#usage">Usage</a> •
   <a href="#contributing">Contributing</a> •
   <a href="#license">License</a>
+  
+  [![Discord](https://img.shields.io/discord/K8g9hmza?label=Discord&logo=discord&style=flat-square)](https://discord.gg/YOUR_INVITE_CODE)
+[![Contributors](https://img.shields.io/github/contributors/LuminaDevelopment/LuminaClient?style=flat-square)](https://github.com/LuminaDevelopment/LuminaClient/graphs/contributors)
+[![Code size](https://img.shields.io/github/languages/code-size/LuminaDevelopment/LuminaClient?style=flat-square)](https://github.com/LuminaDevelopment/LuminaClient)
+[![Lines of Code](https://tokei.rs/b1/github/LuminaDevelopment/LuminaClient?style=flat-square)](https://github.com/LuminaDevelopment/LuminaClient)
+
 </p>
 
 ---
