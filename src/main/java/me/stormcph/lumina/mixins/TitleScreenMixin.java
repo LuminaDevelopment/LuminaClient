@@ -3,6 +3,7 @@ package me.stormcph.lumina.mixins;
 import me.stormcph.lumina.module.ModuleManager;
 import net.minecraft.client.gui.screen.TitleScreen;
 import net.minecraft.text.Text;
+import org.jetbrains.annotations.Async;
 import org.jetbrains.annotations.Nullable;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;

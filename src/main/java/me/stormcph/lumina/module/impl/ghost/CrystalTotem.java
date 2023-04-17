@@ -4,6 +4,7 @@ import me.stormcph.lumina.event.EventTarget;
 import me.stormcph.lumina.event.impl.EventUpdate;
 import me.stormcph.lumina.module.Category;
 import me.stormcph.lumina.module.Module;
+import me.stormcph.lumina.setting.impl.NumberSetting;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.minecraft.client.network.ClientPlayerEntity;
 import net.minecraft.entity.Entity;
@@ -14,8 +15,11 @@ import net.minecraft.server.world.ServerWorld;
 
 public class CrystalTotem extends Module {
 
+    NumberSetting range = new NumberSetting("Search radius", 16.0, 64.0, 32.0, 0.5);
+
     public CrystalTotem() {
         super("CrystalTotem", "Automatically pops end crystal when placed", Category.GHOST);
+        addSettings(range);
     }
 
     @Override
@@ -36,16 +40,14 @@ public class CrystalTotem extends Module {
     }
 
     private void checkEndCrystalYLevel(ClientPlayerEntity player) {
-        double searchRadius = 16.0; // You can adjust the search radius as needed
+        double searchRadius = range.getValue(); // You can adjust the search radius as needed
         double minY = player.getY() - searchRadius;
         double maxY = player.getY() + searchRadius;
 
         for (Entity entity : player.world.getEntitiesByClass(EndCrystalEntity.class, player.getBoundingBox().expand(searchRadius, searchRadius, searchRadius), endCrystal -> endCrystal.getY() >= minY && endCrystal.getY() <= maxY)) {
             if (Math.abs(player.getY() - entity.getY()) < 0.5) { // You can adjust the tolerance as needed
-                sendMsg("detected!!!!!!!!!!!!!!!!!");
-            } else {
-                // Do nothing
-            }
+                sendMsg("[DEBUG] found (detected!!!!!!!!!!!!!!!!!!)");
+            }// else { // Do nothing //  }
         }
     }
 }

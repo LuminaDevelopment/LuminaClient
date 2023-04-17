@@ -18,7 +18,7 @@
     "sources": ""
   },
 
-  "license": "Apache-2.0",
+  "license": "gpl-3.0",
   "icon": "assets/lumina/icon.png",
 
   "environment": "*",

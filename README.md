@@ -4,9 +4,9 @@
   <img src="https://raw.githubusercontent.com/LuminaDevelopment/LuminaClient/main/src/main/resources/assets/lumina/icon.png" alt="Project Logo" width="200">
 </div>
 <p align="center">
-  <strong>Powerfull Cheat Client *Lumina Client*</strong>
+  <strong>Powerful Cheat Client *Lumina Client*</strong>
   <br>
-  (we dont have a description yet)
+  (we don't have a description yet)
 </p>
 
 <p align="center">
@@ -16,6 +16,22 @@
   <a href="#contributing">Contributing</a> •
   <a href="#license">License</a>
 </p>
+
+<p align="center">
+<a href="https://discord.gg/K8g9hmza">
+  <img alt="Discord" src="https://img.shields.io/discord/1093790829673467914?label=Discord&logo=discord&style=flat-square">
+</a>
+  <a href="https://github.com/LuminaDevelopment/LuminaClient/graphs/contributors">
+    <img alt="Contributors" src="https://img.shields.io/github/contributors/LuminaDevelopment/LuminaClient?style=flat-square">
+  </a>
+  <a href="https://github.com/LuminaDevelopment/LuminaClient">
+    <img alt="Code size" src="https://img.shields.io/github/languages/code-size/LuminaDevelopment/LuminaClient?style=flat-square">
+  </a>
+  <a href="https://github.com/LuminaDevelopment/LuminaClient">
+    <img alt="Lines of Code" src="https://tokei.rs/b1/github/LuminaDevelopment/LuminaClient?style=flat-square">
+  </a>
+</p>
+
 
 ---
 

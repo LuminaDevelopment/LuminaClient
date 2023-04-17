@@ -40,6 +40,7 @@ public class ClickGui extends Screen {
     @Override
     public boolean mouseClicked(double mouseX, double mouseY, int button) {
         for (Frame frame : frames) {
+            if(frame.category.isHidden) continue;
             frame.mouseClicked(mouseX, mouseY, button);
         }
         return super.mouseClicked(mouseX, mouseY, button);

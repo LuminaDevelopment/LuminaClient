@@ -31,17 +31,12 @@ public class CrystalPop extends Module {
     @Override
     public void onEnable() {
         super.onEnable();
-        ClientTickEvents.END_CLIENT_TICK.register(client -> endCrystalTrigger());
-    }
-
-    @Override
-    public void onDisable() {
-        super.onDisable();
+//        ClientTickEvents.END_CLIENT_TICK.register(client -> endCrystalTrigger());
     }
 
     @EventTarget
     public void onUpdate(EventUpdate event) {
-
+        endCrystalTrigger();
     }
     private void endCrystalTrigger() {
         HitResult hit = mc.crosshairTarget;
@@ -55,5 +50,6 @@ public class CrystalPop extends Module {
             mc.player.swingHand(Hand.MAIN_HAND);
             timerUtil.reset();
         }
+
     }
 }
