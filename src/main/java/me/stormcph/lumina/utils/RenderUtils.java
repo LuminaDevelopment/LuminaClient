@@ -9,6 +9,7 @@ import org.jetbrains.annotations.NotNull;
 import org.joml.Matrix4f;
 
 import javax.imageio.ImageIO;
+import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.net.URL;
 
@@ -97,5 +98,9 @@ public class RenderUtils {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public static Color getMcColor(int r, int b, int g){
+        return new Color(b, g, r);
     }
 }
