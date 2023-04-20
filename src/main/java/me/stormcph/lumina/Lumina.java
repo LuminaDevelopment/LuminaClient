@@ -12,6 +12,7 @@ import me.stormcph.lumina.ui.screens.clickgui.ClickGui;
 import net.fabricmc.api.ModInitializer;
 import net.minecraft.client.MinecraftClient;
 import org.apache.logging.log4j.LogManager;
+import me.stormcph.lumina.utils.SessionChanger;
 import org.apache.logging.log4j.Logger;
 import org.lwjgl.glfw.GLFW;
 
@@ -25,6 +26,8 @@ public class Lumina implements ModInitializer {
     @Override
     public void onInitialize() {
         EventManager.register(this);
+        SessionChanger.loginCracked("LuminaUser");
+        System.out.println("Set username to LuminaUser");
     }
 
 
