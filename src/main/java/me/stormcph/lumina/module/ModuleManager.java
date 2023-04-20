@@ -41,6 +41,7 @@ public class ModuleManager {
 
         // Player
         add(new AutoArmor());
+        add(new ChestStealer());
 
         // Ghost
         add(new CrystalPop());
