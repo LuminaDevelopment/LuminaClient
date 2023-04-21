@@ -1,5 +1,6 @@
 package me.stormcph.lumina.module;
 
+import me.stormcph.lumina.Lumina;
 import me.stormcph.lumina.module.impl.ghost.*;
 import me.stormcph.lumina.module.impl.category_mng.impl.*;
 import me.stormcph.lumina.module.impl.combat.*;
@@ -52,6 +53,7 @@ public class ModuleManager {
         add(new Animations());
         add(new BetterHome());
         add(new EveryoneWantsThis());
+        add(new LuminaLogo());
 
         // Hide / show categories
         add(new CombatCata());
