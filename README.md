@@ -4,7 +4,7 @@
   <img src="https://raw.githubusercontent.com/LuminaDevelopment/LuminaClient/main/src/main/resources/assets/lumina/icon.png" alt="Project Logo" width="200">
 </div>
 <p align="center">
-  <strong>Powerful Cheat Client *Lumina Client*</strong>
+  <strong>Powerful Ghost Client *Lumina Client*</strong>
   <br>
   (we don't have a description yet)
 </p>
