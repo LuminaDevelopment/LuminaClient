@@ -1,4 +1,9 @@
 v1	named	intermediary
+FIELD	me/stormcph/lumina/mixins/PlayerMoveC2SPacketMixin	D	x	field_12889
+FIELD	me/stormcph/lumina/mixins/PlayerMoveC2SPacketMixin	D	y	field_12886
+FIELD	me/stormcph/lumina/mixins/PlayerMoveC2SPacketMixin	D	z	field_12884
+FIELD	me/stormcph/lumina/mixins/PlayerMoveC2SPacketMixin	F	yaw	field_12887
+FIELD	me/stormcph/lumina/mixins/PlayerMoveC2SPacketMixin	F	pitch	field_12885
 FIELD	me/stormcph/lumina/mixins/HeldItemRendererMixin	F	equipProgressMainHand	field_4043
 FIELD	me/stormcph/lumina/mixins/HeldItemRendererMixin	F	prevEquipProgressMainHand	field_4053
 FIELD	me/stormcph/lumina/mixins/HeldItemRendererMixin	F	prevEquipProgressOffHand	field_4051
@@ -6,13 +11,10 @@ FIELD	me/stormcph/lumina/mixins/HeldItemRendererMixin	F	equipProgressOffHand	fie
 FIELD	me/stormcph/lumina/mixins/HeldItemRendererMixin	Lnet/minecraft/item/ItemStack;	mainHand	field_4047
 FIELD	me/stormcph/lumina/mixins/HeldItemRendererMixin	Lnet/minecraft/item/ItemStack;	offHand	field_4048
 FIELD	me/stormcph/lumina/mixins/HeldItemRendererMixin	Lnet/minecraft/client/MinecraftClient;	client	field_4050
-FIELD	me/stormcph/lumina/mixins/PlayerMoveC2SPacketMixin	D	x	field_12889
-FIELD	me/stormcph/lumina/mixins/PlayerMoveC2SPacketMixin	D	y	field_12886
-FIELD	me/stormcph/lumina/mixins/PlayerMoveC2SPacketMixin	D	z	field_12884
-FIELD	me/stormcph/lumina/mixins/PlayerMoveC2SPacketMixin	F	yaw	field_12887
-FIELD	me/stormcph/lumina/mixins/PlayerMoveC2SPacketMixin	F	pitch	field_12885
 FIELD	me/stormcph/lumina/mixins/TitleScreenMixin	Ljava/lang/String;	splashText	field_2586
 FIELD	me/stormcph/lumina/mixins/TitleScreenMixin	Lnet/minecraft/text/Text;	COPYRIGHT	field_32271
+FIELD	me/stormcph/lumina/mixins/SessionMixin	Ljava/lang/String;	username	field_1982
+FIELD	me/stormcph/lumina/mixins/SessionMixin	Ljava/lang/String;	uuid	field_1985
 FIELD	me/stormcph/lumina/mixins/Vec3dMixin	D	x	field_1352
 FIELD	me/stormcph/lumina/mixins/Vec3dMixin	D	y	field_1351
 FIELD	me/stormcph/lumina/mixins/Vec3dMixin	D	z	field_1350

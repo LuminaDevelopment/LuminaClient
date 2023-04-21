@@ -16,6 +16,7 @@
     "KeyboardMixin",
     "LivingEntityMixin",
     "MinecraftClientMixin",
+    "SessionMixin",
     "TitleScreenMixin",
     "WorldRendererMixin"
   ],
