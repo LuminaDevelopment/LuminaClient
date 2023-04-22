@@ -38,5 +38,19 @@
   },
   "suggests": {
     "another-mod": "*"
+  },
+  "client": {
+    "keybinds": [
+      {
+        "key": "key.lumina.open_click_gui",
+        "name": "Open Click GUI",
+        "category": "Lumina"
+      },
+      {
+        "key": "key.lumina.open_hud_config_screen",
+        "name": "Open HUD Config Screen",
+        "category": "Lumina"
+      }
+    ]
   }
 }

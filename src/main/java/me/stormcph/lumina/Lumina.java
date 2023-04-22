@@ -10,7 +10,10 @@ import me.stormcph.lumina.module.ModuleManager;
 import me.stormcph.lumina.ui.HudConfigScreen;
 import me.stormcph.lumina.ui.screens.clickgui.ClickGui;
 import net.fabricmc.api.ModInitializer;
+import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper;
 import net.minecraft.client.MinecraftClient;
+import net.minecraft.client.option.KeyBinding;
+import net.minecraft.client.util.InputUtil;
 import org.apache.logging.log4j.LogManager;
 import me.stormcph.lumina.utils.SessionChanger;
 import org.apache.logging.log4j.Logger;
@@ -23,13 +26,19 @@ public class Lumina implements ModInitializer {
 
     private final MinecraftClient mc = MinecraftClient.getInstance();
 
+    private static final KeyBinding openClickGuiKey = new KeyBinding("key.lumina.open_click_gui", InputUtil.Type.KEYSYM, GLFW.GLFW_KEY_RIGHT_ALT, "category.lumina");
+    private static final KeyBinding openHudConfigScreenKey = new KeyBinding("key.lumina.open_hud_config_screen", InputUtil.Type.KEYSYM, GLFW.GLFW_KEY_H, "category.lumina");
+
     @Override
     public void onInitialize() {
         EventManager.register(this);
-        SessionChanger.loginCracked("LuminaUser");
+
+        KeyBindingHelper.registerKeyBinding(openClickGuiKey);
+        KeyBindingHelper.registerKeyBinding(openHudConfigScreenKey);
+
+//        SessionChanger.loginCracked("LuminaUser");
         System.out.println("Set username to LuminaUser");
     }
-
 
     @EventTarget
     public void onKeyPress(KeyEvent event) {
@@ -39,8 +48,8 @@ public class Lumina implements ModInitializer {
                 if (event.getKey() == module.getKey()) module.toggle();
             }
 
-            if (event.getKey() == GLFW.GLFW_KEY_RIGHT_ALT) mc.setScreen(ClickGui.INSTANCE);
-            if (event.getKey() == GLFW.GLFW_KEY_H) mc.setScreen(new HudConfigScreen());
+            if (openClickGuiKey.wasPressed()) mc.setScreen(ClickGui.INSTANCE);
+            if (openHudConfigScreenKey.wasPressed()) mc.setScreen(new HudConfigScreen());
         }
     }
 
