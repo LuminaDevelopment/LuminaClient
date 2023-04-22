@@ -21,7 +21,8 @@ hs_err_pid*
 
 # Minecraft / Fabric
 run/
-.gradle/loom-cache/minecraftMaven/
+.gradle/
+build/
 
 # Intellij
 .idea
