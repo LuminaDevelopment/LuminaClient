@@ -58,7 +58,6 @@ public class AutoArmor extends Module {
         ItemStack chestplate = newArmor[1];
         ItemStack leggings = newArmor[2];
         ItemStack boots = newArmor[3];
-
         mc.interactionManager.clickSlot(mc.player.currentScreenHandler.syncId, EquipmentSlot.HEAD.getEntitySlotId(), 0, SlotActionType.THROW, mc.player);
         mc.player.equipStack(EquipmentSlot.HEAD, helmet);
 
@@ -71,6 +70,7 @@ public class AutoArmor extends Module {
         mc.interactionManager.clickSlot(mc.player.currentScreenHandler.syncId, EquipmentSlot.FEET.getEntitySlotId(), 0, SlotActionType.THROW, mc.player);
         mc.player.equipStack(EquipmentSlot.FEET, boots);
     }
+
 
     public int score(ItemStack item) {
         int score = 0;
