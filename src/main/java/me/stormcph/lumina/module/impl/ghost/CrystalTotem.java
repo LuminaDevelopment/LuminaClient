@@ -48,7 +48,7 @@ public class CrystalTotem extends Module {
         double maxY = player.getY() + searchRadius;
 
         for (Entity entity : player.world.getEntitiesByClass(EndCrystalEntity.class, player.getBoundingBox().expand(searchRadius, searchRadius, searchRadius), endCrystal -> endCrystal.getY() >= minY && endCrystal.getY() <= maxY)) {
-            if (Math.abs(player.getY() - entity.getY()) < 0.5) {
+            if (player.getY() - entity.getY() >= 0 && player.getY() - entity.getY() <= searchRadius) {
                 if (mc.player == null || mc.world == null || mc.isPaused()) {
                     return;
                 }
@@ -60,7 +60,7 @@ public class CrystalTotem extends Module {
                             mc.player.getInventory().selectedSlot = i;
                             timerUtil.reset();
                         }
-                            break;
+                        break;
                     }
                 }
             }
