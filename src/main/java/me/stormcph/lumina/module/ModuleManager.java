@@ -47,7 +47,6 @@ public class ModuleManager {
         // Ghost
         add(new CrystalPop());
         add(new CrystalTotem());
-
         // Render
         add(new Arraylist());
         add(new Animations());

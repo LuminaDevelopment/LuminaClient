@@ -23,7 +23,7 @@ public class TitleScreenMixin {
 
     @Inject(method = "tick", at=@At("HEAD"), cancellable = true)
     private void init(CallbackInfo ci){
-        if(ModuleManager.INSTANCE.getModuleByName("BetterHome").isEnabled()){
+        if(ModuleManager.INSTANCE.getModuleByName("TitleScreen").isEnabled()){
             this.splashText="Prototype!";
             this.COPYRIGHT = Text.of("LuminaClient");
         }
