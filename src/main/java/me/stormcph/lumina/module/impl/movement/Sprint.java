@@ -4,6 +4,7 @@ import me.stormcph.lumina.event.EventTarget;
 import me.stormcph.lumina.event.impl.EventUpdate;
 import me.stormcph.lumina.module.Category;
 import me.stormcph.lumina.module.Module;
+import org.lwjgl.glfw.GLFW;
 
 public class Sprint extends Module {
 
