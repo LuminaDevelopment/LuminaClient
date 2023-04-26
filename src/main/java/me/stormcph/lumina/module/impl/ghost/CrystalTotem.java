@@ -26,13 +26,12 @@ public class CrystalTotem extends Module {
 
     private final TimerUtil timerUtil = new TimerUtil();
 
-    private final NumberSetting health = new NumberSetting("health", 0.0, 36, 0, 1);
+    private final NumberSetting healthIndicator = new NumberSetting("health", 0.0, 36, 0, 1);
     private final NumberSetting cooldown = new NumberSetting("SwitchDelay", 0.0, 10000.0, 50.0, 0.01);
     private final NumberSetting crystalRadiusX = new NumberSetting("Crystal X", 0.0, 16.0, 8.0, 0.01);
     private final NumberSetting crystalRadiusYPlus = new NumberSetting("Crystal (above) Y", 0.0, 16.0, 5.0, 0.01);
     private final NumberSetting crystalRadiusYMinus = new NumberSetting("Crystal (below) Y", 0.0, 1.0, 0.6, 0.01);
     private final NumberSetting crystalRadiusZ = new NumberSetting("Crystal Z", 0.0, 16.0, 8.0, 0.01);
-
 
 
     private final NumberSetting anchorRadiusX = new NumberSetting("Anchor X", 0.0, 8.0, 3.0, 0.01);
@@ -41,11 +40,12 @@ public class CrystalTotem extends Module {
     private final NumberSetting anchorRadiusZ = new NumberSetting("Anchor Z", 0.0, 8.0, 3.0, 0.01);
     BooleanSetting onlyCharged = new BooleanSetting("only if charged", false);
     BooleanSetting obsidianAnchorCheck = new BooleanSetting("Obsidian Anchor Check", true);
+    BooleanSetting antiFall = new BooleanSetting("AntiFall", true);
 
 
     public CrystalTotem() {
         super("AutoDoubleHand", "Automatically pops end crystal when placed", Category.GHOST);
-        addSettings(cooldown, crystalRadiusX, crystalRadiusYPlus, crystalRadiusYMinus, crystalRadiusZ, anchorRadiusX, anchorRadiusYPlus, anchorRadiusYMinus, anchorRadiusZ, onlyCharged, obsidianAnchorCheck);
+        addSettings(healthIndicator, antiFall, cooldown, crystalRadiusX, crystalRadiusYPlus, crystalRadiusYMinus, crystalRadiusZ, anchorRadiusX, anchorRadiusYPlus, anchorRadiusYMinus, anchorRadiusZ, onlyCharged, obsidianAnchorCheck);
     }
 
     @Override
@@ -57,6 +57,8 @@ public class CrystalTotem extends Module {
                 if (player != null) {
                     checkEndCrystal(player);
                     anchorCheck(player);
+                    checkHealth(player);
+                    antiFall(player);
                 }
             }
         });
@@ -93,7 +95,6 @@ public class CrystalTotem extends Module {
 
         return Optional.empty();
     }
-
 
 
     private void checkEndCrystal(ClientPlayerEntity player) {
@@ -195,6 +196,46 @@ public class CrystalTotem extends Module {
                                     break;
                                 }
                             }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    private void checkHealth(ClientPlayerEntity player) {
+        float health = player.getHealth();
+        int threshold = (int) healthIndicator.getValue();
+        if (health <= threshold) {
+            for (int i = 0; i < 9; i++) {
+                Item item = mc.player.getInventory().getStack(i).getItem();
+                if (item == Items.TOTEM_OF_UNDYING) {
+                    if (timerUtil.hasReached((int) cooldown.getValue())) {
+                        mc.player.getInventory().selectedSlot = i;
+                        timerUtil.reset();
+                    }
+                    break;
+                }
+            }
+        }
+    }
+
+    private void antiFall(ClientPlayerEntity player) {
+        float health = player.getHealth();
+
+        if (antiFall.isEnabled()) {
+            if (!player.isOnGround()) {
+                double distanceFallen = player.fallDistance;
+                float fallDamage = (float) (distanceFallen - 3.0);
+                if (fallDamage >= health) {
+                    for (int i = 0; i < 9; i++) {
+                        Item item = mc.player.getInventory().getStack(i).getItem();
+                        if (item == Items.TOTEM_OF_UNDYING) {
+                            if (timerUtil.hasReached((int) cooldown.getValue())) {
+                                mc.player.getInventory().selectedSlot = i;
+                                timerUtil.reset();
+                            }
+                            break;
                         }
                     }
                 }
