@@ -98,7 +98,6 @@ public class Frame {
         }
     }
 
-
     public void mouseClicked(double mouseX, double mouseY, int button) {
         if (isHovered(mouseX, mouseY)) {
             if (button == 0) {
@@ -116,6 +115,8 @@ public class Frame {
             }
         }
     }
+
+
 
     public void mouseReleased(double mouseX, double mouseY, int button) {
         if (button == 0 && dragging == true) dragging = false;

@@ -7,6 +7,7 @@ import me.stormcph.lumina.utils.animations.Direction;
 import me.stormcph.lumina.utils.animations.impl.DecelerateAnimation;
 import net.minecraft.client.MinecraftClient;
 import me.stormcph.lumina.utils.animations.Animation;
+import net.minecraft.client.option.KeyBinding;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -19,6 +20,7 @@ public abstract class Module {
     private boolean enabled;
     private Category category;
 
+    private KeyBinding keyBinding;
     private final Animation animation = new DecelerateAnimation(250, 1).setDirection(Direction.BACKWARDS);
     private boolean expanded;
 
@@ -32,6 +34,7 @@ public abstract class Module {
         this.category = category;
         this.displayName = name;
         this.key = 0;
+
     }
 
     public void toggle() {

@@ -46,6 +46,8 @@ public class ClickGui extends Screen {
         return super.mouseClicked(mouseX, mouseY, button);
     }
 
+
+
     @Override
     public boolean mouseReleased(double mouseX, double mouseY, int button) {
         for (Frame frame : frames) {
