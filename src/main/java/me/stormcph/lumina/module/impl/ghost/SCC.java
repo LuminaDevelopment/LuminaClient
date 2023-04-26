@@ -61,9 +61,7 @@ public class SCC extends Module {
         Entity target = ((EntityHitResult) hit).getEntity();
         Packet<?> packet = evnt.getPacket();
         if ((packet instanceof PlayerInteractEntityC2SPacket)&&!(target instanceof EndCrystalEntity)) {
-            sendMsg("attacked");
             hasAttacked = true;
-            sendMsg("1");
             crystalBroken = false;
             crystalPlaced = false;
             cd.reset();
@@ -75,18 +73,12 @@ public class SCC extends Module {
         ItemRequieredInHotbar();
         if (!crystalBroken) crystalHit();
         if (isBlockInCrosshair() && hasAttacked && cd.hasReached(cooldown.getValue()) && !ObsidianInCrosshair()) {
-            sendMsg("block in crosshair");
-            sendMsg("2");
             if (mc.player.getInventory().selectedSlot != ObsidianSlot()) {
-                sendMsg("3");
                 mc.player.getInventory().selectedSlot = ObsidianSlot();
-                sendMsg("taken obsidian");
                 cd.reset();
             }
             if (cd.hasReached(cooldown.getValue())&&!ObsidianInCrosshair()&&hasAttacked) {
-                sendMsg("4");
                 PlaceBlock();
-                sendMsg("placed block ");
                 mc.player.getInventory().selectedSlot = CrystalSlot();
                 hasAttacked = false;
                 cd.reset();
@@ -94,9 +86,7 @@ public class SCC extends Module {
 
         }
         if (ObsidianInCrosshair()&&cd.hasReached(cooldown.getValue())&&!crystalPlaced) {
-            sendMsg("5");
             if (cd.hasReached(cooldown.getValue())) {
-                sendMsg("placing crystal");
                 PlaceBlock();
                 crystalPlaced = true;
                 cd.reset();
