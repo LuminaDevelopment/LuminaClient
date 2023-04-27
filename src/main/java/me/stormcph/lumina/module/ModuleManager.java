@@ -1,6 +1,5 @@
 package me.stormcph.lumina.module;
 
-import me.stormcph.lumina.Lumina;
 import me.stormcph.lumina.module.impl.ghost.*;
 import me.stormcph.lumina.module.impl.category_mng.impl.*;
 import me.stormcph.lumina.module.impl.combat.*;
@@ -46,7 +45,7 @@ public class ModuleManager {
 
         // Ghost
         add(new CrystalPop());
-        add(new CrystalTotem());
+        add(new AutoDoubleHand());
         // Render
         add(new Arraylist());
         add(new Animations());

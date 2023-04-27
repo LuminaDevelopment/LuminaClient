@@ -1,6 +1,5 @@
 package me.stormcph.lumina.module.impl.ghost;
 
-import com.sun.jna.platform.win32.WinNT;
 import me.stormcph.lumina.event.EventTarget;
 import me.stormcph.lumina.event.impl.EventUpdate;
 import me.stormcph.lumina.module.Category;
@@ -22,7 +21,7 @@ import net.minecraft.util.math.Direction;
 
 import java.util.Optional;
 
-public class CrystalTotem extends Module {
+public class AutoDoubleHand extends Module {
 
     private final TimerUtil timerUtil = new TimerUtil();
 
@@ -43,7 +42,7 @@ public class CrystalTotem extends Module {
     BooleanSetting antiFall = new BooleanSetting("AntiFall", true);
 
 
-    public CrystalTotem() {
+    public AutoDoubleHand() {
         super("AutoDoubleHand", "Automatically pops end crystal when placed", Category.GHOST);
         addSettings(healthIndicator, antiFall, cooldown, crystalRadiusX, crystalRadiusYPlus, crystalRadiusYMinus, crystalRadiusZ, anchorRadiusX, anchorRadiusYPlus, anchorRadiusYMinus, anchorRadiusZ, onlyCharged, obsidianAnchorCheck);
     }
