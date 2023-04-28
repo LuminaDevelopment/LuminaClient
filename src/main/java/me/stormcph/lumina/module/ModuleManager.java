@@ -46,6 +46,9 @@ public class ModuleManager {
         // Ghost
         add(new CrystalPop());
         add(new AutoDoubleHand());
+        add(new CrystalPlacer());
+        add(new SCC());
+
         // Render
         add(new Arraylist());
         add(new Animations());

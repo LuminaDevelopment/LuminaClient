@@ -23,7 +23,7 @@ public class CrystalPlacer extends Module {
         super("Crystal Placer", "helps placing crystal when looking at obsidian", Category.GHOST);
         addSettings(cooldown);
     }
-    private final NumberSetting cooldown = new NumberSetting("cooldown-ms", 10.0, 1000.0, 50.0, 0.01);
+    private final NumberSetting cooldown = new NumberSetting("cooldown-ms", 0.0, 1000.0, 50.0, 0.01);
     private final TimerUtil timerUtil = new TimerUtil();
     @EventTarget
     public void onUpdate(EventUpdate e) {

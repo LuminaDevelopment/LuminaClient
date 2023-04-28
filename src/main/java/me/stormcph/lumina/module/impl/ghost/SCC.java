@@ -13,6 +13,7 @@ import net.minecraft.block.Blocks;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.decoration.EndCrystalEntity;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.network.packet.Packet;
@@ -29,145 +30,129 @@ import net.minecraft.util.math.BlockPos;
 import static me.stormcph.lumina.utils.PacketUtil.sendPacket;
 
 public class SCC extends Module {
-    public SCC() {
-        super("SCC", "helps placing after knocking someone with a sword", Category.GHOST);
-        addSettings(selfToggle);
-        addSettings(cooldown);
-
-    }
     private final BooleanSetting selfToggle = new BooleanSetting("Self Toggle?", true);
     private final TimerUtil cd = new TimerUtil();
     private final NumberSetting cooldown = new NumberSetting("cooldown-ms", 10.0, 1000.0, 50.0, 0.01);
 
-    boolean msgSent = false;
-    boolean hasAttacked = false;
-    boolean crystalBroken = false;
-    boolean crystalPlaced = false;
+    private boolean msgSent = false;
+    private boolean hasAttacked = false;
+    private boolean crystalBroken = false;
+    private boolean crystalPlaced = false;
+
+    public SCC() {
+        super("SCC", "helps placing after knocking someone with a sword", Category.GHOST);
+        addSettings(selfToggle, cooldown);
+    }
+
     @Override
     public void onEnable() {
         super.onEnable();
         msgSent = false;
     }
 
-    @Override
-    public void onDisable() {
-        super.onDisable();
-    }
-
     @EventTarget
     private void onEvent(PacketSendEvent evnt) {
-
         HitResult hit = mc.crosshairTarget;
+        if (!(hit instanceof EntityHitResult)) return;
         Entity target = ((EntityHitResult) hit).getEntity();
         Packet<?> packet = evnt.getPacket();
-        if ((packet instanceof PlayerInteractEntityC2SPacket)&&!(target instanceof EndCrystalEntity)) {
+
+        if (packet instanceof PlayerInteractEntityC2SPacket && !(target instanceof EndCrystalEntity)) {
             hasAttacked = true;
             crystalBroken = false;
             crystalPlaced = false;
             cd.reset();
-
         }
     }
+
     @EventTarget
     private void onUpdate(EventUpdate event) {
-        ItemRequieredInHotbar();
-        if (!crystalBroken) crystalHit();
-        if (isBlockInCrosshair() && hasAttacked && cd.hasReached(cooldown.getValue()) && !ObsidianInCrosshair()) {
-            if (mc.player.getInventory().selectedSlot != ObsidianSlot()) {
-                mc.player.getInventory().selectedSlot = ObsidianSlot();
-                cd.reset();
-            }
-            if (cd.hasReached(cooldown.getValue())&&!ObsidianInCrosshair()&&hasAttacked) {
-                PlaceBlock();
-                mc.player.getInventory().selectedSlot = CrystalSlot();
-                hasAttacked = false;
-                cd.reset();
-            }
-
+        checkRequiredItemsInHotbar();
+        if (!crystalBroken) {
+            crystalHit();
         }
-        if (ObsidianInCrosshair()&&cd.hasReached(cooldown.getValue())&&!crystalPlaced) {
-            if (cd.hasReached(cooldown.getValue())) {
-                PlaceBlock();
-                crystalPlaced = true;
-                cd.reset();
-            }
-        }
+        handleBlockPlacement();
     }
 
-    private void crystalHit(){
+    private void crystalHit() {
         HitResult hit = mc.crosshairTarget;
-        if (hit.getType() != HitResult.Type.ENTITY)
-            return;
+        if (!(hit instanceof EntityHitResult)) return;
         Entity target = ((EntityHitResult) hit).getEntity();
-        if (!(target instanceof EndCrystalEntity))
-            return;
-        if (cd.hasReached((int) cooldown.getValue())) {
+
+        if (target instanceof EndCrystalEntity && cd.hasReached((int) cooldown.getValue())) {
             mc.interactionManager.attackEntity(mc.player, target);
             mc.player.swingHand(Hand.MAIN_HAND);
             cd.reset();
             crystalBroken = true;
             if (selfToggle.isEnabled()) toggle();
         }
-
     }
-    //checking for crystal
-    private int CrystalSlot() {
+
+    private int findSlotForItem(Item item) {
         for (int i = 0; i <= 8; i++) {
             ItemStack stack = mc.player.getInventory().getStack(i);
-            if (stack.getItem() == Items.END_CRYSTAL) {
-                return (i);
+            if (stack.getItem() == item) {
+                return i;
             }
         }
-        return (-1);
+        return -1;
     }
 
-    //checking for Obsidian
-    private int ObsidianSlot() {
+    private void checkRequiredItemsInHotbar() {
+        int crystalSlot = findSlotForItem(Items.END_CRYSTAL);
+        int obsidianSlot = findSlotForItem(Items.OBSIDIAN);
 
-        for (int i = 0; i <= 8; i++) {
-            ItemStack stack = mc.player.getInventory().getStack(i);
-            if (stack.getItem() == Items.OBSIDIAN) {
-                return (i);
-            }
-        }
-        return (-1);
-    }
-
-
-
-    //check your hotbar status and toggle off when requierement not met
-    private void ItemRequieredInHotbar() {
-        if ((CrystalSlot() >= 0) && (ObsidianSlot() >= 0)) {
+        if (crystalSlot >= 0 && obsidianSlot >= 0) {
             if (!msgSent) {
                 sendMsg("crystal and obi found");
                 msgSent = true;
             }
-        } else if ((CrystalSlot() < 0) && (ObsidianSlot() < 0)) {
-            sendMsg("need obsidian and crystals");
-            toggle();
-        } else if (CrystalSlot() < 0) {
-            sendMsg("need crystal");
-            toggle();
-        } else if (ObsidianSlot() < 0) {
-            sendMsg("need obi");
+        } else {
+            if (crystalSlot < 0) sendMsg("need crystal");
+            if (obsidianSlot < 0) sendMsg("need obi");
             toggle();
         }
     }
 
     private boolean isBlockInCrosshair() {
-        MinecraftClient mc = MinecraftClient.getInstance();
-        BlockHitResult hitResult = (BlockHitResult) mc.crosshairTarget;
-        return hitResult != null && hitResult.getType() == BlockHitResult.Type.BLOCK;
+        return mc.crosshairTarget instanceof BlockHitResult;
     }
 
-    private void PlaceBlock(){
+    private void handleBlockPlacement() {
+        if (!isBlockInCrosshair() || !hasAttacked || !cd.hasReached(cooldown.getValue()) || isObsidianInCrosshair()) {
+            return;
+        }
+
+        int obsidianSlot = findSlotForItem(Items.OBSIDIAN);
+        int crystalSlot = findSlotForItem(Items.END_CRYSTAL);
+
+        if (mc.player.getInventory().selectedSlot != obsidianSlot) {
+            mc.player.getInventory().selectedSlot = obsidianSlot;
+            cd.reset();
+        }
+
+        if (cd.hasReached(cooldown.getValue()) && !isObsidianInCrosshair() && hasAttacked) {
+            placeBlock();
+            mc.player.getInventory().selectedSlot = crystalSlot;
+            hasAttacked = false;
+            cd.reset();
+        }
+
+        if (isObsidianInCrosshair() && cd.hasReached(cooldown.getValue()) && !crystalPlaced) {
+            placeBlock();
+            crystalPlaced = true;
+            cd.reset();
+        }
+    }
+
+    private void placeBlock() {
         BlockHitResult hitResult = (BlockHitResult) mc.crosshairTarget;
         mc.player.swingHand(mc.player.getActiveHand());
         sendPacket(new PlayerInteractBlockC2SPacket(Hand.MAIN_HAND, hitResult, 0));
     }
 
-    private boolean ObsidianInCrosshair() {
-        if (mc.crosshairTarget != null && mc.crosshairTarget.getType() == HitResult.Type.BLOCK) {
+    private boolean isObsidianInCrosshair() {
+        if (mc.crosshairTarget instanceof BlockHitResult) {
             BlockPos blockPos = ((BlockHitResult) mc.crosshairTarget).getBlockPos();
             BlockState blockState = mc.world.getBlockState(blockPos);
             return blockState.getBlock() == Blocks.OBSIDIAN;
@@ -175,3 +160,4 @@ public class SCC extends Module {
         return false;
     }
 }
+
