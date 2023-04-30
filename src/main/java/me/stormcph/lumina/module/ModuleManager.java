@@ -38,6 +38,7 @@ public class ModuleManager {
         // Misc
         add(new PacketLogger());
         add(new ChatHandler());
+        add(new ItemDump());
 
         // Player
         add(new AutoArmor());
