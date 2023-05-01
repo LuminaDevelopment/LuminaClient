@@ -4,6 +4,7 @@ import me.stormcph.lumina.event.EventTarget;
 import me.stormcph.lumina.event.impl.EventUpdate;
 import me.stormcph.lumina.module.Category;
 import me.stormcph.lumina.module.Module;
+import me.stormcph.lumina.setting.impl.BooleanSetting;
 import me.stormcph.lumina.setting.impl.NumberSetting;
 import me.stormcph.lumina.utils.TimerUtil;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
@@ -23,9 +24,10 @@ public class CrystalPop extends Module {
 
     private final NumberSetting cooldown = new NumberSetting("cooldown-ms", 0.0, 1000.0, 0.0, 0.01);
 
+    BooleanSetting hitboxCheck = new BooleanSetting("hotboxCheck", false);
     public CrystalPop() {
         super("CrystalPop", "Automatically pops end crystal when placed", Category.GHOST);
-        addSettings(cooldown);
+        addSettings(cooldown, hitboxCheck);
     }
 
     @Override
@@ -51,5 +53,11 @@ public class CrystalPop extends Module {
             timerUtil.reset();
         }
 
+    }
+
+    public void hitboxCheck() {
+        if (hitboxCheck.isEnabled()) {
+            //hi chatgpt here is where you come into play :)
+        }
     }
 }
