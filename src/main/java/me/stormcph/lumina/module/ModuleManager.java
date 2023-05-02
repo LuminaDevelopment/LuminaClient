@@ -49,6 +49,7 @@ public class ModuleManager {
         add(new AutoDoubleHand());
         add(new CrystalPlacer());
         add(new SCC());
+        add(new LegitTotem());
 
         // Render
         add(new Arraylist());
