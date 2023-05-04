@@ -8,13 +8,16 @@ import me.stormcph.lumina.setting.impl.BooleanSetting;
 import me.stormcph.lumina.setting.impl.NumberSetting;
 import me.stormcph.lumina.utils.TimerUtil;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
+import net.fabricmc.fabric.api.event.player.PlayerBlockBreakEvents;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.RespawnAnchorBlock;
 import net.minecraft.client.network.ClientPlayerEntity;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.decoration.EndCrystalEntity;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
@@ -24,6 +27,7 @@ import java.util.Optional;
 public class AutoDoubleHand extends Module {
 
     private final TimerUtil timerUtil = new TimerUtil();
+    private Item previousOffhandItem = Items.AIR;
 
     private final NumberSetting healthIndicator = new NumberSetting("health", 0.0, 36, 0, 1);
     private final NumberSetting cooldown = new NumberSetting("SwitchDelay", 0.0, 10000.0, 50.0, 0.01);
@@ -40,12 +44,14 @@ public class AutoDoubleHand extends Module {
     BooleanSetting onlyCharged = new BooleanSetting("only if charged", false);
     BooleanSetting obsidianAnchorCheck = new BooleanSetting("Obsidian Anchor Check", true);
     BooleanSetting antiFall = new BooleanSetting("AntiFall", true);
+    BooleanSetting offhandPop = new BooleanSetting("OffhandPop", false);
 
 
     public AutoDoubleHand() {
         super("AutoDoubleHand", "Automatically pops end crystal when placed", Category.GHOST);
-        addSettings(healthIndicator, antiFall, cooldown, crystalRadiusX, crystalRadiusYPlus, crystalRadiusYMinus, crystalRadiusZ, anchorRadiusX, anchorRadiusYPlus, anchorRadiusYMinus, anchorRadiusZ, onlyCharged, obsidianAnchorCheck);
+        addSettings(healthIndicator, antiFall, offhandPop, cooldown, crystalRadiusX, crystalRadiusYPlus, crystalRadiusYMinus, crystalRadiusZ, anchorRadiusX, anchorRadiusYPlus, anchorRadiusYMinus, anchorRadiusZ, onlyCharged, obsidianAnchorCheck);
     }
+
 
     @Override
     public void onEnable() {
@@ -58,6 +64,11 @@ public class AutoDoubleHand extends Module {
                     anchorCheck(player);
                     checkHealth(player);
                     antiFall(player);
+
+                    // Check for offhand pop
+                    if (offhandPop.isEnabled()) {
+                        handleOffhandPop(player);
+                    }
                 }
             }
         });
@@ -97,8 +108,8 @@ public class AutoDoubleHand extends Module {
 
 
     private void checkEndCrystal(ClientPlayerEntity player) {
-        double radiusX = anchorRadiusX.getValue();
-        double radiusY = anchorRadiusYPlus.getValue();
+        double radiusX = crystalRadiusX.getValue();
+        double radiusY = crystalRadiusYPlus.getValue();
         double radiusZ = crystalRadiusZ.getValue();
         double radiusBelowY = crystalRadiusYMinus.getValue();
 
@@ -129,6 +140,7 @@ public class AutoDoubleHand extends Module {
             }
         }
     }
+
 
     private void anchorCheck(ClientPlayerEntity player) {
         double radiusX = anchorRadiusX.getValue();
@@ -241,4 +253,26 @@ public class AutoDoubleHand extends Module {
             }
         }
     }
+
+    private void handleOffhandPop(PlayerEntity player) {
+        ItemStack offhandStack = player.getOffHandStack();
+        if (previousOffhandItem == Items.TOTEM_OF_UNDYING && offhandStack.isEmpty()) {
+            int totemSlot = findTotemInHotbar(player);
+            if (totemSlot != -1) {
+                player.getInventory().selectedSlot = totemSlot;
+            }
+        }
+        // Update the previous offhand item
+        previousOffhandItem = offhandStack.getItem();
+    }
+
+    private int findTotemInHotbar(PlayerEntity player) {
+        for (int i = 0; i < 9; i++) {
+            if (player.getInventory().getStack(i).getItem() == Items.TOTEM_OF_UNDYING) {
+                return i;
+            }
+        }
+        return -1;
+    }
 }
+

@@ -67,17 +67,6 @@ public class LegitTotem extends Module {
         }
     }
 
-
-    private void moveCursorToTotem(MinecraftClient client, Slot slot) {
-        try {
-            Robot robot = new Robot();
-            Point slotCenter = getSlotScreenPosition(client, slot);
-            robot.mouseMove(slotCenter.x, slotCenter.y);
-        } catch (AWTException e) {
-            e.printStackTrace();
-        }
-    }
-
     private Point getSlotScreenPosition(MinecraftClient client, Slot slot) {
         HandledScreen<?> handledScreen = (HandledScreen<?>) client.currentScreen;
         int guiLeft = (handledScreen.width - handledScreen.width) / 2;
