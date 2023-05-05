@@ -29,6 +29,7 @@ public class AutoDoubleHand extends Module {
     private final TimerUtil timerUtil = new TimerUtil();
     private Item previousOffhandItem = Items.AIR;
 
+
     private final NumberSetting healthIndicator = new NumberSetting("health", 0.0, 36, 0, 1);
     private final NumberSetting cooldown = new NumberSetting("SwitchDelay", 0.0, 10000.0, 50.0, 0.01);
     private final NumberSetting crystalRadiusX = new NumberSetting("Crystal X", 0.0, 16.0, 8.0, 0.01);
@@ -140,7 +141,6 @@ public class AutoDoubleHand extends Module {
             }
         }
     }
-
 
     private void anchorCheck(ClientPlayerEntity player) {
         double radiusX = anchorRadiusX.getValue();
