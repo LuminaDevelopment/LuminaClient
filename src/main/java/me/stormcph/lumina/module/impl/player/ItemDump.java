@@ -39,7 +39,7 @@ public class ItemDump extends Module {
     BooleanSetting stoneCutter = new BooleanSetting("StoneCutter", false);
 
     public ItemDump() {
-        super("ItemDump (WIP)", "Dumps items into certain gui's", Category.MISC);
+        super("ItemDump (doesnt work)", "Dumps items into certain gui's", Category.MISC);
         addSettings(genericContainerScreen, shulkerBoxScreen, hopperScreen, generic3x3ContainerScreen, beacon, loom, cartographyTable, grindstoneScreen, anvil, smoker, blastFurnace, furnace, brewingStand, enchantmentTable, stoneCutter);
     }
 
