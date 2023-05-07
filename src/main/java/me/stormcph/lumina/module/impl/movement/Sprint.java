@@ -1,7 +1,7 @@
 package me.stormcph.lumina.module.impl.movement;
 
 import me.stormcph.lumina.event.EventTarget;
-import me.stormcph.lumina.event.impl.EventUpdate;
+import me.stormcph.lumina.event.impl.PlayerMoveEvent;
 import me.stormcph.lumina.module.Category;
 import me.stormcph.lumina.module.Module;
 import org.lwjgl.glfw.GLFW;
@@ -14,7 +14,9 @@ public class Sprint extends Module {
     }
 
     @EventTarget
-    public void onUpdate(EventUpdate e) {
-        mc.player.setSprinting(true);
+    public void onMove(PlayerMoveEvent e) {
+        if(mc.player.forwardSpeed > 0 && !mc.player.isUsingItem() && !mc.player.isSneaking()) {
+            mc.player.setSprinting(true);
+        }
     }
 }
