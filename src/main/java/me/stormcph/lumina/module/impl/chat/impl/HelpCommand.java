@@ -17,8 +17,7 @@ public class HelpCommand extends ChatCommand {
             ChatUtils.sendMsg("&dLuminaClient &bPrototype");
             ChatUtils.sendMsg("&5Help utility");
             ChatUtils.sendMsg("&aTo open ClickGUI, press RALT or RCTRL");
-            ChatUtils.sendMsg("&aTo view all commands, type &6.help <coming soon>");
-            ChatUtils.sendMsg("&aTo view all modules in chat (and what they do), type &6.help <coming soon>");
+            ChatUtils.sendMsg("&aTo open HUDEditor, press H");
 
         } else {
             ChatUtils.sendMsg("&bAn &4error&b occurred! &6(&cunknown argument size&6)");
