@@ -39,7 +39,7 @@ public class ChatCommandManager {
      */
     public static ChatCommand findCommand(String command){
         for(ChatCommand c : commandList){
-            if(c.name.startsWith(command)) return c;
+            if(command.equalsIgnoreCase(c.name)) return c;
         }
         cachedName = command;
 
