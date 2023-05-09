@@ -16,7 +16,6 @@ import net.minecraft.screen.slot.Slot;
 import org.lwjgl.glfw.GLFW;
 
 import java.awt.*;
-import java.awt.event.InputEvent;
 
 public class LegitTotem extends Module {
     private final BooleanSetting totemHover = new BooleanSetting("TotemHover (WIP)", true);

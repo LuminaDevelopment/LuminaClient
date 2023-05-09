@@ -10,7 +10,6 @@ import me.stormcph.lumina.setting.impl.NumberSetting;
 import me.stormcph.lumina.utils.TimerUtil;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
-import net.minecraft.client.MinecraftClient;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.decoration.EndCrystalEntity;
 import net.minecraft.item.Item;

@@ -25,6 +25,7 @@ public class AutoArmor extends Module {
     }
 
     public void autoArmor() {
+        assert mc.player != null;
         ItemStack[] currentArmor = mc.player.getInventory().armor.toArray(new ItemStack[0]);
         ItemStack[] newArmor = currentArmor.clone();
 
@@ -58,6 +59,7 @@ public class AutoArmor extends Module {
         ItemStack chestplate = newArmor[1];
         ItemStack leggings = newArmor[2];
         ItemStack boots = newArmor[3];
+        assert mc.interactionManager != null;
         mc.interactionManager.clickSlot(mc.player.currentScreenHandler.syncId, EquipmentSlot.HEAD.getEntitySlotId(), 0, SlotActionType.THROW, mc.player);
         mc.player.equipStack(EquipmentSlot.HEAD, helmet);
 

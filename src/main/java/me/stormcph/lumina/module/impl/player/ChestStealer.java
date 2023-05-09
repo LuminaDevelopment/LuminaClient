@@ -1,7 +1,6 @@
 package me.stormcph.lumina.module.impl.player;
 
 import me.stormcph.lumina.event.EventTarget;
-import me.stormcph.lumina.event.impl.EventUpdate;
 import me.stormcph.lumina.module.Category;
 import me.stormcph.lumina.module.Module;
 import me.stormcph.lumina.setting.impl.NumberSetting;
@@ -29,12 +28,13 @@ public class ChestStealer extends Module {
     }
 
     @EventTarget
-    public void onUpdate(EventUpdate e) {
+    public void onUpdate(/*EventUpdate e*/ /* commented put from cleanup*/) {
 
         if(mc.currentScreen instanceof GenericContainerScreen gcs) {
             if(gcs.getTitle().contains(Text.of("Chest"))) {
 
                 if(gcs.getScreenHandler().getInventory().isEmpty()) {
+                    assert mc.player != null;
                     mc.player.closeScreen();
                     return;
                 }
@@ -43,6 +43,7 @@ public class ChestStealer extends Module {
                     ItemStack item = gcs.getScreenHandler().getSlot(i).getStack();
                     if(item != null && !(item.getItem() instanceof AirBlockItem) && timer.hasReached(delay.getValue())) {
                         sendMsg(i + ": " + gcs.getScreenHandler().getSlot(i).getStack().getItem().getName().getString());
+                        assert mc.interactionManager != null;
                         mc.interactionManager.clickSlot(gcs.getScreenHandler().syncId, i, 0, SlotActionType.QUICK_MOVE, mc.player);
                         timer.reset();
                     }

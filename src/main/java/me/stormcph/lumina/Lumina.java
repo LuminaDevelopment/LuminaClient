@@ -15,7 +15,6 @@ import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.option.KeyBinding;
 import net.minecraft.client.util.InputUtil;
 import org.apache.logging.log4j.LogManager;
-import me.stormcph.lumina.utils.SessionChanger;
 import org.apache.logging.log4j.Logger;
 import org.lwjgl.glfw.GLFW;
 

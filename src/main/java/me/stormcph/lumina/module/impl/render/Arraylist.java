@@ -10,7 +10,6 @@ import me.stormcph.lumina.utils.Pair;
 import me.stormcph.lumina.utils.RenderUtils;
 import me.stormcph.lumina.utils.animations.Animation;
 import me.stormcph.lumina.utils.animations.Direction;
-import net.minecraft.client.util.Window;
 import net.minecraft.client.util.math.MatrixStack;
 
 import java.awt.*;

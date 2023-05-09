@@ -6,10 +6,7 @@ import me.stormcph.lumina.mixinterface.IVec3d;
 import me.stormcph.lumina.module.Category;
 import me.stormcph.lumina.module.Module;
 import me.stormcph.lumina.setting.impl.NumberSetting;
-import net.minecraft.entity.EntityType;
 import net.minecraft.util.math.Vec3d;
-
-import java.lang.reflect.Field;
 
 public class Speed extends Module {
 

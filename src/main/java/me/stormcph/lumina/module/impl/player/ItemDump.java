@@ -7,17 +7,11 @@ import me.stormcph.lumina.module.Module;
 import me.stormcph.lumina.setting.impl.BooleanSetting;
 import me.stormcph.lumina.setting.impl.NumberSetting;
 import me.stormcph.lumina.utils.TimerUtil;
-import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.screen.Screen;
-import net.minecraft.client.gui.screen.ingame.HandledScreen;
-import net.minecraft.item.ItemStack;
-import net.minecraft.screen.slot.Slot;
-import net.minecraft.screen.slot.SlotActionType;
-
 
 public class ItemDump extends Module {
-    private final MinecraftClient client = MinecraftClient.getInstance();
+    //private final MinecraftClient client = MinecraftClient.getInstance();
 
     private final NumberSetting delay = new NumberSetting("Delay", 0.0, 1000.0, 150.0, 0.1);
     private TimerUtil timer;

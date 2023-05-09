@@ -9,7 +9,6 @@ import net.minecraft.client.font.TextRenderer;
 import net.minecraft.client.util.math.MatrixStack;
 
 import java.awt.*;
-import java.io.Reader;
 
 public class Help extends HudModule {
     private boolean firstRender = true;

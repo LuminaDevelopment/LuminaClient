@@ -6,7 +6,6 @@ import me.stormcph.lumina.event.impl.PlayerMoveEvent;
 import me.stormcph.lumina.module.Category;
 import me.stormcph.lumina.module.Module;
 import me.stormcph.lumina.setting.impl.ModeSetting;
-import org.lwjgl.glfw.GLFW;
 
 public class Sprint extends Module {
 

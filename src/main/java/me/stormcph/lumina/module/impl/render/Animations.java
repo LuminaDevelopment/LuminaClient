@@ -10,8 +10,6 @@ import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.item.*;
 import net.minecraft.util.math.RotationAxis;
 
-import java.awt.*;
-
 public class Animations extends Module {
 
     private float start, end, current;

@@ -2,11 +2,8 @@ package me.stormcph.lumina.module.impl.render;
 
 import me.stormcph.lumina.module.Category;
 import me.stormcph.lumina.module.HudModule;
-import me.stormcph.lumina.setting.impl.BooleanSetting;
 import me.stormcph.lumina.utils.RenderUtils;
-import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.util.math.MatrixStack;
-import net.minecraft.text.Text;
 
 import java.util.ArrayList;
 import java.util.List;
