@@ -8,6 +8,7 @@ import me.stormcph.lumina.event.impl.Render2DEvent;
 import me.stormcph.lumina.module.HudModule;
 import me.stormcph.lumina.module.Module;
 import me.stormcph.lumina.module.ModuleManager;
+import me.stormcph.lumina.module.impl.render.ClickguiModule;
 import me.stormcph.lumina.ui.HudConfigScreen;
 import me.stormcph.lumina.utils.SessionChanger;
 import net.fabricmc.api.ModInitializer;
@@ -18,6 +19,8 @@ import net.minecraft.client.util.InputUtil;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.lwjgl.glfw.GLFW;
+
+import javax.swing.*;
 
 public class Lumina implements ModInitializer {
 
@@ -48,7 +51,21 @@ public class Lumina implements ModInitializer {
                 if (event.getKey() == module.getKey()) module.toggle();
             }
 
-            if (openClickGuiKey.wasPressed()) mc.setScreen(ClickGui.instance);
+            if (openClickGuiKey.wasPressed()) {
+                switch (ClickguiModule.clickguiMode.getMode()) {
+                    case "New" -> {
+                        mc.setScreen(ClickGui.instance);
+                    }
+                    case "Old" -> {
+                        mc.setScreen(me.stormcph.lumina.ui.screens.clickgui.ClickGui.INSTANCE);
+                    }
+                    default -> {
+                        JOptionPane.showMessageDialog(null, "How the fuck did you manage this", "Invalid ClickGUI Mode", JOptionPane.ERROR_MESSAGE);
+                        System.out.println("How the fuck did you manage this");
+                    }
+                }
+
+            }
             if (openHudConfigScreenKey.wasPressed()) mc.setScreen(new HudConfigScreen());
         }
     }
