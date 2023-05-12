@@ -8,6 +8,7 @@ import me.stormcph.lumina.module.impl.movement.*;
 import me.stormcph.lumina.module.impl.movement.scaffold.Scaffold;
 import me.stormcph.lumina.module.impl.player.*;
 import me.stormcph.lumina.module.impl.render.*;
+import me.stormcph.lumina.setting.impl.KeybindSetting;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,6 +40,9 @@ public class ModuleManager {
         add(new PacketLogger());
         add(new ChatHandler());
         add(new ItemDump());
+        add(new NameProtect());
+        add(new Advertise());
+
 
         // Player
         add(new AutoArmor());
@@ -57,6 +61,7 @@ public class ModuleManager {
         add(new BetterHome());
         add(new EveryoneWantsThis());
         add(new LuminaLogo());
+        add(new ClickguiModule());
 
         // Hide / show categories
         add(new CombatCata());
@@ -65,6 +70,10 @@ public class ModuleManager {
         add(new MovementCategory());
         add(new PlayerCategory());
         add(new RenderCategory());
+
+        for (Module module : modules) {
+            module.addSettings(new KeybindSetting("Keybind", module.getKey(), module));
+        }
     }
 
     public void add(Module m) {

@@ -1,5 +1,6 @@
 package me.stormcph.lumina;
 
+import me.stormcph.lumina.clickgui.ClickGui;
 import me.stormcph.lumina.event.EventManager;
 import me.stormcph.lumina.event.EventTarget;
 import me.stormcph.lumina.event.impl.KeyEvent;
@@ -8,7 +9,7 @@ import me.stormcph.lumina.module.HudModule;
 import me.stormcph.lumina.module.Module;
 import me.stormcph.lumina.module.ModuleManager;
 import me.stormcph.lumina.ui.HudConfigScreen;
-import me.stormcph.lumina.ui.screens.clickgui.ClickGui;
+import me.stormcph.lumina.utils.SessionChanger;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper;
 import net.minecraft.client.MinecraftClient;
@@ -35,7 +36,7 @@ public class Lumina implements ModInitializer {
         KeyBindingHelper.registerKeyBinding(openClickGuiKey);
         KeyBindingHelper.registerKeyBinding(openHudConfigScreenKey);
 
-//        SessionChanger.loginCracked("LuminaUser");
+        SessionChanger.loginCracked("LuminaUser");
         System.out.println("Set username to LuminaUser");
     }
 
@@ -47,7 +48,7 @@ public class Lumina implements ModInitializer {
                 if (event.getKey() == module.getKey()) module.toggle();
             }
 
-            if (openClickGuiKey.wasPressed()) mc.setScreen(ClickGui.INSTANCE);
+            if (openClickGuiKey.wasPressed()) mc.setScreen(ClickGui.instance);
             if (openHudConfigScreenKey.wasPressed()) mc.setScreen(new HudConfigScreen());
         }
     }
