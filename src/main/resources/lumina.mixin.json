@@ -9,6 +9,7 @@
     "Vec3dMixin"
   ],
   "client": [
+    "ChatHudMixin",
     "ClientPlayNetworkHandlerMixin",
     "EntityRendererMixin",
     "HeldItemRendererMixin",
@@ -16,6 +17,7 @@
     "KeyboardMixin",
     "LivingEntityMixin",
     "MinecraftClientMixin",
+    "PlayerListHudMixin",
     "SessionMixin",
     "TitleScreenMixin",
     "WorldRendererMixin"
