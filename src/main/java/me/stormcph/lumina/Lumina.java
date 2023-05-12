@@ -36,7 +36,7 @@ public class Lumina implements ModInitializer {
         KeyBindingHelper.registerKeyBinding(openClickGuiKey);
         KeyBindingHelper.registerKeyBinding(openHudConfigScreenKey);
 
-        SessionChanger.loginCracked("LuminaUser");
+       // SessionChanger.loginCracked("LuminaUser");
         System.out.println("Set username to LuminaUser");
     }
 
