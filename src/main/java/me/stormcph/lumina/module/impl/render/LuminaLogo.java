@@ -14,7 +14,7 @@ public class LuminaLogo extends HudModule {
     private final NumberSetting scaleSetting;
 
     public LuminaLogo() {
-        super("LuminaLogo", "The Best Module", Category.RENDER, 2, 2, 256, 256);
+        super("LuminaLogo", "The Best Module", Category.RENDER, 4, 4, 256, 256);
         scaleSetting = new NumberSetting("Scale", 0.08, 2.0, 0.16, 0.001);
         this.addSettings(scaleSetting);
         this.setEnabled(true);
