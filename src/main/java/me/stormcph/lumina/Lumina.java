@@ -43,7 +43,8 @@ public class Lumina implements ModInitializer {
         System.out.println("Set username to LuminaUser");
 
 
-        ConfigReader.loadConfig();
+        Thread configThr = new Thread(ConfigReader::loadConfig, "LuminaConfigReaderThread");
+        configThr.start();
     }
 
     @EventTarget

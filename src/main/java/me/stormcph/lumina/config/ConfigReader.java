@@ -12,6 +12,7 @@ import net.fabricmc.loader.api.FabricLoader;
 import org.slf4j.LoggerFactory;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
@@ -20,6 +21,11 @@ public class ConfigReader {
         List<Module> modules = ModuleManager.INSTANCE.getModules();
         File config = new File(JsonUtil.configDir+"\\luminaConfig.json");
         if(!config.exists()){
+            try{
+                config.createNewFile();
+            } catch (IOException e) {
+                LogUtils.getLogger().error("Unable to create config! (IOException)");
+            }
             LogUtils.getLogger().warn("Config file not found, creating...");
             ConfigWriter.writeConfig();
             return;

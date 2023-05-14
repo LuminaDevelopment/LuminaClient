@@ -1,6 +1,7 @@
 package me.stormcph.lumina.mixins;
 
 import me.stormcph.lumina.Lumina;
+import me.stormcph.lumina.config.ConfigReader;
 import me.stormcph.lumina.config.ConfigWriter;
 import me.stormcph.lumina.event.impl.EventUpdate;
 import net.minecraft.client.MinecraftClient;
@@ -19,7 +20,8 @@ public class MinecraftClientMixin {
 
     @Inject(method = "scheduleStop", at = @At("HEAD"))
     public void stop(CallbackInfo ci){
-        ConfigWriter.writeConfig();
+        Thread configThr = new Thread(ConfigWriter::writeConfig, "LuminaConfigWriterThread");
+        configThr.start();
     }
 
 }

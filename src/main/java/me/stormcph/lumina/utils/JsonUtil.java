@@ -21,8 +21,7 @@ public class JsonUtil {
     private static String readFile(File file) {
         StringBuilder builder = new StringBuilder();
         try {
-            File myObj = new File("filename.txt");
-            Scanner myReader = new Scanner(myObj);
+            Scanner myReader = new Scanner(file);
             while (myReader.hasNextLine()) {
                 builder.append(myReader.nextLine());
             }
