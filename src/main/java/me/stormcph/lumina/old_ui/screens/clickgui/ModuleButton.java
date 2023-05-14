@@ -1,14 +1,14 @@
-package me.stormcph.lumina.ui.screens.clickgui;
+package me.stormcph.lumina.old_ui.screens.clickgui;
 
 import me.stormcph.lumina.module.Module;
 import me.stormcph.lumina.setting.Setting;
 import me.stormcph.lumina.setting.impl.BooleanSetting;
 import me.stormcph.lumina.setting.impl.ModeSetting;
 import me.stormcph.lumina.setting.impl.NumberSetting;
-import me.stormcph.lumina.ui.screens.clickgui.setting.CheckBox;
-import me.stormcph.lumina.ui.screens.clickgui.setting.Component;
-import me.stormcph.lumina.ui.screens.clickgui.setting.ModeBox;
-import me.stormcph.lumina.ui.screens.clickgui.setting.Slider;
+import me.stormcph.lumina.old_ui.screens.clickgui.setting.CheckBox;
+import me.stormcph.lumina.old_ui.screens.clickgui.setting.Component;
+import me.stormcph.lumina.old_ui.screens.clickgui.setting.ModeBox;
+import me.stormcph.lumina.old_ui.screens.clickgui.setting.Slider;
 import net.minecraft.client.gui.DrawableHelper;
 import net.minecraft.client.util.math.MatrixStack;
 

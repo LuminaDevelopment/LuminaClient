@@ -1,4 +1,4 @@
-package me.stormcph.lumina.ui;
+package me.stormcph.lumina.old_ui;
 
 import me.stormcph.lumina.module.HudModule;
 import me.stormcph.lumina.module.Module;

@@ -1,7 +1,6 @@
-package me.stormcph.lumina.ui.screens.clickgui;
+package me.stormcph.lumina.old_ui.screens.clickgui;
 
 import me.stormcph.lumina.module.Category;
-import me.stormcph.lumina.utils.ChatUtils;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.text.Text;
