@@ -1,6 +1,7 @@
 package me.stormcph.lumina.mixins;
 
 import me.stormcph.lumina.Lumina;
+import me.stormcph.lumina.config.ConfigWriter;
 import me.stormcph.lumina.event.impl.EventUpdate;
 import net.minecraft.client.MinecraftClient;
 import org.spongepowered.asm.mixin.Mixin;
@@ -15,4 +16,10 @@ public class MinecraftClientMixin {
     public void onTick(CallbackInfo ci) {
         new EventUpdate().call();
     }
+
+    @Inject(method = "scheduleStop", at = @At("HEAD"))
+    public void stop(CallbackInfo ci){
+        ConfigWriter.writeConfig();
+    }
+
 }
