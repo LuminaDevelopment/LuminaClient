@@ -8,6 +8,7 @@ import me.stormcph.lumina.module.ModuleManager;
 import me.stormcph.lumina.setting.Setting;
 import me.stormcph.lumina.setting.impl.*;
 import me.stormcph.lumina.utils.JsonUtil;
+import org.jetbrains.annotations.Nullable;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -17,7 +18,7 @@ import java.util.Map;
 
 public class ConfigWriter {
 
-    public static void writeConfig(){
+    public static void writeConfig(boolean compatibilityMode, @Nullable JsonObject presetData){
 
         File config = new File(JsonUtil.configDir+"\\luminaConfig.json");
 
@@ -25,24 +26,37 @@ public class ConfigWriter {
 
         for(Module m : ModuleManager.INSTANCE.getModules()){
             JsonObject module = new JsonObject();
-            for(Setting s : m.getSettings()){
-                if(s instanceof ModeSetting){
-                    module.addProperty(s.getName(), ((ModeSetting) s).getMode());
-                } else if (s instanceof BooleanSetting) {
-                    module.addProperty(s.getName(), ((BooleanSetting) s).isEnabled());
-                } else if (s instanceof KeybindSetting) {
-                    module.addProperty(s.getName(), ((KeybindSetting) s).getKey());
-                } else if (s instanceof NumberSetting) {
-                    module.addProperty(s.getName(), ((NumberSetting) s).getValue());
-                } else if (s instanceof TextSetting) {
-                    module.addProperty(s.getName(), ((TextSetting) s).getText());
+            if(compatibilityMode){
+                module = presetData;
+            } else {
+                for(Setting s : m.getSettings()){
+                    if(s instanceof ModeSetting){
+                        module.addProperty(s.getName(), ((ModeSetting) s).getMode());
+                    } else if (s instanceof BooleanSetting) {
+                        module.addProperty(s.getName(), ((BooleanSetting) s).isEnabled());
+                    } else if (s instanceof KeybindSetting) {
+                        module.addProperty(s.getName(), ((KeybindSetting) s).getKey());
+                    } else if (s instanceof NumberSetting) {
+                        module.addProperty(s.getName(), ((NumberSetting) s).getValue());
+                    } else if (s instanceof TextSetting) {
+                        module.addProperty(s.getName(), ((TextSetting) s).getText());
+                    }
                 }
+
             }
+
+            // new config elements here
+
+            module.addProperty("enabled", m.isEnabled());
+
+            // end
+
             config_obj.add(m.getName(), module);
         }
 
         try {
             JsonUtil.writeJson(config, config_obj);
+            LogUtils.getLogger().info("Successfully saved config");
         } catch (Exception e){
             LogUtils.getLogger().error("Unable to write config!!");
         }

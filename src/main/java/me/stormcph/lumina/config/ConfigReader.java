@@ -24,14 +24,33 @@ public class ConfigReader {
             try{
                 config.createNewFile();
             } catch (IOException e) {
-                LogUtils.getLogger().error("Unable to create config! (IOException)");
+                LogUtils.getLogger().error("Unable to create base config file! (IOException)");
             }
             LogUtils.getLogger().warn("Config file not found, creating...");
-            ConfigWriter.writeConfig();
+            ConfigWriter.writeConfig(false, null);
             return;
         }
+
+        boolean compatibilityMode = false; // so if someone attempts to load older configs it doesn't crash
+
+        JsonObject root = new JsonObject();
+
         for(Module m : modules){
             JsonObject moduleData = JsonUtil.getKeyValue(config, m.getName()).getAsJsonObject();
+
+            if(!compatibilityMode){
+                // if compatibility is off,
+                try {
+                    // new config elements here
+                    m.setEnabled(moduleData.get("enabled").getAsJsonPrimitive().getAsBoolean());
+                } catch (Exception e){
+                    compatibilityMode = true;
+                }
+            } else {
+                // set the stuff to default here
+                m.setEnabled(m.isEnabled());
+            }
+
             for(Setting s : m.getSettings()){
                 if(s instanceof ModeSetting){
                     ((ModeSetting) s).setMode(
@@ -76,7 +95,11 @@ public class ConfigReader {
                                     .getAsString()
                     );
                 }
+                root.add(m.getName(), moduleData);
             }
         }
+
+        LogUtils.getLogger().info("Successfully loaded config!");
+
     }
 }
