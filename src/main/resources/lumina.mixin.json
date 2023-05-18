@@ -20,7 +20,8 @@
     "PlayerListHudMixin",
     "SessionMixin",
     "TitleScreenMixin",
-    "WorldRendererMixin"
+    "WorldRendererMixin",
+    "MixinClientConnection"
   ],
   "injectors": {
     "defaultRequire": 1
