@@ -18,6 +18,7 @@ public class AbstractClientPlayerEntityMixin {
                     new Identifier(
                             "lumina",
                             "textures/cape/"+Cape.getCurrentCape()+".png"
+                            //"textures/cape/lumina-w.png"
                     )
             );
     }
