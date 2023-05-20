@@ -10,6 +10,8 @@ public class Cape extends Module {
 
     public Cape() {
         super("Cape", "Forces a custom cape", Category.RENDER);
+        addSettings(cape);
+        this.toggle();
     }
 
     public static String getCurrentCape(){

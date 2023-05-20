@@ -62,6 +62,7 @@ public class ModuleManager {
         add(new EveryoneWantsThis());
         add(new LuminaLogo());
         add(new ClickguiModule());
+        add(new Cape());
 
         // Hide / show categories
         add(new CombatCata());

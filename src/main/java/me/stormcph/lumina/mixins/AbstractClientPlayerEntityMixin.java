@@ -13,7 +13,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 public class AbstractClientPlayerEntityMixin {
     @Inject(method = "getCapeTexture", at = @At("HEAD"), cancellable = true)
     private void onGetCapeTexture(CallbackInfoReturnable<Identifier> info) {
-        if(ModuleManager.INSTANCE.getModuleByClass(Cape.class).isEnabled())
+        if(ModuleManager.INSTANCE.getModuleByName("Cape") != null && ModuleManager.INSTANCE.getModuleByName("Cape").isEnabled())
             info.setReturnValue(
                     new Identifier(
                             "lumina",
