@@ -68,8 +68,8 @@ public class LegitTotem extends Module {
 
     private Point getSlotScreenPosition(MinecraftClient client, Slot slot) {
         HandledScreen<?> handledScreen = (HandledScreen<?>) client.currentScreen;
-        int guiLeft = (handledScreen.width - handledScreen.width) / 2;
-        int guiTop = (handledScreen.height - handledScreen.height) / 2;
+        int guiLeft = 0; // was (handledScreen.width - handledScreen.width) / 2
+        int guiTop = 0; // was (handledScreen.height - handledScreen.height) / 2
 
         int slotSize = 16;
         int slotSpacingX = 2;

@@ -9,6 +9,7 @@
     "Vec3dMixin"
   ],
   "client": [
+    "AbstractClientPlayerEntityMixin",
     "ChatHudMixin",
     "ClientPlayNetworkHandlerMixin",
     "EntityRendererMixin",

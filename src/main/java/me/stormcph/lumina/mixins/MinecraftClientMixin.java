@@ -20,12 +20,7 @@ public class MinecraftClientMixin {
 
     @Inject(method = "scheduleStop", at = @At("HEAD"))
     public void stop(CallbackInfo ci){
-        Thread configThr = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                ConfigWriter.writeConfig(false, null);
-            }
-        }, "LuminaConfigWriterThread");
+        Thread configThr = new Thread(() -> ConfigWriter.writeConfig(false, null), "LuminaConfigWriterThread");
         configThr.start();
     }
 

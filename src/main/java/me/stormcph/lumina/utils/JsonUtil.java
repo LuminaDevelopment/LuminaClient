@@ -3,6 +3,7 @@ package me.stormcph.lumina.utils;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import com.mojang.logging.LogUtils;
 import net.fabricmc.loader.api.FabricLoader;
 
 import java.io.File;
@@ -43,13 +44,12 @@ public class JsonUtil {
             fr = new FileWriter(file);
             fr.write(data);
         } catch (IOException e) {
-            e.printStackTrace();
+            LogUtils.getLogger().error(e.toString());
         }finally{
-            //close resources
             try {
                 fr.close();
             } catch (IOException e) {
-                e.printStackTrace();
+                LogUtils.getLogger().error(e.toString());
             }
         }
     }
