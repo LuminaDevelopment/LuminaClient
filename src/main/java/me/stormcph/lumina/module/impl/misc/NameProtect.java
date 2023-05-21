@@ -17,7 +17,7 @@ public class NameProtect extends Module {
 
     @EventTarget
     public void onChat(ChatMessageReceivedEvent e) {
-
+        if(nullCheck()) return;
         String message = e.getMessage().getString();
         if(message.contains(mc.getSession().getUsername())) {
             String newText = message.replace(mc.getSession().getUsername(), name.getText());

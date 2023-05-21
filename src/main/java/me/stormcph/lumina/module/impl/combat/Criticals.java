@@ -31,6 +31,7 @@ public class Criticals extends Module {
 
     @EventTarget
     public void onPacket(PacketSendEvent e) {
+        if(nullCheck()) return;
         Packet<?> packet = e.getPacket();
         if(packet instanceof PlayerInteractEntityC2SPacket pie) {
 

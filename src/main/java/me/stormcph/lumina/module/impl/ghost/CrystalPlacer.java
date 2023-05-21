@@ -27,6 +27,7 @@ public class CrystalPlacer extends Module {
     private final TimerUtil timerUtil = new TimerUtil();
     @EventTarget
     public void onUpdate(EventUpdate e) {
+        if(nullCheck()) return;
         if ((isObsidianInCrosshair())&&mc.player.getInventory().selectedSlot == CrystalSlot()&&(timerUtil.hasReached(cooldown.getValue()))) {
             PlaceBlock();
             timerUtil.reset();

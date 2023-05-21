@@ -11,23 +11,22 @@ import me.stormcph.lumina.setting.impl.NumberSetting;
 public class Flight extends Module {
 
     public NumberSetting speed = new NumberSetting("Speed", 0, 4, 0.3, 0.05);
-    public BooleanSetting testBool = new BooleanSetting("Check", true);
-    public ModeSetting testMode = new ModeSetting("Mode", "Test", "Test 2", "Test 3");
 
     public Flight() {
         super("Flight", "Vanilla fly, instant ban with Anti-Cheat.", Category.MOVEMENT);
-        addSettings(speed, testBool, testMode);
-        //this.setKey(GLFW.GLFW_KEY_G);
+        addSettings(speed);
     }
 
     @EventTarget
     public void onUpdate(EventUpdate e) {
+        if(nullCheck()) return;
         mc.player.getAbilities().flying = true;
         mc.player.getAbilities().setFlySpeed(speed.getFloatValue());
     }
 
     @Override
     public void onDisable() {
+        if(nullCheck()) return;
         mc.player.getAbilities().flying = false;
         super.onDisable();
     }

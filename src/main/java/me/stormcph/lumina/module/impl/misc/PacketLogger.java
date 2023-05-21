@@ -19,6 +19,7 @@ public class PacketLogger extends Module {
 
     @EventTarget
     public void onPacketSend(PacketSendEvent e) {
+        if(nullCheck()) return;
         if (packetSend.isEnabled()) {
             sendMsg("Sent packet: " + e.getPacket().getClass().getSimpleName());
         }
@@ -26,6 +27,7 @@ public class PacketLogger extends Module {
 
     @EventTarget
     public void onPacketReceive(PacketReceiveEvent e) {
+        if(nullCheck()) return;
         if (packetReceive.isEnabled()) {
             sendMsg("Received packet: " + e.getPacket().getClass().getSimpleName());
         }

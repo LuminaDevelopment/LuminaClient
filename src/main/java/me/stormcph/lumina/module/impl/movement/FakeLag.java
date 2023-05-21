@@ -40,8 +40,7 @@ public class FakeLag extends Module {
 
     @EventTarget
     public void onUpdate(EventUpdate e) {
-
-        if(mc.player == null) return;
+        if(nullCheck()) return;
 
         if(timer.hasReached(delay.getFloatValue())) {
             sending = true;
@@ -64,7 +63,7 @@ public class FakeLag extends Module {
 
     @EventTarget
     public void onPacket(PacketSendEvent e) {
-        if(mc.player == null) return;
+        if(nullCheck()) return;
 
         if(!sending) {
             packets.add(e.getPacket());

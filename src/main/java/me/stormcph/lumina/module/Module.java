@@ -37,6 +37,10 @@ public abstract class Module {
 
     }
 
+    public static boolean nullCheck(){
+        return MinecraftClient.getInstance().world == null || MinecraftClient.getInstance().player == null;
+    }
+
     public void toggle() {
        this.enabled = !this.enabled;
 
@@ -57,9 +61,11 @@ public abstract class Module {
     }
 
     public void onEnable() {
+        if(nullCheck()) return;
         EventManager.register(this);
     }
     public void onDisable() {
+        if(nullCheck()) return;
         EventManager.unregister(this);
     }
 

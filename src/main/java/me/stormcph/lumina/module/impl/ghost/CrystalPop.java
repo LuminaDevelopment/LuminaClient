@@ -45,6 +45,7 @@ public class CrystalPop extends Module {
 
     @EventTarget
     public void onUpdate(EventUpdate event) {
+        if(nullCheck()) return;
         endCrystalTrigger();
         trackPlacedCrystals();
     }

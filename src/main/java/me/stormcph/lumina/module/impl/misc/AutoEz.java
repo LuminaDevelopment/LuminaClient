@@ -31,6 +31,7 @@ public class AutoEz extends Module {
 
     @EventTarget
     public void onUpdate(PacketReceiveEvent event) {
+        if(nullCheck()) return;
         if (!(event.getPacket() instanceof EntityStatusS2CPacket))
             return;
 

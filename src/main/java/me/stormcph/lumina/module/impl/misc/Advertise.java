@@ -32,7 +32,7 @@ public class Advertise extends Module {
 
     @EventTarget
     public void onUpdate(EventUpdate e) {
-        if(mc.player == null) return;
+        if(nullCheck()) return;
 
         if(timer.hasReached(3000)) {
             mc.player.networkHandler.sendChatMessage(randomMessage());

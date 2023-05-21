@@ -41,7 +41,7 @@ public class Arraylist extends HudModule {
 
     @Override
     public void draw(MatrixStack matrices) {
-
+        if(nullCheck()) return;
         boolean leftHalf = getX() < (mc.getWindow().getScaledWidth() / 2);
         boolean rightHalf = getX() > (mc.getWindow().getScaledWidth() / 2);
 

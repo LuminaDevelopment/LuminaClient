@@ -20,6 +20,7 @@ public class Sprint extends Module {
 
     @EventTarget
     public void onUpdate(EventUpdate e){
+        if(nullCheck()) return;
         if(bypassMode.isMode("None")){
             mc.player.setSprinting(true);
         }
@@ -27,6 +28,7 @@ public class Sprint extends Module {
 
     @EventTarget
     public void onMove(PlayerMoveEvent e) {
+        if(nullCheck()) return;
         if(
                 bypassMode.isMode("Basic") &&
                 mc.player.forwardSpeed > 0 && !mc.player.isUsingItem() && !mc.player.isSneaking()

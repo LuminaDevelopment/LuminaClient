@@ -18,14 +18,12 @@ public class AutoArmor extends Module {
 
     @EventTarget
     public void onUpdate(EventUpdate event) {
-        if (mc.player == null) {
-            return;
-        }
+        if(nullCheck()) return;
         autoArmor();
     }
 
     public void autoArmor() {
-        assert mc.player != null;
+        if(nullCheck()) return;
         ItemStack[] currentArmor = mc.player.getInventory().armor.toArray(new ItemStack[0]);
         ItemStack[] newArmor = currentArmor.clone();
 

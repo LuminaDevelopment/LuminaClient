@@ -31,6 +31,7 @@ public class LuminaLogo extends HudModule {
 
     @Override
     public void draw(MatrixStack matrices) {
+        if(nullCheck()) return;
         if (frames == null) return;
 
         float scale = (float) scaleSetting.getValue();

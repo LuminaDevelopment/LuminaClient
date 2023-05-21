@@ -37,6 +37,7 @@ public class Animations extends Module {
 
     @EventTarget
     public void onUpdate(EventUpdate e) {
+        if(nullCheck()) return;
         if(mc.options.useKey.isPressed()) {
             if(mc.options.attackKey.wasPressed()) {
                 if(mc.targetedEntity != null && !mc.player.isBlocking()) mc.interactionManager.attackEntity(mc.player, mc.targetedEntity);
@@ -46,7 +47,7 @@ public class Animations extends Module {
     }
 
     public void render(ItemStack stack, MatrixStack matrices) {
-
+        if(nullCheck()) return;
         float increment = 2;
 
         if(stack.getItem() instanceof SwordItem ||

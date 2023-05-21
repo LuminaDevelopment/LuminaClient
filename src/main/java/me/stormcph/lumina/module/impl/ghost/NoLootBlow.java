@@ -28,6 +28,7 @@ public class NoLootBlow extends Module {
 
     @EventTarget
     public void onUpdate(EventUpdate event) {
+        if(nullCheck()) return;
         Entity target = raycastEndCrystal(5);
         if (target == null)
             return;

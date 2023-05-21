@@ -49,6 +49,7 @@ public class Killaura extends Module {
 
     @EventTarget
     public void onUpdate(EventUpdate e) {
+        if(nullCheck()) return;
         Entity target = nearestTarget();
         if(target == null) return;
 
@@ -76,7 +77,7 @@ public class Killaura extends Module {
 
     private Entity nearestTarget() {
 
-        if(mc.world == null) return null;
+        if(nullCheck()) return null;
 
         for(Entity entity : mc.world.getEntities()) {
             if(entity.distanceTo(mc.player) > range.getValue()) continue;

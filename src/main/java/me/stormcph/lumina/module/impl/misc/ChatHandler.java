@@ -20,6 +20,7 @@ public class ChatHandler extends Module {
 
     @EventTarget
     public void onPacketSend(PacketSendEvent e){
+        if(nullCheck()) return;
         if(e.getPacket() instanceof ChatMessageC2SPacket cmp) {
             if(cmp.chatMessage().startsWith(prefix)){
                 e.setCancelled(true);

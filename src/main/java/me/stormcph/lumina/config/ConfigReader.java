@@ -27,7 +27,7 @@ public class ConfigReader {
             } catch (IOException e) {
                 if(NoTrace.shouldLog()) LogUtils.getLogger().error("Unable to create base config file! (IOException)");
             }
-            LogUtils.getLogger().warn("Config file not found, creating...");
+            if(NoTrace.shouldLog()) LogUtils.getLogger().warn("Config file not found, creating...");
             ConfigWriter.writeConfig(false, null);
             return;
         }
@@ -45,6 +45,8 @@ public class ConfigReader {
                     // new config elements here
                     m.setEnabled(moduleData.get("enabled").getAsJsonPrimitive().getAsBoolean());
                 } catch (Exception e){
+                    // DEBUG LOG todo: remove
+                    LogUtils.getLogger().error("Exception thrown when attempting to retrieve \"enabled\". E=\""+ e +"\", M.name=\""+m.getName()+"\"");
                     compatibilityMode = true;
                 }
             } else {

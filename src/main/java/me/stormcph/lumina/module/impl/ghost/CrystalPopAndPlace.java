@@ -53,6 +53,7 @@ public class CrystalPopAndPlace extends Module {
 
     @EventTarget
     public void onUpdate(EventUpdate event) {
+        if(nullCheck()) return;
         endCrystalTrigger();
         trackPlacedCrystals();
         placeCrystal();

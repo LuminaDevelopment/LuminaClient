@@ -19,6 +19,7 @@ public class Speed extends Module {
 
     @EventTarget
     public void onMove(PlayerMoveEvent event) {
+        if(nullCheck()) return;
         if (mc.player == null) return;
 
         if(mc.player.isOnGround()) mc.player.jump();

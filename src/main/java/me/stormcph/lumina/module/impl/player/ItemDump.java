@@ -11,8 +11,6 @@ import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.screen.Screen;
 
 public class ItemDump extends Module {
-    //private final MinecraftClient client = MinecraftClient.getInstance();
-
     private final NumberSetting delay = new NumberSetting("Delay", 0.0, 1000.0, 150.0, 0.1);
     private TimerUtil timer;
 
@@ -45,6 +43,7 @@ public class ItemDump extends Module {
 
     @EventTarget
     public void onUpdate(EventUpdate e) {
+        if(nullCheck()) return;
         /*if (client.currentScreen instanceof HandledScreen<?> screen && isStorageScreen(screen)) {
             if (timer.hasReached(delay.getValue())) {
                 for (int i = 0; i < client.player.getInventory().size(); i++) {

@@ -51,6 +51,7 @@ public class SCC extends Module {
 
     @EventTarget
     private void onEvent(PacketSendEvent evnt) {
+        if(nullCheck()) return;
         HitResult hit = mc.crosshairTarget;
         if (!(hit instanceof EntityHitResult)) return;
         Entity target = ((EntityHitResult) hit).getEntity();
@@ -66,6 +67,7 @@ public class SCC extends Module {
 
     @EventTarget
     private void onUpdate(EventUpdate event) {
+        if(nullCheck()) return;
         checkRequiredItemsInHotbar();
         if (!crystalBroken) {
             crystalHit();

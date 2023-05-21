@@ -29,7 +29,7 @@ public class ChestStealer extends Module {
 
     @EventTarget
     public void onUpdate(/*EventUpdate e*/ /* commented put from cleanup*/) {
-
+        if(nullCheck()) return;
         if(mc.currentScreen instanceof GenericContainerScreen gcs) {
             if(gcs.getTitle().contains(Text.of("Chest"))) {
 
