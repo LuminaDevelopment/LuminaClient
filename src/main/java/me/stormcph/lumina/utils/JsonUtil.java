@@ -4,6 +4,7 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.mojang.logging.LogUtils;
+import me.stormcph.lumina.module.impl.misc.NoTrace;
 import net.fabricmc.loader.api.FabricLoader;
 
 import java.io.File;
@@ -44,12 +45,12 @@ public class JsonUtil {
             fr = new FileWriter(file);
             fr.write(data);
         } catch (IOException e) {
-            LogUtils.getLogger().error(e.toString());
+            if(NoTrace.shouldLog()) LogUtils.getLogger().error(e.toString());
         }finally{
             try {
                 fr.close();
             } catch (IOException e) {
-                LogUtils.getLogger().error(e.toString());
+                if(NoTrace.shouldLog()) LogUtils.getLogger().error(e.toString());
             }
         }
     }

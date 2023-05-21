@@ -42,6 +42,7 @@ public class ModuleManager {
         add(new ItemDump());
         add(new NameProtect());
         add(new Advertise());
+        add(new NoTrace());
 
 
         // Player

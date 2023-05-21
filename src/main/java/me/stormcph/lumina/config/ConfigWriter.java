@@ -5,6 +5,7 @@ import com.google.gson.JsonObject;
 import com.mojang.logging.LogUtils;
 import me.stormcph.lumina.module.Module;
 import me.stormcph.lumina.module.ModuleManager;
+import me.stormcph.lumina.module.impl.misc.NoTrace;
 import me.stormcph.lumina.setting.Setting;
 import me.stormcph.lumina.setting.impl.*;
 import me.stormcph.lumina.utils.JsonUtil;
@@ -56,9 +57,9 @@ public class ConfigWriter {
 
         try {
             JsonUtil.writeJson(config, config_obj);
-            LogUtils.getLogger().info("Successfully saved config");
+            if(NoTrace.shouldLog()) LogUtils.getLogger().info("Successfully saved config");
         } catch (Exception e){
-            LogUtils.getLogger().error("Unable to write config!!");
+            if(NoTrace.shouldLog()) LogUtils.getLogger().error("Unable to write config!!");
         }
 
     }

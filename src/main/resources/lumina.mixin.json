@@ -5,6 +5,7 @@
   "compatibilityLevel": "JAVA_17",
   "mixins": [
     "EntityMixin",
+    "LogUtilsMixin",
     "PlayerMoveC2SPacketMixin",
     "Vec3dMixin"
   ],
@@ -18,11 +19,11 @@
     "KeyboardMixin",
     "LivingEntityMixin",
     "MinecraftClientMixin",
+    "MixinClientConnection",
     "PlayerListHudMixin",
     "SessionMixin",
     "TitleScreenMixin",
-    "WorldRendererMixin",
-    "MixinClientConnection"
+    "WorldRendererMixin"
   ],
   "injectors": {
     "defaultRequire": 1

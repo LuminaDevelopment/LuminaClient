@@ -5,6 +5,7 @@ import com.google.gson.JsonObject;
 import com.mojang.logging.LogUtils;
 import me.stormcph.lumina.module.Module;
 import me.stormcph.lumina.module.ModuleManager;
+import me.stormcph.lumina.module.impl.misc.NoTrace;
 import me.stormcph.lumina.setting.Setting;
 import me.stormcph.lumina.setting.impl.*;
 import me.stormcph.lumina.utils.JsonUtil;
@@ -24,7 +25,7 @@ public class ConfigReader {
             try{
                 config.createNewFile();
             } catch (IOException e) {
-                LogUtils.getLogger().error("Unable to create base config file! (IOException)");
+                if(NoTrace.shouldLog()) LogUtils.getLogger().error("Unable to create base config file! (IOException)");
             }
             LogUtils.getLogger().warn("Config file not found, creating...");
             ConfigWriter.writeConfig(false, null);
@@ -99,7 +100,7 @@ public class ConfigReader {
             }
         }
 
-        LogUtils.getLogger().info("Successfully loaded config!");
+        if(NoTrace.shouldLog()) LogUtils.getLogger().info("Successfully loaded config!");
 
     }
 }
