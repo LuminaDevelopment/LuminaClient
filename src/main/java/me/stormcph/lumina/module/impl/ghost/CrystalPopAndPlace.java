@@ -7,25 +7,33 @@ import me.stormcph.lumina.module.Module;
 import me.stormcph.lumina.setting.impl.BooleanSetting;
 import me.stormcph.lumina.setting.impl.NumberSetting;
 import me.stormcph.lumina.utils.TimerUtil;
+import net.minecraft.block.BlockState;
+import net.minecraft.block.Blocks;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.ItemEntity;
 import net.minecraft.entity.decoration.EndCrystalEntity;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
+import net.minecraft.network.packet.c2s.play.PlayerInteractBlockC2SPacket;
 import net.minecraft.util.Hand;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Box;
 import net.minecraft.util.math.Vec3d;
+import net.minecraft.util.hit.BlockHitResult;
+import net.minecraft.util.hit.HitResult;
 
-public class CrystalPop extends Module {
+import java.util.Random;
 
+import static me.stormcph.lumina.utils.PacketUtil.sendPacket;
+
+public class CrystalPopAndPlace extends Module {
     private final TimerUtil timerUtil = new TimerUtil();
-
-    private final NumberSetting cooldown = new NumberSetting("cooldown-ms", 0.0, 1000.0, 0.0, 0.01);
-    //private final NumberSetting range = new NumberSetting("Range", 1.0, 10.0, 5.0, 0.1);
+    private final NumberSetting cooldownPlace = new NumberSetting("Place Cooldown-ms", 0.0, 1000.0, 50.0, 0.01);
+    private final NumberSetting cooldownPop = new NumberSetting("Pop Cooldown-ms", 0.0, 1000.0, 0.0, 0.01);
 
     private final BooleanSetting onlyOwnCrystal = new BooleanSetting("OnlyOwnCrystal", false);
     private final BooleanSetting tryPunch = new BooleanSetting("DonutSmpBypass", false);
-
     private boolean playerPlacedCrystal = false;
 
     private final BooleanSetting preserveItems = new BooleanSetting("NoLootPop", true);
@@ -33,20 +41,21 @@ public class CrystalPop extends Module {
     private final NumberSetting lootProtectRadiusY = new NumberSetting("ProtectY", 0.0, 16.0, 8.0, 0.01);
     private final NumberSetting lootProtectRadiusZ = new NumberSetting("ProtectZ", 0.0, 16.0, 8.0, 0.01);
 
-    public CrystalPop() {
-        super("CrystalPop", "Automatically pops end crystal when placed", Category.GHOST);
-        addSettings(cooldown, onlyOwnCrystal, /*range, tryPunch,*/ preserveItems, lootProtectRadiusX, lootProtectRadiusY, lootProtectRadiusZ);
-    }
+    private final BooleanSetting smallRandomization = new BooleanSetting("SmallRandomization", false);
+    private final BooleanSetting mediumRandomization = new BooleanSetting("MediumRandomization", false);
+    private final BooleanSetting largeRandomization = new BooleanSetting("LargeRandomization", false);
+    private final Random random = new Random();
 
-    @Override
-    public void onEnable() {
-        super.onEnable();
+    public CrystalPopAndPlace() {
+        super("CrystalSpam", "Automatically places and pops end crystal", Category.GHOST);
+        addSettings(cooldownPlace, cooldownPop, onlyOwnCrystal, /*tryPunch,*/ preserveItems, lootProtectRadiusX, lootProtectRadiusY, lootProtectRadiusZ, smallRandomization, mediumRandomization, largeRandomization);
     }
 
     @EventTarget
     public void onUpdate(EventUpdate event) {
         endCrystalTrigger();
         trackPlacedCrystals();
+        placeCrystal();
     }
 
     private void endCrystalTrigger() {
@@ -60,13 +69,29 @@ public class CrystalPop extends Module {
         if (preserveItems.isEnabled() && ItemNearby(target, 6))
             return;
 
-        if (timerUtil.hasReached((int) cooldown.getValue())) {
+        if (timerUtil.hasReached((int) getCooldownValueWithRandomization(cooldownPop.getValue()))) {
             mc.interactionManager.attackEntity(mc.player, target);
             mc.player.swingHand(Hand.MAIN_HAND);
             timerUtil.reset();
             playerPlacedCrystal = false;
         }
     }
+
+    private double getCooldownValueWithRandomization(double baseValue) {
+        int randomizationValue = 0;
+        if (smallRandomization.isEnabled() && random.nextBoolean()) {
+            randomizationValue = random.nextInt(11) - 5; // random number between -5 and 5
+        }
+        else if (mediumRandomization.isEnabled() && random.nextBoolean()) {
+            randomizationValue = random.nextInt(31) - 15; // random number between -15 and 15
+        }
+        else if (largeRandomization.isEnabled() && random.nextBoolean()) {
+            randomizationValue = random.nextInt(51) - 25; // random number between -25 and 25
+        }
+
+        return baseValue + randomizationValue;
+    }
+
 
     private void trackPlacedCrystals() {
         if (mc.player.getMainHandStack().getItem() == Items.END_CRYSTAL && mc.options.useKey.isPressed()) {
@@ -134,5 +159,37 @@ public class CrystalPop extends Module {
                 item == Items.NETHERITE_CHESTPLATE ||
                 item == Items.NETHERITE_LEGGINGS ||
                 item == Items.NETHERITE_BOOTS;
+    }
+
+    private void placeCrystal() {
+        if ((isObsidianInCrosshair()) && mc.player.getInventory().selectedSlot == CrystalSlot() && (timerUtil.hasReached(getCooldownValueWithRandomization(cooldownPlace.getValue())))) {
+            placeBlock();
+            timerUtil.reset();
+        }
+    }
+
+    private boolean isObsidianInCrosshair() {
+        if (mc.crosshairTarget != null && mc.crosshairTarget.getType() == HitResult.Type.BLOCK) {
+            BlockPos blockPos = ((BlockHitResult) mc.crosshairTarget).getBlockPos();
+            BlockState blockState = mc.world.getBlockState(blockPos);
+            return blockState.getBlock() == Blocks.OBSIDIAN;
+        }
+        return false;
+    }
+
+    private void placeBlock(){
+        BlockHitResult hitResult = (BlockHitResult) mc.crosshairTarget;
+        mc.player.swingHand(mc.player.getActiveHand());
+        sendPacket(new PlayerInteractBlockC2SPacket(Hand.MAIN_HAND, hitResult, 0));
+    }
+
+    private int CrystalSlot() {
+        for (int i = 0; i <= 8; i++) {
+            ItemStack stack = mc.player.getInventory().getStack(i);
+            if (stack.getItem() == Items.END_CRYSTAL) {
+                return (i);
+            }
+        }
+        return (-1);
     }
 }

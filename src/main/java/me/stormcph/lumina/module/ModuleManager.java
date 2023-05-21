@@ -54,6 +54,7 @@ public class ModuleManager {
         add(new CrystalPlacer());
         add(new SCC());
 //        add(new LegitTotem());
+        add(new CrystalPopAndPlace());
 
         // Render
         add(new Arraylist());
