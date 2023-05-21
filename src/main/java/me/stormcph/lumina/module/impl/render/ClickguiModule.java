@@ -7,7 +7,7 @@ import me.stormcph.lumina.setting.impl.ModeSetting;
 
 public class ClickguiModule extends Module {
 
-    public static BooleanSetting performance = new BooleanSetting("Performance", true);
+    public static BooleanSetting performance = new BooleanSetting("Performance", false);
     public static ModeSetting clickguiMode = new ModeSetting("Clickgui Mode", "New", "New", "Old");
 
     public ClickguiModule() {

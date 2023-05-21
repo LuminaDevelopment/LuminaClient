@@ -6,71 +6,34 @@ import me.stormcph.lumina.module.Category;
 import me.stormcph.lumina.module.Module;
 import me.stormcph.lumina.setting.impl.BooleanSetting;
 import me.stormcph.lumina.setting.impl.NumberSetting;
-import me.stormcph.lumina.utils.TimerUtil;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.ItemEntity;
 import net.minecraft.entity.decoration.EndCrystalEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.Items;
-import net.minecraft.util.Hand;
 import net.minecraft.util.math.Box;
 import net.minecraft.util.math.Vec3d;
 
-public class CrystalPop extends Module {
-
-    private final TimerUtil timerUtil = new TimerUtil();
-
-    private final NumberSetting cooldown = new NumberSetting("cooldown-ms", 0.0, 1000.0, 0.0, 0.01);
-    //private final NumberSetting range = new NumberSetting("Range", 1.0, 10.0, 5.0, 0.1);
-
-    private final BooleanSetting onlyOwnCrystal = new BooleanSetting("OnlyOwnCrystal", false);
-    private final BooleanSetting tryPunch = new BooleanSetting("DonutSmpBypass", false);
-
-    private boolean playerPlacedCrystal = false;
+public class NoLootBlow extends Module {
 
     private final BooleanSetting preserveItems = new BooleanSetting("NoLootPop", true);
     private final NumberSetting lootProtectRadiusX = new NumberSetting("ProtectX", 0.0, 16.0, 8.0, 0.01);
     private final NumberSetting lootProtectRadiusY = new NumberSetting("ProtectY", 0.0, 16.0, 8.0, 0.01);
     private final NumberSetting lootProtectRadiusZ = new NumberSetting("ProtectZ", 0.0, 16.0, 8.0, 0.01);
 
-    public CrystalPop() {
-        super("CrystalPop", "Automatically pops end crystal when placed", Category.GHOST);
-        addSettings(cooldown, onlyOwnCrystal, /*range, tryPunch,*/ preserveItems, lootProtectRadiusX, lootProtectRadiusY, lootProtectRadiusZ);
-    }
-
-    @Override
-    public void onEnable() {
-        super.onEnable();
+    public NoLootBlow() {
+        super("NoLootBlow", "Prevents the player from blowing up valuable loot with end crystals", Category.GHOST);
+        addSettings(preserveItems, lootProtectRadiusX, lootProtectRadiusY, lootProtectRadiusZ);
     }
 
     @EventTarget
     public void onUpdate(EventUpdate event) {
-        endCrystalTrigger();
-        trackPlacedCrystals();
-    }
-
-    private void endCrystalTrigger() {
         Entity target = raycastEndCrystal(5);
         if (target == null)
             return;
 
-        if (onlyOwnCrystal.isEnabled() && !playerPlacedCrystal)
-            return;
-
-        if (preserveItems.isEnabled() && ItemNearby(target, 6))
-            return;
-
-        if (timerUtil.hasReached((int) cooldown.getValue())) {
-            mc.interactionManager.attackEntity(mc.player, target);
-            mc.player.swingHand(Hand.MAIN_HAND);
-            timerUtil.reset();
-            playerPlacedCrystal = false;
-        }
-    }
-
-    private void trackPlacedCrystals() {
-        if (mc.player.getMainHandStack().getItem() == Items.END_CRYSTAL && mc.options.useKey.isPressed()) {
-            playerPlacedCrystal = true;
+        if (preserveItems.isEnabled() && ItemNearby(target, 6)) {
+            // TODO: Prevent the attack action from happening
         }
     }
 

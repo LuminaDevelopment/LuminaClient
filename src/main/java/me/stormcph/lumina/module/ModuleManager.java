@@ -42,8 +42,7 @@ public class ModuleManager {
         add(new ItemDump());
         add(new NameProtect());
         add(new Advertise());
-        add(new NoTrace());
-
+//        add(new AutoEz()); it's not finished yet cause i havent implemented a way to detect that it was actually you that killed the entity
 
         // Player
         add(new AutoArmor());
@@ -55,6 +54,7 @@ public class ModuleManager {
         add(new CrystalPlacer());
         add(new SCC());
 //        add(new LegitTotem());
+        add(new CrystalPopAndPlace());
 
         // Render
         add(new Arraylist());

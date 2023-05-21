@@ -6,7 +6,7 @@ import me.stormcph.lumina.setting.impl.ModeSetting;
 
 public class Cape extends Module {
 
-    private static final ModeSetting cape = new ModeSetting("Texture", "cape-test", "cape-test");
+    private static final ModeSetting cape = new ModeSetting("cape:", "lumina-b", "lumina-b", "lumina-w");
 
     public Cape() {
         super("Cape", "Forces a custom cape", Category.RENDER);
