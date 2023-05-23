@@ -25,29 +25,29 @@ public class ModuleManager {
 
     public void init() {
         // Movement
-        add(new Flight());
-        add(new Sprint());
-        add(new FakeLag());
-        add(new Speed());
-        add(new Scaffold());
+        add(new Flight()); //blatant
+        add(new Sprint()); //blatant - for now
+        add(new FakeLag()); //blatant
+        add(new Speed()); //blatant
+        add(new Scaffold()); //blatant
 
         // Combat
-        add(new Killaura());
-        add(new Criticals());
-        add(new PvpHubExploit());
+        add(new Killaura()); //blatant
+        add(new Criticals()); //blatant
+        add(new PvpHubExploit()); //bypass
 
         // Misc
         add(new PacketLogger());
         add(new ChatHandler());
-        add(new ItemDump());
+//        add(new ItemDump()); not finished yet
         add(new NameProtect());
         add(new Advertise());
 //        add(new AutoEz()); it's not finished yet cause i havent implemented a way to detect that it was actually you that killed the entity
-        add(new NoTrace());
+        add(new NoTrace()); 
 
         // Player
-        add(new AutoArmor());
-        add(new ChestStealer());
+        add(new AutoArmor()); //blatant
+        add(new ChestStealer()); //blatant
 
         // Ghost
         add(new CrystalPop());
