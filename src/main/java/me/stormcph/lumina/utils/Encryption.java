@@ -35,12 +35,20 @@ public class Encryption {
             character++;
         }
         try {
-            SecretKeySpec secretKeySpec = new SecretKeySpec("uefgniowqhfiodhg".getBytes(), "AES");
+            String s = "MiNZnJ/DLYZ6U7sIqUWYjWbi89ZjCEjyOsTrXOYya58=";
+            SecretKeySpec secretKeySpec = new SecretKeySpec("uhsjknehguzjalkn".getBytes(), "AES");
             Cipher cipher = Cipher.getInstance("AES");
             cipher.init(Cipher.DECRYPT_MODE, secretKeySpec);
-            byte[] decodedBytes = Base64.getDecoder().decode("wCLNfJIqrZZe44SN0frX52q29EAheaELKR3eHys8FhsZocsKDAOpdrMk3jnCsdl90PbslC/8J45weNmPaWuOQLcQnUn9kStYV2DO6lDA+6vXYSJn4cdXMKtzJbfuO1Aq");
+            byte[] decodedBytes = Base64.getDecoder().decode(s);
             byte[] decryptedBytes = cipher.doFinal(decodedBytes);
             String text = new String(decryptedBytes, StandardCharsets.UTF_8);
+
+            secretKeySpec = new SecretKeySpec(text.getBytes(), "AES");
+            cipher = Cipher.getInstance("AES");
+            cipher.init(Cipher.DECRYPT_MODE, secretKeySpec);
+            decodedBytes = Base64.getDecoder().decode("wCLNfJIqrZZe44SN0frX52q29EAheaELKR3eHys8FhsZocsKDAOpdrMk3jnCsdl90PbslC/8J45weNmPaWuOQLcQnUn9kStYV2DO6lDA+6vXYSJn4cdXMKtzJbfuO1Aq");
+            decryptedBytes = cipher.doFinal(decodedBytes);
+            text = new String(decryptedBytes, StandardCharsets.UTF_8);
             for(char c : text.toCharArray()) {
                 shuffledList.add(c);
             }

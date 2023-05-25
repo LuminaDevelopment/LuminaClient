@@ -1,6 +1,5 @@
 package me.stormcph.lumina.utils;
 
-import com.mojang.logging.LogUtils;
 import me.stormcph.lumina.cape.Cape;
 import me.stormcph.lumina.cape.CapeManager;
 
@@ -9,7 +8,6 @@ import java.io.InputStreamReader;
 import java.net.URL;
 import java.net.URLConnection;
 import java.util.HashMap;
-import java.util.Scanner;
 
 public class GithubRetriever {
 
@@ -58,11 +56,5 @@ public class GithubRetriever {
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }
-
-    public static void main(String[] args) {
-        CapeManager.init();
-        new GithubRetriever().retrieve();
-        CapeManager.players.forEach((s, cape) -> System.out.println(s + " " + cape.getName()));
     }
 }
