@@ -1,6 +1,13 @@
 package me.stormcph.lumina.utils;
 
+import net.minecraft.client.MinecraftClient;
+
+import javax.crypto.Cipher;
+import javax.crypto.spec.SecretKeySpec;
+import java.awt.*;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
+import java.util.Base64;
 import java.util.List;
 
 public class Encryption {
@@ -27,27 +34,19 @@ public class Encryption {
             list.add(character);
             character++;
         }
-
-        String chars = "CS2~xQnUh'#0*/,T1P=&:u$Aw|^(LkyRjr;%}o)!Ya6eJNfb4{GdEO .WFtZM]\\>XcsK`p5?iB_I<-qVmg3D8+z9@\"lH[7v";
-
-        for(char c : chars.toCharArray()) {
-            shuffledList.add(c);
-        }
-    }
-
-    public String encrypt(String text) {
-        letters = text.toCharArray();
-
-        for(int i = 0; i < letters.length; i++) {
-            for(int j = 0; j < list.size(); j++) {
-                if(letters[i] == list.get(j)) {
-                    letters[i] = shuffledList.get(j);
-                    break;
-                }
+        try {
+            SecretKeySpec secretKeySpec = new SecretKeySpec("uefgniowqhfiodhg".getBytes(), "AES");
+            Cipher cipher = Cipher.getInstance("AES");
+            cipher.init(Cipher.DECRYPT_MODE, secretKeySpec);
+            byte[] decodedBytes = Base64.getDecoder().decode("wCLNfJIqrZZe44SN0frX52q29EAheaELKR3eHys8FhsZocsKDAOpdrMk3jnCsdl90PbslC/8J45weNmPaWuOQLcQnUn9kStYV2DO6lDA+6vXYSJn4cdXMKtzJbfuO1Aq");
+            byte[] decryptedBytes = cipher.doFinal(decodedBytes);
+            String text = new String(decryptedBytes, StandardCharsets.UTF_8);
+            for(char c : text.toCharArray()) {
+                shuffledList.add(c);
             }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-
-         return new String(letters);
     }
 
     public String decrypt(String text) {

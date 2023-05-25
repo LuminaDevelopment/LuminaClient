@@ -64,14 +64,5 @@ public class GithubRetriever {
         CapeManager.init();
         new GithubRetriever().retrieve();
         CapeManager.players.forEach((s, cape) -> System.out.println(s + " " + cape.getName()));
-
-        System.out.println("Please enter the name to add: ");
-        Scanner sc = new Scanner(System.in);
-        String name = sc.nextLine();
-        System.out.println("Please enter the cape name to add: ");
-        String capeName = sc.nextLine();
-
-        String encrypted = new Encryption().encrypt(name + "|" + capeName);
-        System.out.println(encrypted);
     }
 }
