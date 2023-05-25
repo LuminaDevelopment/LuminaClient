@@ -1,5 +1,6 @@
 package me.stormcph.lumina;
 
+import me.stormcph.lumina.cape.CapeManager;
 import me.stormcph.lumina.clickgui.ClickGui;
 import me.stormcph.lumina.config.ConfigReader;
 import me.stormcph.lumina.event.EventManager;
@@ -11,6 +12,7 @@ import me.stormcph.lumina.module.Module;
 import me.stormcph.lumina.module.ModuleManager;
 import me.stormcph.lumina.module.impl.render.ClickguiModule;
 import me.stormcph.lumina.old_ui.HudConfigScreen;
+import me.stormcph.lumina.utils.GithubRetriever;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper;
 import net.minecraft.client.MinecraftClient;
@@ -35,6 +37,8 @@ public class Lumina implements ModInitializer {
     @Override
     public void onInitialize() {
         EventManager.register(this);
+        CapeManager.init();
+        new GithubRetriever().retrieve();
 
         KeyBindingHelper.registerKeyBinding(openClickGuiKey);
         KeyBindingHelper.registerKeyBinding(openHudConfigScreenKey);
