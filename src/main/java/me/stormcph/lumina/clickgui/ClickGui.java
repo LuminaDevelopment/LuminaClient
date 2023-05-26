@@ -11,7 +11,7 @@ import java.util.List;
 public class ClickGui extends Screen {
 
     private final List<Tab> tabs = new ArrayList<>();
-    public static ClickGui instance = new ClickGui();
+    public static final ClickGui instance = new ClickGui();
 
     public ClickGui() {
         super(Text.of("Lumina Menu"));

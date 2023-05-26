@@ -1,6 +1,5 @@
 package me.stormcph.lumina.module.impl.misc;
 
-import me.stormcph.lumina.event.EventManager;
 import me.stormcph.lumina.event.EventTarget;
 import me.stormcph.lumina.event.impl.PacketReceiveEvent;
 import me.stormcph.lumina.module.Category;
@@ -24,7 +23,6 @@ public class AutoEz extends Module {
     @Override
     public void onEnable() {
         super.onEnable();
-        EventManager.register(this);
         sendMsg("Enabled");
     }
 

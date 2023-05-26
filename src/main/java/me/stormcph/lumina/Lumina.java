@@ -13,7 +13,7 @@ import me.stormcph.lumina.module.ModuleManager;
 import me.stormcph.lumina.module.impl.render.ClickguiModule;
 import me.stormcph.lumina.old_ui.HudConfigScreen;
 import me.stormcph.lumina.utils.GithubRetriever;
-import net.fabricmc.api.ModInitializer;
+import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.option.KeyBinding;
@@ -24,10 +24,10 @@ import org.lwjgl.glfw.GLFW;
 
 import javax.swing.*;
 
-public class Lumina implements ModInitializer {
+public class Lumina implements ClientModInitializer {
 
-    private static final Lumina INSTANCE = new Lumina();
-    private final Logger logger = LogManager.getLogger(Lumina.class);
+    private static  Lumina INSTANCE;
+    public final Logger logger = LogManager.getLogger(Lumina.class);
 
     private final MinecraftClient mc = MinecraftClient.getInstance();
 
@@ -35,7 +35,9 @@ public class Lumina implements ModInitializer {
     private static final KeyBinding openHudConfigScreenKey = new KeyBinding("key.lumina.open_hud_config_screen", InputUtil.Type.KEYSYM, GLFW.GLFW_KEY_H, "category.lumina");
 
     @Override
-    public void onInitialize() {
+    public void onInitializeClient() {
+        INSTANCE = this;
+
         EventManager.register(this);
         CapeManager.init();
         new GithubRetriever().retrieve();
@@ -46,9 +48,7 @@ public class Lumina implements ModInitializer {
        // SessionChanger.loginCracked("LuminaUser");
         System.out.println("Set username to LuminaUser");
 
-
-        Thread configThr = new Thread(ConfigReader::loadConfig, "LuminaConfigReaderThread");
-        configThr.start();
+        ConfigReader.loadConfig();
     }
 
     @EventTarget
@@ -59,7 +59,7 @@ public class Lumina implements ModInitializer {
                 if (event.getKey() == module.getKey()) module.toggle();
             }
 
-            if (openClickGuiKey.wasPressed()) {
+            if (openClickGuiKey.matchesKey(event.getKey(), GLFW.GLFW_KEY_UNKNOWN)) {
                 switch (ClickguiModule.clickguiMode.getMode()) {
                     case "New" -> {
                         mc.setScreen(ClickGui.instance);
@@ -72,9 +72,8 @@ public class Lumina implements ModInitializer {
                         System.out.println("How the fuck did you manage this");
                     }
                 }
-
             }
-            if (openHudConfigScreenKey.wasPressed()) mc.setScreen(new HudConfigScreen());
+            else if (openHudConfigScreenKey.matchesKey(event.getKey(), GLFW.GLFW_KEY_UNKNOWN)) mc.setScreen(new HudConfigScreen());
         }
     }
 
@@ -91,9 +90,5 @@ public class Lumina implements ModInitializer {
 
     public static Lumina getInstance() {
         return INSTANCE;
-    }
-
-    public Logger getLogger() {
-        return logger;
     }
 }

@@ -1,6 +1,6 @@
 package me.stormcph.lumina.utils;
 
-import me.stormcph.lumina.mixinterface.ISession;
+import me.stormcph.lumina.mixins.ISession;
 import net.minecraft.client.MinecraftClient;
 
 public class SessionChanger {
@@ -11,6 +11,6 @@ public class SessionChanger {
 
     public static void loginCracked(String username) {
         MinecraftClient mc = MinecraftClient.getInstance();
-        ((ISession) mc.getSession()).setUsername(username);
+        ((ISession) mc.getSession()).lumina$setUsername(username);
     }
 }

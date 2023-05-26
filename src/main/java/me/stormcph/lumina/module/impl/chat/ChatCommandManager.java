@@ -11,6 +11,12 @@ public class ChatCommandManager {
     public static String cachedName;
 
     private static final List<ChatCommand> commandList = new ArrayList<>();
+    private static final ChatCommand INVALID_COMMAND = new ChatCommand("invalid") {
+        @Override
+        public void execute(List<String> args) {
+            ChatUtils.sendMsg("&4Invalid command!");
+        }
+    };
 
     /**
      * Registers a chat command
@@ -43,15 +49,6 @@ public class ChatCommandManager {
         }
         cachedName = command;
 
-        return new ChatCommand("invalid"){
-            @Override
-            public void execute(List<String> args) {
-                ChatUtils.sendMsg("&4Invalid command!");
-            }
-        };
+        return INVALID_COMMAND;
     }
-
-
-
-
 }

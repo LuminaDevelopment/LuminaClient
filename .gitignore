@@ -26,3 +26,6 @@ build/
 
 # Intellij
 .idea
+
+# MacOS
+*.DS_Store

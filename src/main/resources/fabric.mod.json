@@ -7,7 +7,9 @@
   "description": "Light Utilization Management Integrating Notable Acceleration",
 
   "authors": [
-    "Stormcph, Qweru, CorruptionHades"
+    "Stormcph",
+    "Qweru",
+    "CorruptionHades"
   ],
   "contact": {
     "homepage": "",
@@ -17,12 +19,9 @@
   "license": "gpl-3.0",
   "icon": "assets/lumina/icon.png",
 
-  "environment": "*",
+  "environment": "client",
   "entrypoints": {
     "client": [
-      "me.stormcph.lumina.client.LuminaClient"
-    ],
-    "main": [
       "me.stormcph.lumina.Lumina"
     ]
   },
@@ -35,9 +34,6 @@
     "fabric-api": "*",
     "minecraft": "~1.19.4",
     "java": ">=17"
-  },
-  "suggests": {
-    "another-mod": "*"
   },
   "client": {
     "keybinds": [

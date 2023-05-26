@@ -1,12 +1,12 @@
 package me.stormcph.lumina.module.impl.render;
 
+import it.unimi.dsi.fastutil.Pair;
 import me.stormcph.lumina.module.Category;
 import me.stormcph.lumina.module.HudModule;
 import me.stormcph.lumina.module.Module;
 import me.stormcph.lumina.module.ModuleManager;
 import me.stormcph.lumina.setting.impl.NumberSetting;
 import me.stormcph.lumina.utils.ColorUtil;
-import me.stormcph.lumina.utils.Pair;
 import me.stormcph.lumina.utils.RenderUtils;
 import me.stormcph.lumina.utils.animations.Animation;
 import me.stormcph.lumina.utils.animations.Direction;
@@ -86,7 +86,7 @@ public class Arraylist extends HudModule {
 
             int index = count * colorSpread.getIntValue();
             Pair<Color, Color> colors = Pair.of(new Color(236, 133, 209), new Color(28, 167, 222));
-            Color textcolor = ColorUtil.interpolateColorsBackAndForth(colorSpeed.getIntValue(), index, colors.getFirst(), colors.getSecond(), false);
+            Color textcolor = ColorUtil.interpolateColorsBackAndForth(colorSpeed.getIntValue(), index, colors.first(), colors.second(), false);
 
             Color color = ColorUtil.applyOpacity(textcolor, alphaAnimation);
 

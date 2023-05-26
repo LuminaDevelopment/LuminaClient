@@ -10,14 +10,12 @@ import java.util.List;
 
 public class ClickGui extends Screen {
 
-    public static final  ClickGui INSTANCE = new ClickGui();
+    public static final ClickGui INSTANCE = new ClickGui();
 
-    private List<Frame> frames;
+    private final List<Frame> frames = new ArrayList<>();
 
     private ClickGui() {
         super(Text.literal("Click Gui"));
-
-        frames = new ArrayList<>();
 
         int offset = 20;
         for (Category category : Category.values()) {

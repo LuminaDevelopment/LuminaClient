@@ -1,8 +1,7 @@
 package me.stormcph.lumina.config;
 
-import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import com.mojang.logging.LogUtils;
+import me.stormcph.lumina.Lumina;
 import me.stormcph.lumina.module.Module;
 import me.stormcph.lumina.module.ModuleManager;
 import me.stormcph.lumina.module.impl.misc.NoTrace;
@@ -11,17 +10,12 @@ import me.stormcph.lumina.setting.impl.*;
 import me.stormcph.lumina.utils.JsonUtil;
 import org.jetbrains.annotations.Nullable;
 
-import java.io.File;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.nio.file.Path;
 
 public class ConfigWriter {
 
     public static void writeConfig(boolean compatibilityMode, @Nullable JsonObject presetData){
-
-        File config = new File(JsonUtil.configDir+"\\luminaConfig.json");
+        Path config = JsonUtil.configDir.resolve("luminaConfig.json");
 
         JsonObject config_obj = new JsonObject();
 
@@ -57,9 +51,9 @@ public class ConfigWriter {
 
         try {
             JsonUtil.writeJson(config, config_obj);
-            if(NoTrace.shouldLog()) LogUtils.getLogger().info("Successfully saved config");
+            if(NoTrace.shouldLog()) Lumina.getInstance().logger.info("Successfully saved config");
         } catch (Exception e){
-            if(NoTrace.shouldLog()) LogUtils.getLogger().error("Unable to write config!!");
+            if(NoTrace.shouldLog()) Lumina.getInstance().logger.error("Unable to write config!", e);
         }
 
     }

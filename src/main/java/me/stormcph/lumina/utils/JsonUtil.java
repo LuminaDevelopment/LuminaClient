@@ -1,58 +1,26 @@
 package me.stormcph.lumina.utils;
 
-import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
-import com.mojang.logging.LogUtils;
+import me.stormcph.lumina.Lumina;
 import me.stormcph.lumina.module.impl.misc.NoTrace;
 import net.fabricmc.loader.api.FabricLoader;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileWriter;
 import java.io.IOException;
-import java.util.Scanner;
+import java.nio.file.Files;
+import java.nio.file.Path;
 
 public class JsonUtil {
-    public static String configDir = FabricLoader.getInstance().getConfigDir().toString();
+    public static final Path configDir = FabricLoader.getInstance().getConfigDir();
 
-    public static JsonElement getKeyValue(File file, String key) {
-        return JsonParser.parseString(readFile(file)).getAsJsonObject().get(key);
-    }
-
-    private static String readFile(File file) {
-        StringBuilder builder = new StringBuilder();
-        try {
-            Scanner myReader = new Scanner(file);
-            while (myReader.hasNextLine()) {
-                builder.append(myReader.nextLine());
-            }
-            myReader.close();
-        } catch (FileNotFoundException e) {
-            System.out.println("An error occurred.");
-            e.printStackTrace();
-        }
-        return builder.toString();
-    }
-
-    public static void writeJson(File file, JsonObject data){
+    public static void writeJson(Path file, JsonObject data){
         writeFile(file, data.toString());
     }
 
-    private static void writeFile(File file, String data) {
-        FileWriter fr = null;
-        try {
-            fr = new FileWriter(file);
-            fr.write(data);
+    private static void writeFile(Path file, String data) {
+        try (var writer = Files.newBufferedWriter(file)) {
+            writer.write(data);
         } catch (IOException e) {
-            if(NoTrace.shouldLog()) LogUtils.getLogger().error(e.toString());
-        }finally{
-            try {
-                fr.close();
-            } catch (IOException e) {
-                if(NoTrace.shouldLog()) LogUtils.getLogger().error(e.toString());
-            }
+            if(NoTrace.shouldLog()) Lumina.getInstance().logger.error(e.toString());
         }
     }
-
 }

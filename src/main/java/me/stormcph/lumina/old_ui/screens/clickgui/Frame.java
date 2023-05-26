@@ -28,7 +28,7 @@ public class Frame {
 
     public boolean dragging, extended;
 
-    private List<ModuleButton> buttons;
+    private final List<ModuleButton> buttons = new ArrayList<>();
 
     protected MinecraftClient mc = MinecraftClient.getInstance();
 
@@ -41,8 +41,6 @@ public class Frame {
         this.width = width;
         this.height = height;
         this.extended = false;
-
-        buttons = new ArrayList<>();
 
         int offset = height;
         for (Module mod : ModuleManager.INSTANCE.getModulesByCategory(category)) {
@@ -119,7 +117,7 @@ public class Frame {
 
 
     public void mouseReleased(double mouseX, double mouseY, int button) {
-        if (button == 0 && dragging == true) dragging = false;
+        if (button == 0 && dragging) dragging = false;
 
         for (ModuleButton mc : buttons) {
             mc.mouseReleased(mouseX, mouseY, button);

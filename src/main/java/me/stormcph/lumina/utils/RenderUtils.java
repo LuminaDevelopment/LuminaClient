@@ -1,11 +1,20 @@
 package me.stormcph.lumina.utils;
 
+import com.mojang.blaze3d.platform.GlStateManager;
 import com.mojang.blaze3d.systems.RenderSystem;
+import me.stormcph.lumina.Lumina;
+import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.DrawableHelper;
 import net.minecraft.client.render.*;
+import net.minecraft.client.texture.AbstractTexture;
+import net.minecraft.client.texture.NativeImage;
+import net.minecraft.client.texture.NativeImageBackedTexture;
+import net.minecraft.client.texture.ResourceTexture;
 import net.minecraft.client.util.math.MatrixStack;
+import net.minecraft.resource.Resource;
 import net.minecraft.util.Identifier;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import org.joml.Matrix4f;
 
 import javax.imageio.ImageIO;
@@ -168,12 +177,27 @@ public class RenderUtils {
      * @param path Path to the image
      */
     public static void drawTexturedRectangle(MatrixStack matrices, float x, float y, String path) {
-        // Bind the texture
-        RenderSystem.setShaderTexture(0, new Identifier("lumina", path));
+        Identifier textureId = new Identifier("lumina", path);
+
         try {
-            URL url = RenderUtils.class.getResource("/assets/lumina/" + path);
-            BufferedImage image = ImageIO.read(url);
-            DrawableHelper.drawTexture(matrices, (int) x, (int) y, 0.0f, 0.0f, image.getWidth(), image.getHeight(), image.getWidth(), image.getHeight());
+            AbstractTexture texture = MinecraftClient.getInstance().getTextureManager().getTexture(textureId);
+            int imageWidth = 0;
+            int imageHeight = 0;
+            if (texture instanceof NativeImageBackedTexture nativeImageBackedTexture) { //NativeImage already exists, metadata is free -C
+                imageWidth = nativeImageBackedTexture.getImage().getWidth();
+                imageHeight = nativeImageBackedTexture.getImage().getHeight();
+                nativeImageBackedTexture.upload();
+                RenderSystem.setShaderTexture(0, nativeImageBackedTexture.getGlId());
+            } else if (texture instanceof ResourceTexture resourceTexture) { //Since we need metadata, we create NativeImage. Using Minecraft GL would duplicate NativeImage, so for perf we call manually -C
+                Resource resource = MinecraftClient.getInstance().getResourceManager().getResourceOrThrow(textureId);
+                NativeImage nativeImage = NativeImage.read(resource.getInputStream());
+                imageWidth = nativeImage.getWidth();
+                imageHeight = nativeImage.getHeight();
+                GlStateManager._bindTexture(resourceTexture.getGlId());
+                RenderSystem.setShaderTexture(0, resourceTexture.getGlId());
+                nativeImage.upload(0, 0, 0, true);
+            }
+            DrawableHelper.drawTexture(matrices, (int) x, (int) y, 0.0f, 0.0f, imageWidth, imageHeight, imageWidth, imageHeight);
         } catch (Exception e) {
             e.printStackTrace();
         }

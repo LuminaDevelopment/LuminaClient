@@ -2,7 +2,7 @@ package me.stormcph.lumina.module.impl.movement;
 
 import me.stormcph.lumina.event.EventTarget;
 import me.stormcph.lumina.event.impl.PlayerMoveEvent;
-import me.stormcph.lumina.mixinterface.IVec3d;
+import me.stormcph.lumina.mixins.IVec3d;
 import me.stormcph.lumina.module.Category;
 import me.stormcph.lumina.module.Module;
 import me.stormcph.lumina.setting.impl.NumberSetting;
@@ -73,8 +73,8 @@ public class Speed extends Module {
             velZ *= diagonal;
         }
 
-        ((IVec3d) horizontalVelocity).setX(velX);
-        ((IVec3d) horizontalVelocity).setZ(velZ);
+        ((IVec3d) horizontalVelocity).lumina$setX(velX);
+        ((IVec3d) horizontalVelocity).lumina$setZ(velZ);
 
         return horizontalVelocity;
     }

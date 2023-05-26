@@ -2,7 +2,7 @@ package me.stormcph.lumina.module.impl.movement.scaffold;
 
 import me.stormcph.lumina.event.EventTarget;
 import me.stormcph.lumina.event.impl.PacketSendEvent;
-import me.stormcph.lumina.mixinterface.IPMC2SP;
+import me.stormcph.lumina.mixins.IPlayerMoveC2SPacket;
 import me.stormcph.lumina.module.Category;
 import me.stormcph.lumina.module.Module;
 import me.stormcph.lumina.module.ModuleManager;
@@ -12,7 +12,6 @@ import net.minecraft.block.AirBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
-import net.minecraft.client.util.math.Vector2f;
 import net.minecraft.item.ItemStack;
 import net.minecraft.network.packet.Packet;
 import net.minecraft.network.packet.c2s.play.HandSwingC2SPacket;
@@ -22,7 +21,6 @@ import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.Vec3d;
-import org.joml.Vector3f;
 
 import java.util.Arrays;
 import java.util.List;
@@ -63,12 +61,12 @@ public class Scaffold extends Module {
         BlockState underBlock = mc.world.getBlockState(mc.player.getBlockPos().down(1));
 
         if(headTurner.isEnabled() && underBlock.getBlock() instanceof AirBlock) {
-            ((IPMC2SP) psa).setYaw(mc.player.getYaw() + 180);
-            ((IPMC2SP) psa).setPitch(80);
+            ((IPlayerMoveC2SPacket) psa).lumina$setYaw(mc.player.getYaw() + 180);
+            ((IPlayerMoveC2SPacket) psa).lumina$setPitch(80);
         }
         else if (this.blockData != null) {
-            ((IPMC2SP) psa).setYaw(mc.player.getYaw() + 180);
-            ((IPMC2SP) psa).setPitch(80);
+            ((IPlayerMoveC2SPacket) psa).lumina$setYaw(mc.player.getYaw() + 180);
+            ((IPlayerMoveC2SPacket) psa).lumina$setPitch(80);
         }
 
         BlockPos blockBelow = new BlockPos(mc.player.getBlockX(), mc.player.getBlockY() - 1, mc.player.getBlockZ());

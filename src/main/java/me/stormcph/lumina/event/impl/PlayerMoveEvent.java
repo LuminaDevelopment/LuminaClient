@@ -1,12 +1,9 @@
 package me.stormcph.lumina.event.impl;
 
 import me.stormcph.lumina.event.Event;
-import me.stormcph.lumina.mixinterface.IVec3d;
-import net.minecraft.entity.EntityType;
+import me.stormcph.lumina.mixins.IVec3d;
 import net.minecraft.entity.MovementType;
 import net.minecraft.util.math.Vec3d;
-
-import java.lang.reflect.Field;
 
 public class PlayerMoveEvent extends Event {
 
@@ -27,9 +24,9 @@ public class PlayerMoveEvent extends Event {
     }
 
     public void set(double x, double y, double z) {
-        ((IVec3d) pos).setX(x);
-        ((IVec3d) pos).setY(y);
-        ((IVec3d) pos).setZ(z);
+        ((IVec3d) pos).lumina$setX(x);
+        ((IVec3d) pos).lumina$setY(y);
+        ((IVec3d) pos).lumina$setZ(z);
     }
 
     public MovementType getMovementType() {

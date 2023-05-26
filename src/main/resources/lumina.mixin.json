@@ -3,24 +3,22 @@
   "minVersion": "0.8",
   "package": "me.stormcph.lumina.mixins",
   "compatibilityLevel": "JAVA_17",
-  "mixins": [
-    "EntityMixin",
-    "PlayerMoveC2SPacketMixin",
-    "Vec3dMixin"
-  ],
   "client": [
     "AbstractClientPlayerEntityMixin",
     "ChatHudMixin",
     "ClientPlayNetworkHandlerMixin",
+    "EntityMixin",
     "EntityRendererMixin",
     "HeldItemRendererMixin",
     "InGameHudMixin",
+    "IPlayerMoveC2SPacket",
+    "ISession",
+    "IVec3d",
     "KeyboardMixin",
     "LivingEntityMixin",
     "MinecraftClientMixin",
     "MixinClientConnection",
     "PlayerListHudMixin",
-    "SessionMixin",
     "TitleScreenMixin",
     "WorldRendererMixin"
   ],
