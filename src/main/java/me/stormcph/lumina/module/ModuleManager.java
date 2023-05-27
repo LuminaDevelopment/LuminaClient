@@ -58,7 +58,7 @@ public class ModuleManager {
         add(new SCC());
 //        add(new LegitTotem());
         add(new CrystalPopAndPlace());
-        //add(new PearlMacro());
+        add(new PearlMacro());
 
         // Render
         add(new Arraylist());
