@@ -5,6 +5,7 @@ import me.stormcph.lumina.event.impl.EventUpdate;
 import me.stormcph.lumina.module.Category;
 import me.stormcph.lumina.module.Module;
 import me.stormcph.lumina.setting.impl.BooleanSetting;
+import me.stormcph.lumina.setting.impl.ModeSetting;
 import me.stormcph.lumina.setting.impl.NumberSetting;
 import me.stormcph.lumina.utils.TimerUtil;
 import net.minecraft.entity.Entity;
@@ -19,7 +20,6 @@ import net.minecraft.util.math.Vec3d;
 public class CrystalPop extends Module {
 
     private final TimerUtil timerUtil = new TimerUtil();
-
     private final NumberSetting cooldown = new NumberSetting("cooldown-ms", 0.0, 1000.0, 0.0, 0.01);
     //private final NumberSetting range = new NumberSetting("Range", 1.0, 10.0, 5.0, 0.1);
 

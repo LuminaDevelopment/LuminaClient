@@ -63,7 +63,7 @@ public class ModuleButton extends Component.PanelComponent {
         drawString(matrices, module.getName() + (settings.isEmpty() ? "" : " ..."), pX + 30, pY + pH + y + 10, module.isEnabled() ? Color.GREEN : Color.white);
 
         if(isInside(mouseX, mouseY, pX + 25, pY + + pH + y, pX + pW - 25, pY + pH + y + oh)) {
-            drawString(matrices, module.getDescription(),1, (mc.getWindow().getScaledHeight() * getGuiScale()) - mc.textRenderer.fontHeight - 10, Color.white);
+            drawString(matrices, module.getDescription(),1, (mc.getWindow().getScaledHeight() * getGuiScale()) - mc.textRenderer.fontHeight * getGuiScale() - 10, Color.white);
         }
 
         if(expanded) {

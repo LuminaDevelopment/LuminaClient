@@ -29,13 +29,12 @@ public class GithubRetriever {
             BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
 
             List<String> retrieved = new ArrayList<>();
-
+          
             String line;
-            // Read each line from the BufferedReader and append it to the content StringBuilder
+            // Read each line from the BufferedReader and append it
             while ((line = reader.readLine()) != null) {
                 retrieved.add(line);
             }
-
             // Close the reader
             reader.close();
             connection.getInputStream().close();

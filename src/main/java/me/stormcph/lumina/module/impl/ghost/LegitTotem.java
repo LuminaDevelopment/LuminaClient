@@ -43,7 +43,6 @@ public class LegitTotem extends Module {
 
     @EventTarget
     public void onUpdate(EventUpdate event) {
-        // Your other code here
     }
 
     private void legitTotem(MinecraftClient client) {
