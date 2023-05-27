@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
-public class TextComp extends SettingComp {
+public class  TextComp extends SettingComp {
 
     private boolean focused;
     private String text;

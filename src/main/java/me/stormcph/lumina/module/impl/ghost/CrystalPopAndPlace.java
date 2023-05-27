@@ -5,6 +5,7 @@ import me.stormcph.lumina.event.impl.EventUpdate;
 import me.stormcph.lumina.module.Category;
 import me.stormcph.lumina.module.Module;
 import me.stormcph.lumina.setting.impl.BooleanSetting;
+import me.stormcph.lumina.setting.impl.ModeSetting;
 import me.stormcph.lumina.setting.impl.NumberSetting;
 import me.stormcph.lumina.utils.TimerUtil;
 import net.minecraft.block.BlockState;
@@ -29,6 +30,8 @@ import static me.stormcph.lumina.utils.PacketUtil.sendPacket;
 
 public class CrystalPopAndPlace extends Module {
     private final TimerUtil timerUtil = new TimerUtil();
+
+    private final ModeSetting clickOrLook = new ModeSetting("placing", "R-Click", "R-Click", "Look");
     private final NumberSetting cooldownPlace = new NumberSetting("Place Cooldown-ms", 0.0, 1000.0, 50.0, 0.01);
     private final NumberSetting cooldownPop = new NumberSetting("Pop Cooldown-ms", 0.0, 1000.0, 0.0, 0.01);
 
@@ -48,7 +51,7 @@ public class CrystalPopAndPlace extends Module {
 
     public CrystalPopAndPlace() {
         super("CrystalSpam", "Automatically places and pops end crystal", Category.GHOST);
-        addSettings(cooldownPlace, cooldownPop, onlyOwnCrystal, /*tryPunch,*/ preserveItems, lootProtectRadiusX, lootProtectRadiusY, lootProtectRadiusZ, smallRandomization, mediumRandomization, largeRandomization);
+        addSettings(clickOrLook, cooldownPlace, cooldownPop, onlyOwnCrystal, /*tryPunch,*/ preserveItems, lootProtectRadiusX, lootProtectRadiusY, lootProtectRadiusZ, smallRandomization, mediumRandomization, largeRandomization);
     }
 
     @EventTarget
@@ -163,20 +166,25 @@ public class CrystalPopAndPlace extends Module {
     }
 
     private void placeCrystal() {
-        if ((isObsidianInCrosshair()) && mc.player.getInventory().selectedSlot == CrystalSlot() && (timerUtil.hasReached(getCooldownValueWithRandomization(cooldownPlace.getValue())))) {
+        if (clickOrLook.isMode("R-Click") && mc.options.useKey.isPressed() && mc.player.getInventory().selectedSlot == CrystalSlot() && (timerUtil.hasReached(getCooldownValueWithRandomization(cooldownPlace.getValue())))) {
+            placeBlock();
+            timerUtil.reset();
+        } else if (clickOrLook.isMode("Look") && isObsidianOrBedrockInCrosshair() && mc.player.getInventory().selectedSlot == CrystalSlot() && (timerUtil.hasReached(getCooldownValueWithRandomization(cooldownPlace.getValue())))) {
             placeBlock();
             timerUtil.reset();
         }
     }
 
-    private boolean isObsidianInCrosshair() {
+
+    private boolean isObsidianOrBedrockInCrosshair() {
         if (mc.crosshairTarget != null && mc.crosshairTarget.getType() == HitResult.Type.BLOCK) {
             BlockPos blockPos = ((BlockHitResult) mc.crosshairTarget).getBlockPos();
             BlockState blockState = mc.world.getBlockState(blockPos);
-            return blockState.getBlock() == Blocks.OBSIDIAN;
+            return blockState.getBlock() == Blocks.OBSIDIAN || blockState.getBlock() == Blocks.BEDROCK;
         }
         return false;
     }
+
 
     private void placeBlock(){
         BlockHitResult hitResult = (BlockHitResult) mc.crosshairTarget;
