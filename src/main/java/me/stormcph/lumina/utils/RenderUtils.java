@@ -1,9 +1,16 @@
 package me.stormcph.lumina.utils;
 
+import com.mojang.authlib.GameProfile;
 import com.mojang.blaze3d.systems.RenderSystem;
+import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.DrawableHelper;
+import net.minecraft.client.gui.PlayerSkinDrawer;
+import net.minecraft.client.network.PlayerListEntry;
 import net.minecraft.client.render.*;
+import net.minecraft.client.render.entity.LivingEntityRenderer;
+import net.minecraft.client.render.entity.PlayerModelPart;
 import net.minecraft.client.util.math.MatrixStack;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.util.Identifier;
 import org.jetbrains.annotations.NotNull;
 import org.joml.Matrix4f;
@@ -82,6 +89,18 @@ public class RenderUtils {
             }
         }
         BufferRenderer.drawWithGlobalProgram(bufferBuilder.end());
+    }
+
+    public static void drawPlayerHead(MatrixStack matrices, PlayerEntity player, float x, float y, int size) {
+        MinecraftClient mc = MinecraftClient.getInstance();
+
+        GameProfile gameProfile = new GameProfile(player.getUuid(), player.getName().getString());
+        PlayerListEntry playerListEntry = mc.player.networkHandler.getPlayerListEntry(gameProfile.getId());
+
+        boolean bl22 = player != null && LivingEntityRenderer.shouldFlipUpsideDown(player);
+        boolean bl3 = player != null && player.isPartVisible(PlayerModelPart.HAT);
+        RenderSystem.setShaderTexture(0, playerListEntry.getSkinTexture());
+        PlayerSkinDrawer.draw(matrices, (int) x, (int) y, 15, bl3, bl22);
     }
 
     /**
