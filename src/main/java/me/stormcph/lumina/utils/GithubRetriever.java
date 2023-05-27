@@ -7,7 +7,9 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.URL;
 import java.net.URLConnection;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 public class GithubRetriever {
 
@@ -26,20 +28,17 @@ public class GithubRetriever {
             // Create a BufferedReader to read the contents of the webpage
             BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
 
-            String retrieved = "";
-
+            List<String> retrieved = new ArrayList<>();
             String line;
-            // Read each line from the BufferedReader and append it to the content StringBuilder
+            // Read each line from the BufferedReader and append it
             while ((line = reader.readLine()) != null) {
-                retrieved += line + "\n";
+                retrieved.add(line);
             }
-
             // Close the reader
             reader.close();
             connection.getInputStream().close();
 
-            String[] data = retrieved.split("\n");
-            for (String datum : data) {
+            for (String datum : retrieved) {
                 String[] playerDatas = datum.split("\\[");
                 String name = encryption.decrypt(playerDatas[0]);
                 String capeName = encryption.decrypt(playerDatas[1]);
