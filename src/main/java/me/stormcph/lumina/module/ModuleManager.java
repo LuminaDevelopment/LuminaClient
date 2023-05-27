@@ -67,6 +67,7 @@ public class ModuleManager {
         add(new ClickguiModule());
         add(new Cape());
         add(new ESP());
+        add(new TargetHUD());
 
         // Hide / show categories
         add(new CombatCata());
