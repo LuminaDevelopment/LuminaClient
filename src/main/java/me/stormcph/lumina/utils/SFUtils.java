@@ -3,6 +3,7 @@ package me.stormcph.lumina.utils;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.DrawableHelper;
 import net.minecraft.client.util.math.MatrixStack;
+import net.minecraft.entity.player.PlayerEntity;
 
 import javax.crypto.Cipher;
 import javax.crypto.spec.SecretKeySpec;
@@ -31,6 +32,12 @@ public interface SFUtils {
         MinecraftClient mc = MinecraftClient.getInstance();
         double sf = mc.getWindow().getScaleFactor();
         RenderUtils.renderRoundedQuad(matrices, x / sf, y / sf, x2 / sf, y2 / sf, round / sf, samples, color);
+    }
+
+    default void drawPlayerHead(MatrixStack matrices, PlayerEntity player, int x, int y, int size) {
+        MinecraftClient mc = MinecraftClient.getInstance();
+        double sf = mc.getWindow().getScaleFactor();
+        RenderUtils.drawPlayerHead(matrices, player, (int) (x / sf), (int) (y / sf), (int) (size / sf));
     }
 
     default void drawString(MatrixStack matrices, String text, double x, double y, Color color) {
@@ -73,7 +80,7 @@ public interface SFUtils {
         RenderUtils.drawCircle(matrices, x / sf, y / sf, radius / sf, samples, color);
     }
 
-    static int getGuiScales() {
+    static int static_GetGuiScale() {
         return (int) MinecraftClient.getInstance().getWindow().getScaleFactor();
     }
 
