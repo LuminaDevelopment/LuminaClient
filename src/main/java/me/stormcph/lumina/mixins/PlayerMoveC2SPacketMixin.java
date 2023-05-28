@@ -15,6 +15,7 @@ public class PlayerMoveC2SPacketMixin implements IPMC2SP {
     @Final @Shadow @Mutable protected double z;
     @Final @Shadow @Mutable protected float yaw;
     @Final @Shadow @Mutable protected float pitch;
+    @Final @Shadow @Mutable protected boolean onGround;
 
     @Override
     public void setX(double x) {
@@ -39,5 +40,10 @@ public class PlayerMoveC2SPacketMixin implements IPMC2SP {
     @Override
     public void setPitch(float pitch) {
         this.pitch = pitch;
+    }
+
+    @Override
+    public void setOnGround(boolean onGround) {
+        this.onGround = onGround;
     }
 }
