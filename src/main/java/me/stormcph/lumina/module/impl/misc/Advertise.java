@@ -23,11 +23,13 @@ public class Advertise extends Module {
         super.onEnable();
         timer = new TimerUtil();
         messages.clear();
-        messages.add("Get Lumina Client at luminaclient com");
+        messages.add("Get Lumina Client at (luminaclient com)");
         messages.add("Bad at the game? Try Lumina Client (luminaclient com)");
         messages.add("Lumina Client is the best client for Minecraft (luminaclient com)");
         messages.add("Lumina Client on Top! (luminaclient com)");
         messages.add("You should get Lumina client at luminaclient com!");
+        messages.add("Lumina Client: The key to dominating Minecraft (luminaclient com)");
+        messages.add("secret weapon! luminaclient com");
     }
 
     @EventTarget
