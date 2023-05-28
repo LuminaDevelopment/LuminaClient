@@ -42,6 +42,16 @@ public class HudConfigScreen extends Screen {
     }
 
     @Override
+    public boolean mouseDragged(double mouseX, double mouseY, int button, double deltaX, double deltaY) {
+        components.forEach(drag -> {
+            if(drag.getModule().isEnabled())
+                drag.mouseDragged(mouseX, mouseY, button, deltaX, deltaY);
+        });
+
+        return super.mouseDragged(mouseX, mouseY, button, deltaX, deltaY);
+    }
+
+    @Override
     public boolean mouseClicked(double mouseX, double mouseY, int button) {
         components.forEach(drag -> drag.mouseClicked(mouseX, mouseY, button));
         return super.mouseClicked(mouseX, mouseY, button);

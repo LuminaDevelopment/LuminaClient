@@ -1,4 +1,4 @@
-package me.stormcph.lumina.module.impl;
+package me.stormcph.lumina.module.impl.test;
 
 import me.stormcph.lumina.event.EventTarget;
 import me.stormcph.lumina.event.impl.PacketReceiveEvent;
@@ -18,15 +18,16 @@ public class Test extends Module {
     @Override
     public void onEnable() {
         super.onEnable();
+        mc.setScreen(new TestScreen());
         count = 0;
     }
 
     @EventTarget
     public void onPacketReceive(PacketReceiveEvent e) {
         if(e.getPacket() instanceof BlockUpdateS2CPacket) {
-            System.out.println("Received block update packet: " + count);
+           // System.out.println("Received block update packet: " + count);
 
-                e.setCancelled(true);
+             //   e.setCancelled(true);
 
         }
     }

@@ -1,6 +1,7 @@
 package me.stormcph.lumina.module;
 
 import me.stormcph.lumina.event.EventManager;
+import me.stormcph.lumina.notification.NotificationManager;
 import me.stormcph.lumina.setting.Setting;
 import me.stormcph.lumina.utils.ChatUtils;
 import me.stormcph.lumina.utils.animations.Direction;
@@ -63,10 +64,12 @@ public abstract class Module {
     public void onEnable() {
         if(nullCheck()) return;
         EventManager.register(this);
+        NotificationManager.INSTANCE.registerNotification("§a" + this.name, "was enabled.");
     }
     public void onDisable() {
         if(nullCheck()) return;
         EventManager.unregister(this);
+        NotificationManager.INSTANCE.registerNotification("§c" + this.name, "was disabled.");
     }
 
     public void setEnabled(boolean toggled) {

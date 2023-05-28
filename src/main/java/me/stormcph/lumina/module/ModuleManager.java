@@ -1,6 +1,6 @@
 package me.stormcph.lumina.module;
 
-import me.stormcph.lumina.module.impl.Test;
+import me.stormcph.lumina.module.impl.test.Test;
 import me.stormcph.lumina.module.impl.ghost.*;
 import me.stormcph.lumina.module.impl.category_mng.impl.*;
 import me.stormcph.lumina.module.impl.combat.*;
@@ -9,6 +9,7 @@ import me.stormcph.lumina.module.impl.movement.*;
 import me.stormcph.lumina.module.impl.movement.scaffold.*;
 import me.stormcph.lumina.module.impl.player.*;
 import me.stormcph.lumina.module.impl.render.*;
+import me.stormcph.lumina.module.impl.test.TestModuleHud;
 import me.stormcph.lumina.setting.impl.KeybindSetting;
 
 import java.util.ArrayList;
@@ -70,6 +71,8 @@ public class ModuleManager {
         add(new Cape());
         add(new ESP());
         add(new TargetHUD());
+        add(new TestModuleHud());
+        add(new Notifications());
 
         // Hide / show categories
         add(new CombatCata());

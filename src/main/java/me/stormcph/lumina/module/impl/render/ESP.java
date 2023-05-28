@@ -7,14 +7,10 @@ import me.stormcph.lumina.module.Category;
 import me.stormcph.lumina.module.Module;
 import me.stormcph.lumina.setting.impl.ModeSetting;
 import me.stormcph.lumina.utils.SFUtils;
-import me.stormcph.lumina.utils.Vec3;
 
 public class ESP extends Module implements SFUtils{
 
     public static final ModeSetting mode = new ModeSetting("Mode", "Glow", "Box", "2D", "Glow");
-    private final Vec3 pos1 = new Vec3();
-    private final Vec3 pos2 = new Vec3();
-    private final Vec3 pos = new Vec3();
 
     public ESP() {
         super("ESP", "See other people", Category.RENDER);
@@ -41,22 +37,6 @@ public class ESP extends Module implements SFUtils{
     @EventTarget
     public void onRender2D(Render2DEvent e) {
 
-    }
-
-    private boolean checkCorner(double x, double y, double z, Vec3 min, Vec3 max) {
-        pos.set(x, y, z);
-
-        // Check Min
-        if (pos.x < min.x) min.x = pos.x;
-        if (pos.y < min.y) min.y = pos.y;
-        if (pos.z < min.z) min.z = pos.z;
-
-        // Check Max
-        if (pos.x > max.x) max.x = pos.x;
-        if (pos.y > max.y) max.y = pos.y;
-        if (pos.z > max.z) max.z = pos.z;
-
-        return false;
     }
 
 }
