@@ -12,6 +12,7 @@ import me.stormcph.lumina.module.Module;
 import me.stormcph.lumina.module.ModuleManager;
 import me.stormcph.lumina.module.impl.render.ClickguiModule;
 import me.stormcph.lumina.ui.HudConfigScreen;
+import me.stormcph.lumina.utils.chat.message.ChatMessage;
 import me.stormcph.lumina.utils.misc.GithubRetriever;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper;
@@ -38,13 +39,14 @@ public class Lumina implements ModInitializer {
     public void onInitialize() {
         EventManager.register(this);
         CapeManager.init();
+        ChatMessage.init();
         new GithubRetriever().retrieve();
 
         KeyBindingHelper.registerKeyBinding(openClickGuiKey);
         KeyBindingHelper.registerKeyBinding(openHudConfigScreenKey);
 
-        //SessionChanger.loginCracked("CorruptionHades");
-        System.out.println("Changed username");
+//        SessionChanger.loginCracked("CorruptionHades");
+//        System.out.println("Changed username");
 
         Thread configThr = new Thread(ConfigReader::loadConfig, "LuminaConfigReaderThread");
         configThr.start();
