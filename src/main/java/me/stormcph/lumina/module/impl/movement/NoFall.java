@@ -15,4 +15,13 @@ public class NoFall extends Module {
     public NoFall() {
         super("NoFall", "Prevents fall damage.", Category.MOVEMENT);
     }
+
+    @EventTarget
+    public void onPacketSend(PacketSendEvent e) {
+        if (ModuleManager.INSTANCE.getModuleByName("NoFall").isEnabled() && e.getPacket() instanceof PlayerMoveC2SPacket castPacket) {
+                IPMC2SP newPacket = (IPMC2SP) castPacket;
+                newPacket.setOnGround(true);
+                e.setPacket((Packet) newPacket);
+        }
+    }
 }

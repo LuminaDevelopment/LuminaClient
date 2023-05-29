@@ -11,7 +11,6 @@
   "client": [
     "AbstractClientPlayerEntityMixin",
     "ChatHudMixin",
-    "ClientConnectionMixin",
     "ClientPlayNetworkHandlerMixin",
     "EntityRendererMixin",
     "HeldItemRendererMixin",
