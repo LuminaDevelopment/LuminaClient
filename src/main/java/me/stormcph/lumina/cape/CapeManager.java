@@ -10,9 +10,10 @@ public class CapeManager {
     public static HashMap<String, Cape> players = new HashMap<>();
 
     public static void init() {
-        // the player capes are store here, string as the name and then the cape
+        // the player capes are stored here, string as the name and the name of the file
         addCape(new Cape("TestCape", "lumina-b.png"){});
         addCape(new Cape("TestCape2", "lumina-w.png"){});
+        addCape(new Cape("Master", "master.png"){});
     }
 
     private static void addCape(Cape cape) {
