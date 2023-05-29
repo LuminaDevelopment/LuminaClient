@@ -1,4 +1,4 @@
-package me.stormcph.lumina.old_ui.screens.clickgui;
+package me.stormcph.lumina.ui.old_clickgui;
 
 import me.stormcph.lumina.module.Category;
 import net.minecraft.client.gui.screen.Screen;

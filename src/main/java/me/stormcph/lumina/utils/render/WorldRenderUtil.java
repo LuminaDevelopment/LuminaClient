@@ -30,7 +30,6 @@ public class WorldRenderUtil {
         matrices.scale(-0.025f * (float) scale, -0.025f * (float) scale, 1);
 
         int halfWidth = mc.textRenderer.getWidth(text) / 2;
-
         VertexConsumerProvider.Immediate immediate = VertexConsumerProvider.immediate(Tessellator.getInstance().getBuffer());
 
         if (fill) {

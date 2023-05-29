@@ -36,6 +36,7 @@ public class ModuleManager {
         add(new Killaura()); //blatant
         add(new Criticals()); //blatant
         add(new PvpHubExploit()); //bypass
+        add(new TriggerBot()); //bypass
 
         // Misc
         add(new PacketLogger());

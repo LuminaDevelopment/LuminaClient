@@ -1,4 +1,4 @@
-package me.stormcph.lumina.clickgui;
+package me.stormcph.lumina.ui.clickgui;
 
 import me.stormcph.lumina.utils.render.SFUtils;
 import net.minecraft.client.MinecraftClient;

@@ -1,8 +1,8 @@
-package me.stormcph.lumina.clickgui.impl;
+package me.stormcph.lumina.ui.clickgui.impl;
 
-import me.stormcph.lumina.clickgui.Component;
-import me.stormcph.lumina.clickgui.Panel;
-import me.stormcph.lumina.clickgui.impl.setting.*;
+import me.stormcph.lumina.ui.clickgui.Component;
+import me.stormcph.lumina.ui.clickgui.Panel;
+import me.stormcph.lumina.ui.clickgui.impl.setting.*;
 import me.stormcph.lumina.module.Module;
 import me.stormcph.lumina.setting.Setting;
 import me.stormcph.lumina.setting.impl.*;

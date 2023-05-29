@@ -1,4 +1,4 @@
-package me.stormcph.lumina.clickgui;
+package me.stormcph.lumina.ui.clickgui;
 
 import me.stormcph.lumina.module.Category;
 import net.minecraft.client.util.math.MatrixStack;

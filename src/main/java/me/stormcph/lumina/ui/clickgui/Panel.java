@@ -1,7 +1,7 @@
-package me.stormcph.lumina.clickgui;
+package me.stormcph.lumina.ui.clickgui;
 
 import com.mojang.blaze3d.systems.RenderSystem;
-import me.stormcph.lumina.clickgui.impl.ModuleButton;
+import me.stormcph.lumina.ui.clickgui.impl.ModuleButton;
 import me.stormcph.lumina.module.Category;
 import me.stormcph.lumina.module.Module;
 import me.stormcph.lumina.module.ModuleManager;
