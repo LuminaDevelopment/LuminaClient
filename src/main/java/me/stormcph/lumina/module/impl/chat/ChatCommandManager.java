@@ -1,7 +1,9 @@
 package me.stormcph.lumina.module.impl.chat;
 
+import me.stormcph.lumina.event.impl.OnWorldLoadEvent;
 import me.stormcph.lumina.module.impl.chat.impl.*;
 import me.stormcph.lumina.utils.chat.ChatUtils;
+import me.stormcph.lumina.utils.chat.message.ChatMessage;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,8 +30,16 @@ public class ChatCommandManager {
         addCommand(new HelpCommand());
         addCommand(new BindCommand());
 
-
+        //
         cachedName = "null";
+        //
+
+        // some default messages
+        new ChatMessage(false,
+                "&dLuminaClient",
+                "&aTo open ClickGUI, press RALT / RSHIFT",
+                "&aTo open HUDEditor, press H"
+        ).queue(new OnWorldLoadEvent());
     }
 
     /**
@@ -46,7 +56,7 @@ public class ChatCommandManager {
         return new ChatCommand("invalid"){
             @Override
             public void execute(List<String> args) {
-                ChatUtils.sendMsg("&4Invalid command!");
+                ChatUtils.sendMsg("&4Invalid command!", false);
             }
         };
     }

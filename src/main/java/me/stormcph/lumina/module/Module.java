@@ -137,7 +137,7 @@ public abstract class Module {
     }
 
     protected void sendMsg(String message) {
-        ChatUtils.sendMsg(message);
+        ChatUtils.sendMsg(message, true);
     }
 
     protected void sendPrefixMsg(String message) {

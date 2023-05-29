@@ -25,12 +25,12 @@ public class BindCommand extends ChatCommand {
 
             if(module1 != null) {
                 module1.setKey(key);
-                ChatUtils.sendMsg("&7Bound &a" + module1.getName() + "&7 to &a" + GLFW.glfwGetKeyName(key, 0));
+                ChatUtils.sendMsg("&7Bound &a" + module1.getName() + "&7 to &a" + GLFW.glfwGetKeyName(key, 0), true);
             } else {
-                ChatUtils.sendMsg("&cModule not found");
+                ChatUtils.sendMsg("&cModule not found", true);
             }
         } else {
-            ChatUtils.sendMsg("&cUsage: .bind <key> <module>");
+            ChatUtils.sendMsg("&cUsage: .bind <key> <module>", true);
         }
     }
 }

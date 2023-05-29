@@ -21,15 +21,26 @@ public class ChatMessage {
     /**
      * @param lines All the message lines, as a basic string array
      */
-    public ChatMessage(String... lines){
+    public ChatMessage(boolean prefixed, String... lines){
         this.lines = List.of(lines);
+    }
+
+
+    /**
+     * Adds a line to the message
+     * @param line The line (string object)
+     * @return the ChatMessage object
+     */
+    public ChatMessage addLine(String line){
+        lines.add(line);
+        return this;
     }
 
 
     /**
      * @param lines A List<String> object with the message lines.
      */
-    public ChatMessage(List<String> lines){
+    public ChatMessage(boolean prefixed, List<String> lines){
         this.lines = lines;
     }
 
@@ -37,8 +48,8 @@ public class ChatMessage {
     /**
      * Immediately attempts to send the message.
      */
-    public void send(){
-        for(String line : lines) ChatUtils.sendMsg(line);
+    public void send(boolean prefix){
+        for(String line : lines) ChatUtils.sendMsg(line, prefix);
     }
 
 
@@ -61,6 +72,8 @@ public class ChatMessage {
     private static final List<ChatMessage> ChatMessageReceivedMessageQueue = new ArrayList<>();
     private static final List<ChatMessage> ChatMessageSentMessageQueue = new ArrayList<>();
 
+
+
     /**
      * For the message queue
      */
@@ -69,20 +82,20 @@ public class ChatMessage {
     }
 
     @EventTarget
-    public void onWorldLoad(WorldLoadedEvent e){
-        for(ChatMessage message : onWorldLoadMessageQueue) message.send();
+    public static void onWorldLoad(OnWorldLoadEvent e){
+        for(ChatMessage message : onWorldLoadMessageQueue) message.send(false);
         onWorldLoadMessageQueue.clear();
     }
 
     @EventTarget
-    public void onChatMessage2S(ChatMessageSentEvent e){
-        for(ChatMessage message : ChatMessageSentMessageQueue) message.send();
+    public static void onChatMessage2S(ChatMessageSentEvent e){
+        for(ChatMessage message : ChatMessageSentMessageQueue) message.send(false);
         ChatMessageSentMessageQueue.clear();
     }
 
     @EventTarget
-    public void onChatMessage2C(ChatMessageReceivedEvent e){
-        for(ChatMessage message : ChatMessageReceivedMessageQueue) message.send();
+    public static void onChatMessage2C(ChatMessageReceivedEvent e){
+        for(ChatMessage message : ChatMessageReceivedMessageQueue) message.send(false);
         ChatMessageReceivedMessageQueue.clear();
     }
 

@@ -13,14 +13,12 @@ public class HelpCommand extends ChatCommand {
     @Override
     public void execute(List<String> args) {
         if(args.size()==1){
-
-            ChatUtils.sendMsg("&dLuminaClient &bPrototype");
-            ChatUtils.sendMsg("&5Help utility");
-            ChatUtils.sendMsg("&aTo open ClickGUI, press RALT or RCTRL");
-            ChatUtils.sendMsg("&aTo open HUDEditor, press H");
-
+            ChatUtils.sendMsg("&dLuminaClient", false);
+            ChatUtils.sendMsg("&5Help utility", false);
+            ChatUtils.sendMsg("&aTo open ClickGUI, press RALT or RCTRL", false);
+            ChatUtils.sendMsg("&aTo open HUDEditor, press H", false);
         } else {
-            ChatUtils.sendMsg("&bAn &4error&b occurred! &6(&cunknown argument size&6)");
+            ChatUtils.sendMsg("&bAn &4error&b occurred! &6(&cunknown argument size&6)", true);
         }
     }
 }
