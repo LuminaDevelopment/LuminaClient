@@ -2,6 +2,7 @@ package me.stormcph.lumina.config;
 
 import com.google.gson.JsonObject;
 import com.mojang.logging.LogUtils;
+import me.stormcph.lumina.module.HudModule;
 import me.stormcph.lumina.module.Module;
 import me.stormcph.lumina.module.ModuleManager;
 import me.stormcph.lumina.module.impl.misc.NoTrace;
@@ -33,20 +34,38 @@ public class ConfigReader {
         JsonObject root = new JsonObject();
 
         for(Module m : modules){
-            JsonObject moduleData = JsonUtil.getKeyValue(config, m.getName()).getAsJsonObject();
+            JsonObject moduleData;
+            try {
+                moduleData = JsonUtil.getKeyValue(config, m.getName()).getAsJsonObject();
+            } catch (Exception e){
+                if(NoTrace.shouldLog()) LogUtils.getLogger().error("Unable to get JSON data for module "+m.getName());
+                continue; // skip module if not found in config
+            }
 
             if(!compatibilityMode){
                 // if compatibility is off,
                 try {
                     // new config elements here
                     m.setEnabled(moduleData.get("enabled").getAsJsonPrimitive().getAsBoolean());
+                    if(m instanceof HudModule hm){
+                        hm.setX(moduleData.get("x").getAsJsonPrimitive().getAsInt());
+                        hm.setY(moduleData.get("y").getAsJsonPrimitive().getAsInt());
+                        hm.setWidth(moduleData.get("width").getAsJsonPrimitive().getAsInt());
+                        hm.setHeight(moduleData.get("height").getAsJsonPrimitive().getAsInt());
+                    }
                 } catch (Exception e){
-                    // DEBUG LOG todo: remove
-                    LogUtils.getLogger().error("Exception thrown when attempting to retrieve \"enabled\". E=\""+ e +"\", M.name=\""+m.getName()+"\"");
+                    // DEBUG LOG todo: remove log before release
+                    LogUtils.getLogger().error("Exception thrown when attempting to retrieve a config value. Exception: \""+ e +"\", Module name: \""+m.getName()+"\".");
+                    LogUtils.getLogger().warn("Enabled compatibility mode");
                     compatibilityMode = true;
+                } finally {
+                    if(compatibilityMode) {
+                        // set the settings to default here
+                        m.setEnabled(m.isEnabled()); // not needed, but for an example
+                    }
                 }
             } else {
-                // set the stuff to default here
+                // and also here
                 m.setEnabled(m.isEnabled());
             }
 

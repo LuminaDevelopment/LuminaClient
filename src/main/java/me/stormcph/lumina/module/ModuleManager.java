@@ -102,6 +102,7 @@ public class ModuleManager {
      * @deprecated Use getModuleByClass for getting a module, should only be used for the config/bind command
      * @param name The Name of the module
      */
+    @Deprecated
     public Module getModuleByName(String name){
         for(Module module : modules) {
             if(module.getName().equalsIgnoreCase(name)) return module;
