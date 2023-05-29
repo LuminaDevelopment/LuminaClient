@@ -19,6 +19,7 @@
     "LivingEntityMixin",
     "MinecraftClientMixin",
     "MixinClientConnection",
+    "MultiplayerScreenMixin",
     "PlayerListHudMixin",
     "SessionMixin",
     "TitleScreenMixin",

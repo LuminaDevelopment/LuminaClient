@@ -22,6 +22,15 @@ public class Tab implements Component {
         panel = new Panel(this, category);
     }
 
+    public Tab(Category category, float x, float y, float width, float height) {
+        this.category = category;
+        this.x = x;
+        this.y = y;
+        this.width = width;
+        this.height = height;
+        panel = new Panel(this, category);
+    }
+
     @Override
     public void drawScreen(MatrixStack matrices, double mouseX, double mouseY) {
         float sf = (float) getGuiScale();
@@ -41,6 +50,26 @@ public class Tab implements Component {
         }
 
         float textX = (x + (width / 2)) - (mc.textRenderer.getWidth(category.name)) - 15;
+        drawString(matrices, category.name, textX, y + 10f, Color.white);
+    }
+
+    public void drawScreen(MatrixStack matrices, double mouseX, double mouseY, float textX) {
+        float sf = (float) getGuiScale();
+        if(dragging) {
+            float xDiff = (float) (mouseX - dragX);
+            float yDiff = (float) (mouseY - dragY);
+            x = xDiff * sf;
+            y = yDiff * sf;
+        }
+
+        if(panel.isVisible()) {
+            panel.drawScreen(matrices, mouseX, mouseY);
+        }
+        else {
+            // TODO: change back when glscissor works
+            //drawRoundedRect(matrices, x, y, x + width, y + height, 15, 20, new Color(20, 20, 20, 190));
+        }
+
         drawString(matrices, category.name, textX, y + 10f, Color.white);
     }
 
@@ -102,5 +131,11 @@ public class Tab implements Component {
 
     public float getWidth() {
         return width;
+    }
+    public void setHeight(float height) {
+        this.height = height;
+    }
+    public void setWidth(float width) {
+        this.width = width;
     }
 }
