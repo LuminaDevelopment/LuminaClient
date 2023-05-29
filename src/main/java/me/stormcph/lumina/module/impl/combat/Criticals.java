@@ -5,7 +5,7 @@ import me.stormcph.lumina.event.impl.EventUpdate;
 import me.stormcph.lumina.event.impl.PacketSendEvent;
 import me.stormcph.lumina.module.Category;
 import me.stormcph.lumina.module.Module;
-import me.stormcph.lumina.utils.TimerUtil;
+import me.stormcph.lumina.utils.time.TimerUtil;
 import net.minecraft.network.packet.Packet;
 import net.minecraft.network.packet.c2s.play.PlayerInteractEntityC2SPacket;
 

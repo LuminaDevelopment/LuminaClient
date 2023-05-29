@@ -1,6 +1,5 @@
 package me.stormcph.lumina.config;
 
-import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.mojang.logging.LogUtils;
 import me.stormcph.lumina.module.Module;
@@ -8,14 +7,11 @@ import me.stormcph.lumina.module.ModuleManager;
 import me.stormcph.lumina.module.impl.misc.NoTrace;
 import me.stormcph.lumina.setting.Setting;
 import me.stormcph.lumina.setting.impl.*;
-import me.stormcph.lumina.utils.JsonUtil;
-import net.fabricmc.loader.api.FabricLoader;
-import org.slf4j.LoggerFactory;
+import me.stormcph.lumina.utils.misc.JsonUtil;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
-import java.util.Map;
 
 public class ConfigReader {
     public static void loadConfig(){

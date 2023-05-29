@@ -1,7 +1,7 @@
 package me.stormcph.lumina.notification;
 
 import me.stormcph.lumina.utils.Animation;
-import me.stormcph.lumina.utils.SFUtils;
+import me.stormcph.lumina.utils.render.SFUtils;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.util.Window;
 import net.minecraft.client.util.math.MatrixStack;

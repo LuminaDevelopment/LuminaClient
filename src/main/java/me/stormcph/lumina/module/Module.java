@@ -3,7 +3,7 @@ package me.stormcph.lumina.module;
 import me.stormcph.lumina.event.EventManager;
 import me.stormcph.lumina.notification.NotificationManager;
 import me.stormcph.lumina.setting.Setting;
-import me.stormcph.lumina.utils.ChatUtils;
+import me.stormcph.lumina.utils.misc.ChatUtils;
 import me.stormcph.lumina.utils.animations.Direction;
 import me.stormcph.lumina.utils.animations.impl.DecelerateAnimation;
 import net.minecraft.client.MinecraftClient;
@@ -138,6 +138,10 @@ public abstract class Module {
 
     protected void sendMsg(String message) {
         ChatUtils.sendMsg(message);
+    }
+
+    protected void sendPrefixMsg(String message) {
+        ChatUtils.sendPrefixMessage(message);
     }
     
     public Animation getAnimation() {

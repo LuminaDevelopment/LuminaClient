@@ -1,11 +1,5 @@
 package me.stormcph.lumina.utils.animations;
 
-
-//import me.stormcph.lumina.utils.time.TimerUtil;
-
-
-import me.stormcph.lumina.utils.time.TimerUtil;
-
 /**
  * This animation superclass was made by Foggy and advanced by cedo
  *
@@ -106,4 +100,24 @@ public abstract class Animation {
     //This will take the timer's time as an input, x.
     protected abstract double getEquation(double x);
 
+    private static class TimerUtil {
+
+        public long lastMS = System.currentTimeMillis();
+
+        public void reset() {
+            lastMS = System.currentTimeMillis();
+        }
+
+        public boolean hasTimeElapsed(long time) {
+            return System.currentTimeMillis() - lastMS > time;
+        }
+
+        public long getTime() {
+            return System.currentTimeMillis() - lastMS;
+        }
+
+        public void setTime(long time) {
+            lastMS = time;
+        }
+    }
 }

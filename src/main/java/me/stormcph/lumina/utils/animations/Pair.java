@@ -1,4 +1,4 @@
-package me.stormcph.lumina.utils;
+package me.stormcph.lumina.utils.animations;
 
 import java.io.Serializable;
 import java.util.Objects;

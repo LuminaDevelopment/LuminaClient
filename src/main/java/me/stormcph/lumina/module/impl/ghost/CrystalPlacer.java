@@ -5,7 +5,7 @@ import me.stormcph.lumina.event.impl.EventUpdate;
 import me.stormcph.lumina.module.Category;
 import me.stormcph.lumina.module.Module;
 import me.stormcph.lumina.setting.impl.NumberSetting;
-import me.stormcph.lumina.utils.TimerUtil;
+import me.stormcph.lumina.utils.time.TimerUtil;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.item.ItemStack;
@@ -16,7 +16,7 @@ import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.hit.HitResult;
 import net.minecraft.util.math.BlockPos;
 
-import static me.stormcph.lumina.utils.PacketUtil.sendPacket;
+import static me.stormcph.lumina.utils.misc.PacketUtil.sendPacket;
 
 public class CrystalPlacer extends Module {
     public CrystalPlacer() {

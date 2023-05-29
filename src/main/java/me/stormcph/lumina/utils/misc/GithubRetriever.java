@@ -1,4 +1,4 @@
-package me.stormcph.lumina.utils;
+package me.stormcph.lumina.utils.misc;
 
 import me.stormcph.lumina.cape.Cape;
 import me.stormcph.lumina.cape.CapeManager;

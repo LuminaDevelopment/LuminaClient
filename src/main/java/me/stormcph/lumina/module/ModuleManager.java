@@ -1,6 +1,5 @@
 package me.stormcph.lumina.module;
 
-import me.stormcph.lumina.module.impl.test.Test;
 import me.stormcph.lumina.module.impl.ghost.*;
 import me.stormcph.lumina.module.impl.category_mng.impl.*;
 import me.stormcph.lumina.module.impl.combat.*;
@@ -9,7 +8,7 @@ import me.stormcph.lumina.module.impl.movement.*;
 import me.stormcph.lumina.module.impl.movement.scaffold.*;
 import me.stormcph.lumina.module.impl.player.*;
 import me.stormcph.lumina.module.impl.render.*;
-import me.stormcph.lumina.module.impl.test.TestModuleHud;
+
 import me.stormcph.lumina.setting.impl.KeybindSetting;
 
 import java.util.ArrayList;
@@ -45,8 +44,7 @@ public class ModuleManager {
         add(new NameProtect());
         add(new Advertise());
 //        add(new AutoEz()); it's not finished yet cause i havent implemented a way to detect that it was actually you that killed the entity
-        add(new NoTrace()); 
-        add(new Test());
+        add(new NoTrace());
 
         // Player
         add(new AutoArmor()); //blatant
@@ -71,7 +69,6 @@ public class ModuleManager {
         add(new Cape());
         add(new ESP());
         add(new TargetHUD());
-        add(new TestModuleHud());
         add(new Notifications());
         add(new Nametags());
 
@@ -100,6 +97,10 @@ public class ModuleManager {
         return modules;
     }
 
+    /**
+     * @deprecated Use getModuleByClass for getting a module, should only be used for the config/bind command
+     * @param name The Name of the module
+     */
     public Module getModuleByName(String name){
         for(Module module : modules) {
             if(module.getName().equalsIgnoreCase(name)) return module;

@@ -1,4 +1,4 @@
-package me.stormcph.lumina.utils;
+package me.stormcph.lumina.utils.render;
 
 import java.awt.*;
 

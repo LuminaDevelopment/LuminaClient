@@ -1,4 +1,4 @@
-package me.stormcph.lumina.utils;
+package me.stormcph.lumina.utils.misc;
 
 import net.minecraft.client.MinecraftClient;
 

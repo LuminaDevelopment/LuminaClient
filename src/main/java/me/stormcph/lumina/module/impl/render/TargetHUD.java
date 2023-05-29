@@ -5,7 +5,7 @@ import me.stormcph.lumina.module.HudModule;
 import me.stormcph.lumina.old_ui.HudConfigScreen;
 import me.stormcph.lumina.setting.impl.NumberSetting;
 import me.stormcph.lumina.utils.Animation;
-import me.stormcph.lumina.utils.SFUtils;
+import me.stormcph.lumina.utils.render.SFUtils;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.entity.player.PlayerEntity;
 

@@ -1,7 +1,7 @@
 package me.stormcph.lumina.old_ui;
 
 import me.stormcph.lumina.module.HudModule;
-import me.stormcph.lumina.utils.RenderUtils;
+import me.stormcph.lumina.utils.render.RenderUtils;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.util.math.MathHelper;
