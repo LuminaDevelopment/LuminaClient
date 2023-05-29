@@ -19,16 +19,18 @@ import net.minecraft.text.Text;
 import net.minecraft.util.math.RotationAxis;
 
 import java.awt.*;
+import java.text.DecimalFormat;
 
 public class Nametags extends Module {
 
     private final NumberSetting size = new NumberSetting("Size", 1, 10, 1, 1);
     private final BooleanSetting ping = new BooleanSetting("Show Ping", false);
     private final BooleanSetting fillBg = new BooleanSetting("Background", false);
+    private final BooleanSetting health = new BooleanSetting("Health", false);
 
     public Nametags() {
         super("Nametags", "Show more infor on player's names", Category.RENDER);
-        addSettings(size, ping, fillBg);
+        addSettings(size, ping, health, fillBg);
     }
 
     @EventTarget
@@ -59,7 +61,13 @@ public class Nametags extends Module {
 
         PlayerListEntry entry = mc.player.networkHandler.getPlayerListEntry(player.getUuid());
 
-        String name = (player.getName().getString().equalsIgnoreCase("CorruptionHades") ? "§4" : "") + player.getDisplayName().getString() + (ping.isEnabled() ? " " + entry.getLatency() + "ms" : "");
+        DecimalFormat decimalFormat = new DecimalFormat("#.#");
+        String roundedHealth = decimalFormat.format(player.getHealth());
+
+        String name = (player.getName().getString().equalsIgnoreCase("CorruptionHades") ? "§4" : "")
+                + player.getDisplayName().getString()
+                + (ping.isEnabled() ? " " + entry.getLatency() + "ms" : "")
+                + (health.isEnabled() ? " §c" + roundedHealth + "❤§r" : "");
         Text text = Text.of(name);
 
         drawText(text, x, y, z, offX, offY, scale, fillBg.isEnabled());
