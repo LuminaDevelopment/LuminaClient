@@ -1,4 +1,4 @@
-package me.stormcph.lumina.utils.misc;
+package me.stormcph.lumina.utils.chat;
 
 import me.stormcph.lumina.module.impl.misc.NoTrace;
 import net.minecraft.client.MinecraftClient;

@@ -1,7 +1,7 @@
 package me.stormcph.lumina.module.impl.chat.impl;
 
 import me.stormcph.lumina.module.impl.chat.ChatCommand;
-import me.stormcph.lumina.utils.misc.ChatUtils;
+import me.stormcph.lumina.utils.chat.ChatUtils;
 
 import java.util.List;
 
