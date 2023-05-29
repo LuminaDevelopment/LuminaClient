@@ -13,6 +13,7 @@ import me.stormcph.lumina.module.ModuleManager;
 import me.stormcph.lumina.module.impl.render.ClickguiModule;
 import me.stormcph.lumina.old_ui.HudConfigScreen;
 import me.stormcph.lumina.utils.GithubRetriever;
+import me.stormcph.lumina.utils.SessionChanger;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper;
 import net.minecraft.client.MinecraftClient;
@@ -43,9 +44,8 @@ public class Lumina implements ModInitializer {
         KeyBindingHelper.registerKeyBinding(openClickGuiKey);
         KeyBindingHelper.registerKeyBinding(openHudConfigScreenKey);
 
-       // SessionChanger.loginCracked("LuminaUser");
-        System.out.println("Set username to LuminaUser");
-
+        //SessionChanger.loginCracked("CorruptionHades");
+        System.out.println("Changed username");
 
         Thread configThr = new Thread(ConfigReader::loadConfig, "LuminaConfigReaderThread");
         configThr.start();

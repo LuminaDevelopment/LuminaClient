@@ -73,6 +73,7 @@ public class ModuleManager {
         add(new TargetHUD());
         add(new TestModuleHud());
         add(new Notifications());
+        add(new Nametags());
 
         // Hide / show categories
         add(new CombatCata());
