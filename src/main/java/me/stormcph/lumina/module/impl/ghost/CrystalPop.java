@@ -23,8 +23,8 @@ public class CrystalPop extends Module {
     //private final NumberSetting range = new NumberSetting("Range", 1.0, 10.0, 5.0, 0.1);
 
     private final BooleanSetting onlyOwnCrystal = new BooleanSetting("OnlyOwnCrystal", false);
-    private final BooleanSetting tryPunch = new BooleanSetting("DonutSmpBypass", false);
-
+    //private final BooleanSetting tryPunch = new BooleanSetting("DonutSmpBypass", false);
+    private boolean placingDelay = false;
     private boolean playerPlacedCrystal = false;
 
     private final BooleanSetting preserveItems = new BooleanSetting("NoLootPop", true);
