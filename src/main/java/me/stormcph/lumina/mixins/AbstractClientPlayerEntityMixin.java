@@ -22,12 +22,12 @@ public class AbstractClientPlayerEntityMixin {
         if(ModuleManager.INSTANCE.getModuleByClass(Cape.class).isEnabled()) {
 
             if(thisPlayer == MinecraftClient.getInstance().player) {
-                info.setReturnValue(new Identifier("lumina", "textures/cape/" + Cape.getCurrentCape().getFileName()));
+                info.setReturnValue(Cape.getCurrentCape().getTexture());
             }
 
             for (String player : CapeManager.players.keySet()) {
                 if (player.equalsIgnoreCase(thisPlayer.getGameProfile().getName())) {
-                    info.setReturnValue(new Identifier("lumina", "textures/cape/" + CapeManager.players.get(player).getFileName()));
+                    info.setReturnValue(Cape.getCurrentCape().getTexture());
                 }
             }
         }
