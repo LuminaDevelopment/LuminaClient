@@ -1,6 +1,7 @@
 package me.stormcph.lumina.ui.clickgui;
 
 import me.stormcph.lumina.module.Category;
+import me.stormcph.lumina.module.impl.render.ClickguiModule;
 import net.minecraft.client.util.math.MatrixStack;
 
 import java.awt.*;
@@ -41,7 +42,7 @@ public class Tab implements Component {
         }
 
         float textX = (x + (width / 2)) - (mc.textRenderer.getWidth(category.name)) - 15;
-        drawString(matrices, category.name, textX, y + 10f, Color.white);
+        drawString(matrices, category.name, textX, y + 10f, (ClickguiModule.uiTheme.getMode().equals("Dark") ? Color.white : Color.black));
     }
 
     @Override

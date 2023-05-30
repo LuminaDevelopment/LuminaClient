@@ -60,8 +60,4 @@ public class ChatCommandManager {
             }
         };
     }
-
-
-
-
 }

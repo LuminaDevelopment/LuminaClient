@@ -1,5 +1,6 @@
 package me.stormcph.lumina.ui.clickgui.impl.setting;
 
+import me.stormcph.lumina.module.impl.render.ClickguiModule;
 import me.stormcph.lumina.ui.clickgui.impl.ModuleButton;
 import me.stormcph.lumina.ui.clickgui.impl.SettingComp;
 import me.stormcph.lumina.setting.Setting;
@@ -27,7 +28,7 @@ public class KeybindComp extends SettingComp {
         if(keyName == null) {
             keyName = "None";
         }
-        drawString(matrices, setting.getName() + ": " + keyName, pX + 30, pY + pH + y + 10, focused ? Color.white : Color.gray);
+        drawString(matrices, setting.getName() + ": " + keyName, pX + 30, pY + pH + y + 10, focused ? (ClickguiModule.uiTheme.getMode().equals("Dark") ? Color.white : Color.BLACK) : Color.GRAY);
     }
 
     @Override

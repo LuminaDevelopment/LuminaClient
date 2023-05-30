@@ -7,6 +7,7 @@ import me.stormcph.lumina.module.Module;
 import me.stormcph.lumina.module.ModuleManager;
 import me.stormcph.lumina.module.impl.render.ClickguiModule;
 import me.stormcph.lumina.utils.Animation;
+import me.stormcph.lumina.utils.render.RenderUtils;
 import net.minecraft.client.util.math.MatrixStack;
 
 import java.awt.*;
@@ -56,8 +57,21 @@ public class Panel implements Component {
         animation.update(true);
         fadeAnim.update(true);
 
-        drawRoundedRect(matrices, pX, pY, pX + pW, pY + pH + animation.getValue(), 15, 20, new Color(20, 20, 20, 190));
-        drawRect(matrices, pX + 30, pY + pH, pX + pW - 30, pY + pH + 3, new Color(100, 100, 100, (int) fadeAnim.getValue()).getRGB());
+        drawRoundedRect(matrices, pX, pY, pX + pW, pY + pH + animation.getValue(), 15, 20, /*new Color(20, 20, 20, 190)*/
+                (ClickguiModule.uiTheme.getMode().equals("Dark"))
+                        ? new Color(20, 20, 20, 190) // if theme is dark
+                        : (ClickguiModule.uiTheme.getMode().equals("Light")
+                        ? RenderUtils.getMcColor(214, 195, 195, 190) // if theme is light
+                        : new Color(100, 100, 100, 190) // fallback to dark if otherwise
+                        )
+        );
+        drawRect(matrices, pX + 30, pY + pH, pX + pW - 30, pY + pH + 3,
+                (ClickguiModule.uiTheme.getMode().equals("Dark"))
+                        ? new Color(100, 100, 100, (int) fadeAnim.getValue()).getRGB() // if theme is dark
+                        : (ClickguiModule.uiTheme.getMode().equals("Light")
+                        ? new Color(255, 255, 255, (int) fadeAnim.getValue()).getRGB() // if theme is light
+                        : new Color(100, 100, 100, (int) fadeAnim.getValue()).getRGB()) // fallback to dark if otherwise
+                );
 
         int offset = 25;
         for (ModuleButton button : buttons) {

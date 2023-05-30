@@ -198,7 +198,7 @@ public class RenderUtils {
         }
     }
 
-    public static Color getMcColor(int r, int b, int g){
-        return new Color(b, g, r);
+    public static Color getMcColor(int r, int g, int b, int a){
+        return new Color(b, g, r, a);
     }
 }

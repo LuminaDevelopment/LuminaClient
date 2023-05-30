@@ -1,5 +1,6 @@
 package me.stormcph.lumina.ui.clickgui.impl.setting;
 
+import me.stormcph.lumina.module.impl.render.ClickguiModule;
 import me.stormcph.lumina.ui.clickgui.impl.ModuleButton;
 import me.stormcph.lumina.ui.clickgui.impl.SettingComp;
 import me.stormcph.lumina.setting.Setting;
@@ -31,7 +32,7 @@ public class SliderComp extends SettingComp {
         int renderWidth = (int) ((pW - 61) * (numSet.getValue() - numSet.getMin()) / (numSet.getMax() - numSet.getMin()));
 
 
-        drawRect(matrices, pX + 30, pY + pH + y,pX + 30 + renderWidth, pY + y + pH + 45, Color.green.darker().getRGB());
+        drawRect(matrices, pX + 30, pY + pH + y,pX + 30 + renderWidth, pY + y + pH + 45, (ClickguiModule.uiTheme.getMode().equals("Dark") ? Color.green.darker().getRGB() : Color.green.darker().darker().darker().getRGB()));
 
         if (sliding) {
             if (diff == 0 ) {

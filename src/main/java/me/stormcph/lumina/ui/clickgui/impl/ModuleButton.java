@@ -1,5 +1,6 @@
 package me.stormcph.lumina.ui.clickgui.impl;
 
+import me.stormcph.lumina.module.impl.render.ClickguiModule;
 import me.stormcph.lumina.ui.clickgui.Component;
 import me.stormcph.lumina.ui.clickgui.Panel;
 import me.stormcph.lumina.ui.clickgui.impl.setting.*;
@@ -7,6 +8,7 @@ import me.stormcph.lumina.module.Module;
 import me.stormcph.lumina.setting.Setting;
 import me.stormcph.lumina.setting.impl.*;
 import me.stormcph.lumina.utils.Animation;
+import me.stormcph.lumina.utils.render.RenderUtils;
 import net.minecraft.client.util.math.MatrixStack;
 
 import java.awt.*;
@@ -59,16 +61,18 @@ public class ModuleButton extends Component.PanelComponent {
 
         float pX = parent.getParent().getX(), pY = parent.getParent().getY(), pW = parent.getParent().getWidth(), pH = parent.getParent().getHeight();
 
-        drawRect(matrices, pX + 25, pY + pH + y, pX + pW - 25, pY + pH + y + height, new Color(40, 40, 40, 240).getRGB());
-        drawString(matrices, module.getName() + (settings.isEmpty() ? "" : " ..."), pX + 30, pY + pH + y + 10, module.isEnabled() ? Color.GREEN : Color.white);
+        drawRect(matrices, pX + 25, pY + pH + y, pX + pW - 25, pY + pH + y + height, /*new Color(40, 40, 40, 240).getRGB()*/
+                (ClickguiModule.uiTheme.getMode().equals("Dark") ? new Color(40, 40, 40, 240).getRGB() : RenderUtils.getMcColor(235, 228, 228, 240).brighter().getRGB())
+        );
+        drawString(matrices, module.getName() + (settings.isEmpty() ? "" : " ..."), pX + 30, pY + pH + y + 10, module.isEnabled() ? ClickguiModule.uiTheme.getMode().equals("Dark") ? Color.GREEN : RenderUtils.getMcColor(58, 94, 59, 240) : (ClickguiModule.uiTheme.getMode().equals("Dark") ? Color.white : Color.black));
 
         if(isInside(mouseX, mouseY, pX + 25, pY + + pH + y, pX + pW - 25, pY + pH + y + oh)) {
-            drawString(matrices, module.getDescription(),1, (mc.getWindow().getScaledHeight() * getGuiScale()) - mc.textRenderer.fontHeight * getGuiScale() - 10, Color.white);
+            drawString(matrices, module.getDescription(),1, (mc.getWindow().getScaledHeight() * getGuiScale()) - mc.textRenderer.fontHeight * getGuiScale() - 10, (ClickguiModule.uiTheme.getMode().equals("Dark") ? Color.white : Color.black));
         }
 
         if(expanded) {
 
-            drawRect(matrices, pX + 25, pY + pH + y + oh - 5, pX + pW - 25, pY + pH + y + oh, Color.DARK_GRAY.getRGB());
+            drawRect(matrices, pX + 25, pY + pH + y + oh - 5, pX + pW - 25, pY + pH + y + oh, (ClickguiModule.uiTheme.getMode().equals("Dark") ? Color.darkGray.getRGB() : Color.lightGray.getRGB()));
 
             int offset = (int) oh;
             for (SettingComp setting : settings) {

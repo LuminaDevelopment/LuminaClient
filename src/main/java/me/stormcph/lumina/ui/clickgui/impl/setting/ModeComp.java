@@ -1,5 +1,6 @@
 package me.stormcph.lumina.ui.clickgui.impl.setting;
 
+import me.stormcph.lumina.module.impl.render.ClickguiModule;
 import me.stormcph.lumina.ui.clickgui.impl.ModuleButton;
 import me.stormcph.lumina.ui.clickgui.impl.SettingComp;
 import me.stormcph.lumina.setting.Setting;
@@ -21,7 +22,7 @@ public class ModeComp extends SettingComp {
         float pX = parent.getParent().getParent().getX(), pY = parent.getParent().getParent().getY(), pW = parent.getParent().getParent().getWidth(), pH = parent.getParent().getParent().getHeight();
 
       //  drawRect(matrices, pX + 25, pY + pH + y, pX + pW - 25, pY + pH + y + 40, Color.DARK_GRAY.darker().getRGB());
-        drawString(matrices, setting.getName() + ":" + setting.getMode(), pX + 30, pY + pH + y + 10, Color.white);
+        drawString(matrices, setting.getName() + ":" + setting.getMode(), pX + 30, pY + pH + y + 10, (ClickguiModule.uiTheme.getMode().equals("Dark") ? Color.white : Color.BLACK));
 
     }
 
