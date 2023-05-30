@@ -38,7 +38,7 @@ public class Scaffold extends Module {
     private BlockData blockData;
 
     public Scaffold() {
-        super("Scaffold", /* TODO */"", Category.MOVEMENT);
+        super("Scaffold", "Places blocks under you", Category.MOVEMENT);
         addSettings(headTurner);
     }
 

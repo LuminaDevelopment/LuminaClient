@@ -53,7 +53,7 @@ public class DraggableComponent {
         // Draw the outline
         RenderUtils.drawHollowRect(matrices, module.getX(), module.getY(), module.getWidth(), module.getHeight(), new Color(0, 255, 255).getRGB(), 1);
 
-        RenderUtils.fill(matrices, module.getX() + module.getWidth(), module.getY() + module.getHeight(), module.getX() + module.getWidth() + 20, module.getY() + module.getHeight() + 20, new Color(0, 255, 255, 100).getRGB());
+       // RenderUtils.fill(matrices, module.getX() + module.getWidth(), module.getY() + module.getHeight(), module.getX() + module.getWidth() + 20, module.getY() + module.getHeight() + 20, new Color(0, 255, 255, 100).getRGB());
     }
 
     public void mouseClicked(double mouseX, double mouseY, int button) {
@@ -64,7 +64,7 @@ public class DraggableComponent {
             dragY = (int) (mouseY - module.getY());
         }
         else if(isInside(mouseX, mouseY, module.getX() + module.getWidth(), module.getY() + module.getHeight(), module.getX() + module.getWidth() + 20, module.getY() + module.getHeight() + 20) && button == 0) {
-            resizing = true;
+           // resizing = true;
         }
     }
 

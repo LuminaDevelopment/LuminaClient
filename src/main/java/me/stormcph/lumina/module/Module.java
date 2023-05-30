@@ -3,6 +3,7 @@ package me.stormcph.lumina.module;
 import me.stormcph.lumina.event.EventManager;
 import me.stormcph.lumina.notification.NotificationManager;
 import me.stormcph.lumina.setting.Setting;
+import me.stormcph.lumina.setting.impl.KeybindSetting;
 import me.stormcph.lumina.utils.chat.ChatUtils;
 import me.stormcph.lumina.utils.animations.Direction;
 import me.stormcph.lumina.utils.animations.impl.DecelerateAnimation;
@@ -61,6 +62,15 @@ public abstract class Module {
         this.settings.addAll(Arrays.asList(settings));
     }
 
+    public Setting getSetting(String name) {
+        for(Setting setting : settings) {
+            if(setting.getName().equalsIgnoreCase(name)) {
+                return setting;
+            }
+        }
+        return null;
+    }
+
     public void onEnable() {
         if(nullCheck()) return;
         EventManager.register(this);
@@ -106,6 +116,7 @@ public abstract class Module {
 
     public void setKey(int key) {
         this.key = key;
+        ((KeybindSetting) getSetting("Keybind")).setting$setKey(key);
     }
 
     public boolean isEnabled() {
