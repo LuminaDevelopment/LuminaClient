@@ -1,6 +1,7 @@
 package me.stormcph.lumina.mixins;
 
 import me.stormcph.lumina.module.ModuleManager;
+import me.stormcph.lumina.module.impl.render.BetterHome;
 import net.minecraft.client.gui.screen.TitleScreen;
 import net.minecraft.text.Text;
 import org.jetbrains.annotations.Async;
@@ -23,9 +24,9 @@ public class TitleScreenMixin {
 
     @Inject(method = "tick", at=@At("HEAD"), cancellable = true)
     private void init(CallbackInfo ci){
-        if(ModuleManager.INSTANCE.getModuleByName("TitleScreen").isEnabled()){
+        if(ModuleManager.INSTANCE.getModuleByClass(BetterHome.class).isEnabled()){
             this.splashText="Prototype!";
-            this.COPYRIGHT = Text.of("LuminaClient");
+            COPYRIGHT = Text.of("LuminaClient");
         }
     }
 }

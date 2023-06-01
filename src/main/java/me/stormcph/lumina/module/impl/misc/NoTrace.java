@@ -16,7 +16,7 @@ public class NoTrace extends Module {
     }
 
     public static boolean shouldLog(){
-        return !ModuleManager.INSTANCE.getModuleByName("NoTrace").isEnabled();
+        return !ModuleManager.INSTANCE.getModuleByClass(NoTrace.class).isEnabled();
     }
 
 }

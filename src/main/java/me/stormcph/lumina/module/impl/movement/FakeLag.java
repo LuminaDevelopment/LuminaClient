@@ -6,8 +6,8 @@ import me.stormcph.lumina.event.impl.PacketSendEvent;
 import me.stormcph.lumina.module.Category;
 import me.stormcph.lumina.module.Module;
 import me.stormcph.lumina.setting.impl.NumberSetting;
-import me.stormcph.lumina.utils.PacketUtil;
-import me.stormcph.lumina.utils.TimerUtil;
+import me.stormcph.lumina.utils.misc.PacketUtil;
+import me.stormcph.lumina.utils.time.TimerUtil;
 import net.minecraft.network.packet.Packet;
 import net.minecraft.util.math.Vec3d;
 

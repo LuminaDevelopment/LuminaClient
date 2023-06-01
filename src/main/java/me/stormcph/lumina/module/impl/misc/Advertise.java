@@ -4,7 +4,7 @@ import me.stormcph.lumina.event.EventTarget;
 import me.stormcph.lumina.event.impl.EventUpdate;
 import me.stormcph.lumina.module.Category;
 import me.stormcph.lumina.module.Module;
-import me.stormcph.lumina.utils.TimerUtil;
+import me.stormcph.lumina.utils.time.TimerUtil;
 
 import java.util.ArrayList;
 import java.util.List;

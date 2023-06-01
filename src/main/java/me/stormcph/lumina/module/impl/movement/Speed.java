@@ -22,8 +22,6 @@ public class Speed extends Module {
         if(nullCheck()) return;
         if (mc.player == null) return;
 
-        if(mc.player.isOnGround()) mc.player.jump();
-
         Vec3d vel = getHorizontalVelocity(speed.getFloatValue());
 
         double velX = vel.getX();
