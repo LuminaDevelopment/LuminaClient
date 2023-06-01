@@ -37,7 +37,7 @@ public class Killaura extends Module {
     private TimerUtil timer;
 
     public Killaura() {
-        super("Killaura", "Attacks nearby enemies", Category.COMBAT);
+        super("Killaura", "Attacks nearby enemies (blatant)", Category.COMBAT);
         addSettings(range, players, mobs, passive, autoblock);
     }
 

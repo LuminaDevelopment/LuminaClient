@@ -36,7 +36,9 @@ public class ModuleManager {
         add(new Killaura()); //blatant
         add(new Criticals()); //blatant
         add(new PvpHubExploit()); //bypass
-        add(new TriggerBot()); //bypass
+        add(new TriggerBot()); // (pretty blatant cause no item based cooldown)
+        add(new AutoTotem()); //blatant
+
 
         // Misc
         add(new PacketLogger());
