@@ -83,6 +83,8 @@ public class ModuleManager {
         add(new PlayerCapFilter());
         add(new MaxOnlineFilter());
         add(new MinOnlineFilter());
+        add(new ScanPage());
+        add(new ScanServers());
 
         // Hide / show categories
         add(new CombatCata());

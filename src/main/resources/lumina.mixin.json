@@ -20,6 +20,7 @@
     "MinecraftClientMixin",
     "MixinClientConnection",
     "MultiplayerScreenMixin",
+    "MultiplayerScreenAccessor",
     "PlayerListHudMixin",
     "SessionMixin",
     "TitleScreenMixin",
