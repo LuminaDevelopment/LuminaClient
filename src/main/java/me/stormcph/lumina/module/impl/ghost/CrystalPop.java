@@ -5,9 +5,8 @@ import me.stormcph.lumina.event.impl.EventUpdate;
 import me.stormcph.lumina.module.Category;
 import me.stormcph.lumina.module.Module;
 import me.stormcph.lumina.setting.impl.BooleanSetting;
-import me.stormcph.lumina.setting.impl.ModeSetting;
 import me.stormcph.lumina.setting.impl.NumberSetting;
-import me.stormcph.lumina.utils.TimerUtil;
+import me.stormcph.lumina.utils.time.TimerUtil;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.ItemEntity;
 import net.minecraft.entity.decoration.EndCrystalEntity;
@@ -24,8 +23,8 @@ public class CrystalPop extends Module {
     //private final NumberSetting range = new NumberSetting("Range", 1.0, 10.0, 5.0, 0.1);
 
     private final BooleanSetting onlyOwnCrystal = new BooleanSetting("OnlyOwnCrystal", false);
-    private final BooleanSetting tryPunch = new BooleanSetting("DonutSmpBypass", false);
-
+    //private final BooleanSetting tryPunch = new BooleanSetting("DonutSmpBypass", false);
+    private boolean placingDelay = false;
     private boolean playerPlacedCrystal = false;
 
     private final BooleanSetting preserveItems = new BooleanSetting("NoLootPop", true);

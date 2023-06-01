@@ -23,6 +23,10 @@ public class KeybindSetting extends Setting {
         m.setKey(keyCode);
     }
 
+    public void setting$setKey(int keyCode) {
+        this.keyCode = keyCode;
+    }
+
     public Module getModule() {
         return m;
     }

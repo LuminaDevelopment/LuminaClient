@@ -1,6 +1,5 @@
 package me.stormcph.lumina.module;
 
-import me.stormcph.lumina.module.impl.Test;
 import me.stormcph.lumina.module.impl.ghost.*;
 import me.stormcph.lumina.module.impl.category_mng.impl.*;
 import me.stormcph.lumina.module.impl.combat.*;
@@ -37,6 +36,7 @@ public class ModuleManager {
         add(new Killaura()); //blatant
         add(new Criticals()); //blatant
         add(new PvpHubExploit()); //bypass
+        add(new TriggerBot()); //bypass
 
         // Misc
         add(new PacketLogger());
@@ -45,8 +45,7 @@ public class ModuleManager {
         add(new NameProtect());
         add(new Advertise());
 //        add(new AutoEz()); it's not finished yet cause i havent implemented a way to detect that it was actually you that killed the entity
-        add(new NoTrace()); 
-        add(new Test());
+        add(new NoTrace());
 
         // Player
         add(new AutoArmor()); //blatant
@@ -60,6 +59,7 @@ public class ModuleManager {
 //        add(new LegitTotem());
         add(new CrystalPopAndPlace());
         add(new PearlMacro());
+        add(new AnchorMacro());
 
         // Render
         add(new Arraylist());
@@ -71,6 +71,8 @@ public class ModuleManager {
         add(new Cape());
         add(new ESP());
         add(new TargetHUD());
+        add(new Notifications());
+        add(new Nametags());
 
         // Server Scanner
         add(new IPRangeFilter());
@@ -111,6 +113,11 @@ public class ModuleManager {
         return modules;
     }
 
+    /**
+     * @deprecated Use getModuleByClass for getting a module, should only be used for the config/bind command
+     * @param name The Name of the module
+     */
+    @Deprecated
     public Module getModuleByName(String name){
         for(Module module : modules) {
             if(module.getName().equalsIgnoreCase(name)) return module;

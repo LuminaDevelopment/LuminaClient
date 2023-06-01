@@ -2,40 +2,29 @@ package me.stormcph.lumina.utils.time;
 
 public class TimerUtil {
 
-    public long lastMS = System.currentTimeMillis();
+    private long lastMS;
 
-    
+    public TimerUtil() {
+        this.reset();
+    }
+
+    public long getCurrentMS() {
+        return System.nanoTime() / 1000000L;
+    }
+
+    public boolean hasReached(final double milliseconds) {
+        return this.getCurrentMS() - this.lastMS >= milliseconds;
+    }
+
     public void reset() {
-        lastMS = System.currentTimeMillis();
+        this.lastMS = this.getCurrentMS();
     }
 
-    
-    public boolean hasTimeElapsed(long time, boolean reset) {
-        if (System.currentTimeMillis() - lastMS > time) {
-            if (reset) reset();
-            return true;
-        }
-
-        return false;
+    public boolean delay(final float milliSec) {
+        return this.getTime() - this.lastMS >= milliSec;
     }
 
-    
-    public boolean hasTimeElapsed(long time) {
-        return System.currentTimeMillis() - lastMS > time;
-    }
-
-    
-    public boolean hasTimeElapsed(double time) {
-        return hasTimeElapsed((long) time);
-    }
-
-    
     public long getTime() {
-        return System.currentTimeMillis() - lastMS;
+        return System.nanoTime() / 1000000L;
     }
-
-    public void setTime(long time) {
-        lastMS = time;
-    }
-
 }

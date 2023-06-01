@@ -10,8 +10,10 @@ public class ClickguiModule extends Module {
     public static BooleanSetting performance = new BooleanSetting("Performance", false);
     public static ModeSetting clickguiMode = new ModeSetting("Clickgui Mode", "New", "New", "Old");
 
+    public static ModeSetting uiTheme = new ModeSetting("Theme", "Dark", "Dark", "Light");
+
     public ClickguiModule() {
         super("Clickgui", "Opens the module selection/editing screen", Category.RENDER);
-        this.addSettings(performance, clickguiMode);
+        this.addSettings(performance, clickguiMode, uiTheme);
     }
 }

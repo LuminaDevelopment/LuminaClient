@@ -7,7 +7,7 @@ import me.stormcph.lumina.module.Module;
 import me.stormcph.lumina.setting.impl.BooleanSetting;
 import me.stormcph.lumina.setting.impl.ModeSetting;
 import me.stormcph.lumina.setting.impl.NumberSetting;
-import me.stormcph.lumina.utils.TimerUtil;
+import me.stormcph.lumina.utils.time.TimerUtil;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.Entity;
@@ -26,7 +26,7 @@ import net.minecraft.util.hit.HitResult;
 
 import java.util.Random;
 
-import static me.stormcph.lumina.utils.PacketUtil.sendPacket;
+import static me.stormcph.lumina.utils.misc.PacketUtil.sendPacket;
 
 public class CrystalPopAndPlace extends Module {
     private final TimerUtil timerUtil = new TimerUtil();

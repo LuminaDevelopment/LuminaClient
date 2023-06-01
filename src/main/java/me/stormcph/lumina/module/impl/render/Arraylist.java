@@ -5,11 +5,11 @@ import me.stormcph.lumina.module.HudModule;
 import me.stormcph.lumina.module.Module;
 import me.stormcph.lumina.module.ModuleManager;
 import me.stormcph.lumina.setting.impl.NumberSetting;
-import me.stormcph.lumina.utils.ColorUtil;
-import me.stormcph.lumina.utils.Pair;
-import me.stormcph.lumina.utils.RenderUtils;
+import me.stormcph.lumina.utils.animations.Pair;
 import me.stormcph.lumina.utils.animations.Animation;
 import me.stormcph.lumina.utils.animations.Direction;
+import me.stormcph.lumina.utils.render.ColorUtil;
+import me.stormcph.lumina.utils.render.RenderUtils;
 import net.minecraft.client.util.math.MatrixStack;
 
 import java.awt.*;

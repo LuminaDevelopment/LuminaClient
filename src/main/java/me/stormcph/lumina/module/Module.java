@@ -1,8 +1,10 @@
 package me.stormcph.lumina.module;
 
 import me.stormcph.lumina.event.EventManager;
+import me.stormcph.lumina.notification.NotificationManager;
 import me.stormcph.lumina.setting.Setting;
-import me.stormcph.lumina.utils.ChatUtils;
+import me.stormcph.lumina.setting.impl.KeybindSetting;
+import me.stormcph.lumina.utils.chat.ChatUtils;
 import me.stormcph.lumina.utils.animations.Direction;
 import me.stormcph.lumina.utils.animations.impl.DecelerateAnimation;
 import net.minecraft.client.MinecraftClient;
@@ -61,13 +63,24 @@ public abstract class Module {
         this.settings.addAll(Arrays.asList(settings));
     }
 
+    public Setting getSetting(String name) {
+        for(Setting setting : settings) {
+            if(setting.getName().equalsIgnoreCase(name)) {
+                return setting;
+            }
+        }
+        return null;
+    }
+
     public void onEnable() {
         if(nullCheck()) return;
         EventManager.register(this);
+        NotificationManager.INSTANCE.registerNotification("§a" + this.name, "was enabled.");
     }
     public void onDisable() {
         if(nullCheck()) return;
         EventManager.unregister(this);
+        NotificationManager.INSTANCE.registerNotification("§c" + this.name, "was disabled.");
     }
 
     public void setEnabled(boolean toggled) {
@@ -104,6 +117,7 @@ public abstract class Module {
 
     public void setKey(int key) {
         this.key = key;
+        ((KeybindSetting) getSetting("Keybind")).setting$setKey(key);
     }
     public boolean hasKeybind() {
         return this.hasKeybind;
@@ -141,7 +155,11 @@ public abstract class Module {
     }
 
     protected void sendMsg(String message) {
-        ChatUtils.sendMsg(message);
+        ChatUtils.sendMsg(message, true);
+    }
+
+    protected void sendPrefixMsg(String message) {
+        //ChatUtils.sendPrefixMessage(message);
     }
     
     public Animation getAnimation() {
