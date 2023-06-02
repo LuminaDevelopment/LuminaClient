@@ -19,7 +19,7 @@ public class TriggerBot extends Module {
 
 
     public TriggerBot() {
-         super("TriggerBot", "Automatically hits entities if looked at", Category.COMBAT);
+         super("TriggerBot", "Automatically hits entities if looked at (blatant for now)", Category.COMBAT);
          addSettings(/*targets*/);
     }
 

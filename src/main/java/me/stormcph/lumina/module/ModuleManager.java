@@ -8,7 +8,7 @@ import me.stormcph.lumina.module.impl.movement.*;
 import me.stormcph.lumina.module.impl.movement.scaffold.*;
 import me.stormcph.lumina.module.impl.player.*;
 import me.stormcph.lumina.module.impl.render.*;
-
+import me.stormcph.lumina.module.impl.serverscanner.*;
 import me.stormcph.lumina.setting.impl.KeybindSetting;
 
 import java.util.ArrayList;
@@ -31,12 +31,15 @@ public class ModuleManager {
         add(new FakeLag()); //blatant
         add(new Speed()); //blatant
         add(new Scaffold()); //blatant
+        add(new NoFall()); //blatant
 
         // Combat
         add(new Killaura()); //blatant
         add(new Criticals()); //blatant
         add(new PvpHubExploit()); //bypass
-        add(new TriggerBot()); //bypass
+        add(new TriggerBot()); // (pretty blatant cause no item based cooldown)
+        add(new AutoTotem()); //blatant
+
 
         // Misc
         add(new PacketLogger());
@@ -73,7 +76,22 @@ public class ModuleManager {
         add(new TargetHUD());
         add(new Notifications());
         add(new Nametags());
+        add(new FullBright());
         add(new XRay());
+
+        // Server Scanner
+        add(new IPRangeFilter());
+        add(new SeenAfterFilter());
+        add(new PlayerFilter());
+        add(new DescriptionFilter());
+        add(new HasImageFilter());
+        add(new VersionFilter());
+        add(new IsFullFilter());
+        add(new PlayerCapFilter());
+        add(new MaxOnlineFilter());
+        add(new MinOnlineFilter());
+        add(new ScanPage());
+        add(new ScanServers());
 
         // Hide / show categories
         add(new CombatCata());
@@ -84,7 +102,7 @@ public class ModuleManager {
         add(new RenderCategory());
 
         for (Module module : modules) {
-            module.addSettings(new KeybindSetting("Keybind", module.getKey(), module));
+            if (module.hasKeybind()) module.addSettings(new KeybindSetting("Keybind", module.getKey(), module));
         }
     }
 

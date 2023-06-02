@@ -12,6 +12,7 @@ public enum Category {
     RENDER("Render"),
     PLAYER("Player"),
     MISC("Misc"),
+    SERVER_SCANNER("Server Scanner"),
     CATEGORY_MNG("Category");
 
     public String name;

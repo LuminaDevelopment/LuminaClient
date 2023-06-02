@@ -24,7 +24,7 @@ public class AnchorMacro extends Module {
     private final BooleanSetting debug = new BooleanSetting("debug", false);
 
     public AnchorMacro() {
-        super("AnchorMacro", "does the following steps (based on config) 1. place anchor 2. charge anchor 3. pop anchor", Category.GHOST);
+        super("AnchorMacro", "does the following steps (based on config) 1. place anchor 2. charge anchor 3. pop anchor (semi-ghost)", Category.GHOST);
         addSettings(placeAnchor, chargeAmount, popAnchor, back, debug);
     }
 
