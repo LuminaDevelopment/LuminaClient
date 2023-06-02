@@ -2,6 +2,7 @@ package me.stormcph.lumina.config;
 
 import com.google.gson.JsonObject;
 import com.mojang.logging.LogUtils;
+import me.stormcph.lumina.module.Category;
 import me.stormcph.lumina.module.HudModule;
 import me.stormcph.lumina.module.Module;
 import me.stormcph.lumina.module.ModuleManager;
@@ -24,35 +25,37 @@ public class ConfigWriter {
         JsonObject config_obj = new JsonObject();
 
         for(Module m : ModuleManager.INSTANCE.getModules()){
-            JsonObject module = new JsonObject();
-            if(compatibilityMode){
-                module = JsonData;
-            } else {
-                if(m instanceof HudModule){
-                    module.addProperty("width", ((HudModule) m).getWidth());
-                    module.addProperty("height", ((HudModule) m).getHeight());
-                    module.addProperty("x", ((HudModule) m).getX());
-                    module.addProperty("y", ((HudModule) m).getY());
-                }
-                for(Setting s : m.getSettings()){
-                    if(s instanceof ModeSetting){
-                        module.addProperty(s.getName(), ((ModeSetting) s).getMode());
-                    } else if (s instanceof BooleanSetting) {
-                        module.addProperty(s.getName(), ((BooleanSetting) s).isEnabled());
-                    } else if (s instanceof KeybindSetting) {
-                        module.addProperty(s.getName(), ((KeybindSetting) s).getKey());
-                    } else if (s instanceof NumberSetting) {
-                        module.addProperty(s.getName(), ((NumberSetting) s).getValue());
-                    } else if (s instanceof TextSetting) {
-                        module.addProperty(s.getName(), ((TextSetting) s).getText());
+            if (m.getCategory() != Category.SERVER_SCANNER) {
+                JsonObject module = new JsonObject();
+                if (compatibilityMode) {
+                    module = JsonData;
+                } else {
+                    if (m instanceof HudModule) {
+                        module.addProperty("width", ((HudModule) m).getWidth());
+                        module.addProperty("height", ((HudModule) m).getHeight());
+                        module.addProperty("x", ((HudModule) m).getX());
+                        module.addProperty("y", ((HudModule) m).getY());
                     }
+                    for (Setting s : m.getSettings()) {
+                        if (s instanceof ModeSetting) {
+                            module.addProperty(s.getName(), ((ModeSetting) s).getMode());
+                        } else if (s instanceof BooleanSetting) {
+                            module.addProperty(s.getName(), ((BooleanSetting) s).isEnabled());
+                        } else if (s instanceof KeybindSetting) {
+                            module.addProperty(s.getName(), ((KeybindSetting) s).getKey());
+                        } else if (s instanceof NumberSetting) {
+                            module.addProperty(s.getName(), ((NumberSetting) s).getValue());
+                        } else if (s instanceof TextSetting) {
+                            module.addProperty(s.getName(), ((TextSetting) s).getText());
+                        }
+                    }
+
                 }
 
+                module.addProperty("enabled", m.isEnabled());
+
+                config_obj.add(m.getName(), module);
             }
-
-            module.addProperty("enabled", m.isEnabled());
-
-            config_obj.add(m.getName(), module);
         }
 
         try {

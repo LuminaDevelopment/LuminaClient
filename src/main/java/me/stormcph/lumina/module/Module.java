@@ -10,6 +10,7 @@ import me.stormcph.lumina.utils.animations.impl.DecelerateAnimation;
 import net.minecraft.client.MinecraftClient;
 import me.stormcph.lumina.utils.animations.Animation;
 import net.minecraft.client.option.KeyBinding;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -18,6 +19,7 @@ import java.util.List;
 public abstract class Module {
 
     private String name, description, displayName;
+    private boolean hasKeybind = true;
     private int key;
     private boolean enabled;
     private Category category;
@@ -36,7 +38,6 @@ public abstract class Module {
         this.category = category;
         this.displayName = name;
         this.key = 0;
-
     }
 
     public static boolean nullCheck(){
@@ -117,6 +118,12 @@ public abstract class Module {
     public void setKey(int key) {
         this.key = key;
         ((KeybindSetting) getSetting("Keybind")).setting$setKey(key);
+    }
+    public boolean hasKeybind() {
+        return this.hasKeybind;
+    }
+    public void removeKeybind() {
+        this.hasKeybind = false;
     }
 
     public boolean isEnabled() {
