@@ -10,6 +10,8 @@ import net.minecraft.util.math.Vec3d;
 
 public class Speed extends Module {
 
+    private final Vec3d horizontalVelocity = new Vec3d(0, 0, 0);
+
     private final NumberSetting speed = new NumberSetting("Speed", 1, 10, 1, 0.1);
 
     public Speed() {
@@ -19,8 +21,7 @@ public class Speed extends Module {
 
     @EventTarget
     public void onMove(PlayerMoveEvent event) {
-        if(nullCheck()) return;
-        if (mc.player == null) return;
+        if (nullCheck()) return;
 
         Vec3d vel = getHorizontalVelocity(speed.getFloatValue());
 
@@ -29,8 +30,6 @@ public class Speed extends Module {
 
         event.set(velX, event.getPos().y, velZ);
     }
-
-    private final Vec3d horizontalVelocity = new Vec3d(0, 0, 0);
 
     public Vec3d getHorizontalVelocity(double bps) {
         float yaw = mc.player.getYaw();
@@ -43,6 +42,8 @@ public class Speed extends Module {
         double velZ = 0;
 
         boolean a = false;
+        boolean b = false;
+
         if (mc.player.input.pressingForward) {
             velX += forward.x / 20 * bps;
             velZ += forward.z / 20 * bps;
@@ -53,8 +54,6 @@ public class Speed extends Module {
             velZ -= forward.z / 20 * bps;
             a = true;
         }
-
-        boolean b = false;
         if (mc.player.input.pressingRight) {
             velX += right.x / 20 * bps;
             velZ += right.z / 20 * bps;
