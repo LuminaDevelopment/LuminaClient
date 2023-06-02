@@ -75,6 +75,7 @@ public class ModuleManager {
         add(new TargetHUD());
         add(new Notifications());
         add(new Nametags());
+        add(new FullBright());
 
         // Server Scanner
         add(new IPRangeFilter());
