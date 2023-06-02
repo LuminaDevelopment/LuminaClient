@@ -31,6 +31,7 @@ public class ModuleManager {
         add(new FakeLag()); //blatant
         add(new Speed()); //blatant
         add(new Scaffold()); //blatant
+        add(new NoFall()); //blatant
 
         // Combat
         add(new Killaura()); //blatant

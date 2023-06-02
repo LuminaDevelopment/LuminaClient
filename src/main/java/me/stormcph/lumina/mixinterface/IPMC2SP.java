@@ -7,4 +7,5 @@ public interface IPMC2SP {
     void setZ(double z);
     void setYaw(float yaw);
     void setPitch(float pitch);
+    void setOnGround(boolean onGround);
 }
