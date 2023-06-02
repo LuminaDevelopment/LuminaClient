@@ -4,9 +4,7 @@ import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoClients;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
-import com.mongodb.client.model.Filters;
 import me.stormcph.lumina.mixins.MultiplayerScreenAccessor;
-import me.stormcph.lumina.mixins.MultiplayerScreenMixin;
 import me.stormcph.lumina.module.Category;
 import me.stormcph.lumina.module.Module;
 import me.stormcph.lumina.module.ModuleManager;
@@ -18,9 +16,6 @@ import net.minecraft.client.gui.screen.multiplayer.MultiplayerScreen;
 import net.minecraft.client.network.ServerInfo;
 import net.minecraft.client.option.ServerList;
 import org.bson.Document;
-import org.jetbrains.annotations.Nullable;
-import org.spongepowered.asm.mixin.Mixins;
-import org.w3c.dom.Text;
 
 import java.util.Arrays;
 
@@ -54,7 +49,7 @@ public class ScanServers extends Module {
                     serverList.remove(serverList.get(i));
                 }
             }
-            //serverList.saveFile();
+            serverList.saveFile();
         }
 
         Document query = new Document();
@@ -143,17 +138,13 @@ public class ScanServers extends Module {
             query.append("ip", new Document("$regex", "^" + octets[0] + "." + octets[1] + "." + octets[2] + "." + octets[3] + "$").append("$options", "i"));
         }
 
-        try {
-            int skip = 0;
-            Module Page = ModuleManager.INSTANCE.getModuleByName("Page");
-            if (Page.isEnabled()) skip = Integer.parseInt(((TextSetting)Page.getSettings().get(0)).getText()) * scanCount.getIntValue();
-            scannedServers.find(query).skip(skip).limit(scanCount.getIntValue()).forEach((doc -> {
-                serverList.add(new ServerInfo(defaultName.getText(), doc.get("ip") + ":" + doc.get("port"), false), false);
-                serverList.saveFile();
-            }));
-            mc.setScreen(new MultiplayerScreen(((MultiplayerScreenAccessor)mc.currentScreen).getParent()));
-        } catch (Exception e) {
-            System.out.println(e);
-        }
+        int skip = 0;
+        Module Page = ModuleManager.INSTANCE.getModuleByName("Page");
+        if (Page.isEnabled()) skip = Integer.parseInt(((TextSetting)Page.getSettings().get(0)).getText()) * scanCount.getIntValue();
+        scannedServers.find(query).skip(skip).limit(scanCount.getIntValue()).forEach((doc -> {
+            serverList.add(new ServerInfo(defaultName.getText(), doc.get("ip") + ":" + doc.get("port"), false), false);
+        }));
+        serverList.saveFile();
+        mc.setScreen(new MultiplayerScreen(((MultiplayerScreenAccessor)mc.currentScreen).getParent()));
     }
 }

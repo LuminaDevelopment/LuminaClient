@@ -33,7 +33,10 @@ dependencies {
 
 	// modImplementation "net.fabricmc.fabric-api:fabric-api-deprecated:${project.fabric_version}"
 
-	implementation 'org.mongodb:mongodb-driver-sync:4.7.1'
+	include implementation('org.mongodb:mongodb-driver-sync:4.9.1')
+	include implementation('org.mongodb:mongodb-driver-core:4.9.1')
+	include implementation('org.mongodb:bson:4.9.1')
+	include implementation('org.mongodb:bson-record-codec:4.9.1')
 }
 
 base {
