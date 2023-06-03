@@ -27,7 +27,7 @@ public class AbstractClientPlayerEntityMixin {
 
             for (String player : CapeManager.players.keySet()) {
                 if (player.equalsIgnoreCase(thisPlayer.getGameProfile().getName())) {
-                    info.setReturnValue(Cape.getCurrentCape().getTexture());
+                    info.setReturnValue(CapeManager.players.get(player).getTexture());
                 }
             }
         }

@@ -56,4 +56,37 @@ public class GithubRetriever {
             e.printStackTrace();
         }
     }
+
+    public void retrieveCustomData() {
+        try {
+            Encryption encryption = new Encryption();
+            String link = "https://raw.githubusercontent.com/CorruptionHades/LuminaCapes/main/customData.txt";
+            URL url = new URL(link);
+            URLConnection connection = url.openConnection();
+            BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+            List<String> retrieved = new ArrayList<>();
+            String line;
+            // Read each line from the BufferedReader and append it
+            while ((line = reader.readLine()) != null) {
+                retrieved.add(line);
+            }
+            reader.close();
+            connection.getInputStream().close();
+
+            int i = 0;
+            for (String datum : retrieved) {
+                String[] data = datum.split("#");
+                String capeName = data[0];
+                String textureString = data[1];
+                String[] textures = textureString.split(":");
+
+                Cape cape = Cape.animatedFromBase64(capeName, textures, "png", i);
+                CapeManager.capes.add(cape);
+                i++;
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }

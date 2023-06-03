@@ -24,13 +24,17 @@ public class Cape extends Module {
     @Override
     public void onEnable() {
         // Whenever the module is enabled, we retrieve the latest capes from the github repo
-        new GithubRetriever().retrieve();
+        CapeManager.players.clear();
+        GithubRetriever retriever = new GithubRetriever();
+        retriever.retrieveCustomData();
+        retriever.retrieve();
         super.onEnable();
     }
 
     @EventTarget
     public void onUpdate(EventUpdate e) {
         getCurrentCape().update();
+        CapeManager.players.forEach((s, cape1) -> cape1.update());
     }
 
     public static me.stormcph.lumina.cape.Cape getCurrentCape() {
