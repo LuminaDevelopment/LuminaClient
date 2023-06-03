@@ -17,7 +17,7 @@ public class ClickGui extends Screen {
         super(Text.of("Lumina Menu"));
         int offset = 40;
         for (Category value : Category.values()) {
-            if(value == Category.CATEGORY_MNG) continue;
+            if(value == Category.CATEGORY_MNG || value == Category.SERVER_SCANNER) continue;
             tabs.add(new Tab(value, offset));
             offset += 300;
         }
