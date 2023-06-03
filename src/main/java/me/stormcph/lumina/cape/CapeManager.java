@@ -15,6 +15,8 @@ public class CapeManager {
         addCape(new Cape("TestCape2", 1, "lumina-w.png"));
         addCape(new Cape("Master", 1, "master.png"));
         addCape(Cape.animatedFromFolder("LightningCape", "lightning", 9+1 /*0.png is also a frame*/, "png"));
+        addCape(new Cape("star-dark", 1, "star-b.png"));
+        addCape(new Cape("star-light", 1, "star-w.png"));
     }
 
     private static void addCape(Cape cape) {
