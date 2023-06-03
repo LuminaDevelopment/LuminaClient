@@ -9,6 +9,7 @@
     "Vec3dMixin"
   ],
   "client": [
+    "AbstractBlockStateMixin",
     "AbstractClientPlayerEntityMixin",
     "ChatHudMixin",
     "ClientPlayNetworkHandlerMixin",
@@ -19,6 +20,8 @@
     "LivingEntityMixin",
     "MinecraftClientMixin",
     "MixinClientConnection",
+    "MultiplayerScreenMixin",
+    "MultiplayerScreenAccessor",
     "PlayerListHudMixin",
     "SessionMixin",
     "TitleScreenMixin",

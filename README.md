@@ -39,7 +39,6 @@
 
 - **Modules**: Powerful modules
 - **HUD & GUI**: Hud editor + nice GUI
-- **Exploits**: Never-before seen exploits
 - **Usability**: Easy to use
 
 ## ⚙️ Installation
