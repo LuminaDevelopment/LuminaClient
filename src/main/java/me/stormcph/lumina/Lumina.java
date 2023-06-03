@@ -61,7 +61,7 @@ public class Lumina implements ModInitializer {
                 if (event.getKey() == module.getKey()) module.toggle();
             }
 
-            if (openClickGuiKey.wasPressed()) {
+            if (event.matches(openClickGuiKey)) {
                 switch (ClickguiModule.clickguiMode.getMode()) {
                     case "New" -> {
                         mc.setScreen(ClickGui.instance);
@@ -76,7 +76,7 @@ public class Lumina implements ModInitializer {
                 }
 
             }
-            if (openHudConfigScreenKey.wasPressed()) mc.setScreen(new HudConfigScreen());
+            if (event.matches(openHudConfigScreenKey)) mc.setScreen(new HudConfigScreen());
         }
     }
 

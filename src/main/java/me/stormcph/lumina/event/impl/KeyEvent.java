@@ -1,6 +1,8 @@
 package me.stormcph.lumina.event.impl;
 
 import me.stormcph.lumina.event.Event;
+import net.minecraft.client.option.KeyBinding;
+import org.lwjgl.glfw.GLFW;
 
 public class KeyEvent extends Event {
 
@@ -22,5 +24,9 @@ public class KeyEvent extends Event {
 
     public int getAction() {
         return action;
+    }
+
+    public boolean matches(KeyBinding keyBinding) {
+        return keyBinding.matchesKey(this.key, GLFW.GLFW_KEY_UNKNOWN);
     }
 }
