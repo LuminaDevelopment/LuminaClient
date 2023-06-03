@@ -46,8 +46,8 @@ public class Lumina implements ModInitializer {
         KeyBindingHelper.registerKeyBinding(openClickGuiKey);
         KeyBindingHelper.registerKeyBinding(openHudConfigScreenKey);
 
-        SessionChanger.loginCracked("SomeName");
-        System.out.println("Changed username");
+       // SessionChanger.loginCracked("SomeName");
+       // System.out.println("Changed username");
 
         Thread configThr = new Thread(ConfigReader::loadConfig, "LuminaConfigReaderThread");
         configThr.start();
