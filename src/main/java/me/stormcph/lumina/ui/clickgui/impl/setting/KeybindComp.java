@@ -49,7 +49,11 @@ public class KeybindComp extends SettingComp {
     public void keyPressed(int keyCode, int scanCode, int modifiers) {
         if(focused) {
             KeybindSetting setting = (KeybindSetting) getSetting();
-            setting.setKey(keyCode);
+            if(keyCode == 46) {
+                setting.setKey(0);
+            } else {
+                setting.setKey(keyCode);
+            }
             focused = false;
         }
     }
