@@ -13,5 +13,6 @@ public class SeenAfterFilter extends Module {
         super("SeenAfter", "The earliest the server could have last been seen (unix timestamp)", Category.SERVER_SCANNER);
         addSettings(value);
         removeKeybind();
+        noSave();
     }
 }

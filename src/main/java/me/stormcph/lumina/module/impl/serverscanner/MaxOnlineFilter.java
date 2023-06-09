@@ -11,5 +11,6 @@ public class MaxOnlineFilter extends Module {
         super("MaxOnline", "The maximum amount of players on the server", Category.SERVER_SCANNER);
         addSettings(value);
         removeKeybind();
+        noSave();
     }
 }

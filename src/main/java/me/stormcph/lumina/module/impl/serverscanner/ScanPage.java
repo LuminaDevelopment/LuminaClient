@@ -11,5 +11,6 @@ public class ScanPage extends Module {
         super("Page", "Skips forward to get different results", Category.SERVER_SCANNER);
         addSettings(value);
         removeKeybind();
+        noSave();
     }
 }

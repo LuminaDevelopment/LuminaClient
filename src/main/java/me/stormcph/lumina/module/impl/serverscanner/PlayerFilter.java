@@ -11,5 +11,6 @@ public class PlayerFilter extends Module {
         super("Player", "The name of a player on the server", Category.SERVER_SCANNER);
         addSettings(value);
         removeKeybind();
+        noSave();
     }
 }

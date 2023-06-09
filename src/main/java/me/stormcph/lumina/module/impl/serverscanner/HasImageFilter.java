@@ -11,5 +11,6 @@ public class HasImageFilter extends Module {
         super("HasImage", "Whether or not the server has a custom thumbnail image", Category.SERVER_SCANNER);
         addSettings(value);
         removeKeybind();
+        noSave();
     }
 }

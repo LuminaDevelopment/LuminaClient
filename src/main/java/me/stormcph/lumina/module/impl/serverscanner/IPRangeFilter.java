@@ -13,5 +13,6 @@ public class IPRangeFilter extends Module {
         super("IPRange", "The subnet of the ip of the server", Category.SERVER_SCANNER);
         addSettings(value);
         removeKeybind();
+        noSave();
     }
 }

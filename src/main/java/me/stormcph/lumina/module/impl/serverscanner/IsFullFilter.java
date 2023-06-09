@@ -11,5 +11,6 @@ public class IsFullFilter extends Module {
         super("IsFull", "Whether or not the server is full", Category.SERVER_SCANNER);
         addSettings(value);
         removeKeybind();
+        noSave();
     }
 }

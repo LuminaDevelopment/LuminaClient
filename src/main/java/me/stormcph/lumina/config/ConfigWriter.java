@@ -25,37 +25,35 @@ public class ConfigWriter {
         JsonObject config_obj = new JsonObject();
 
         for(Module m : ModuleManager.INSTANCE.getModules()){
-            if (m.getCategory() != Category.SERVER_SCANNER) {
-                JsonObject module = new JsonObject();
-                if (compatibilityMode) {
-                    module = JsonData;
-                } else {
-                    if (m instanceof HudModule) {
-                        module.addProperty("width", ((HudModule) m).getWidth());
-                        module.addProperty("height", ((HudModule) m).getHeight());
-                        module.addProperty("x", ((HudModule) m).getX());
-                        module.addProperty("y", ((HudModule) m).getY());
+            JsonObject module = new JsonObject();
+            if (compatibilityMode) {
+                module = JsonData;
+            } else {
+                if (m instanceof HudModule) {
+                    module.addProperty("width", ((HudModule) m).getWidth());
+                    module.addProperty("height", ((HudModule) m).getHeight());
+                    module.addProperty("x", ((HudModule) m).getX());
+                    module.addProperty("y", ((HudModule) m).getY());
+                }
+                for (Setting s : m.getSettings()) {
+                    if (s instanceof ModeSetting && m.savesSettings()) {
+                        module.addProperty(s.getName(), ((ModeSetting) s).getMode());
+                    } else if (s instanceof BooleanSetting && m.savesSettings()) {
+                        module.addProperty(s.getName(), ((BooleanSetting) s).isEnabled());
+                    } else if (s instanceof KeybindSetting && m.hasKeybind()) {
+                        module.addProperty(s.getName(), ((KeybindSetting) s).getKey());
+                    } else if (s instanceof NumberSetting && m.savesSettings()) {
+                        module.addProperty(s.getName(), ((NumberSetting) s).getValue());
+                    } else if (s instanceof TextSetting && m.savesSettings()) {
+                        module.addProperty(s.getName(), ((TextSetting) s).getText());
                     }
-                    for (Setting s : m.getSettings()) {
-                        if (s instanceof ModeSetting) {
-                            module.addProperty(s.getName(), ((ModeSetting) s).getMode());
-                        } else if (s instanceof BooleanSetting) {
-                            module.addProperty(s.getName(), ((BooleanSetting) s).isEnabled());
-                        } else if (s instanceof KeybindSetting) {
-                            module.addProperty(s.getName(), ((KeybindSetting) s).getKey());
-                        } else if (s instanceof NumberSetting) {
-                            module.addProperty(s.getName(), ((NumberSetting) s).getValue());
-                        } else if (s instanceof TextSetting) {
-                            module.addProperty(s.getName(), ((TextSetting) s).getText());
-                        }
-                    }
-
                 }
 
-                module.addProperty("enabled", m.isEnabled());
-
-                config_obj.add(m.getName(), module);
             }
+
+            if (m.savesSettings()) module.addProperty("enabled", m.isEnabled());
+
+            config_obj.add(m.getName(), module);
         }
 
         try {

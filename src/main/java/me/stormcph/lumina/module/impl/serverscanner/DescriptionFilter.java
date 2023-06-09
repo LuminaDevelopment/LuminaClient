@@ -11,5 +11,6 @@ public class DescriptionFilter extends Module {
         super("Description", "The description/MOTD of the server (uses regex)", Category.SERVER_SCANNER);
         addSettings(value);
         removeKeybind();
+        noSave();
     }
 }

@@ -11,5 +11,6 @@ public class VersionFilter extends Module {
         super("Version", "The version of the server (uses regex)", Category.SERVER_SCANNER);
         addSettings(value);
         removeKeybind();
+        noSave();
     }
 }

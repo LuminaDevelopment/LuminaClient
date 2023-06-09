@@ -11,5 +11,6 @@ public class MinOnlineFilter extends Module {
         super("MinOnline", "The minimum amount of players on the server", Category.SERVER_SCANNER);
         addSettings(value);
         removeKeybind();
+        noSave();
     }
 }

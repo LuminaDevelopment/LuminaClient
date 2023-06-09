@@ -11,5 +11,6 @@ public class PlayerCapFilter extends Module {
         super("PlayerCap", "The server's player capacity", Category.SERVER_SCANNER);
         addSettings(value);
         removeKeybind();
+        noSave();
     }
 }
