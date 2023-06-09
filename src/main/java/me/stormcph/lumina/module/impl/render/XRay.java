@@ -9,6 +9,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public class XRay extends Module {
+    private boolean shouldChunkCull = false;
     public static List visibleBlocksList = Arrays.asList(new String[]{
             "block.minecraft.water",
             "block.minecraft.lava",
@@ -40,6 +41,7 @@ public class XRay extends Module {
     @Override
     public void onEnable() {
         if(nullCheck()) return;
+        shouldChunkCull = mc.chunkCullingEnabled;
         mc.worldRenderer.reload();
         super.onDisable();
     }
@@ -47,13 +49,17 @@ public class XRay extends Module {
     @Override
     public void onDisable() {
         if(nullCheck()) return;
+        mc.chunkCullingEnabled = shouldChunkCull;
         mc.worldRenderer.reload();
         super.onDisable();
     }
 
     @EventTarget
-    public void onTick(EventUpdate e) {
+    public void onEventUpdate(EventUpdate e) {
         if(nullCheck()) return;
-        if (this.isEnabled()) mc.chunkCullingEnabled = false;
+        if (this.isEnabled()) {
+            shouldChunkCull = mc.chunkCullingEnabled;
+            mc.chunkCullingEnabled = false;
+        }
     }
 }

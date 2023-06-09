@@ -9,7 +9,7 @@ import me.stormcph.lumina.setting.impl.ModeSetting;
 
 public class Sprint extends Module {
 
-    ModeSetting bypassMode = new ModeSetting("Bypass", "None",  "None", "Basic");
+    ModeSetting bypassMode = new ModeSetting("Bypass", "Basic",  "None", "Basic");
 
     public Sprint() {
         super("Sprint", "Keeps your sprint", Category.MOVEMENT);
