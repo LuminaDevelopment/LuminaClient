@@ -29,7 +29,7 @@ public class AnchorMacro extends Module {
     private final TimerUtil timer;
 
     public AnchorMacro() {
-        super("AnchirMacro", "A macro for using Respawn Anchors", Category.PLAYER);
+        super("AnchorMacro", "Fills and explodes anchors", Category.COMBAT);
         chargeOnly = new BooleanSetting("Charge Only", false);
         cooldown = new NumberSetting("Cooldown between charges", 0, 10, 4, 1);
         addSettings(chargeOnly, cooldown);
