@@ -66,7 +66,8 @@ public class ModuleManager {
 //        add(new LegitTotem());
         add(new CrystalPopAndPlace());
         add(new PearlMacro());
-        //add(new AnchorMacro());
+        add(new AnchorMacro());
+        add(new AutoRefill());
 
         // Render
         add(new Arraylist());
