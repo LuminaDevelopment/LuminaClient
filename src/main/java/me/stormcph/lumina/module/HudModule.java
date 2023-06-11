@@ -5,15 +5,12 @@ import net.minecraft.client.util.math.MatrixStack;
 public abstract class HudModule extends Module {
 
     private int x, y, width, height;
-    private float scaleX, scaleY;
     public HudModule(String name, String description, Category category, int x, int y, int width, int height) {
         super(name, description, category);
         this.x = x;
         this.y = y;
         this.width = width;
         this.height = height;
-        scaleX = 1;
-        scaleY = 1;
     }
 
     public abstract void draw(MatrixStack matrices);
@@ -27,11 +24,11 @@ public abstract class HudModule extends Module {
     }
 
     public int getWidth() {
-        return (int) (width * scaleX);
+        return width;
     }
 
     public int getHeight() {
-        return (int) (height * scaleY);
+        return height;
     }
 
     public void setX(int x) {
@@ -48,21 +45,5 @@ public abstract class HudModule extends Module {
 
     public void setHeight(int height) {
         this.height = height;
-    }
-
-    public float getScaleX() {
-        return scaleX;
-    }
-
-    public void setScaleX(float scaleX) {
-        this.scaleX = scaleX;
-    }
-
-    public float getScaleY() {
-        return scaleY;
-    }
-
-    public void setScaleY(float scaleY) {
-        this.scaleY = scaleY;
     }
 }

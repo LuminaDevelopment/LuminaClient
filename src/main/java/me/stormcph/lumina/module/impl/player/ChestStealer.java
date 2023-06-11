@@ -8,6 +8,8 @@ import me.stormcph.lumina.utils.time.TimerUtil;
 import net.minecraft.client.gui.screen.ingame.GenericContainerScreen;
 import net.minecraft.item.AirBlockItem;
 import net.minecraft.item.ItemStack;
+import net.minecraft.screen.ScreenHandler;
+import net.minecraft.screen.slot.Slot;
 import net.minecraft.screen.slot.SlotActionType;
 import net.minecraft.text.Text;
 
@@ -40,7 +42,12 @@ public class ChestStealer extends Module {
                 }
 
                 for(int i = 0; i < gcs.getScreenHandler().getInventory().size();) {
-                    ItemStack item = gcs.getScreenHandler().getSlot(i).getStack();
+
+                    GenericContainerScreen genericContainerScreen = (GenericContainerScreen) mc.currentScreen;
+                    ScreenHandler screenHandler = genericContainerScreen.getScreenHandler();
+                    Slot slot = screenHandler.getSlot(i);
+
+                    ItemStack item = slot.getStack();
                     if(item != null && !(item.getItem() instanceof AirBlockItem) && timer.hasReached(delay.getValue())) {
                         sendMsg(i + ": " + gcs.getScreenHandler().getSlot(i).getStack().getItem().getName().getString());
                         assert mc.interactionManager != null;

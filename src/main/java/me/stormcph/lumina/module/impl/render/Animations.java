@@ -6,6 +6,7 @@ import me.stormcph.lumina.module.Category;
 import me.stormcph.lumina.module.Module;
 import me.stormcph.lumina.setting.impl.ModeSetting;
 import me.stormcph.lumina.setting.impl.NumberSetting;
+import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.item.*;
 import net.minecraft.util.math.RotationAxis;
@@ -27,6 +28,8 @@ public class Animations extends Module {
         addSettings(mode);
     }
 
+    private long lastFrameTime = 0;
+
     @Override
     public void onEnable() {
         super.onEnable();
@@ -47,44 +50,54 @@ public class Animations extends Module {
     }
 
     public void render(ItemStack stack, MatrixStack matrices) {
-        if(nullCheck()) return;
-        float increment = 2;
 
-        if(stack.getItem() instanceof SwordItem ||
-                (stack.getItem() instanceof AxeItem && (mode.getMode().equals("Weapons") || mode.getMode().equals("All"))) ||
-                (stack.getItem() instanceof ShovelItem && (mode.getMode().equals("All"))) ||
-                (stack.getItem() instanceof PickaxeItem && (mode.getMode().equals("All"))) ||
-                (stack.getItem() instanceof HoeItem && (mode.getMode().equals("All")))) {
+        MinecraftClient mc = MinecraftClient.getInstance();
 
-            if (mc.options.useKey.isPressed()) {
-                if (current != end) {
-                    if (current > end) {
-                        current -= increment;
-                    } else if (current < end) {
-                        current += increment;
-                    }
-                } else if (current == end) {
-                    if (end == -130) {
-                        end = start;
-                    }
-                }
+        long currentTime = System.currentTimeMillis();
+        long elapsedTime = currentTime - lastFrameTime;
+        lastFrameTime = currentTime;
 
-                // Set the rotation point at the handle of the sword
-                float xo = 0.45f, yo = -0.4f, zo = 0;
-                matrices.translate(xo, yo, zo);
-                // Rotates to face the player
-                matrices.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(82));
-                // Rotates the sword up/down
-                matrices.multiply(RotationAxis.POSITIVE_X.rotationDegrees(current));
-
-                // Use the setting values (removed by hades cuz it was being dumb you can add it back later  todo
-                float x = (float) xSetting.getValue();
-                float y = (float) (ySetting.getValue() + xo);
-                float z = (float) (zSetting.getValue() - yo);
-
-                matrices.translate(0, 0.2 + xo, 0.4 - yo);
-            }
+        if(!isValid(stack)) {
+            return;
         }
+
+        if (mc.options.useKey.isPressed()) {
+
+            // Calculate the swing increment based on elapsed time
+            float swingIncrement = 200f; // Adjust the swing speed as desired
+            float swingProgress = swingIncrement * (elapsedTime / 1000f); // Divide by 1000 to convert milliseconds to seconds
+
+            if (current > end) {
+                current -= swingProgress;
+            }
+            else if (current < end) {
+                current += swingProgress;
+            }
+            if (end == -130 && current <= end) {
+                end = start;
+            }
+            if(end == start && current >= end) {
+                current = end;
+            }
+
+            // Set the rotation point at the handle of the sword
+            matrices.translate(0.4, -0.2, -0.1);
+            // Rotates to face the player
+            matrices.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(85));
+            matrices.multiply(RotationAxis.POSITIVE_Z.rotationDegrees(-17));
+            // Rotates the sword up/down
+            matrices.multiply(RotationAxis.POSITIVE_X.rotationDegrees(current));
+
+            matrices.translate(0, 0.6, 0.7);
+        }
+    }
+
+    public static boolean isValid(ItemStack stack) {
+        return (stack.getItem() instanceof SwordItem ||
+                (stack.getItem() instanceof AxeItem && (Animations.mode.getMode().equals("Weapons") || Animations.mode.getMode().equals("All"))) ||
+                (stack.getItem() instanceof ShovelItem && (Animations.mode.getMode().equals("All"))) ||
+                (stack.getItem() instanceof PickaxeItem && (Animations.mode.getMode().equals("All"))) ||
+                (stack.getItem() instanceof HoeItem && (Animations.mode.getMode().equals("All"))));
     }
 
     public void swing() {

@@ -25,9 +25,10 @@ public class KeybindComp extends SettingComp {
         float pX = parent.getParent().getParent().getX(), pY = parent.getParent().getParent().getY(), pW = parent.getParent().getParent().getWidth(), pH = parent.getParent().getParent().getHeight();
 
         String keyName = GLFW.glfwGetKeyName(setting.getKey(), setting.getKey());
-        if(keyName == null) {
+        if(keyName == null || keyName.isEmpty()) {
             keyName = "None";
         }
+        else keyName = keyName.toUpperCase();
         drawString(matrices, setting.getName() + ": " + keyName, pX + 30, pY + pH + y + 10, focused ? (ClickguiModule.uiTheme.getMode().equals("Dark") ? Color.white : Color.BLACK) : Color.GRAY);
     }
 
@@ -49,7 +50,11 @@ public class KeybindComp extends SettingComp {
     public void keyPressed(int keyCode, int scanCode, int modifiers) {
         if(focused) {
             KeybindSetting setting = (KeybindSetting) getSetting();
-            setting.setKey(keyCode);
+            if(keyCode == 46) {
+                setting.setKey(0);
+            } else {
+                setting.setKey(keyCode);
+            }
             focused = false;
         }
     }

@@ -10,8 +10,10 @@ import me.stormcph.lumina.module.impl.player.*;
 import me.stormcph.lumina.module.impl.render.*;
 import me.stormcph.lumina.module.impl.serverscanner.*;
 import me.stormcph.lumina.setting.impl.KeybindSetting;
+import net.minecraft.text.Text;
 
 import java.util.ArrayList;
+import java.util.ConcurrentModificationException;
 import java.util.List;
 
 public class ModuleManager {
@@ -39,6 +41,8 @@ public class ModuleManager {
         add(new PvpHubExploit()); //bypass
         add(new TriggerBot()); // (pretty blatant cause no item based cooldown)
         add(new AutoTotem()); //blatant
+        add(new AutoDTap()); // ghost
+        add(new AnchorMacro()); // ghost
 
 
         // Misc
@@ -78,6 +82,8 @@ public class ModuleManager {
         add(new Nametags());
         add(new FullBright());
         add(new XRay());
+        add(new Keystrokes());
+        add(new TestRes());
 
         // Server Scanner
         add(new IPRangeFilter());
@@ -92,6 +98,7 @@ public class ModuleManager {
         add(new MinOnlineFilter());
         add(new ScanPage());
         add(new ScanServers());
+        add(new CommandExec());
 
         // Hide / show categories
         add(new CombatCata());
@@ -123,10 +130,13 @@ public class ModuleManager {
      * @param name The Name of the module
      */
     @Deprecated
-    public Module getModuleByName(String name){
-        for(Module module : modules) {
-            if(module.getName().equalsIgnoreCase(name)) return module;
+    public Module getModuleByName(String name) {
+        try {
+            for (Module module : modules) {
+                if (module.getName().equalsIgnoreCase(name)) return module;
+            }
         }
+        catch (ConcurrentModificationException ignored) {}
 
         return null;
     }
