@@ -11,9 +11,13 @@
   "client": [
     "AbstractBlockStateMixin",
     "AbstractClientPlayerEntityMixin",
+    "CameraMixin",
     "ChatHudMixin",
     "ClientPlayNetworkHandlerMixin",
+    "EntityMixin",
     "EntityRendererMixin",
+    "GameOptionsMixin",
+    "GameRendererMixin",
     "HeldItemRendererMixin",
     "InGameHudMixin",
     "KeyboardMixin",
