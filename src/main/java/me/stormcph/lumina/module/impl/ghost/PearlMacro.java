@@ -14,15 +14,18 @@ import net.minecraft.util.ActionResult;
 
 public class PearlMacro extends Module {
 
-    private final TimerUtil timerUtil = new TimerUtil();
-    private final NumberSetting cooldown = new NumberSetting("cooldown-ms", 0.0, 1000.0, 0.0, 0.01);
+    private final TimerUtil timer = new TimerUtil();
+    private final TimerUtil switchBackTimer = new TimerUtil();
+    private final TimerUtil throwPearlTimer = new TimerUtil();
+    private final NumberSetting switchBackDelay = new NumberSetting("SwitchBackDelay", 0, 1000, 39, 1);
+    private final NumberSetting throwPearlDelay = new NumberSetting("ThrowPearlDelay", 0, 1000, 94, 1);
     private final BooleanSetting throwPearl = new BooleanSetting("Throw", true);
     private final BooleanSetting back = new BooleanSetting("SwitchBack", true);
     private final BooleanSetting debug = new BooleanSetting("Debug", false);
 
     public PearlMacro() {
         super("PearlMacro", "Switches to a enderpearl, throws it, and then switches back based on your setting choice", Category.GHOST);
-        addSettings(cooldown, throwPearl, back, debug);
+        addSettings(throwPearl, back, debug, switchBackDelay, throwPearlDelay);
     }
 
 
@@ -51,14 +54,28 @@ public class PearlMacro extends Module {
                 }
                 player.getInventory().selectedSlot = i;
                 if (throwPearl.isEnabled()) {
-                    ActionResult result = mc.interactionManager.interactItem(mc.player, mc.player.getActiveHand());
-                    if (result == ActionResult.SUCCESS) {
-                        if (debug.isEnabled()) {
-                            sendMsg("EnderPearl was thrown!");
+                    if (throwPearlTimer.hasReached(throwPearlDelay.getValue())) {
+                        ActionResult result = mc.interactionManager.interactItem(mc.player, mc.player.getActiveHand());
+                        if (result == ActionResult.SUCCESS) {
+                            if (debug.isEnabled()) {
+                                sendMsg("EnderPearl was thrown!");
+                            }
                         }
+                        throwPearlTimer.reset();
                     }
                     if (back.isEnabled()) {
-                        player.getInventory().selectedSlot = originalSlot;
+                        if (switchBackTimer.hasReached(switchBackDelay.getValue())) {
+                            player.getInventory().selectedSlot = originalSlot;
+                            if (debug.isEnabled()) {
+                                sendMsg("Switched back to original slot!");
+                            }
+                            switchBackTimer.reset();
+                        }
+                    }
+                    else {
+                        if (debug.isEnabled()) {
+                            sendMsg("SwitchBack is disabled!");
+                        }
                     }
                     setEnabled(false);
                     return true;
@@ -72,5 +89,4 @@ public class PearlMacro extends Module {
         }
         return false;
     }
-
 }

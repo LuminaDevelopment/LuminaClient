@@ -10,7 +10,6 @@ import me.stormcph.lumina.module.impl.player.*;
 import me.stormcph.lumina.module.impl.render.*;
 import me.stormcph.lumina.module.impl.serverscanner.*;
 import me.stormcph.lumina.setting.impl.KeybindSetting;
-import net.minecraft.text.Text;
 
 import java.util.ArrayList;
 import java.util.ConcurrentModificationException;
@@ -42,7 +41,6 @@ public class ModuleManager {
         add(new TriggerBot()); // (pretty blatant cause no item based cooldown)
         add(new AutoTotem()); //blatant
         add(new AutoDTap()); // ghost
-        add(new AnchorMacro()); // ghost
 
 
         // Misc
@@ -85,6 +83,7 @@ public class ModuleManager {
         add(new XRay());
         add(new Keystrokes());
         add(new TestRes());
+        //add(new CrystalRender());
 
         // Server Scanner
         add(new IPRangeFilter());
@@ -99,7 +98,7 @@ public class ModuleManager {
         add(new MinOnlineFilter());
         add(new ScanPage());
         add(new ScanServers());
-        add(new CommandExec());
+        //add(new CommandExec());
 
         // Hide / show categories
         add(new CombatCata());

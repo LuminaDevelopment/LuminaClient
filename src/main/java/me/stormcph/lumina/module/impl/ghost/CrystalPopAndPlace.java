@@ -29,7 +29,8 @@ import java.util.Random;
 import static me.stormcph.lumina.utils.misc.PacketUtil.sendPacket;
 
 public class CrystalPopAndPlace extends Module {
-    private final TimerUtil timerUtil = new TimerUtil();
+    private final TimerUtil timerUtilPop = new TimerUtil();
+    private final TimerUtil timerUtilPlace = new TimerUtil();
 
     private final ModeSetting clickOrLook = new ModeSetting("placing", "R-Click", "R-Click", "Look");
     private final NumberSetting cooldownPlace = new NumberSetting("Place Cooldown-ms", 0.0, 1000.0, 50.0, 0.01);
@@ -73,10 +74,10 @@ public class CrystalPopAndPlace extends Module {
         if (preserveItems.isEnabled() && ItemNearby(target, 6))
             return;
 
-        if (timerUtil.hasReached((int) getCooldownValueWithRandomization(cooldownPop.getValue()))) {
+        if (timerUtilPop.hasReached((int) getCooldownValueWithRandomization(cooldownPop.getValue()))) {
             mc.interactionManager.attackEntity(mc.player, target);
             mc.player.swingHand(Hand.MAIN_HAND);
-            timerUtil.reset();
+            timerUtilPop.reset();
             playerPlacedCrystal = false;
         }
     }
@@ -166,12 +167,12 @@ public class CrystalPopAndPlace extends Module {
     }
 
     private void placeCrystal() {
-        if (clickOrLook.isMode("R-Click") && mc.options.useKey.isPressed() && mc.player.getInventory().selectedSlot == CrystalSlot() && (timerUtil.hasReached(getCooldownValueWithRandomization(cooldownPlace.getValue())))) {
+        if (clickOrLook.isMode("R-Click") && mc.options.useKey.isPressed() && mc.player.getInventory().selectedSlot == CrystalSlot() && (timerUtilPlace.hasReached(getCooldownValueWithRandomization(cooldownPlace.getValue())))) {
             placeBlock();
-            timerUtil.reset();
-        } else if (clickOrLook.isMode("Look") && isObsidianOrBedrockInCrosshair() && mc.player.getInventory().selectedSlot == CrystalSlot() && (timerUtil.hasReached(getCooldownValueWithRandomization(cooldownPlace.getValue())))) {
+            timerUtilPlace.reset();
+        } else if (clickOrLook.isMode("Look") && isObsidianOrBedrockInCrosshair() && mc.player.getInventory().selectedSlot == CrystalSlot() && (timerUtilPlace.hasReached(getCooldownValueWithRandomization(cooldownPlace.getValue())))) {
             placeBlock();
-            timerUtil.reset();
+            timerUtilPlace.reset();
         }
     }
 
