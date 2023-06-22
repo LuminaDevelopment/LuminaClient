@@ -9,8 +9,12 @@ import me.stormcph.lumina.module.impl.render.ESP;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.network.ClientPlayerEntity;
 import net.minecraft.client.network.OtherClientPlayerEntity;
+import net.minecraft.client.render.Camera;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityType;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.util.math.Vec3d;
+import org.jetbrains.annotations.Nullable;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
@@ -22,6 +26,10 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 public abstract class MinecraftClientMixin {
 
     @Shadow public abstract boolean isPaused();
+
+    @Shadow public abstract @Nullable Entity getCameraEntity();
+
+    @Shadow @Nullable public Entity cameraEntity;
 
     @Inject(method = "tick", at = @At("HEAD"))
     public void onTick(CallbackInfo ci) {
@@ -42,5 +50,4 @@ public abstract class MinecraftClientMixin {
             }
         }
     }
-
 }
