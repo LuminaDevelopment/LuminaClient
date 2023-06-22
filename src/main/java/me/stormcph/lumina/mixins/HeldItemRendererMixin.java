@@ -19,6 +19,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.ModifyVariable;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(net.minecraft.client.render.item.HeldItemRenderer.class)
 public abstract class HeldItemRendererMixin {
@@ -32,17 +33,13 @@ public abstract class HeldItemRendererMixin {
         }
     }
 
-    @Shadow
-    private float equipProgressMainHand;
-    @Shadow
-    private float prevEquipProgressMainHand;
+    @Shadow private float equipProgressMainHand;
+    @Shadow private float prevEquipProgressMainHand;
     @Shadow private float prevEquipProgressOffHand;
     @Shadow private float equipProgressOffHand;
     @Shadow private ItemStack mainHand;
     @Shadow private ItemStack offHand;
-
     @Final @Shadow private MinecraftClient client;
-
 
     @Inject(method = "updateHeldItems", at = @At("HEAD"), cancellable = true)
     public void updateHeldItems(CallbackInfo ci) {
@@ -55,11 +52,7 @@ public abstract class HeldItemRendererMixin {
 
             ItemStack stack = client.player.getInventory().getMainHandStack();
 
-            if(stack.getItem() instanceof SwordItem ||
-                    (stack.getItem() instanceof AxeItem && (Animations.mode.getMode().equals("Weapons") || Animations.mode.getMode().equals("All"))) ||
-                    (stack.getItem() instanceof ShovelItem && (Animations.mode.getMode().equals("All"))) ||
-                    (stack.getItem() instanceof PickaxeItem && (Animations.mode.getMode().equals("All"))) ||
-                    (stack.getItem() instanceof HoeItem && (Animations.mode.getMode().equals("All")))) {
+            if(Animations.isValid(stack)) {
 
                 this.equipProgressMainHand = 1;
                 this.equipProgressOffHand = 1;
@@ -89,11 +82,7 @@ public abstract class HeldItemRendererMixin {
     private float modifySwing(float value) {
         if(ModuleManager.INSTANCE.getModuleByClass(Animations.class).isEnabled() && client.options.useKey.isPressed()) {
             ItemStack stack = client.player.getInventory().getMainHandStack();
-            if(stack.getItem() instanceof SwordItem ||
-                    (stack.getItem() instanceof AxeItem && (Animations.mode.getMode().equals("Weapons") || Animations.mode.getMode().equals("All"))) ||
-                    (stack.getItem() instanceof ShovelItem && (Animations.mode.getMode().equals("All"))) ||
-                    (stack.getItem() instanceof PickaxeItem && (Animations.mode.getMode().equals("All"))) ||
-                    (stack.getItem() instanceof HoeItem && (Animations.mode.getMode().equals("All")))) {
+            if(Animations.isValid(stack)) {
                 return 0;
             }
         }

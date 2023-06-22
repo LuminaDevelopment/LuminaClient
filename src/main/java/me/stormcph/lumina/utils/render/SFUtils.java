@@ -45,6 +45,18 @@ public interface SFUtils {
         drawString(matrices, text, (float) x, (float) y, color);
     }
 
+    default void drawStringWithBackground(MatrixStack matrices, String text, float x, float y, Color color, Color background) {
+        if( text == null || text.isEmpty()) return;
+        MinecraftClient mc = MinecraftClient.getInstance();
+        float sf = (float) mc.getWindow().getScaleFactor();
+
+        int width = mc.textRenderer.getWidth(text);
+        int height = mc.textRenderer.fontHeight;
+
+        drawRect(matrices, x, y, x + width, y + height, background.getRGB());
+        drawString(matrices, text, x, y, color);
+    }
+
     default void drawString(MatrixStack matrices, String text, float x, float y, Color color) {
         if( text == null || text.isEmpty()) return;
         MinecraftClient mc = MinecraftClient.getInstance();

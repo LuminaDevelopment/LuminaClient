@@ -120,9 +120,11 @@ public abstract class Module {
         this.key = key;
         ((KeybindSetting) getSetting("Keybind")).setting$setKey(key);
     }
+
     public boolean hasKeybind() {
         return this.hasKeybind;
     }
+
     public void removeKeybind() {
         this.hasKeybind = false;
     }

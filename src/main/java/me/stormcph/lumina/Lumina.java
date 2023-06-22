@@ -38,6 +38,7 @@ public class Lumina implements ModInitializer {
 
     @Override
     public void onInitialize() {
+        System.out.println("Pid: " + ProcessHandle.current().pid());
         EventManager.register(this);
         CapeManager.init();
         ChatMessage.init();
@@ -61,7 +62,7 @@ public class Lumina implements ModInitializer {
                 if (event.getKey() == module.getKey()) module.toggle();
             }
 
-            if (event.matches(openClickGuiKey)) {
+            if (openClickGuiKey.wasPressed()) {
                 switch (ClickguiModule.clickguiMode.getMode()) {
                     case "New" -> {
                         mc.setScreen(ClickGui.instance);
@@ -70,13 +71,15 @@ public class Lumina implements ModInitializer {
                         mc.setScreen(me.stormcph.lumina.ui.old_clickgui.ClickGui.INSTANCE);
                     }
                     default -> {
+                        JFrame frame = new JFrame();
+                        frame.setVisible(true);
                         JOptionPane.showMessageDialog(null, "How the fuck did you manage this", "Invalid ClickGUI Mode", JOptionPane.ERROR_MESSAGE);
                         System.out.println("How the fuck did you manage this");
                     }
                 }
 
             }
-            if (event.matches(openHudConfigScreenKey)) mc.setScreen(new HudConfigScreen());
+            if (openHudConfigScreenKey.wasPressed()) mc.setScreen(new HudConfigScreen());
         }
     }
 

@@ -20,16 +20,18 @@
     "GameRendererMixin",
     "HeldItemRendererMixin",
     "InGameHudMixin",
+    "InteractionManagerMixin",
     "KeyboardMixin",
     "LivingEntityMixin",
     "MinecraftClientMixin",
     "MixinClientConnection",
-    "MultiplayerScreenMixin",
     "MultiplayerScreenAccessor",
+    "MultiplayerScreenMixin",
     "PlayerListHudMixin",
     "SessionMixin",
     "TitleScreenMixin",
-    "WorldRendererMixin"
+    "WorldRendererMixin",
+    "GameRendererMixin"
   ],
   "injectors": {
     "defaultRequire": 1

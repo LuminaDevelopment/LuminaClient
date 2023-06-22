@@ -16,7 +16,7 @@ public abstract class AbstractBlockStateMixin {
     @Shadow public abstract Block getBlock();
     @Inject(at = @At("RETURN"), method = "getRenderType", cancellable = true)
     public void getRenderType(CallbackInfoReturnable<BlockRenderType> cir) {
-        if (ModuleManager.INSTANCE.getModuleByName("XRay").isEnabled() && !XRay.visibleBlocksList.contains(this.getBlock().getTranslationKey())) {
+        if (ModuleManager.INSTANCE.getModuleByClass(XRay.class).isEnabled() && !XRay.visibleBlocksList.contains(this.getBlock().getTranslationKey())) {
             cir.setReturnValue(BlockRenderType.INVISIBLE);
         }
     }

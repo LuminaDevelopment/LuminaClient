@@ -18,7 +18,7 @@ public class NoFall extends Module {
 
     @EventTarget
     public void onPacketSend(PacketSendEvent e) {
-        if (ModuleManager.INSTANCE.getModuleByName("NoFall").isEnabled() && e.getPacket() instanceof PlayerMoveC2SPacket castPacket) {
+        if (e.getPacket() instanceof PlayerMoveC2SPacket castPacket) {
                 IPMC2SP newPacket = (IPMC2SP) castPacket;
                 newPacket.setOnGround(true);
                 e.setPacket((Packet) newPacket);

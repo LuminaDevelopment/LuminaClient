@@ -1,6 +1,7 @@
 package me.stormcph.lumina.ui;
 
 import me.stormcph.lumina.module.HudModule;
+import me.stormcph.lumina.module.Resizable;
 import me.stormcph.lumina.utils.render.RenderUtils;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.util.math.MatrixStack;
@@ -19,8 +20,6 @@ public class DraggableComponent {
     private boolean dragging;
     // Drag coordinates
     private double dragX, dragY;
-
-    private boolean resizing;
 
     public DraggableComponent(HudModule module) {
         this.module = module;
@@ -53,6 +52,11 @@ public class DraggableComponent {
         // Draw the outline
         RenderUtils.drawHollowRect(matrices, module.getX(), module.getY(), module.getWidth(), module.getHeight(), new Color(0, 255, 255).getRGB(), 1);
 
+        if(module instanceof Resizable) {
+            RenderUtils.fill(matrices, module.getX(), module.getY() + module.getHeight() + 20, module.getX() + 10, module.getY() + module.getHeight() + 30, Color.green.getRGB());
+            RenderUtils.fill(matrices, module.getX() + 20, module.getY() + module.getHeight() + 20, module.getX() + 30, module.getY() + module.getHeight() + 30, Color.red.getRGB());
+        }
+
        // RenderUtils.fill(matrices, module.getX() + module.getWidth(), module.getY() + module.getHeight(), module.getX() + module.getWidth() + 20, module.getY() + module.getHeight() + 20, new Color(0, 255, 255, 100).getRGB());
     }
 
@@ -63,8 +67,17 @@ public class DraggableComponent {
             dragX = (int) (mouseX - module.getX());
             dragY = (int) (mouseY - module.getY());
         }
-        else if(isInside(mouseX, mouseY, module.getX() + module.getWidth(), module.getY() + module.getHeight(), module.getX() + module.getWidth() + 20, module.getY() + module.getHeight() + 20) && button == 0) {
-           // resizing = true;
+        else if(isInside(mouseX, mouseY, module.getX(), module.getY() + module.getHeight() + 20, module.getX() + 10, module.getY() + module.getHeight() + 30) && button == 0) {
+           if(!(module instanceof Resizable resizable)) return;
+           float current = resizable.getSize();
+           if(current == resizable.getMaxSize()) return;
+           resizable.setSize(current + 0.1f);
+        }
+        else if(isInside(mouseX, mouseY, module.getX() + 20, module.getY() + module.getHeight() + 20, module.getX() + 30, module.getY() + module.getHeight() + 30) && button == 0) {
+            if(!(module instanceof Resizable resizable)) return;
+            float current = resizable.getSize();
+            if(current == resizable.getMinSize()) return;
+            resizable.setSize(current - 0.1f);
         }
     }
 
@@ -72,32 +85,11 @@ public class DraggableComponent {
         // Disable dragging
         if(button == 0) {
             dragging = false;
-            resizing = false;
         }
     }
 
     public void mouseDragged(double mouseX, double mouseY, int button, double deltaX, double deltaY) {
-        if (resizing) {
-            // Update the size of the module based on the mouse movement
-            double averageDeltaX = (deltaX + deltaY) / 2;
-            double averageDeltaY = (deltaX - deltaY) / 2;
 
-            int newWidth = (int) (module.getWidth() + averageDeltaX);
-            int newHeight = (int) (module.getHeight() + averageDeltaY);
-
-            // Make sure the module stays within the screen bounds
-            newWidth = MathHelper.clamp(newWidth, 10, mc.getWindow().getScaledWidth() - module.getX());
-            newHeight = MathHelper.clamp(newHeight, 10, mc.getWindow().getScaledHeight() - module.getY());
-
-            double newScaleX = (double) newWidth / module.getWidth();
-            double newScaleY = (double) newHeight / module.getHeight();
-
-           // System.out.println(newWidth + " " + newHeight);
-          //  System.out.println(newScaleX + " " + newScaleY);
-
-            module.setScaleX((float) newScaleX);
-            module.setScaleY((float) newScaleY);
-        }
     }
 
     public HudModule getModule() {
