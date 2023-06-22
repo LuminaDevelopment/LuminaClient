@@ -57,6 +57,7 @@ public class ModuleManager {
         // Player
         add(new AutoArmor()); //blatant
         add(new ChestStealer()); //blatant
+        add(new AutoXP());
 
         // Ghost
         add(new CrystalPop());
