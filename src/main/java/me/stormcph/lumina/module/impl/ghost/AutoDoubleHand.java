@@ -51,7 +51,7 @@ public class AutoDoubleHand extends Module {
 
 
     public AutoDoubleHand() {
-        super("AutoDoubleHand", "Automatically pops end crystal when placed", Category.GHOST);
+        super("AutoDoubleHand", "holds a totem in mainhand when a certain action happens", Category.GHOST);
         addSettings(/*enderPearlPredict, */healthIndicator, antiFall, offhandPop, cooldown, crystalRadiusX, crystalRadiusYPlus, crystalRadiusYMinus, crystalRadiusZ, anchorRadiusX, anchorRadiusYPlus, anchorRadiusYMinus, anchorRadiusZ, onlyCharged, obsidianAnchorCheck);
     }
 
