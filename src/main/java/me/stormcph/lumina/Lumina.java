@@ -13,7 +13,7 @@ import me.stormcph.lumina.module.ModuleManager;
 import me.stormcph.lumina.module.impl.render.ClickguiModule;
 import me.stormcph.lumina.old_ui.HudConfigScreen;
 import me.stormcph.lumina.utils.GithubRetriever;
-import net.fabricmc.api.ModInitializer;
+import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.option.KeyBinding;
@@ -24,7 +24,7 @@ import org.lwjgl.glfw.GLFW;
 
 import javax.swing.*;
 
-public class Lumina implements ModInitializer {
+public class Lumina implements ClientModInitializer {
 
     private static final Lumina INSTANCE = new Lumina();
     private final Logger logger = LogManager.getLogger(Lumina.class);
@@ -35,7 +35,7 @@ public class Lumina implements ModInitializer {
     private static final KeyBinding openHudConfigScreenKey = new KeyBinding("key.lumina.open_hud_config_screen", InputUtil.Type.KEYSYM, GLFW.GLFW_KEY_H, "category.lumina");
 
     @Override
-    public void onInitialize() {
+    public void onInitializeClient() {
         EventManager.register(this);
         CapeManager.init();
         new GithubRetriever().retrieve();
