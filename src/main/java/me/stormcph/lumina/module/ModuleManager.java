@@ -34,29 +34,24 @@ public class ModuleManager {
 
         // Combat
         add(new Killaura()); //blatant
-        add(new Criticals()); //blatant
         add(new PvpHubExploit()); //bypass
+        add(new TriggerBot()); //bypass
 
         // Misc
         add(new PacketLogger());
         add(new ChatHandler());
-//        add(new ItemDump()); not finished yet
         add(new NameProtect());
         add(new Advertise());
-//        add(new AutoEz()); it's not finished yet cause i havent implemented a way to detect that it was actually you that killed the entity
-        add(new NoTrace()); 
-        add(new Test());
+        add(new NoTrace());
 
         // Player
-        add(new AutoArmor()); //blatant
-        add(new ChestStealer()); //blatant
+        add(new ChestStealer());
 
         // Ghost
         add(new CrystalPop());
         add(new AutoDoubleHand());
         add(new CrystalPlacer());
         add(new SCC());
-//        add(new LegitTotem());
         add(new CrystalPopAndPlace());
         add(new PearlMacro());
 

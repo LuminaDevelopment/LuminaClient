@@ -26,7 +26,7 @@ import net.minecraft.util.hit.HitResult;
 import net.minecraft.util.math.BlockPos;
 
 
-import static me.stormcph.lumina.utils.PacketUtil.sendPacket;
+import static me.stormcph.lumina.utils.player.PacketUtil.sendPacket;
 
 public class SCC extends Module {
     private final BooleanSetting selfToggle = new BooleanSetting("Self Toggle?", true);

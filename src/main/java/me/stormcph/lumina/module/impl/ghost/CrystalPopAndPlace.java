@@ -26,7 +26,7 @@ import net.minecraft.util.hit.HitResult;
 
 import java.util.Random;
 
-import static me.stormcph.lumina.utils.PacketUtil.sendPacket;
+import static me.stormcph.lumina.utils.player.PacketUtil.sendPacket;
 
 public class CrystalPopAndPlace extends Module {
     private final TimerUtil timerUtil = new TimerUtil();

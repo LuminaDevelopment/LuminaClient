@@ -8,9 +8,10 @@ import me.stormcph.lumina.module.ModuleManager;
 import me.stormcph.lumina.module.impl.render.Animations;
 import me.stormcph.lumina.setting.impl.BooleanSetting;
 import me.stormcph.lumina.setting.impl.NumberSetting;
-import me.stormcph.lumina.utils.PacketUtil;
-import me.stormcph.lumina.utils.RotationUtil;
+import me.stormcph.lumina.utils.player.PacketUtil;
+import me.stormcph.lumina.utils.player.RotationUtil;
 import me.stormcph.lumina.utils.TimerUtil;
+import net.minecraft.client.MinecraftClient;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.ExperienceOrbEntity;
 import net.minecraft.entity.ItemEntity;
@@ -104,8 +105,8 @@ public class Killaura extends Module {
     }
 
     // Times can be changed here
-    private long getTime() {
-        Item item = mc.player.getInventory().getMainHandStack().getItem();
+    public static long getTime() {
+        Item item = MinecraftClient.getInstance().player.getInventory().getMainHandStack().getItem();
         if(item instanceof AirBlockItem) {
             return 400;
         }

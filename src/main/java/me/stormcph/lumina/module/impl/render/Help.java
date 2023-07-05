@@ -3,7 +3,7 @@ package me.stormcph.lumina.module.impl.render;
 import me.stormcph.lumina.module.Category;
 import me.stormcph.lumina.module.HudModule;
 import me.stormcph.lumina.setting.impl.BooleanSetting;
-import me.stormcph.lumina.utils.RenderUtils;
+import me.stormcph.lumina.utils.render.RenderUtils;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.font.TextRenderer;
 import net.minecraft.client.util.math.MatrixStack;

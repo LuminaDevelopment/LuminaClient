@@ -1,7 +1,7 @@
 package me.stormcph.lumina;
 
 import me.stormcph.lumina.cape.CapeManager;
-import me.stormcph.lumina.clickgui.ClickGui;
+import me.stormcph.lumina.ui.clickgui.ClickGui;
 import me.stormcph.lumina.config.ConfigReader;
 import me.stormcph.lumina.event.EventManager;
 import me.stormcph.lumina.event.EventTarget;
@@ -11,8 +11,8 @@ import me.stormcph.lumina.module.HudModule;
 import me.stormcph.lumina.module.Module;
 import me.stormcph.lumina.module.ModuleManager;
 import me.stormcph.lumina.module.impl.render.ClickguiModule;
-import me.stormcph.lumina.old_ui.HudConfigScreen;
-import me.stormcph.lumina.utils.GithubRetriever;
+import me.stormcph.lumina.ui.HudConfigScreen;
+import me.stormcph.lumina.utils.misc.GithubRetriever;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper;
 import net.minecraft.client.MinecraftClient;
@@ -65,7 +65,7 @@ public class Lumina implements ModInitializer {
                         mc.setScreen(ClickGui.instance);
                     }
                     case "Old" -> {
-                        mc.setScreen(me.stormcph.lumina.old_ui.screens.clickgui.ClickGui.INSTANCE);
+                        mc.setScreen(me.stormcph.lumina.ui.old_ui.ClickGui.INSTANCE);
                     }
                     default -> {
                         JOptionPane.showMessageDialog(null, "How the fuck did you manage this", "Invalid ClickGUI Mode", JOptionPane.ERROR_MESSAGE);
