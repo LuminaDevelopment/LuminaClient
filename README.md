@@ -10,8 +10,8 @@
 </p>
 
 <p align="center">
-  <a href="#key-features">Key Features</a> •
-  <a href="#installation">Installation</a> •
+  <a href="#-key-features">Key Features</a> •
+  <a href="#%EF%B8%8F-installation">Installation</a> •
   <a href="#usage">Usage</a> •
   <a href="#contributing">Contributing</a> •
   <a href="#license">License</a>
