@@ -18,6 +18,6 @@ public class EntityRendererMixin<T extends Entity> {
     private void renderLabelIfPresent(T entity, Text text, MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, CallbackInfo ci) {
         RenderLabelEvent renderLabelEvent = new RenderLabelEvent(entity, text, matrices);
         renderLabelEvent.call();
-        if(renderLabelEvent.isCancelled()) ci.cancel();
+        if(renderLabelEvent.cancelled) ci.cancel();
     }
 }

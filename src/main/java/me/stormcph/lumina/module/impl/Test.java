@@ -23,11 +23,10 @@ public class Test extends Module {
 
     @EventTarget
     public void onPacketReceive(PacketReceiveEvent e) {
-        if(e.getPacket() instanceof BlockUpdateS2CPacket) {
+        if (e.getPacket() instanceof BlockUpdateS2CPacket) {
             System.out.println("Received block update packet: " + count);
 
-                e.setCancelled(true);
-
+            e.cancel();
         }
     }
 }

@@ -18,14 +18,14 @@ public class MixinClientConnection {
     private void onPacketReceive(ChannelHandlerContext ctx, Packet<?> packet, CallbackInfo ci) {
         PacketReceiveEvent event = new PacketReceiveEvent(packet);
         //event.call();
-        if(event.isCancelled()) ci.cancel();
+        if(event.cancelled) ci.cancel();
     }
 
     @Inject(method = "handlePacket", at = @At("HEAD"), cancellable = true)
     private static void handle(Packet<?> packet, PacketListener listener, CallbackInfo ci) {
         PacketReceiveEvent event = new PacketReceiveEvent(packet);
         event.call();
-        if(event.isCancelled()) ci.cancel();
+        if(event.cancelled) ci.cancel();
     }
 
 }

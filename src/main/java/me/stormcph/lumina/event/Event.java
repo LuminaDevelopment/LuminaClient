@@ -7,14 +7,7 @@ import java.util.List;
  * Created by Hexeption on 18/12/2016.
  */
 public abstract class Event {
-    private boolean cancelled;
-
-    public enum State {
-        PRE("PRE", 0),
-        POST("POST", 1);
-
-        private State(final String string, final int number) {}
-    }
+    public boolean cancelled;
 
     public Event call() {
         this.cancelled = false;
@@ -22,12 +15,8 @@ public abstract class Event {
         return this;
     }
 
-    public boolean isCancelled() {
-        return cancelled;
-    }
-
-    public void setCancelled(boolean cancelled) {
-        this.cancelled = cancelled;
+    public void cancel() {
+        this.cancelled = true;
     }
 
     private static void call(final Event event) {
