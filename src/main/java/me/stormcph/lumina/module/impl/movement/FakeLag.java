@@ -67,7 +67,7 @@ public class FakeLag extends Module {
 
         if(!sending) {
             packets.add(e.getPacket());
-            e.setCancelled(true);
+            e.cancel();
         }
     }
 }

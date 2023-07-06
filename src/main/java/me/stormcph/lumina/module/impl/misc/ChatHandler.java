@@ -23,7 +23,7 @@ public class ChatHandler extends Module {
         if(nullCheck()) return;
         if(e.getPacket() instanceof ChatMessageC2SPacket cmp) {
             if(cmp.chatMessage().startsWith(prefix)){
-                e.setCancelled(true);
+                e.cancel();
                 ChatCommandManager.findCommand(
                         cmp.chatMessage().replace(
                                 prefix,

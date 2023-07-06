@@ -16,13 +16,13 @@ public class ClientPlayNetworkHandlerMixin {
     public void onSend(Packet<?> packet, CallbackInfo ci) {
         PacketSendEvent pse = new PacketSendEvent(packet);
         pse.call();
-        if(pse.isCancelled()) ci.cancel();
+        if(pse.cancelled) ci.cancel();
     }
 
     @Inject(method = "sendChatMessage", at = @At("HEAD"), cancellable = true)
     public void sendChatMessage(String msg, CallbackInfo ci) {
         ChatMessageSentEvent cmse = new ChatMessageSentEvent(msg);
         cmse.call();
-        if(cmse.isCancelled()) ci.cancel();
+        if(cmse.cancelled) ci.cancel();
     }
 }
