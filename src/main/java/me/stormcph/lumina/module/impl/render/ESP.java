@@ -6,8 +6,8 @@ import me.stormcph.lumina.event.impl.Render2DEvent;
 import me.stormcph.lumina.module.Category;
 import me.stormcph.lumina.module.Module;
 import me.stormcph.lumina.setting.impl.ModeSetting;
-import me.stormcph.lumina.utils.SFUtils;
-import me.stormcph.lumina.utils.Vec3;
+import me.stormcph.lumina.utils.render.SFUtils;
+import me.stormcph.lumina.utils.misc.Vec3;
 
 public class ESP extends Module implements SFUtils{
 

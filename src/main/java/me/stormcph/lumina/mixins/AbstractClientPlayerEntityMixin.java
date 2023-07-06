@@ -22,7 +22,11 @@ public class AbstractClientPlayerEntityMixin {
         if(ModuleManager.INSTANCE.getModuleByName("Cape") != null && ModuleManager.INSTANCE.getModuleByName("Cape").isEnabled()) {
             for (String player : CapeManager.players.keySet()) {
                 if (player.equalsIgnoreCase(thisPlayer.getGameProfile().getName()) || thisPlayer == MinecraftClient.getInstance().player) {
-                    info.setReturnValue(new Identifier("lumina", "textures/cape/" + CapeManager.players.get(player).getFileName()));
+                    try {
+                        String path = "textures/cape/" + CapeManager.players.get(player).getFileName();
+                        info.setReturnValue(new Identifier("lumina", path));
+                    }
+                    catch (NullPointerException ignored) {}
                 }
             }
         }

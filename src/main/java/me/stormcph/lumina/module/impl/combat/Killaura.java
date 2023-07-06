@@ -8,9 +8,10 @@ import me.stormcph.lumina.module.ModuleManager;
 import me.stormcph.lumina.module.impl.render.Animations;
 import me.stormcph.lumina.setting.impl.BooleanSetting;
 import me.stormcph.lumina.setting.impl.NumberSetting;
-import me.stormcph.lumina.utils.PacketUtil;
-import me.stormcph.lumina.utils.RotationUtil;
+import me.stormcph.lumina.utils.player.PacketUtil;
+import me.stormcph.lumina.utils.player.RotationUtil;
 import me.stormcph.lumina.utils.TimerUtil;
+import net.minecraft.client.MinecraftClient;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.ExperienceOrbEntity;
 import net.minecraft.entity.ItemEntity;
@@ -32,13 +33,12 @@ public class Killaura extends Module {
     private final BooleanSetting players = new BooleanSetting("Players", true);
     private final BooleanSetting mobs = new BooleanSetting("Mobs", true);
     private final BooleanSetting passive = new BooleanSetting("Passive", true);
-    private final BooleanSetting autoblock = new BooleanSetting("Autoblock", true);
 
     private TimerUtil timer;
 
     public Killaura() {
         super("Killaura", "Attacks nearby enemies", Category.COMBAT);
-        addSettings(range, players, mobs, passive, autoblock);
+        addSettings(range, players, mobs, passive);
     }
 
     @Override
@@ -55,11 +55,10 @@ public class Killaura extends Module {
 
         rotate(target);
 
-        // Todo: Add autoblock
-
         if(timer.hasReached(getTime())) {
             mc.interactionManager.attackEntity(mc.player, target);
             if(mc.options.useKey.isPressed() && ModuleManager.INSTANCE.getModuleByClass(Animations.class).isEnabled()) {
+                // Downcast to Animations module for swinging
                 ((Animations) ModuleManager.INSTANCE.getModuleByClass(Animations.class)).swing();
                 PacketUtil.sendPacket(new HandSwingC2SPacket(mc.player.getActiveHand()));
             }
@@ -104,8 +103,8 @@ public class Killaura extends Module {
     }
 
     // Times can be changed here
-    private long getTime() {
-        Item item = mc.player.getInventory().getMainHandStack().getItem();
+    public static long getTime() {
+        Item item = MinecraftClient.getInstance().player.getInventory().getMainHandStack().getItem();
         if(item instanceof AirBlockItem) {
             return 400;
         }

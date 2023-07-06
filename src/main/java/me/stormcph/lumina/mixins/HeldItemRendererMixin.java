@@ -48,7 +48,7 @@ public abstract class HeldItemRendererMixin {
     public void updateHeldItems(CallbackInfo ci) {
         ItemSwitchAnimationEvent isa = new ItemSwitchAnimationEvent(equipProgressMainHand);
         isa.call();
-        if(isa.isCancelled()) ci.cancel();
+        if(isa.cancelled) ci.cancel();
 
         if(client.player == null) return;
         if(ModuleManager.INSTANCE.getModuleByClass(Animations.class).isEnabled() && client.options.useKey.isPressed()) {

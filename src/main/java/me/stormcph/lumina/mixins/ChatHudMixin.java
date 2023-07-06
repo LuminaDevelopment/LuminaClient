@@ -17,7 +17,7 @@ public class ChatHudMixin {
     public void onAddMessage(Text message, MessageSignatureData signature, int ticks, MessageIndicator indicator, boolean refresh, CallbackInfo ci) {
         ChatMessageReceivedEvent chatMessageReceivedEvent = new ChatMessageReceivedEvent(message);
         chatMessageReceivedEvent.call();
-        if(chatMessageReceivedEvent.isCancelled()) {
+        if(chatMessageReceivedEvent.cancelled) {
             ci.cancel();
         }
     }

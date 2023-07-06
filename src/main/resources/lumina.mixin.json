@@ -6,9 +6,11 @@
   "client": [
     "AbstractClientPlayerEntityMixin",
     "ChatHudMixin",
+    "ClientPlayerInteractionManagerMixin",
     "ClientPlayNetworkHandlerMixin",
     "EntityMixin",
     "EntityRendererMixin",
+    "GameRendererMixin",
     "HeldItemRendererMixin",
     "InGameHudMixin",
     "KeyboardMixin",

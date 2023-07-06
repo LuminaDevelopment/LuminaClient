@@ -3,7 +3,7 @@ package me.stormcph.lumina.module.impl.chat.impl;
 import me.stormcph.lumina.module.Module;
 import me.stormcph.lumina.module.ModuleManager;
 import me.stormcph.lumina.module.impl.chat.ChatCommand;
-import me.stormcph.lumina.utils.ChatUtils;
+import me.stormcph.lumina.utils.player.ChatUtils;
 import org.lwjgl.glfw.GLFW;
 
 import java.util.List;

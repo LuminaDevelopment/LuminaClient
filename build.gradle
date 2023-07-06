@@ -21,9 +21,6 @@ configurations {
 }
 
 dependencies {
-
-	modRuntimeOnly "com.ptsmods:devlogin:3.1.1" // For Fabric and Quilt
-
 	// To change the versions see the gradle.properties file
 	minecraft "com.mojang:minecraft:${project.minecraft_version}"
 	mappings "net.fabricmc:yarn:${project.yarn_mappings}:v2"

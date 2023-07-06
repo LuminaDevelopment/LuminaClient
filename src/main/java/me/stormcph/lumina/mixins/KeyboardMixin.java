@@ -18,6 +18,6 @@ public class KeyboardMixin {
         KeyEvent keyEvent = new KeyEvent(key, action);
         keyEvent.call();
 
-        if(keyEvent.isCancelled()) ci.cancel();
+        if(keyEvent.cancelled) ci.cancel();
     }
 }

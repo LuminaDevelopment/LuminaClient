@@ -6,7 +6,7 @@ import me.stormcph.lumina.event.impl.PacketSendEvent;
 import me.stormcph.lumina.module.Category;
 import me.stormcph.lumina.module.Module;
 import me.stormcph.lumina.setting.impl.NumberSetting;
-import me.stormcph.lumina.utils.PacketUtil;
+import me.stormcph.lumina.utils.player.PacketUtil;
 import me.stormcph.lumina.utils.TimerUtil;
 import net.minecraft.network.packet.Packet;
 import net.minecraft.util.math.Vec3d;
@@ -62,12 +62,12 @@ public class FakeLag extends Module {
     }
 
     @EventTarget
-    public void onPacket(PacketSendEvent e) {
+    public void onPacketSend(PacketSendEvent e) {
         if(nullCheck()) return;
 
         if(!sending) {
             packets.add(e.getPacket());
-            e.setCancelled(true);
+            e.cancel();
         }
     }
 }

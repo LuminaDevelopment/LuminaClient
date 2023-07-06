@@ -2,13 +2,12 @@ package me.stormcph.lumina.module.impl.ghost;
 
 import me.stormcph.lumina.event.EventTarget;
 import me.stormcph.lumina.event.impl.EventUpdate;
-import me.stormcph.lumina.event.impl.PlayerThrowEnderpearlEvent;
+import me.stormcph.lumina.event.impl.PlayerInteractItemEvent;
 import me.stormcph.lumina.module.Category;
 import me.stormcph.lumina.module.Module;
 import me.stormcph.lumina.setting.impl.BooleanSetting;
 import me.stormcph.lumina.setting.impl.NumberSetting;
 import me.stormcph.lumina.utils.TimerUtil;
-import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.RespawnAnchorBlock;
@@ -17,6 +16,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.decoration.EndCrystalEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.projectile.thrown.EnderPearlEntity;
+import net.minecraft.item.EnderPearlItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
@@ -31,7 +31,7 @@ public class AutoDoubleHand extends Module {
     private Item previousOffhandItem = Items.AIR;
 
 
-    BooleanSetting enderPearlPredict = new BooleanSetting("PredictPearlDamage", true);
+    private final BooleanSetting enderPearlPredict = new BooleanSetting("PredictPearlDamage", true);
     private final NumberSetting healthIndicator = new NumberSetting("health", 0.0, 36, 0, 1);
     private final NumberSetting cooldown = new NumberSetting("SwitchDelay", 0.0, 10000.0, 50.0, 0.01);
     private final NumberSetting crystalRadiusX = new NumberSetting("Crystal X", 0.0, 16.0, 8.0, 0.01);
@@ -44,47 +44,59 @@ public class AutoDoubleHand extends Module {
     private final NumberSetting anchorRadiusYPlus = new NumberSetting("Anchor (above) Y", 0.0, 8.0, 3.0, 0.01);
     private final NumberSetting anchorRadiusYMinus = new NumberSetting("Anchor (below) Y", 0.0, 8.0, 3.0, 0.01);
     private final NumberSetting anchorRadiusZ = new NumberSetting("Anchor Z", 0.0, 8.0, 3.0, 0.01);
-    BooleanSetting onlyCharged = new BooleanSetting("only if charged", false);
-    BooleanSetting obsidianAnchorCheck = new BooleanSetting("Obsidian Anchor Check", true);
-    BooleanSetting antiFall = new BooleanSetting("AntiFall", true);
-    BooleanSetting offhandPop = new BooleanSetting("OffhandPop", false);
+    private final BooleanSetting onlyCharged = new BooleanSetting("only if charged", false);
+    private final BooleanSetting obsidianAnchorCheck = new BooleanSetting("Obsidian Anchor Check", true);
+    private final BooleanSetting antiFall = new BooleanSetting("AntiFall", true);
+    private final BooleanSetting offhandPop = new BooleanSetting("OffhandPop", false);
 
 
     public AutoDoubleHand() {
         super("AutoDoubleHand", "holds a totem in mainhand when a certain action happens", Category.GHOST);
-        addSettings(/*enderPearlPredict, */healthIndicator, antiFall, offhandPop, cooldown, crystalRadiusX, crystalRadiusYPlus, crystalRadiusYMinus, crystalRadiusZ, anchorRadiusX, anchorRadiusYPlus, anchorRadiusYMinus, anchorRadiusZ, onlyCharged, obsidianAnchorCheck);
+        addSettings(/*enderPearlPredict, */
+                healthIndicator,
+                antiFall,
+                offhandPop,
+                cooldown,
+                crystalRadiusX,
+                crystalRadiusYPlus,
+                crystalRadiusYMinus,
+                crystalRadiusZ,
+                anchorRadiusX,
+                anchorRadiusYPlus,
+                anchorRadiusYMinus,
+                anchorRadiusZ,
+                onlyCharged,
+                obsidianAnchorCheck);
     }
 
 
     @Override
-    public void onEnable() {
-        super.onEnable();
+    public void onDisable() {
+        super.onDisable();
 
-        AutoDoubleHand damagePredictor = new AutoDoubleHand();
-
-        ClientTickEvents.END_CLIENT_TICK.register(client -> {
-            if (client.world != null) {
-                ClientPlayerEntity player = client.player;
-                if (player != null) {
-                    checkEndCrystal(player);
-                    anchorCheck(player);
-                    checkHealth(player);
-                    antiFall(player);
-
-                    // Check for offhand pop
-                    if (offhandPop.isEnabled()) {
-                        handleOffhandPop(player);
-                    }
-                }
-            }
-            PlayerThrowEnderpearlEvent.EVENT.register((player, enderPearl) -> {
-                damagePredictor.predictDamage(player, enderPearl);
-            });
-        });
     }
 
     @EventTarget
     public void onUpdate(EventUpdate event) {
+        if(nullCheck()) return;
+        ClientPlayerEntity player = mc.player;
+        checkEndCrystal(player);
+        anchorCheck(player);
+        checkHealth(player);
+        antiFall(player);
+
+        // Check for offhand pop
+        if (offhandPop.isEnabled()) {
+            handleOffhandPop(player);
+        }
+    }
+
+    @EventTarget
+    public void onPearlThrow(PlayerInteractItemEvent e) {
+        if(nullCheck()) return;
+        if(e.getPlayer().getStackInHand(e.getHand()).getItem() instanceof EnderPearlItem) {
+           // predictDamage(e.getPlayer(), e.getPlayer().ray);
+        }
     }
 
     private Optional<BlockPos> getObsidianBlockingAnchor(ClientPlayerEntity player, BlockPos anchorPos) {

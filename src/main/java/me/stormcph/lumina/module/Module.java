@@ -2,7 +2,7 @@ package me.stormcph.lumina.module;
 
 import me.stormcph.lumina.event.EventManager;
 import me.stormcph.lumina.setting.Setting;
-import me.stormcph.lumina.utils.ChatUtils;
+import me.stormcph.lumina.utils.player.ChatUtils;
 import me.stormcph.lumina.utils.animations.Direction;
 import me.stormcph.lumina.utils.animations.impl.DecelerateAnimation;
 import net.minecraft.client.MinecraftClient;
