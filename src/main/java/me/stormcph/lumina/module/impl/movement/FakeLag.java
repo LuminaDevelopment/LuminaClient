@@ -62,7 +62,7 @@ public class FakeLag extends Module {
     }
 
     @EventTarget
-    public void onPacket(PacketSendEvent e) {
+    public void onPacketSend(PacketSendEvent e) {
         if(nullCheck()) return;
 
         if(!sending) {

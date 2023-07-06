@@ -10,7 +10,7 @@ import me.stormcph.lumina.setting.impl.NumberSetting;
 
 public class Flight extends Module {
 
-    public NumberSetting speed = new NumberSetting("Speed", 0, 4, 0.3, 0.05);
+    public NumberSetting speed = new NumberSetting("Speed", 0, 1.5, 0.3, 0.05);
 
     public Flight() {
         super("Flight", "Vanilla fly, instant ban with Anti-Cheat.", Category.MOVEMENT);

@@ -46,6 +46,7 @@ public class ModuleManager {
 
         // Player
         add(new ChestStealer());
+        add(new NoFall());
 
         // Ghost
         add(new CrystalPop());
@@ -65,6 +66,7 @@ public class ModuleManager {
         add(new Cape());
         add(new ESP());
         add(new TargetHUD());
+        add(new NoHurtCam());
 
         // Hide / show categories
         add(new CombatCata());

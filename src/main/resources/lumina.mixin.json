@@ -13,6 +13,7 @@
     "ChatHudMixin",
     "ClientPlayNetworkHandlerMixin",
     "EntityRendererMixin",
+    "GameRendererMixin",
     "HeldItemRendererMixin",
     "InGameHudMixin",
     "KeyboardMixin",
