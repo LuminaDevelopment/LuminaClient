@@ -17,7 +17,7 @@ public class ClientPlayerInteractionManagerMixin {
     public void interactItem(PlayerEntity player, Hand hand, CallbackInfoReturnable<ActionResult> cir) {
         PlayerInteractItemEvent event = new PlayerInteractItemEvent(player, hand);
         event.call();
-        if (event.isCancelled()) {
+        if (event.cancelled) {
             cir.cancel();
         }
     }
