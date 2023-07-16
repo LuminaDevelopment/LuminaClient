@@ -1,0 +1,56 @@
+{
+  "schemaVersion": 1,
+  "id": "lumina",
+  "version": "${version}",
+
+  "name": "Lumina",
+  "description": "Light Utilization Management Integrating Notable Acceleration",
+
+  "authors": [
+    "Stormcph, Qweru, CorruptionHades"
+  ],
+  "contact": {
+    "homepage": "",
+    "sources": ""
+  },
+
+  "license": "gpl-3.0",
+  "icon": "assets/lumina/icon.png",
+
+  "environment": "*",
+  "entrypoints": {
+    "client": [
+      "me.stormcph.lumina.client.LuminaClient"
+    ],
+    "main": [
+      "me.stormcph.lumina.Lumina"
+    ]
+  },
+  "mixins": [
+    "lumina.mixin.json"
+  ],
+
+  "depends": {
+    "fabricloader": ">=0.14.17",
+    "fabric-api": "*",
+    "minecraft": "~1.20.1",
+    "java": ">=17"
+  },
+  "suggests": {
+    "another-mod": "*"
+  },
+  "client": {
+    "keybinds": [
+      {
+        "key": "key.lumina.open_click_gui",
+        "name": "Open Click GUI",
+        "category": "Lumina"
+      },
+      {
+        "key": "key.lumina.open_hud_config_screen",
+        "name": "Open HUD Config Screen",
+        "category": "Lumina"
+      }
+    ]
+  }
+}
