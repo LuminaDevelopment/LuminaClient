@@ -19,7 +19,7 @@ public class ClickGui extends Screen {
         for (Category value : Category.values()) {
             if(value == Category.CATEGORY_MNG) continue;
             tabs.add(new Tab(value, offset));
-            offset += 300;
+            offset += 240;
         }
     }
 

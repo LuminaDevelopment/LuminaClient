@@ -37,7 +37,7 @@ public class Tab implements Component {
         }
         else {
             // TODO: change back when glscissor works
-            //drawRoundedRect(matrices, x, y, x + width, y + height, 15, 20, new Color(20, 20, 20, 190));
+            drawRoundedRect(matrices, x + 10, y, x + width - 10, y + height - 10, 15, 20, new Color(20, 20, 20, 190));
         }
 
         float textX = (x + (width / 2)) - (mc.textRenderer.getWidth(category.name)) - 15;
@@ -55,7 +55,7 @@ public class Tab implements Component {
 
         if(isInside(mouseX, mouseY, x, y, x + width, y + height) && button == 1) {
             // TODO: change back when glscissor works
-            //panel.toggle();
+            panel.toggle();
         }
 
         if(panel.isVisible()) {

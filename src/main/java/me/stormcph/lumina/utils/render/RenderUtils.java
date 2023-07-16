@@ -22,6 +22,42 @@ import java.net.URL;
 
 public class RenderUtils {
 
+    private static final MinecraftClient mc = MinecraftClient.getInstance();
+
+    /**
+     * Very good scissor method for on screen coordinates by @falsel
+     * @param x1 Starting x
+     * @param y1 Starting y
+     * @param x2 ending x
+     * @param y2 ending y
+     * @author falsel
+     */
+    public static void enableScissor(int x1, int y1, int x2, int y2) {
+
+        int scaleFactor = (int) mc.getWindow().getScaleFactor();
+
+        RenderSystem.enableScissor(x1 * scaleFactor,
+                (mc.getWindow().getScaledHeight() - y2) * scaleFactor,
+                (x2-x1) * scaleFactor,
+                (y2-y1) * scaleFactor);
+    }
+
+    /**
+     * Very good scissor method for on screen coordinates by @falsel
+     * @param x Starting x
+     * @param y Starting y
+     * @param x2 ending x
+     * @param y2 ending y
+     * @author falsel
+     */
+    public static void enableScissor(double x, double y, double x2, double y2) {
+        enableScissor((int) x, (int) y, (int) x2, (int) y2);
+    }
+
+    public static void disableScissor() {
+        RenderSystem.disableScissor();
+    }
+
     // Stolen from DrawableHelper
     public static void fill(@NotNull MatrixStack matrices, double x1, double y1, double x2, double y2, int color) {
         Matrix4f matrix = matrices.peek().getPositionMatrix();

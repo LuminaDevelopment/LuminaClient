@@ -7,6 +7,7 @@ import me.stormcph.lumina.module.Module;
 import me.stormcph.lumina.module.ModuleManager;
 import me.stormcph.lumina.module.impl.render.ClickguiModule;
 import me.stormcph.lumina.utils.Animation;
+import me.stormcph.lumina.utils.render.RenderUtils;
 import net.minecraft.client.util.math.MatrixStack;
 
 import java.awt.*;
@@ -25,8 +26,7 @@ public class Panel implements Component {
         this.parent = parent;
         this.category = category;
 
-        // TODO: change back to false wehn glscissor is fixed
-        this.visible = true;
+        this.visible = false;
 
         animation = new Animation(0, 0);
         fadeAnim = new Animation(0, 0);
@@ -56,14 +56,19 @@ public class Panel implements Component {
         animation.update(true);
         fadeAnim.update(true);
 
-        drawRoundedRect(matrices, pX, pY, pX + pW, pY + pH + animation.getValue(), 15, 20, new Color(20, 20, 20, 190));
+        drawRoundedRect(matrices, pX + 10, pY, pX + pW - 10, pY + pH + animation.getValue() - 10, 15, 20, new Color(20, 20, 20, 190));
+
         drawRect(matrices, pX + 30, pY + pH, pX + pW - 30, pY + pH + 3, new Color(100, 100, 100, (int) fadeAnim.getValue()).getRGB());
+        double sf = 1f / getGuiScale();
+        RenderUtils.enableScissor(pX * sf, (pY + pH) * sf, (pX + pW) * sf, (pY + pH + animation.getValue()) * sf);
 
         int offset = 25;
         for (ModuleButton button : buttons) {
             button.drawScreen(matrices, mouseX, mouseY, animation.getValue() - button.getHeight() - offset);
             offset += button.getHeight();
         }
+
+        RenderSystem.disableScissor();
 
         if(animation.getEnd() != 0) {
             animation.setEnd(50 + offset);
@@ -126,43 +131,11 @@ public class Panel implements Component {
         // day #1 of suffering
 
 
+      //  RenderUtils.enableScissor(0, 0, 1000, 1000);
 
-        scissor(pX, pY + pH, pW, pH + animation.getValue());
-       // drawRect(matrices, 0, 0, mc.getWindow().getScaledWidth(), mc.getWindow().getScaledHeight(), Color.white.getRGB());
-        RenderSystem.disableScissor();
-    }
+        // Clipping zone
+      //  drawRect(matrices, 0, 0, mc.getWindow().getWidth(), mc.getWindow().getHeight(), Color.red.getRGB());
 
-
-    private void scissor(float x, float y, float width, float height) {
-        // Calculate the dimensions of the scissor box in screen coordinates
-        int guiScale = (int) mc.getWindow().getScaleFactor();
-
-        switch (guiScale) {
-            case 1: {
-                int scaledX = (int) (x / guiScale);
-                int scaledY = (int) (mc.getWindow().getScaledHeight() - ((y + height) / guiScale));
-                int scaledWidth = (int) (width / guiScale);
-                int scaledHeight = (int) (height / guiScale);
-
-                // Enable the scissor test
-                RenderSystem.enableScissor(scaledX, scaledY, scaledWidth, scaledHeight);
-                break;
-            }
-            case 2: {
-                RenderSystem.enableScissor(/* Screw you */(int) x, (int) -y, (int) (mc.getWindow().getFramebufferWidth() - x), (int) (mc.getWindow().getFramebufferHeight()));
-                break;
-            }
-            case 3: {
-                break;
-            }
-            case 4: {
-                break;
-            }
-            default: {
-                System.out.println("How the fuck did you manage this");
-                break;
-            }
-        }
     }
 
     @Override
@@ -186,8 +159,8 @@ public class Panel implements Component {
 
         if(visible) {
             // TODO: change back when glscissor works
-           // animation.setEnd(0);
-            //fadeAnim.setEnd(0);
+            animation.setEnd(0);
+            fadeAnim.setEnd(0);
         }
         else {
             int offset = 25;
