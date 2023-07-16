@@ -15,6 +15,6 @@ public class LivingEntityMixin {
     public void swingHand(Hand hand, CallbackInfo ci) {
         HandSwingEvent event = new HandSwingEvent(hand);
         event.call();
-        if(event.isCancelled()) ci.cancel();
+        if(event.cancelled) ci.cancel();
     }
 }

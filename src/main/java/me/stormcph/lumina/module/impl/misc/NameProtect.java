@@ -22,7 +22,7 @@ public class NameProtect extends Module {
         if(message.contains(mc.getSession().getUsername())) {
             String newText = message.replace(mc.getSession().getUsername(), name.getText());
             sendMsg(newText);
-            e.setCancelled(true);
+            e.cancel();
         }
     }
 }

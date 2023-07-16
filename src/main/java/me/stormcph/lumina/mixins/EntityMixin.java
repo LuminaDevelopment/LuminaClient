@@ -23,7 +23,7 @@ public class EntityMixin {
         PlayerMoveEvent event = new PlayerMoveEvent(movementType, movement);
         event.call();
         // i am so fucking stupid i forgor to call the evenmt gnj ghdfisajoxiopdshjok
-        if (event.isCancelled()) {
+        if (event.cancelled) {
             ci.cancel();
         }
     }
