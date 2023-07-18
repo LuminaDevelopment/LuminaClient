@@ -31,18 +31,11 @@ public class Lumina implements ClientModInitializer {
 
     private final MinecraftClient mc = MinecraftClient.getInstance();
 
-    private static final KeyBinding openClickGuiKey = new KeyBinding("key.lumina.open_click_gui", InputUtil.Type.KEYSYM, GLFW.GLFW_KEY_RIGHT_ALT, "category.lumina");
-    private static final KeyBinding openHudConfigScreenKey = new KeyBinding("key.lumina.open_hud_config_screen", InputUtil.Type.KEYSYM, GLFW.GLFW_KEY_H, "category.lumina");
-
     @Override
     public void onInitializeClient() {
         EventManager.register(this);
         CapeManager.init();
         new GithubRetriever().retrieve();
-
-        KeyBindingHelper.registerKeyBinding(openClickGuiKey);
-        KeyBindingHelper.registerKeyBinding(openHudConfigScreenKey);
-
        // SessionChanger.loginCracked("LuminaUser");
         System.out.println("Set username to LuminaUser");
 
@@ -59,22 +52,7 @@ public class Lumina implements ClientModInitializer {
                 if (event.getKey() == module.getKey()) module.toggle();
             }
 
-            if (openClickGuiKey.wasPressed()) {
-                switch (ClickguiModule.clickguiMode.getMode()) {
-                    case "New" -> {
-                        mc.setScreen(ClickGui.instance);
-                    }
-                    case "Old" -> {
-                        mc.setScreen(me.stormcph.lumina.ui.old_ui.ClickGui.INSTANCE);
-                    }
-                    default -> {
-                        JOptionPane.showMessageDialog(null, "How the fuck did you manage this", "Invalid ClickGUI Mode", JOptionPane.ERROR_MESSAGE);
-                        System.out.println("How the fuck did you manage this");
-                    }
-                }
-
-            }
-            if (openHudConfigScreenKey.wasPressed()) mc.setScreen(new HudConfigScreen());
+            if (event.getKey() == GLFW.GLFW_KEY_H) mc.setScreen(new HudConfigScreen());
         }
     }
 

@@ -1,6 +1,5 @@
 package me.stormcph.lumina.module;
 
-import me.stormcph.lumina.module.impl.Test;
 import me.stormcph.lumina.module.impl.ghost.*;
 import me.stormcph.lumina.module.impl.category_mng.impl.*;
 import me.stormcph.lumina.module.impl.combat.*;

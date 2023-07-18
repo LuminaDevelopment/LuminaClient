@@ -36,7 +36,6 @@ public class Tab implements Component {
             panel.drawScreen(matrices, mouseX, mouseY);
         }
         else {
-            // TODO: change back when glscissor works
             drawRoundedRect(matrices, x + 10, y, x + width - 10, y + height - 10, 15, 20, new Color(20, 20, 20, 190));
         }
 
