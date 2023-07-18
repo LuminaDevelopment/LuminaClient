@@ -21,7 +21,8 @@ public class BoolComp extends SettingComp {
         float pX = parent.getParent().getParent().getX(), pY = parent.getParent().getParent().getY(), pW = parent.getParent().getParent().getWidth(), pH = parent.getParent().getParent().getHeight();
 
        // drawRect(matrices, pX + 25, pY + pH + y, pX + pW - 25, pY + pH + y + 40, Color.DARK_GRAY.darker().getRGB());
-        drawString(matrices, setting.getName(), pX + 30, pY + pH + y + 10, setting.isEnabled() ? Color.white : Color.GRAY);
+        int middleY = (45 / 2) - (mc.textRenderer.fontHeight * getGuiScale()) / 2;
+        drawString(matrices, setting.getName(), pX + 30, pY + pH + y + middleY, setting.isEnabled() ? Color.white : Color.GRAY);
 
     }
 

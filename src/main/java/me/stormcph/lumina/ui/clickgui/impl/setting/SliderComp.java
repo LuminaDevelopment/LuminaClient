@@ -41,8 +41,8 @@ public class SliderComp extends SettingComp {
             }
         }
 
-        int textOffset = (int) ((pH / 2) - mc.textRenderer.fontHeight /2);
-        drawString(matrices, numSet.getName() + ": " + roundToPlace(numSet.getValue(), 2),pX + 30 + textOffset, pY + pH + y + 10, Color.white);
+        int middleY = (45 / 2) - (mc.textRenderer.fontHeight * getGuiScale()) / 2;
+        drawString(matrices, numSet.getName() + ": " + roundToPlace(numSet.getValue(), 2),pX + 37, pY + pH + y + middleY, Color.white);
 
        // drawRect(matrices, pX + 30, pY + pH + y,pX + pW - 30, pY + y + pH + 50, Color.red.getRGB());
     }
@@ -51,7 +51,8 @@ public class SliderComp extends SettingComp {
     public void mouseClicked(double mouseX, double mouseY, int button) {
         float pX = parent.getParent().getParent().getX(), pY = parent.getParent().getParent().getY(), pW = parent.getParent().getParent().getWidth(), pH = parent.getParent().getParent().getHeight();
         if (isInside(mouseX, mouseY, pX + 30, pY + pH + y,pX + pW - 31, pY + y + pH + 50)) {
-            sliding = true;
+            if(button == 0) sliding = true;
+            else if(button == 1) numSet.setValue(numSet.getDefaultValue());
         }
 
     }

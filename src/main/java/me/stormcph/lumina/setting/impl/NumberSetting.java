@@ -5,7 +5,7 @@ import me.stormcph.lumina.setting.Setting;
 public class NumberSetting extends Setting {
 
     private double min, max, increment;
-    private double value;
+    private double value, defaultValue;
 
     public NumberSetting(String name, double min, double max, double defaultValue, double increment) {
         super(name);
@@ -13,6 +13,7 @@ public class NumberSetting extends Setting {
         this.max = max;
         this.value = defaultValue;
         this.increment = increment;
+        this.defaultValue = defaultValue;
     }
 
     public double clamp(double value, double min, double max) {
@@ -31,6 +32,10 @@ public class NumberSetting extends Setting {
 
     public float getFloatValue() {
         return (float) value;
+    }
+
+    public double getDefaultValue() {
+        return defaultValue;
     }
 
     public void setValue(double value) {
