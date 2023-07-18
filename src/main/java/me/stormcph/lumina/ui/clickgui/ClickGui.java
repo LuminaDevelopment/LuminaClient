@@ -33,10 +33,6 @@ public class ClickGui extends Screen {
     @Override
     public void render(DrawContext context, int mouseX, int mouseY, float delta) {
 
-        //customFont = ClickGuiModu.customFont.isEnabled();
-
-       // SimplifiedFontRenderer.drawString(matrices, new TextFont("comfortaa", 20, 0, 0, 0, Lang.ENG), "Test", 10, 10, Color.white);
-
         for (Tab tab : tabs) {
             tab.drawScreen(context, mouseX, mouseY);
         }

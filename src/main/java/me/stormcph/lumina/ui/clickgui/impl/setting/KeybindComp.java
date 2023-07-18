@@ -24,11 +24,7 @@ public class KeybindComp extends SettingComp {
         KeybindSetting setting = (KeybindSetting) getSetting();
         float pX = parent.getParent().getParent().getX(), pY = parent.getParent().getParent().getY(), pW = parent.getParent().getParent().getWidth(), pH = parent.getParent().getParent().getHeight();
 
-        String keyName = GLFW.glfwGetKeyName(setting.getKey(), setting.getKey());
-        if(keyName == null) {
-            keyName = "None";
-        }
-        drawString(context, setting.getName() + ": " + keyName, pX + 30, pY + pH + y + 10, focused ? Color.white : Color.gray);
+        drawString(context, setting.getName() + ": " + getKeyName(setting.getKey()), pX + 30, pY + pH + y + 10, focused ? Color.white : Color.gray);
     }
 
     @Override
@@ -52,5 +48,41 @@ public class KeybindComp extends SettingComp {
             setting.setKey(keyCode);
             focused = false;
         }
+    }
+
+    private String getKeyName(int key) {
+
+        String keyName = GLFW.glfwGetKeyName(key, 0);
+
+        if(key == GLFW.GLFW_KEY_RIGHT_SHIFT) {
+            keyName = "RShift";
+        }
+        else if(key == GLFW.GLFW_KEY_LEFT_SHIFT) {
+            keyName = "LShift";
+        }
+        else if(key == GLFW.GLFW_KEY_LEFT_CONTROL) {
+            keyName = "LControl";
+        }
+        else if(key == GLFW.GLFW_KEY_RIGHT_CONTROL) {
+            keyName = "RControl";
+        }
+        else if(key == GLFW.GLFW_KEY_RIGHT_ALT) {
+            keyName = "RAlt";
+        }
+        else if(key == GLFW.GLFW_KEY_LEFT_ALT) {
+            keyName = "LAlt";
+        }
+        else if(key == GLFW.GLFW_KEY_ESCAPE) {
+            keyName = "None";
+            key = 0;
+        }
+        else if(key == 0) {
+            keyName = "None";
+        }
+        else if(keyName == null) {
+            keyName = "None";
+        }
+
+        return keyName;
     }
 }

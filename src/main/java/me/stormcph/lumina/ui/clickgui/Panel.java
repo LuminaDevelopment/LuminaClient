@@ -40,7 +40,6 @@ public class Panel implements Component {
         animation.setEnd(50 + offset);
         visible = true;
         fadeAnim.setEnd(255);
-        // <-
 
         buttons.clear();
 
@@ -127,17 +126,6 @@ public class Panel implements Component {
                 }
             }
         }
-
-        // FUN YAY SCISSOR BOX NOW :DDD (WONT TAKE ME 2 YEARS, TOTALLY) -> CONSULT HELP FROM OTHER CLIENT -> GET HELP FROM BADGPT:
-        // Sample codi
-        // noooo do i have to do it manually for evry gui scale i dont want pls nuuu
-        // day #1 of suffering
-
-
-      //  RenderUtils.enableScissor(0, 0, 1000, 1000);
-
-        // Clipping zone
-      //  drawRect(matrices, 0, 0, mc.getWindow().getWidth(), mc.getWindow().getHeight(), Color.red.getRGB());
 
     }
 

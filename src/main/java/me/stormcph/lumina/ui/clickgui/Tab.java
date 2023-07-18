@@ -54,7 +54,6 @@ public class Tab implements Component {
         }
 
         if(isInside(mouseX, mouseY, x, y, x + width, y + height) && button == 1) {
-            // TODO: change back when glscissor works
             panel.toggle();
         }
 
