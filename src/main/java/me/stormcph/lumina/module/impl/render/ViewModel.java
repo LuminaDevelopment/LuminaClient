@@ -12,9 +12,9 @@ public class ViewModel extends Module {
     private final NumberSetting yT = new NumberSetting("Translate Y", -10, 10, 0, 0.1);
     private final NumberSetting zT = new NumberSetting("Translate Z", -10, 10, 0, 0.1);
 
-    private final NumberSetting xSc = new NumberSetting("Scale X", -2, 2, 0, 0.1);
-    private final NumberSetting ySc = new NumberSetting("Scale Y", -2, 2, 0, 0.1);
-    private final NumberSetting zSc = new NumberSetting("Scale Z", -2, 2, 0, 0.1);
+    private final NumberSetting xSc = new NumberSetting("Scale X", -2, 2, 1, 0.1);
+    private final NumberSetting ySc = new NumberSetting("Scale Y", -2, 2, 1, 0.1);
+    private final NumberSetting zSc = new NumberSetting("Scale Z", -2, 2, 1, 0.1);
 
     public ViewModel() {
         super("ViewModel", "Change the way held items are rendered", Category.RENDER);
@@ -22,9 +22,7 @@ public class ViewModel extends Module {
     }
 
     public void render(ItemStack stack, MatrixStack matrices) {
-        matrices.push();
         matrices.translate(xT.getFloatValue(), yT.getFloatValue(), zT.getFloatValue());
         matrices.scale(xSc.getFloatValue(), ySc.getFloatValue(), zSc.getFloatValue());
-        matrices.pop();
     }
 }
