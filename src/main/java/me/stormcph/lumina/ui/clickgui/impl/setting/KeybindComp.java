@@ -24,7 +24,8 @@ public class KeybindComp extends SettingComp {
         KeybindSetting setting = (KeybindSetting) getSetting();
         float pX = parent.getParent().getParent().getX(), pY = parent.getParent().getParent().getY(), pW = parent.getParent().getParent().getWidth(), pH = parent.getParent().getParent().getHeight();
 
-        drawString(context, setting.getName() + ": " + getKeyName(setting.getKey()), pX + 30, pY + pH + y + 10, focused ? Color.white : Color.gray);
+        int middleY = (45 / 2) - (mc.textRenderer.fontHeight * getGuiScale()) / 2;
+        drawString(context, setting.getName() + ": " + getKeyName(setting.getKey()), pX + 30, pY + pH + y + middleY, focused ? Color.white : Color.gray);
     }
 
     @Override

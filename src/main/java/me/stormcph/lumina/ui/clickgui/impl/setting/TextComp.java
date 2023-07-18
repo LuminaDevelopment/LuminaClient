@@ -31,7 +31,8 @@ public class  TextComp extends SettingComp {
         float pX = parent.getParent().getParent().getX(), pY = parent.getParent().getParent().getY(), pW = parent.getParent().getParent().getWidth(), pH = parent.getParent().getParent().getHeight();
 
        // drawRect(matrices, pX + 25, pY + pH + y, pX + pW - 25, pY + pH + y + 40, Color.green.getRGB());
-        drawString(context, setting.getName() + ":" + text, pX + 30, pY + pH + y + 10, focused ? Color.white : Color.gray);
+        int middleY = (45 / 2) - (mc.textRenderer.fontHeight * getGuiScale()) / 2;
+        drawString(context, setting.getName() + ":" + text, pX + 30, pY + pH + y + middleY, focused ? Color.white : Color.gray);
     }
 
     @Override

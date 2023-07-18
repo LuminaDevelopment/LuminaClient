@@ -66,6 +66,7 @@ public class ModuleManager {
         add(new ESP());
         add(new TargetHUD());
         add(new NoHurtCam());
+        add(new ViewModel());
 
         // Hide / show categories
         add(new CombatCata());

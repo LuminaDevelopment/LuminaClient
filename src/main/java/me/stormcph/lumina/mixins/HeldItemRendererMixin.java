@@ -3,6 +3,7 @@ package me.stormcph.lumina.mixins;
 import me.stormcph.lumina.event.impl.ItemSwitchAnimationEvent;
 import me.stormcph.lumina.module.ModuleManager;
 import me.stormcph.lumina.module.impl.render.Animations;
+import me.stormcph.lumina.module.impl.render.ViewModel;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.network.AbstractClientPlayerEntity;
 import net.minecraft.client.network.ClientPlayerEntity;
@@ -29,6 +30,9 @@ public abstract class HeldItemRendererMixin {
         if (mc.player == null) return;
         if(ModuleManager.INSTANCE.getModuleByClass(Animations.class).isEnabled()) {
             ((Animations) ModuleManager.INSTANCE.getModuleByClass(Animations.class)).render(item, matrices);
+        }
+        else if(ModuleManager.INSTANCE.getModuleByClass(ViewModel.class).isEnabled()) {
+            ((ViewModel) ModuleManager.INSTANCE.getModuleByClass(ViewModel.class)).render(item, matrices);
         }
     }
 
