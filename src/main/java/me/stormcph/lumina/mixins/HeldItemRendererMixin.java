@@ -31,7 +31,7 @@ public abstract class HeldItemRendererMixin {
         if(ModuleManager.INSTANCE.getModuleByClass(Animations.class).isEnabled()) {
             ((Animations) ModuleManager.INSTANCE.getModuleByClass(Animations.class)).render(item, matrices);
         }
-        else if(ModuleManager.INSTANCE.getModuleByClass(ViewModel.class).isEnabled()) {
+        else if(ModuleManager.INSTANCE.getModuleByClass(ViewModel.class).isEnabled() && hand == Hand.MAIN_HAND) {
             ((ViewModel) ModuleManager.INSTANCE.getModuleByClass(ViewModel.class)).render(item, matrices);
         }
     }

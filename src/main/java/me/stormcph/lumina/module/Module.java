@@ -61,11 +61,9 @@ public abstract class Module {
     }
 
     public void onEnable() {
-        if(nullCheck()) return;
         EventManager.register(this);
     }
     public void onDisable() {
-        if(nullCheck()) return;
         EventManager.unregister(this);
     }
 
