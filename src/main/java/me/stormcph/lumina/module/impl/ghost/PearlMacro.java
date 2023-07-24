@@ -1,47 +1,36 @@
 package me.stormcph.lumina.module.impl.ghost;
 
-import me.stormcph.lumina.event.EventTarget;
 import me.stormcph.lumina.module.Category;
 import me.stormcph.lumina.module.Module;
 import me.stormcph.lumina.setting.impl.BooleanSetting;
-import me.stormcph.lumina.setting.impl.NumberSetting;
-import me.stormcph.lumina.utils.TimerUtil;
-import net.minecraft.client.MinecraftClient;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.util.ActionResult;
-import net.minecraft.util.Hand;
 
 public class PearlMacro extends Module {
 
-    private final TimerUtil timerUtil = new TimerUtil();
-    private final NumberSetting cooldown = new NumberSetting("cooldown-ms", 0.0, 1000.0, 0.0, 0.01);
     private final BooleanSetting throwPearl = new BooleanSetting("Throw", true);
     private final BooleanSetting back = new BooleanSetting("SwitchBack", true);
     private final BooleanSetting debug = new BooleanSetting("Debug", false);
 
     public PearlMacro() {
         super("PearlMacro", "Switches to a enderpearl, throws it, and then switches back based on your setting choice", Category.GHOST);
-        addSettings(cooldown, throwPearl, back, debug);
+        addSettings(throwPearl, back, debug);
     }
-
 
     @Override
     public void onEnable() {
         super.onEnable();
-        PlayerEntity player = MinecraftClient.getInstance().player;
-        if (player != null) {
-            pearlMacro(player);
+        if(nullCheck()) {
+            toggle();
+            return;
         }
+        pearlMacro();
     }
 
-    @EventTarget
-    public void onUpdate() {
-
-    }
-
-    public boolean pearlMacro(PlayerEntity player) {
+    public void pearlMacro() {
+        PlayerEntity player = mc.player;
         int originalSlot = player.getInventory().selectedSlot;
 
         for (int i = 0; i < 9; i++) {
@@ -62,7 +51,7 @@ public class PearlMacro extends Module {
                         player.getInventory().selectedSlot = originalSlot;
                     }
                     setEnabled(false);
-                    return true;
+                    return;
                 }
             }
             else {
@@ -71,7 +60,6 @@ public class PearlMacro extends Module {
                 }
             }
         }
-        return false;
     }
 
 }

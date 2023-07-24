@@ -46,6 +46,8 @@ public class ModuleManager {
         // Player
         add(new ChestStealer());
         add(new NoFall());
+        add(new GhostPlace());
+        add(new Blink());
 
         // Ghost
         add(new CrystalPop());

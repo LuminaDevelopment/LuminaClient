@@ -6,11 +6,12 @@ import me.stormcph.lumina.event.impl.PacketReceiveEvent;
 import me.stormcph.lumina.module.Category;
 import me.stormcph.lumina.module.Module;
 import me.stormcph.lumina.setting.impl.BooleanSetting;
+import net.minecraft.network.packet.Packet;
 
 public class PacketLogger extends Module {
 
-    BooleanSetting packetSend = new BooleanSetting("PacketSend", true);
-    BooleanSetting packetReceive = new BooleanSetting("PacketReceive", false);
+    private final BooleanSetting packetSend = new BooleanSetting("PacketSend", true);
+    private final BooleanSetting packetReceive = new BooleanSetting("PacketReceive", false);
 
     public PacketLogger() {
         super("PacketLogger", "Show sent and received packets", Category.MISC);
@@ -19,7 +20,6 @@ public class PacketLogger extends Module {
 
     @EventTarget
     public void onPacketSend(PacketSendEvent e) {
-        if(nullCheck()) return;
         if (packetSend.isEnabled()) {
             sendMsg("Sent packet: " + e.getPacket().getClass().getSimpleName());
         }
@@ -27,7 +27,6 @@ public class PacketLogger extends Module {
 
     @EventTarget
     public void onPacketReceive(PacketReceiveEvent e) {
-        if(nullCheck()) return;
         if (packetReceive.isEnabled()) {
             sendMsg("Received packet: " + e.getPacket().getClass().getSimpleName());
         }
