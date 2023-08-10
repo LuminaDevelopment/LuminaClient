@@ -32,7 +32,8 @@ public class ConfigReader {
 
         JsonObject root = new JsonObject();
 
-        for(Module m : modules){
+        for(Module m : modules) {
+            if (!m.savesSettings()) continue;
             JsonObject moduleData = JsonUtil.getKeyValue(config, m.getName()).getAsJsonObject();
 
             if(!compatibilityMode){
