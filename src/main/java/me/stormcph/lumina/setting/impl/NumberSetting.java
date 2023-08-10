@@ -1,5 +1,6 @@
 package me.stormcph.lumina.setting.impl;
 
+import com.google.gson.JsonObject;
 import me.stormcph.lumina.setting.Setting;
 
 public class NumberSetting extends Setting {
@@ -63,5 +64,15 @@ public class NumberSetting extends Setting {
 
     public double getIncrement() {
         return increment;
+    }
+
+    @Override
+    public void save(JsonObject object) {
+        object.addProperty(getName(), value);
+    }
+
+    @Override
+    public void load(JsonObject object) {
+        value = object.get(getName()).getAsDouble();
     }
 }

@@ -6,7 +6,6 @@ import me.stormcph.lumina.module.Module;
 import me.stormcph.lumina.module.ModuleManager;
 import me.stormcph.lumina.module.impl.misc.NoTrace;
 import me.stormcph.lumina.setting.Setting;
-import me.stormcph.lumina.setting.impl.*;
 import me.stormcph.lumina.utils.misc.JsonUtil;
 
 import java.io.File;
@@ -52,49 +51,7 @@ public class ConfigReader {
             }
 
             for(Setting s : m.getSettings()){
-                if(s instanceof ModeSetting){
-                    ((ModeSetting) s).setMode(
-                            moduleData.get
-                                    (
-                                            s.getName()
-                                    )
-                                    .getAsJsonPrimitive()
-                                    .getAsString()
-                    );
-                } else if (s instanceof BooleanSetting) {
-                    ((BooleanSetting) s).setEnabled(
-                            moduleData.get(
-                                    s.getName()
-                            )
-                                    .getAsJsonPrimitive()
-                                    .getAsBoolean()
-                    );
-                } else if (s instanceof KeybindSetting) {
-                    ((KeybindSetting) s).setKey(
-                            moduleData.get(
-                                    s.getName()
-                            )
-                                    .getAsJsonPrimitive()
-                                    .getAsInt()
-                    );
-                } else if (s instanceof NumberSetting) {
-                    ((NumberSetting) s).setValue(
-                            moduleData.get(
-                                            s.getName()
-                                    )
-                                    .getAsJsonPrimitive()
-                                    .getAsInt()
-                    );
-                } else if (s instanceof TextSetting) {
-                    ((TextSetting) s).setText(
-                            moduleData.get
-                                            (
-                                                    s.getName()
-                                            )
-                                    .getAsJsonPrimitive()
-                                    .getAsString()
-                    );
-                }
+                s.load(moduleData);
                 root.add(m.getName(), moduleData);
             }
         }
