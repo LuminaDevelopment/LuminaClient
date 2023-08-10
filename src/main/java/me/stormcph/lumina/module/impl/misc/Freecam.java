@@ -41,7 +41,7 @@ public class Freecam extends Module {
 
     @EventTarget
     public void onPacketSend(PacketSendEvent e) {
-        if (this.isEnabled() && cancelPackets.isEnabled()) e.cancel();
+        if (this.isEnabled() && cancelPackets.isEnabled() && !(e.getPacket() instanceof KeepAliveC2SPacket || e.getPacket() instanceof PlayPongC2SPacket)) e.cancel();
     }
 
     @EventTarget
