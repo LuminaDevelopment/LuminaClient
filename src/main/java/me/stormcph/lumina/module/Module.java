@@ -16,6 +16,8 @@ import java.util.List;
 public abstract class Module {
 
     private String name, description, displayName;
+    private boolean hasKeybind = true;
+    private boolean saveSettings = true;
     private int key;
     private boolean enabled;
     private Category category;
@@ -101,6 +103,21 @@ public abstract class Module {
 
     public void setKey(int key) {
         this.key = key;
+    }
+
+    public boolean hasKeybind() {
+        return this.hasKeybind;
+    }
+
+    public void removeKeybind() {
+        this.hasKeybind = false;
+    }
+
+    public boolean savesSettings() {
+        return this.saveSettings;
+    }
+    public void noSave() {
+        this.saveSettings = false;
     }
 
     public boolean isEnabled() {

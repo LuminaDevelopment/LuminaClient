@@ -8,6 +8,7 @@ import me.stormcph.lumina.module.impl.movement.*;
 import me.stormcph.lumina.module.impl.movement.scaffold.*;
 import me.stormcph.lumina.module.impl.player.*;
 import me.stormcph.lumina.module.impl.render.*;
+import me.stormcph.lumina.module.impl.serverscanner.*;
 import me.stormcph.lumina.setting.impl.KeybindSetting;
 
 import java.util.ArrayList;
@@ -39,6 +40,7 @@ public class ModuleManager {
         // Misc
         add(new PacketLogger());
         add(new ChatHandler());
+        add(new Freecam());
         add(new NameProtect());
         add(new Advertise());
         add(new NoTrace());
@@ -70,6 +72,20 @@ public class ModuleManager {
         add(new NoHurtCam());
         add(new ViewModel());
 
+        // Server Scanner
+        add(new IPRangeFilter());
+        add(new SeenAfterFilter());
+        add(new PlayerFilter());
+        add(new DescriptionFilter());
+        add(new HasImageFilter());
+        add(new VersionFilter());
+        add(new IsFullFilter());
+        add(new PlayerCapFilter());
+        add(new MaxOnlineFilter());
+        add(new MinOnlineFilter());
+        add(new ScanPage());
+        add(new ScanServers());
+
         // Hide / show categories
         add(new CombatCata());
         add(new GhostCategory());
@@ -79,7 +95,7 @@ public class ModuleManager {
         add(new RenderCategory());
 
         for (Module module : modules) {
-            module.addSettings(new KeybindSetting("Keybind", module.getKey(), module));
+            if (module.hasKeybind()) module.addSettings(new KeybindSetting("Keybind", module.getKey(), module));
         }
     }
 

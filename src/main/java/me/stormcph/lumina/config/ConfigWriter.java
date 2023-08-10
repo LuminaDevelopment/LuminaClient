@@ -26,15 +26,15 @@ public class ConfigWriter {
                 module = presetData;
             } else {
                 for(Setting s : m.getSettings()){
-                    if(s instanceof ModeSetting){
+                    if(s instanceof ModeSetting && m.savesSettings()) {
                         module.addProperty(s.getName(), ((ModeSetting) s).getMode());
-                    } else if (s instanceof BooleanSetting) {
+                    } else if (s instanceof BooleanSetting && m.savesSettings()) {
                         module.addProperty(s.getName(), ((BooleanSetting) s).isEnabled());
-                    } else if (s instanceof KeybindSetting) {
+                    } else if (s instanceof KeybindSetting && m.hasKeybind()) {
                         module.addProperty(s.getName(), ((KeybindSetting) s).getKey());
-                    } else if (s instanceof NumberSetting) {
+                    } else if (s instanceof NumberSetting && m.savesSettings()) {
                         module.addProperty(s.getName(), ((NumberSetting) s).getValue());
-                    } else if (s instanceof TextSetting) {
+                    } else if (s instanceof TextSetting && m.savesSettings()) {
                         module.addProperty(s.getName(), ((TextSetting) s).getText());
                     }
                 }
@@ -43,7 +43,7 @@ public class ConfigWriter {
 
             // new config elements here
 
-            module.addProperty("enabled", m.isEnabled());
+            if (m.savesSettings()) module.addProperty("enabled", m.isEnabled());
 
             // end
 

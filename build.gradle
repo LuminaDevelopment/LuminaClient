@@ -29,6 +29,11 @@ dependencies {
 	// Fabric API. This is technically optional, but you probably want it anyway.
 	modInclude fabricApi.module("fabric-resource-loader-v0", project.fabric_version)
 	modInclude fabricApi.module("fabric-key-binding-api-v1", project.fabric_version)
+
+	include implementation('org.mongodb:mongodb-driver-sync:4.9.1')
+	include implementation('org.mongodb:mongodb-driver-core:4.9.1')
+	include implementation('org.mongodb:bson:4.9.1')
+	include implementation('org.mongodb:bson-record-codec:4.9.1')
 }
 
 base {
