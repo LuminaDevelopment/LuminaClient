@@ -1,8 +1,10 @@
 package me.stormcph.lumina.setting;
 
-public class Setting {
+import com.google.gson.JsonObject;
 
-    private String name;
+public abstract class Setting {
+
+    private final String name;
     private boolean visible = true;
 
     public Setting(String name) {
@@ -20,4 +22,8 @@ public class Setting {
     public String getName() {
         return name;
     }
+
+    public abstract void save(JsonObject object);
+
+    public abstract void load(JsonObject object);
 }

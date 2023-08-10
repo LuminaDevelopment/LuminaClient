@@ -24,21 +24,10 @@ public class ConfigWriter {
             JsonObject module = new JsonObject();
             if(compatibilityMode){
                 module = presetData;
-            } else {
-                for(Setting s : m.getSettings()){
-                    if(s instanceof ModeSetting && m.savesSettings()) {
-                        module.addProperty(s.getName(), ((ModeSetting) s).getMode());
-                    } else if (s instanceof BooleanSetting && m.savesSettings()) {
-                        module.addProperty(s.getName(), ((BooleanSetting) s).isEnabled());
-                    } else if (s instanceof KeybindSetting && m.hasKeybind()) {
-                        module.addProperty(s.getName(), ((KeybindSetting) s).getKey());
-                    } else if (s instanceof NumberSetting && m.savesSettings()) {
-                        module.addProperty(s.getName(), ((NumberSetting) s).getValue());
-                    } else if (s instanceof TextSetting && m.savesSettings()) {
-                        module.addProperty(s.getName(), ((TextSetting) s).getText());
-                    }
+            } else if (m.savesSettings()) {
+                for(Setting s : m.getSettings()) {
+                    s.save(module);
                 }
-
             }
 
             // new config elements here

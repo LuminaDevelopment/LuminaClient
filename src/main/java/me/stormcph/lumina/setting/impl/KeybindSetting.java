@@ -1,12 +1,13 @@
 package me.stormcph.lumina.setting.impl;
 
+import com.google.gson.JsonObject;
 import me.stormcph.lumina.module.Module;
 import me.stormcph.lumina.setting.Setting;
 
 public class KeybindSetting extends Setting {
 
     private int keyCode;
-    private Module m;
+    private final Module m;
 
     public KeybindSetting(String name, int keyCode, Module m) {
         super(name);
@@ -25,5 +26,15 @@ public class KeybindSetting extends Setting {
 
     public Module getModule() {
         return m;
+    }
+
+    @Override
+    public void save(JsonObject object) {
+        object.addProperty(getName(), keyCode);
+    }
+
+    @Override
+    public void load(JsonObject object) {
+        keyCode = object.get(getName()).getAsInt();
     }
 }

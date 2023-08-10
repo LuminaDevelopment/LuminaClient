@@ -1,5 +1,6 @@
 package me.stormcph.lumina.setting.impl;
 
+import com.google.gson.JsonObject;
 import me.stormcph.lumina.setting.Setting;
 
 import java.util.Arrays;
@@ -54,5 +55,15 @@ public class ModeSetting extends Setting {
 
     public boolean isMode(String mode) {
         return Objects.equals(this.mode, mode);
+    }
+
+    @Override
+    public void save(JsonObject object) {
+        object.addProperty(getName(), mode);
+    }
+
+    @Override
+    public void load(JsonObject object) {
+        mode = object.get(getName()).getAsString();
     }
 }
