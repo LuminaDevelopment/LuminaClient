@@ -5,7 +5,6 @@ import me.stormcph.lumina.event.impl.EventUpdate;
 import me.stormcph.lumina.module.Category;
 import me.stormcph.lumina.module.Module;
 import me.stormcph.lumina.setting.impl.ModeSetting;
-import me.stormcph.lumina.setting.impl.NumberSetting;
 import me.stormcph.lumina.utils.TimerUtil;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.decoration.EndCrystalEntity;
@@ -18,7 +17,6 @@ import net.minecraft.util.hit.HitResult;
 public class TriggerBot extends Module {
 
     ModeSetting targets = new ModeSetting("Target", "Players", "Players", "Hostiles", "All", "Only Crystals");
-    NumberSetting cooldownMS = new NumberSetting("Cooldown-ms", 0, 5000, 300, 10);
     private TimerUtil timer;
 
     public TriggerBot() {
@@ -40,7 +38,7 @@ public class TriggerBot extends Module {
         if(mc.currentScreen != null) return;
 
         if(target != null) {
-            if(timer.hasReached(Killaura.getTime()) && isValid(target)) {
+            if(mc.player.getAttackCooldownProgress(0.5f) == 1 && isValid(target)) {
                 mc.interactionManager.attackEntity(mc.player, target);
                 mc.player.swingHand(mc.player.getActiveHand());
                 timer.reset();
