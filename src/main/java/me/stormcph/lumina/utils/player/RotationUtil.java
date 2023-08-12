@@ -9,10 +9,14 @@ public class RotationUtil {
     public static float[] getRotations(Entity target) {
         double playerX = MinecraftClient.getInstance().player.getX();
         double playerZ = MinecraftClient.getInstance().player.getZ();
+        double playerY = MinecraftClient.getInstance().player.getY();
         double deltaX = target.getX() - playerX;
+        double deltaY = target.getY() - playerY;
         double deltaZ = target.getZ() - playerZ;
+        double distance = Math.sqrt(deltaX*deltaX + deltaZ*deltaZ);
         double yaw = Math.atan2(deltaZ, deltaX);
-        return new float[]{(float) Math.toDegrees(yaw) - 90};
+        double pitch = deltaY/distance;
+        return new float[]{(float) Math.toDegrees(yaw) - 90, (float) -Math.toDegrees(pitch)};
     }
 
     private static double calculateAngle(double x, double y) {
