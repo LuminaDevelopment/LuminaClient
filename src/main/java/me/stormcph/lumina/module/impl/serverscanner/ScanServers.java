@@ -2,6 +2,7 @@ package me.stormcph.lumina.module.impl.serverscanner;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import me.stormcph.lumina.Lumina;
 import me.stormcph.lumina.mixins.MultiplayerScreenAccessor;
 import me.stormcph.lumina.module.Category;
 import me.stormcph.lumina.module.Module;
@@ -171,8 +172,8 @@ public class ScanServers extends Module {
             reader.close();
 
             // Print the response
-            System.out.println("Response Code: " + responseCode);
-            System.out.println("Response Body: " + response);
+            Lumina.getInstance().getLogger().info("Response Code: " + responseCode);
+            Lumina.getInstance().getLogger().info("Response Body: " + response);
             if (responseCode == 200) {
                 ArrayList<Document> result = (new Gson()).fromJson(response.toString(), new TypeToken<ArrayList<Document>>(){}.getType());
                 System.out.println(result);
@@ -185,8 +186,8 @@ public class ScanServers extends Module {
 
             connection.disconnect();
         } catch (Exception e) {
-            System.out.println("ERROR");
-            System.out.println(e);
+            Lumina.getInstance().getLogger().error("ERROR");
+            Lumina.getInstance().getLogger().error(e.getMessage());
         }
 //      scannedServers.find(query).skip(skip).limit(scanCount.getIntValue()).forEach((doc -> {
 //          serverList.add(new ServerInfo(defaultName.getText(), doc.get("ip") + ":" + doc.get("port"), false), false);
