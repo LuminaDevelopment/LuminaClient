@@ -47,6 +47,10 @@ public abstract class EntityMixin {
     @Inject(method = "setYaw", at = @At("HEAD"), cancellable = true)
     public void setYaw(float yaw, CallbackInfo ci) {
         if (this.isPlayer() && ModuleManager.INSTANCE.getModuleByClass(Freecam.class).isEnabled()) {
+            if (mc.currentScreen != null) {
+                ci.cancel();
+                return;
+            }
             Camera camera = mc.gameRenderer.getCamera();
             ((CameraInterface) camera).setFreecamYaw(camera.getYaw() + yaw - this.yaw);
             ci.cancel();
@@ -56,6 +60,10 @@ public abstract class EntityMixin {
     @Inject(method = "setPitch", at = @At("HEAD"), cancellable = true)
     public void setPitch(float pitch, CallbackInfo ci) {
         if (this.isPlayer() && ModuleManager.INSTANCE.getModuleByClass(Freecam.class).isEnabled()) {
+            if (mc.currentScreen != null) {
+                ci.cancel();
+                return;
+            }
             Camera camera = mc.gameRenderer.getCamera();
             ((CameraInterface) camera).setFreecamPitch(camera.getPitch() + pitch - this.pitch);
             ci.cancel();
