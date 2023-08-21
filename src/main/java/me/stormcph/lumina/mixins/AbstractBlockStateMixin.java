@@ -20,4 +20,9 @@ public abstract class AbstractBlockStateMixin {
             cir.setReturnValue(BlockRenderType.INVISIBLE);
         }
     }
+
+    @Inject(at = @At("RETURN"), method = "getLuminance", cancellable = true)
+    public void getLuminance(CallbackInfoReturnable ci){
+        if(ModuleManager.INSTANCE.getModuleByClass(XRay.class).isEnabled()) ci.setReturnValue(15);
+    }
 }
