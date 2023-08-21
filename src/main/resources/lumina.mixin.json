@@ -17,6 +17,7 @@
     "InGameHudMixin",
     "KeyboardMixin",
     "LivingEntityMixin",
+    "LivingEntityRendererMixin",
     "MinecraftClientMixin",
     "MixinClientConnection",
     "MultiplayerScreenAccessor",

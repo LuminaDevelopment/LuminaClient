@@ -4,9 +4,11 @@ import me.stormcph.lumina.Lumina;
 import me.stormcph.lumina.config.ConfigReader;
 import me.stormcph.lumina.config.ConfigWriter;
 import me.stormcph.lumina.event.impl.EventUpdate;
+import me.stormcph.lumina.module.Module;
 import me.stormcph.lumina.module.ModuleManager;
 import me.stormcph.lumina.module.impl.render.ESP;
 import net.minecraft.client.MinecraftClient;
+import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.network.ClientPlayerEntity;
 import net.minecraft.client.network.OtherClientPlayerEntity;
 import net.minecraft.entity.Entity;
@@ -43,4 +45,8 @@ public abstract class MinecraftClientMixin {
         }
     }
 
+    @Inject(method = "disconnect(Lnet/minecraft/client/gui/screen/Screen;)V", at = @At("HEAD"))
+    private void disconnect(Screen screen, CallbackInfo ci) {
+        for (Module m : ModuleManager.INSTANCE.getModules()) if (m.disablesOnExit()) m.setEnabled(false);
+    }
 }

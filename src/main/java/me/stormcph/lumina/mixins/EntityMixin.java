@@ -53,7 +53,14 @@ public abstract class EntityMixin {
             }
             Camera camera = mc.gameRenderer.getCamera();
             ((CameraInterface) camera).setFreecamYaw(camera.getYaw() + yaw - this.yaw);
-            ci.cancel();
+            if (((Freecam) ModuleManager.INSTANCE.getModuleByClass(Freecam.class)).getRotationMode() == 2) {
+                Vec3d viewPos = mc.player.getEyePos();
+                Vec3d targetPos = mc.crosshairTarget.getPos();
+                Vec3d difPos = new Vec3d(targetPos.x - viewPos.x, targetPos.y - viewPos.y, targetPos.z - viewPos.z);
+                mc.player.headYaw = (float) -(Math.atan2(difPos.x, difPos.z) * 180/Math.PI);
+                mc.player.bodyYaw = 0;//mc.player.headYaw;
+            }
+            if (((Freecam) ModuleManager.INSTANCE.getModuleByClass(Freecam.class)).getRotationMode() != 1) ci.cancel();
         }
     }
 
@@ -66,7 +73,7 @@ public abstract class EntityMixin {
             }
             Camera camera = mc.gameRenderer.getCamera();
             ((CameraInterface) camera).setFreecamPitch(camera.getPitch() + pitch - this.pitch);
-            ci.cancel();
+            if (((Freecam) ModuleManager.INSTANCE.getModuleByClass(Freecam.class)).getRotationMode() != 1) ci.cancel();
         }
     }
 
