@@ -4,6 +4,7 @@
   "package": "me.stormcph.lumina.mixins",
   "compatibilityLevel": "JAVA_17",
   "client": [
+    "AbstractBlockStateMixin",
     "AbstractClientPlayerEntityMixin",
     "CameraMixin",
     "ChatHudMixin",

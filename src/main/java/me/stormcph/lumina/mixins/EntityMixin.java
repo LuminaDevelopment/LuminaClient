@@ -58,7 +58,7 @@ public abstract class EntityMixin {
                 Vec3d targetPos = mc.crosshairTarget.getPos();
                 Vec3d difPos = new Vec3d(targetPos.x - viewPos.x, targetPos.y - viewPos.y, targetPos.z - viewPos.z);
                 mc.player.headYaw = (float) -(Math.atan2(difPos.x, difPos.z) * 180/Math.PI);
-                mc.player.bodyYaw = 0;//mc.player.headYaw;
+                mc.player.bodyYaw = 0;
             }
             if (((Freecam) ModuleManager.INSTANCE.getModuleByClass(Freecam.class)).getRotationMode() != 1) ci.cancel();
         }
