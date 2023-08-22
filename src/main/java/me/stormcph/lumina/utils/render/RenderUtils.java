@@ -2,6 +2,8 @@ package me.stormcph.lumina.utils.render;
 
 import com.mojang.authlib.GameProfile;
 import com.mojang.blaze3d.systems.RenderSystem;
+import it.unimi.dsi.fastutil.ints.IntIntImmutablePair;
+import it.unimi.dsi.fastutil.ints.IntIntPair;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.DrawableHelper;
 import net.minecraft.client.gui.PlayerSkinDrawer;
@@ -18,6 +20,7 @@ import org.joml.Matrix4f;
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.io.IOException;
 import java.net.URL;
 import java.util.HashMap;
 
@@ -216,7 +219,7 @@ public class RenderUtils {
         }
     }
 
-    private static final HashMap<Identifier, BufferedImage> images = new HashMap<>();
+    private static final HashMap<Identifier, IntIntPair> images = new HashMap<>();
     /**
      *  Draws an image at specified coords
      * @param matrices The gl context to draw with
@@ -231,16 +234,24 @@ public class RenderUtils {
         try {
             URL url = RenderUtils.class.getResource("/assets/lumina/" + path);
 
-            BufferedImage image;
-            if(images.containsKey(id)) {
-                image = images.get(id);
-            }
-            else {
-                image = ImageIO.read(url);
-                images.put(id, image);
+            int width, height;
+            IntIntPair pair = images.computeIfAbsent(id, key -> {
+                try {
+                    BufferedImage image = ImageIO.read(url);
+                    return new IntIntImmutablePair(image.getWidth(), image.getHeight());
+                } catch (IOException e) {
+                    return null;
+                }
+            });
+
+            if (pair != null) {
+                width = pair.firstInt();
+                height = pair.secondInt();
+            } else {
+                return;
             }
 
-            DrawableHelper.drawTexture(matrices, (int) x, (int) y, 0.0f, 0.0f, image.getWidth(), image.getHeight(), image.getWidth(), image.getHeight());
+            DrawableHelper.drawTexture(matrices, (int) x, (int) y, 0.0f, 0.0f, width, height, width, height);
         } catch (Exception e) {
             e.printStackTrace();
         }
