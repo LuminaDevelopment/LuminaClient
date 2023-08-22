@@ -78,53 +78,6 @@ public class Panel implements Component {
             visible = false;
         }
 
-        if(!ClickguiModule.performance.isEnabled()) {
-            switch (category) {
-                case COMBAT -> {
-                    matrices.push();
-                    float scale = 0.08f;
-                    matrices.scale(scale, scale, scale);
-                    drawImage(matrices, (pX + 5) * (1 / scale), (pY + 5) * (1 / scale), "textures/icons/combat.png");
-                    matrices.pop();
-                }
-                case MOVEMENT -> {
-                    matrices.push();
-                    float scale = 0.027f;
-                    matrices.scale(scale, scale, scale);
-                    drawImage(matrices, (pX + 5) * (1 / scale), (pY + 1) * (1 / scale), "textures/icons/move.png");
-                    matrices.pop();
-                }
-                case PLAYER -> {
-                    matrices.push();
-                    float scale = 0.025f;
-                    matrices.scale(scale, scale, scale);
-                    drawImage(matrices, (pX + 15) * (1 / scale), (pY + 5) * (1 / scale), "textures/icons/player.png");
-                    matrices.pop();
-                }
-                case RENDER -> {
-                    matrices.push();
-                    float scale = 0.036f;
-                    matrices.scale(scale, scale, scale);
-                    drawImage(matrices, (pX + 15) * (1 / scale), (pY + 10) * (1 / scale), "textures/icons/render.png");
-                    matrices.pop();
-                }
-                case MISC -> {
-                    matrices.push();
-                    float scale = 0.024f;
-                    matrices.scale(scale, scale, scale);
-                    drawImage(matrices, (pX + 15) * (1 / scale), (pY + 10) * (1 / scale), "textures/icons/misc.png");
-                    matrices.pop();
-                }
-                case GHOST -> {
-                    matrices.push();
-                    float scale = 0.03f;
-                    matrices.scale(scale, scale, scale);
-                    drawImage(matrices, (pX + 15) * (1 / scale), (pY + 3) * (1 / scale), "textures/icons/ghost.png");
-                    matrices.pop();
-                }
-            }
-        }
-
         // FUN YAY SCISSOR BOX NOW :DDD (WONT TAKE ME 2 YEARS, TOTALLY) -> CONSULT HELP FROM OTHER CLIENT -> GET HELP FROM BADGPT:
         // Sample codi
         // noooo do i have to do it manually for evry gui scale i dont want pls nuuu

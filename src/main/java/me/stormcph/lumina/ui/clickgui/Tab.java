@@ -1,6 +1,7 @@
 package me.stormcph.lumina.ui.clickgui;
 
 import me.stormcph.lumina.module.Category;
+import me.stormcph.lumina.module.impl.render.ClickguiModule;
 import net.minecraft.client.util.math.MatrixStack;
 
 import java.awt.*;
@@ -39,6 +40,53 @@ public class Tab implements Component {
             drawRoundedRect(matrices, x + 10, y, x + width - 10, y + height - 10, 15, 20, new Color(20, 20, 20, 190));
         }
 
+        if(!ClickguiModule.performance.isEnabled()) {
+            switch (category) {
+                case COMBAT -> {
+                    matrices.push();
+                    float scale = 0.08f;
+                    matrices.scale(scale, scale, scale);
+                    drawImage(matrices, (x + 5) * (1 / scale), (y + 5) * (1 / scale), "textures/icons/combat.png");
+                    matrices.pop();
+                }
+                case MOVEMENT -> {
+                    matrices.push();
+                    float scale = 0.027f;
+                    matrices.scale(scale, scale, scale);
+                    drawImage(matrices, (x + 5) * (1 / scale), (y + 1) * (1 / scale), "textures/icons/move.png");
+                    matrices.pop();
+                }
+                case PLAYER -> {
+                    matrices.push();
+                    float scale = 0.025f;
+                    matrices.scale(scale, scale, scale);
+                    drawImage(matrices, (x + 15) * (1 / scale), (y + 5) * (1 / scale), "textures/icons/player.png");
+                    matrices.pop();
+                }
+                case RENDER -> {
+                    matrices.push();
+                    float scale = 0.036f;
+                    matrices.scale(scale, scale, scale);
+                    drawImage(matrices, (x + 15) * (1 / scale), (y + 10) * (1 / scale), "textures/icons/render.png");
+                    matrices.pop();
+                }
+                case MISC -> {
+                    matrices.push();
+                    float scale = 0.024f;
+                    matrices.scale(scale, scale, scale);
+                    drawImage(matrices, (x + 15) * (1 / scale), (y + 10) * (1 / scale), "textures/icons/misc.png");
+                    matrices.pop();
+                }
+                case GHOST -> {
+                    matrices.push();
+                    float scale = 0.03f;
+                    matrices.scale(scale, scale, scale);
+                    drawImage(matrices, (x + 15) * (1 / scale), (y + 3) * (1 / scale), "textures/icons/ghost.png");
+                    matrices.pop();
+                }
+            }
+        }
+
         float textX = (x + (width / 2)) - (mc.textRenderer.getWidth(category.name)) - 15;
         drawString(matrices, category.name, textX, y + 10f, Color.white);
     }
@@ -53,7 +101,6 @@ public class Tab implements Component {
         }
 
         if(isInside(mouseX, mouseY, x, y, x + width, y + height) && button == 1) {
-            // TODO: change back when glscissor works
             panel.toggle();
         }
 

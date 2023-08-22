@@ -12,6 +12,7 @@ import net.minecraft.network.packet.Packet;
 import net.minecraft.network.packet.c2s.play.KeepAliveC2SPacket;
 import net.minecraft.network.packet.c2s.play.PlayerInteractBlockC2SPacket;
 import net.minecraft.network.packet.c2s.query.QueryPingC2SPacket;
+import net.minecraft.text.Text;
 
 import java.util.Queue;
 import java.util.concurrent.ConcurrentLinkedQueue;
@@ -28,7 +29,6 @@ public class Blink extends Module {
     @Override
     public void onEnable() {
         super.onEnable();
-
         model = new FakePlayerEntity(mc.player, mc.player.getGameProfile().getName(), 20, true);
         model.doNotPush = true;
         model.hideWhenInsideCamera = true;

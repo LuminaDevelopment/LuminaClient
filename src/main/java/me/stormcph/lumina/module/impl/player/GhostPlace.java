@@ -49,7 +49,6 @@ public class GhostPlace extends Module {
                 e.cancel();
             }
             else {
-
                 BlockPos pos = pib.getBlockHitResult().getBlockPos();
                 switch (pib.getBlockHitResult().getSide()) {
                     case UP -> pos = pos.up();

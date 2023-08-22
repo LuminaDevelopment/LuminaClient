@@ -19,6 +19,7 @@ import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.net.URL;
+import java.util.HashMap;
 
 public class RenderUtils {
 
@@ -215,6 +216,7 @@ public class RenderUtils {
         }
     }
 
+    private static final HashMap<Identifier, BufferedImage> images = new HashMap<>();
     /**
      *  Draws an image at specified coords
      * @param matrices The gl context to draw with
@@ -224,10 +226,20 @@ public class RenderUtils {
      */
     public static void drawTexturedRectangle(MatrixStack matrices, float x, float y, String path) {
         // Bind the texture
-        RenderSystem.setShaderTexture(0, new Identifier("lumina", path));
+        Identifier id = new Identifier("lumina", path);
+        RenderSystem.setShaderTexture(0, id);
         try {
             URL url = RenderUtils.class.getResource("/assets/lumina/" + path);
-            BufferedImage image = ImageIO.read(url);
+
+            BufferedImage image;
+            if(images.containsKey(id)) {
+                image = images.get(id);
+            }
+            else {
+                image = ImageIO.read(url);
+                images.put(id, image);
+            }
+
             DrawableHelper.drawTexture(matrices, (int) x, (int) y, 0.0f, 0.0f, image.getWidth(), image.getHeight(), image.getWidth(), image.getHeight());
         } catch (Exception e) {
             e.printStackTrace();
