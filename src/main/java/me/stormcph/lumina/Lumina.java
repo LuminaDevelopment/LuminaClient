@@ -37,7 +37,7 @@ public class Lumina implements ClientModInitializer {
         CapeManager.init();
         new GithubRetriever().retrieve();
        // SessionChanger.loginCracked("LuminaUser");
-        System.out.println("Set username to LuminaUser");
+        getLogger().info("Set username to LuminaUser");
 
 
         Thread configThr = new Thread(ConfigReader::loadConfig, "LuminaConfigReaderThread");

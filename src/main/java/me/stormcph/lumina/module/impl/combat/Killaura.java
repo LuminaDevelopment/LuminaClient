@@ -39,12 +39,10 @@ public class Killaura extends Module {
     public void onUpdate(EventUpdate e) {
         if(nullCheck()) return;
         List<LivingEntity> targets = nearestTarget();
-        if(targets == null || targets.isEmpty()) return;
+        if(targets.isEmpty()) return;
         LivingEntity target = targets.get(0);
 
         rotate(target);
-
-
 
         if(mc.player.getAttackCooldownProgress(0.5f) == 1) {
             mc.interactionManager.attackEntity(mc.player, target);
@@ -65,8 +63,6 @@ public class Killaura extends Module {
     }
 
     private List<LivingEntity> nearestTarget() {
-
-        if(nullCheck()) return null;
 
         Comparator<LivingEntity> comparator = priority.isMode("Distance") ? Comparator.comparingDouble(entity -> entity.distanceTo(mc.player)) : Comparator.comparingDouble(LivingEntity::getHealth);
 

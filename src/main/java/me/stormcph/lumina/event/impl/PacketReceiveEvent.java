@@ -1,21 +1,9 @@
 package me.stormcph.lumina.event.impl;
 
-import me.stormcph.lumina.event.Event;
 import net.minecraft.network.packet.Packet;
 
-public class PacketReceiveEvent extends Event {
-
-    private Packet<?> packet;
-
+public class PacketReceiveEvent extends PacketEvent {
     public PacketReceiveEvent(Packet<?> packet) {
-        this.packet = packet;
-    }
-
-    public Packet<?> getPacket() {
-        return packet;
-    }
-
-    public void setPacket(Packet<?> packet) {
-        this.packet = packet;
+        super(packet);
     }
 }

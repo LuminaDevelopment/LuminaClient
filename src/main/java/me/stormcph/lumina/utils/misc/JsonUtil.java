@@ -4,6 +4,7 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.mojang.logging.LogUtils;
+import me.stormcph.lumina.Lumina;
 import me.stormcph.lumina.module.impl.misc.NoTrace;
 import net.fabricmc.loader.api.FabricLoader;
 
@@ -29,8 +30,8 @@ public class JsonUtil {
             }
             myReader.close();
         } catch (FileNotFoundException e) {
-            System.out.println("An error occurred.");
-            e.printStackTrace();
+            Lumina.getInstance().getLogger().error("An error occurred.");
+            Lumina.getInstance().getLogger().error(e.getMessage());
         }
         return builder.toString();
     }

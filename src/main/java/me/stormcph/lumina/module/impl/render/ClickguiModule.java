@@ -1,5 +1,6 @@
 package me.stormcph.lumina.module.impl.render;
 
+import me.stormcph.lumina.Lumina;
 import me.stormcph.lumina.module.Category;
 import me.stormcph.lumina.module.Module;
 import me.stormcph.lumina.setting.impl.BooleanSetting;
@@ -34,7 +35,7 @@ public class ClickguiModule extends Module {
                 }
                 default -> {
                     JOptionPane.showMessageDialog(null, "How the fuck did you manage this", "Invalid ClickGUI Mode", JOptionPane.ERROR_MESSAGE);
-                    System.out.println("How the fuck did you manage this");
+                    Lumina.getInstance().getLogger().info("How the fuck did you manage this");
                 }
             }
         }
