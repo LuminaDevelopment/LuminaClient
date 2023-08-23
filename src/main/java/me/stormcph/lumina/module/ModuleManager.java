@@ -71,6 +71,7 @@ public class ModuleManager {
         add(new TargetHUD());
         add(new NoHurtCam());
         add(new ViewModel());
+        add(new XRay());
 
         // Server Scanner
         add(new IPRangeFilter());

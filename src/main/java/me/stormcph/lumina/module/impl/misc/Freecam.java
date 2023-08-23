@@ -8,6 +8,7 @@ import me.stormcph.lumina.mixinterface.CameraInterface;
 import me.stormcph.lumina.module.Category;
 import me.stormcph.lumina.module.Module;
 import me.stormcph.lumina.setting.impl.BooleanSetting;
+import me.stormcph.lumina.setting.impl.ModeSetting;
 import me.stormcph.lumina.setting.impl.NumberSetting;
 import net.minecraft.client.input.KeyboardInput;
 import net.minecraft.network.packet.c2s.play.KeepAliveC2SPacket;
@@ -20,12 +21,12 @@ public class Freecam extends Module {
     private boolean wasSneaking = false;
     private Vec3d velocity = Vec3d.ZERO;
     private NumberSetting speed = new NumberSetting("Speed", 0, 2, 0.1, 0.02);
-    private BooleanSetting velocitySetting = new BooleanSetting("Velocity", true);
+    private final ModeSetting movementMode = new ModeSetting("Movement", "Velocity", "Velocity", "Static");
     private BooleanSetting cancelPackets = new BooleanSetting("Cancel Packets", true);
+    private final ModeSetting rotationMode = new ModeSetting("Rotation","Off", "Off", "Rotation", "Target");
     public Freecam() {
         super("Freecam", "Leave your body and enter spectator mode", Category.MISC);
-        addSettings(velocitySetting, speed, cancelPackets);
-        noSave();
+        addSettings(movementMode, speed, cancelPackets, rotationMode);
     }
 
     @Override
@@ -51,24 +52,24 @@ public class Freecam extends Module {
         if(nullCheck()) return;
         if (this.isEnabled()) {
             CameraInterface camera = (CameraInterface) mc.gameRenderer.getCamera();
-            if (velocitySetting.isEnabled()) {
+            if (movementMode.isMode("Velocity")) {
                 if (mc.options.rightKey.isPressed()) {
-                    Vec3d newVec = camera.getRotationVector().rotateY((float) Math.PI / 2).multiply(-speed.getValue());
-                    velocity = velocity.add(newVec.x, 0, newVec.z);
+                    double angle = Math.atan2(camera.getRotationVector().z, camera.getRotationVector().x) + Math.PI / 2;
+                    velocity = velocity.add(Math.cos(angle) * speed.getValue(), 0, Math.sin(angle) * speed.getValue());
                 }
                 if (mc.options.leftKey.isPressed()) {
-                    Vec3d newVec = camera.getRotationVector().rotateY((float) Math.PI / 2).multiply(speed.getValue());
-                    velocity = velocity.add(newVec.x, 0, newVec.z);
+                    double angle = Math.atan2(camera.getRotationVector().z, camera.getRotationVector().x) - Math.PI / 2;
+                    velocity = velocity.add(Math.cos(angle) * speed.getValue(), 0, Math.sin(angle) * speed.getValue());
                 }
                 if (mc.options.jumpKey.isPressed()) velocity = velocity.add(0, speed.getValue(), 0);
                 if (mc.options.sneakKey.isPressed()) velocity = velocity.add(0, -speed.getValue(), 0);
                 if (mc.options.forwardKey.isPressed()) {
-                    Vec3d newVec = camera.getRotationVector().multiply(speed.getValue());
-                    velocity = velocity.add(newVec.x, 0, newVec.z);
+                    double angle = Math.atan2(camera.getRotationVector().z, camera.getRotationVector().x);
+                    velocity = velocity.add(Math.cos(angle) * speed.getValue(), 0, Math.sin(angle) * speed.getValue());
                 }
                 if (mc.options.backKey.isPressed()) {
-                    Vec3d newVec = camera.getRotationVector().multiply(-speed.getValue());
-                    velocity = velocity.add(newVec.x, 0, newVec.z);
+                    double angle = Math.atan2(camera.getRotationVector().z, camera.getRotationVector().x) + Math.PI;
+                    velocity = velocity.add(Math.cos(angle) * speed.getValue(), 0, Math.sin(angle) * speed.getValue());
                 }
 
                 velocity = new Vec3d(MathHelper.clamp(velocity.x, -speed.getValue() * 3, speed.getValue() * 3), MathHelper.clamp(velocity.y, -speed.getValue() * 3, speed.getValue() * 3), MathHelper.clamp(velocity.z, -speed.getValue() * 3, speed.getValue() * 3));
@@ -79,22 +80,22 @@ public class Freecam extends Module {
                 camera.moveFreecamBy(velocity);
             } else {
                 if (mc.options.rightKey.isPressed()) {
-                    Vec3d newVec = camera.getRotationVector().rotateY((float) Math.PI / 2).multiply(-speed.getValue() * 2);
-                    camera.moveFreecamBy(new Vec3d(newVec.x, 0, newVec.z));
+                    double angle = Math.atan2(camera.getRotationVector().z, camera.getRotationVector().x) + Math.PI / 2;
+                    camera.moveFreecamBy(new Vec3d(Math.cos(angle) * speed.getValue() * 2, 0, Math.sin(angle) * speed.getValue() * 2));
                 }
                 if (mc.options.leftKey.isPressed()) {
-                    Vec3d newVec = camera.getRotationVector().rotateY((float) Math.PI / 2).multiply(speed.getValue() * 2);
-                    camera.moveFreecamBy(new Vec3d(newVec.x, 0, newVec.z));
+                    double angle = Math.atan2(camera.getRotationVector().z, camera.getRotationVector().x) - Math.PI / 2;
+                    camera.moveFreecamBy(new Vec3d(Math.cos(angle) * speed.getValue() * 2, 0, Math.sin(angle) * speed.getValue() * 2));
                 }
                 if (mc.options.jumpKey.isPressed()) camera.moveFreecamBy(new Vec3d(0, speed.getValue() * 2, 0));
                 if (mc.options.sneakKey.isPressed()) camera.moveFreecamBy(new Vec3d(0, -speed.getValue() * 2, 0));
                 if (mc.options.forwardKey.isPressed()) {
-                    Vec3d newVec = camera.getRotationVector().multiply(speed.getValue() * 2);
-                    camera.moveFreecamBy(new Vec3d(newVec.x, 0, newVec.z));
+                    double angle = Math.atan2(camera.getRotationVector().z, camera.getRotationVector().x);
+                    camera.moveFreecamBy(new Vec3d(Math.cos(angle) * speed.getValue() * 2, 0, Math.sin(angle) * speed.getValue() * 2));
                 }
                 if (mc.options.backKey.isPressed()) {
-                    Vec3d newVec = camera.getRotationVector().multiply(-speed.getValue() * 2);
-                    camera.moveFreecamBy(new Vec3d(newVec.x, 0, newVec.z));
+                    double angle = Math.atan2(camera.getRotationVector().z, camera.getRotationVector().x) + Math.PI;
+                    camera.moveFreecamBy(new Vec3d(Math.cos(angle) * speed.getValue() * 2, 0, Math.sin(angle) * speed.getValue() * 2));
                 }
             }
         }
@@ -108,5 +109,11 @@ public class Freecam extends Module {
                 mc.player.input.sneaking = wasSneaking;
             }
         }
+    }
+
+    public int getRotationMode() {
+        if (rotationMode.isMode("Rotation")) return 1;
+        if (rotationMode.isMode("Target")) return 2;
+        return 0;
     }
 }

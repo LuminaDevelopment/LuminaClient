@@ -73,7 +73,7 @@ public abstract class CameraMixin implements CameraInterface {
         this.setRotation(yaw, pitch);
     }
     public void setFreecamPitch(float pitch) {
-        this.setRotation(yaw, pitch);
+        this.setRotation(yaw, MathHelper.clamp(pitch, -180 - this.getPitch(), 180 - this.getPitch()));
     }
 
     public Vec3d getRotationVector() {

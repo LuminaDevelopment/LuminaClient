@@ -18,6 +18,7 @@ public abstract class Module {
     private String name, description, displayName;
     private boolean hasKeybind = true;
     private boolean saveSettings = true;
+    private boolean disableOnExit = false;
     private int key;
     private boolean enabled;
     private Category category;
@@ -113,9 +114,18 @@ public abstract class Module {
         this.hasKeybind = false;
     }
 
+    public void disableOnExit() {
+        this.disableOnExit = true;
+    }
+
     public boolean savesSettings() {
         return this.saveSettings;
     }
+
+    public boolean disablesOnExit() {
+        return this.disableOnExit;
+    }
+
     public void noSave() {
         this.saveSettings = false;
     }
