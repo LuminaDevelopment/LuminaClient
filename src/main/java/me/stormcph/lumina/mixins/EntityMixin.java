@@ -25,28 +25,31 @@ public abstract class EntityMixin {
     @Shadow private float pitch;
     @Shadow protected abstract Vec3d getRotationVector(float pitch, float yaw);
     MinecraftClient mc = MinecraftClient.getInstance();
+    
+    public boolean playerCheck() {
+        return ((Object) this) instanceof ClientPlayerEntity && ((Object) this) == MinecraftClient.getInstance().player;
+    }
 
     @Inject(method = "move", at = @At("HEAD"), cancellable = true)
     public void onMove(MovementType movementType, Vec3d movement, CallbackInfo ci) {
-        if (this.isPlayer() && ModuleManager.INSTANCE.getModuleByClass(Freecam.class).isEnabled()) ci.cancel();
-        if(!(((Object) this) instanceof ClientPlayerEntity)) return;
-        if(!(((Object) this) == MinecraftClient.getInstance().player)) return;
+        if(!playerCheck()) return;
 
         PlayerMoveEvent event = new PlayerMoveEvent(movementType, movement);
         event.call();
         if (event.cancelled) {
             ci.cancel();
         }
+        if (ModuleManager.INSTANCE.getModuleByClass(Freecam.class).isEnabled()) ci.cancel();
     }
 
     @Inject(method = "pushAwayFrom", at = @At("HEAD"), cancellable = true)
     private void onPushAwayFrom(Entity entity, CallbackInfo ci) {
-        if (this.isPlayer() && ModuleManager.INSTANCE.getModuleByClass(Freecam.class).isEnabled()) ci.cancel();
+        if (!playerCheck() && ModuleManager.INSTANCE.getModuleByClass(Freecam.class).isEnabled()) ci.cancel();
     }
 
     @Inject(method = "setYaw", at = @At("HEAD"), cancellable = true)
     public void setYaw(float yaw, CallbackInfo ci) {
-        if (this.isPlayer() && ModuleManager.INSTANCE.getModuleByClass(Freecam.class).isEnabled()) {
+        if (!playerCheck() && ModuleManager.INSTANCE.getModuleByClass(Freecam.class).isEnabled()) {
             if (mc.currentScreen != null) {
                 ci.cancel();
                 return;
@@ -66,7 +69,7 @@ public abstract class EntityMixin {
 
     @Inject(method = "setPitch", at = @At("HEAD"), cancellable = true)
     public void setPitch(float pitch, CallbackInfo ci) {
-        if (this.isPlayer() && ModuleManager.INSTANCE.getModuleByClass(Freecam.class).isEnabled()) {
+        if (!playerCheck() && ModuleManager.INSTANCE.getModuleByClass(Freecam.class).isEnabled()) {
             if (mc.currentScreen != null) {
                 ci.cancel();
                 return;

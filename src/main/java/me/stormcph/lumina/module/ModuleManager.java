@@ -72,6 +72,7 @@ public class ModuleManager {
         add(new NoHurtCam());
         add(new ViewModel());
         add(new XRay());
+        add(new FullBright());
 
         // Server Scanner
         add(new IPRangeFilter());

@@ -1,7 +1,9 @@
 package me.stormcph.lumina.mixins;
 
 import me.stormcph.lumina.module.ModuleManager;
+import me.stormcph.lumina.module.impl.render.FullBright;
 import me.stormcph.lumina.module.impl.render.XRay;
+import me.stormcph.lumina.setting.impl.NumberSetting;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockRenderType;
@@ -24,5 +26,6 @@ public abstract class AbstractBlockStateMixin {
     @Inject(at = @At("RETURN"), method = "getLuminance", cancellable = true)
     public void getLuminance(CallbackInfoReturnable ci){
         if(ModuleManager.INSTANCE.getModuleByClass(XRay.class).isEnabled()) ci.setReturnValue(15);
+        if (ModuleManager.INSTANCE.getModuleByClass(FullBright.class).isEnabled()) ci.setReturnValue(((FullBright) ModuleManager.INSTANCE.getModuleByClass(FullBright.class)).getBrightness());
     }
 }
