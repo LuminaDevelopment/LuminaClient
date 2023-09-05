@@ -9,6 +9,7 @@
     "Vec3dMixin"
   ],
   "client": [
+    "AbstractBlockStateMixin",
     "AbstractClientPlayerEntityMixin",
     "ChatHudMixin",
     "ClientPlayerInteractionManagerMixin",

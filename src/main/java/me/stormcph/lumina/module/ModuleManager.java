@@ -69,6 +69,7 @@ public class ModuleManager {
         add(new TargetHUD());
         add(new NoHurtCam());
         add(new ViewModel());
+        add(new FullBright());
 
         // Hide / show categories
         add(new CombatCata());
