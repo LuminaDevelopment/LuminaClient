@@ -11,6 +11,7 @@ import net.minecraft.entity.decoration.EndCrystalEntity;
 import net.minecraft.entity.mob.HostileEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.projectile.ProjectileEntity;
+import net.minecraft.util.Hand;
 import net.minecraft.util.hit.EntityHitResult;
 import net.minecraft.util.hit.HitResult;
 
@@ -37,14 +38,20 @@ public class TriggerBot extends Module {
 
         if(mc.currentScreen != null) return;
 
+        // Check if the player is using an item in their offhand
+        if(mc.player.isUsingItem() && mc.player.getActiveHand() == Hand.OFF_HAND) return;
+
         if(target != null) {
             if(mc.player.getAttackCooldownProgress(0.5f) == 1 && isValid(target)) {
                 mc.interactionManager.attackEntity(mc.player, target);
-                mc.player.swingHand(mc.player.getActiveHand());
+                // Always swing the main hand
+                mc.player.swingHand(Hand.MAIN_HAND);
                 timer.reset();
             }
         }
     }
+
+
 
     private Entity getTarget() {
         HitResult hitResult = mc.crosshairTarget;
