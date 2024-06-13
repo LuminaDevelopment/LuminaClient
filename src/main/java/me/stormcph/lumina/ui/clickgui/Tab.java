@@ -42,48 +42,12 @@ public class Tab implements Component {
 
         if(!ClickguiModule.performance.isEnabled()) {
             switch (category) {
-                case COMBAT -> {
-                    matrices.push();
-                    float scale = 0.08f;
-                    matrices.scale(scale, scale, scale);
-                    drawImage(matrices, (x + 5) * (1 / scale), (y + 5) * (1 / scale), "textures/icons/combat.png");
-                    matrices.pop();
-                }
-                case MOVEMENT -> {
-                    matrices.push();
-                    float scale = 0.027f;
-                    matrices.scale(scale, scale, scale);
-                    drawImage(matrices, (x + 5) * (1 / scale), (y + 1) * (1 / scale), "textures/icons/move.png");
-                    matrices.pop();
-                }
-                case PLAYER -> {
-                    matrices.push();
-                    float scale = 0.025f;
-                    matrices.scale(scale, scale, scale);
-                    drawImage(matrices, (x + 15) * (1 / scale), (y + 5) * (1 / scale), "textures/icons/player.png");
-                    matrices.pop();
-                }
-                case RENDER -> {
-                    matrices.push();
-                    float scale = 0.036f;
-                    matrices.scale(scale, scale, scale);
-                    drawImage(matrices, (x + 15) * (1 / scale), (y + 10) * (1 / scale), "textures/icons/render.png");
-                    matrices.pop();
-                }
-                case MISC -> {
-                    matrices.push();
-                    float scale = 0.024f;
-                    matrices.scale(scale, scale, scale);
-                    drawImage(matrices, (x + 15) * (1 / scale), (y + 10) * (1 / scale), "textures/icons/misc.png");
-                    matrices.pop();
-                }
-                case GHOST -> {
-                    matrices.push();
-                    float scale = 0.03f;
-                    matrices.scale(scale, scale, scale);
-                    drawImage(matrices, (x + 15) * (1 / scale), (y + 3) * (1 / scale), "textures/icons/ghost.png");
-                    matrices.pop();
-                }
+                case COMBAT -> drawCategory(matrices, (x + 5) * (1 / scale), (y + 5) * (1 / scale), 0.08f, "textures/icons/combat.png");
+                case MOVEMENT -> drawCategory(matrices, (x + 5) * (1 / scale), (y + 1) * (1 / scale), 0.027f, "textures/icons/move/png");
+                case PLAYER -> drawCategory(matrices, (x + 15) * (1 / scale), (y + 5) * (1 / scale), 0.025f, "textures/icons/player.png");
+                case RENDER -> drawCategory(matrices, (x + 15) * (1 / scale), (y + 10) * (1 / scale), 0.036f, "textures/icons/render.png");
+                case MISC -> drawCategory(matrices, (x + 15) * (1 / scale), (y + 10) * (1 / scale), 0.024f, "textures/icons/misc.png");
+                case GHOST -> drawCategory(matrices, (x + 15) * (1 / scale), (y + 3) * (1 / scale), 0.03f, "textures/icons/ghost.png");
             }
         }
 
@@ -118,6 +82,13 @@ public class Tab implements Component {
         if(panel.isVisible()) {
             panel.mouseReleased(mouseX, mouseY, button);
         }
+    }
+
+    private void drawCategory(MatrixStack matrices, float x, float y, float scale, String texturePath) {
+        matrices.push();
+        matrices.scale(scale, scale, scale);
+        drawImage(matrices, x, y, texturePath);
+        matrices.pop();
     }
 
     @Override
